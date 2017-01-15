@@ -1,0 +1,214 @@
+.block-search-results {
+  position: relative;
+
+  width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .search-results-head {
+    padding: 15px 0;
+    h1 {
+      font-size: 23px;
+      line-height: 30px;
+      margin: 0;
+    }
+  }
+
+  .result-count {
+    font-size: 14px;
+    height: 20px;
+    width: 100%;
+  }
+
+  .search-results-items {
+    width: 820px;
+
+    .search-results-item {
+      text-decoration: none;
+      color: @main-font-color;
+      display: block;
+      font-size: 0;
+      height: 171px;
+      background-color: #ffffff;
+      border-top: 1px solid #dfdfdf;
+      padding-top: 15px;
+      padding-bottom: 15px;
+
+      .column-left {
+        vertical-align: top;
+        display: inline-block;
+        position: relative;
+        font-size: 13px;
+        height: 100%;
+        .hover-img {
+          position: relative;
+          height: 100%;
+          width: 190px;
+          z-index: 1;
+          .column {
+            z-index: 4;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+
+            &:hover + img {
+              z-index: 2;
+            }
+          }
+
+          &:hover {
+            .column {
+              z-index: 4;
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              height: 100%;
+
+              &:after {
+                position: absolute;
+                right: 1px;
+                bottom: -5px;
+                left: 1px;
+                height: 3px;
+                content: '';
+                background-color: @main-color;
+              }
+
+              &:hover {
+                &:after {
+                  background-color: red;
+                }
+              }
+
+            }
+          }
+
+          img {
+            top: 0;
+            left: 0;
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+          }
+          img:first-of-type {
+            z-index: 2;
+          }
+
+        }
+      }
+
+      &:first-child {
+        border-top: none;
+      }
+
+      .column-center {
+        vertical-align: top;
+        display: inline-block;
+        position: relative;
+        font-size: 13px;
+        padding-left: 20px;
+        height: 100%;
+        .head {
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 18px;
+          margin: 0;
+        }
+          .subway {
+            display: block;
+            padding-top: 15px;
+            .subway-label {
+              display: inline-block;
+              position: relative;
+              width: 11px;
+              height: 11px;
+              border-radius: 50%;
+              margin-right: 5px;
+              margin-top: 2px;
+              border: 1px solid #ffffff;
+
+              &:nth-child(2) {
+                margin-left: -14px;
+              }
+            }
+            .subway-name {
+              display: inline-block;
+            }
+            .subway-time {
+              display: block;
+              padding-top: 5px;
+            }
+        }
+        .source {
+          display: block;
+          padding-top: 15px;
+          img {
+            width: 20px;
+            height: auto;
+          }
+          span {
+            font-size: 14px;
+          }
+        }
+        .address {
+          display: block;
+          position: absolute;
+          bottom: 0;
+          white-space: nowrap;
+        }
+      }
+      .column-right {
+        float: right;
+        vertical-align: top;
+        display: inline-block;
+        width: 175px;
+        height: 100%;
+        position: relative;
+        font-size: @main-font-size;
+        .price {
+          display: block;
+          font-size: 19px;
+          line-height: 19px;
+          font-weight: 700;
+          padding-right: 5px;
+        }
+        .floor {
+          display: block;
+          color: #999;
+          padding-top: 15px;
+        }
+        .publish-date {
+          display: block;
+          color: #999;
+          vertical-align: bottom;
+          position: absolute;
+          bottom: 0;
+        }
+      }
+
+      &:hover {
+        background-color: #f3f3f3;
+      }
+
+    }
+  }
+}
+
+@media all and (max-width: 1280px) {
+  .block-search-results {
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 885px) {
+  .block-search-results {
+    padding-right: 0;
+    .search-results-items{
+      width: 100%;
+    }
+  }
+}

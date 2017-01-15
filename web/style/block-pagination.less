@@ -1,0 +1,63 @@
+.block-pagination {
+
+  width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: block;
+
+  label {
+    display: inline-block;
+    line-height: 28px;
+    font-size: 15px;
+    border-radius: 0;
+    border: 1px solid @main-border-color;
+    background-color: #fff;
+    padding: 0 10px;
+    border-left-width: 0;
+
+    &:first-of-type {
+      border: 1px solid @main-border-color;
+      -webkit-border-top-left-radius: 3px;
+      -moz-border-radius-topleft: 3px;
+      border-top-left-radius: 3px;
+      -webkit-border-bottom-left-radius: 3px;
+      -moz-border-radius-bottomleft: 3px;
+      border-bottom-left-radius: 3px;
+    }
+
+    &:last-of-type {
+      -webkit-border-top-right-radius: 3px;
+      -moz-border-radius-topright: 3px;
+      border-top-right-radius: 3px;
+      -webkit-border-bottom-right-radius: 3px;
+      -moz-border-radius-bottomright: 3px;
+      border-bottom-right-radius: 3px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: @main-color;
+    }
+  }
+
+  input[type=radio] {
+    display: none;
+
+    &:checked {
+      & + label {
+        background-color: @main-color;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1280px) {
+  .block-pagination {
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 100%;
+  }
+}

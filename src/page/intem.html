@@ -1,0 +1,107 @@
+<a href="{{= item.contacts.urls[0] }}" class="search-results-item" target="_blank">
+    <div class="column-left">
+        <div class="hover-img">
+            {{? item.photos.low.length === 0 }}
+
+            <span class="column" style="width: 100%;left: 0%;"></span>
+            <img src="/img/blue.png" onerror="imgOnError(this)">
+
+            {{?? item.photos.low.length === 1 }}
+
+            <span class="column" style="width: 100%;left: 0%;"></span>
+            <img src="{{? typeof item.photos.low[0] !== 'undefined' }} {{= item.photos.low[0] }} {{??}} /img/blue.png {{?}}"
+                 onerror="imgOnError(this)">
+
+            {{?? item.photos.low.length === 2 }}
+
+            <span class="column" style="width: 50%;left: 0%;"></span>
+            <img src="{{? typeof item.photos.low[0] !== 'undefined' }} {{= item.photos.low[0] }} {{??}} /img/blue.png {{?}}"
+                 onerror="imgOnError(this)">
+            <span class="column" style="width: 50%;left: 50%;"></span>
+            <img src="/img/pic.gif" onerror="imgOnError(this)"
+                 data-src="{{? typeof item.photos.low[1] !== 'undefined' }} {{= item.photos.low[1] }} {{??}} /img/blue.png {{?}}">
+
+            {{?? item.photos.low.length === 3 }}
+
+            <span class="column" style="width: 33.3%;left: 0%;"></span>
+            <img src="{{? typeof item.photos.low[0] !== 'undefined' }} {{= item.photos.low[0] }} {{??}} /img/blue.png {{?}}"
+                 onerror="imgOnError(this)">
+            <span class="column" style="width: 33.3%;left: 33.3%;"></span>
+            <img src="/img/pic.gif" onerror="imgOnError(this)"
+                 data-src="{{? typeof item.photos.low[1] !== 'undefined' }} {{= item.photos.low[1] }} {{??}} /img/blue.png {{?}}">
+            <span class="column" style="width: 33.3%;left: 66.6%;"></span>
+            <img src="/img/pic.gif" onerror="imgOnError(this)"
+                 data-src="{{? typeof item.photos.low[2] !== 'undefined' }} {{= item.photos.low[2] }} {{??}} /img/blue.png {{?}}">
+
+            {{?? item.photos.low.length === 4 }}
+
+            <span class="column" style="width: 25%;left: 0%;"></span>
+            <img src="{{? typeof item.photos.low[0] !== 'undefined' }} {{= item.photos.low[0] }} {{??}} /img/blue.png {{?}}"
+                 onerror="imgOnError(this)">
+            <span class="column" style="width: 25%;left: 25%;"></span>
+            <img src="/img/pic.gif" onerror="imgOnError(this)"
+                 data-src="{{? typeof item.photos.low[1] !== 'undefined' }} {{= item.photos.low[1] }} {{??}} /img/blue.png {{?}}">
+            <span class="column" style="width: 25%;left: 50%;"></span>
+            <img src="/img/pic.gif" onerror="imgOnError(this)"
+                 data-src="{{? typeof item.photos.low[2] !== 'undefined' }} {{= item.photos.low[2] }} {{??}} /img/blue.png {{?}}">
+            <span class="column" style="width: 25%;left: 75%;"></span>
+            <img src="/img/pic.gif" onerror="imgOnError(this)"
+                 data-src="{{? typeof item.photos.low[3] !== 'undefined' }} {{= item.photos.low[3] }} {{??}} /img/blue.png {{?}}">
+
+            {{?? item.photos.low.length >= 5 }}
+
+            <span class="column" style="width: 20%;left: 0%;"></span>
+            <img src="{{? typeof item.photos.low[0] !== 'undefined' }} {{= item.photos.low[0] }} {{??}} /img/blue.png {{?}}"
+                 onerror="imgOnError(this)">
+            <span class="column" style="width: 20%;left: 20%;"></span>
+            <img src="/img/pic.gif" onerror="imgOnError(this)"
+                 data-src="{{? typeof item.photos.low[1] !== 'undefined' }} {{= item.photos.low[1] }} {{??}} /img/blue.png {{?}}">
+            <span class="column" style="width: 20%;left: 40%;"></span>
+            <img src="/img/pic.gif" onerror="imgOnError(this)"
+                 data-src="{{? typeof item.photos.low[2] !== 'undefined' }} {{= item.photos.low[2] }} {{??}} /img/blue.png {{?}}">
+            <span class="column" style="width: 20%;left: 60%;"></span>
+            <img src="/img/pic.gif" onerror="imgOnError(this)"
+                 data-src="{{? typeof item.photos.low[3] !== 'undefined' }} {{= item.photos.low[3] }} {{??}} /img/blue.png {{?}}">
+            <span class="column" style="width: 20%;left: 80%;"></span>
+            <img src="/img/pic.gif" onerror="imgOnError(this)"
+                 data-src="{{? typeof item.photos.low[4] !== 'undefined' }} {{= item.photos.low[4] }} {{??}} /img/blue.png {{?}}">
+
+            {{?}}
+
+        </div>
+    </div>
+    <div class="column-center">
+        <h3 class="head">
+            {{= item.area }} м²
+        </h3>
+
+        <div class="subway">
+
+            
+        </div>
+
+        <div class="source">
+            {{? item.source === 'vk.com' }}
+            <img src="/img/logo/vk.png">
+            <span>Vk</span>
+            {{?}}
+        </div>
+
+        <div class="address">
+            {{= item.address }}
+        </div>
+
+    </div>
+    <div class="column-right">
+        <div class="price">
+            {{= item.price }}
+            <span>P / мес</span>
+        </div>
+        <div class="floor">
+            12 этаж из 16
+        </div>
+        <div class="publish-date">
+            {{= item.timestamp }}
+        </div>
+    </div>
+</a>

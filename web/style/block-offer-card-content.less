@@ -1,0 +1,132 @@
+.block-offer-card-content {
+  margin-left: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 865px;
+  .contacts {
+    display: table;
+    width: 100%;
+    .row {
+      display: table-row;
+      .resource {
+        width: 70%;
+        display: table-cell;
+        vertical-align: top;
+        img {
+          width: 28px;
+        }
+      }
+      .phone {
+        display: table-cell;
+        font-size: 19px;
+        line-height: 32px;
+      }
+    }
+  }
+
+  .photos {
+    display: flex;
+    flex-basis: 100%;
+    overflow-y: hidden;
+    margin-top: 20px;
+    img {
+      margin-right: 4px;
+    }
+  }
+
+  .location {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    .subway {
+      font-size: 15px;
+      .subway-label {
+        display: inline-block;
+        background-color: #004b63;
+        position: relative;
+        width: 10px;
+        height: 10px;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        -webkit-box-shadow: 0 0 0 2px #fff;
+        -moz-box-shadow: 0 0 0 2px #fff;
+        box-shadow: 0 0 0 2px #fff;
+      }
+      .subway-name {
+        display: inline-block;
+      }
+      .subway-time {
+        margin-top: 2px;
+      }
+    }
+  }
+  .map {
+    height: 200px;
+    background-color: #333333;
+  }
+
+  .features {
+    display: flex;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #dfdfdf;
+    justify-content: space-between;
+
+    .feature {
+      display: flex;
+      flex-wrap: wrap;
+
+      .value {
+        display: flex;
+        flex-basis: 100%;
+        font-size: 20px;
+      }
+      .name {
+        display: flex;
+        flex-basis: 100%;
+        font-size: 14px;
+        margin-top: 5px;
+        color: #999;
+      }
+    }
+  }
+  .common {
+    border-bottom: 1px solid #dfdfdf;
+    margin-bottom: 200px;
+    .title {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 17px;
+      margin: 20px 0 10px;
+    }
+    .description {
+      font-size: 15px;
+      line-height: 20px;
+      margin: 15px 0;
+    }
+    .row {
+      font-size: 15px;
+      line-height: 33px;
+      .name {
+        position: relative;
+        overflow: hidden;
+        margin-right: 35%;
+        white-space: nowrap;
+        &:after {
+          font-size: 5px;
+          position: absolute;
+          bottom: -3px;
+          padding-left: 4px;
+          content: '.............................................................................................................. ..............................................................................................................';
+          letter-spacing: 3px;
+        }
+      }
+      .value {
+        float: right;
+        width: 35%;
+        padding-left: 4px;
+        white-space: nowrap;
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+.block-search-filters-additional {
+  align-items: center;
+  position: absolute;
+  left:0;
+  top:0;
+  background-color: #ffffff;
+  border-top: 1px solid #f3f3f3;
+  display: none;
+  width: 100%;
+  padding: 15px 50px;
+  z-index: 100;
+  font-size: 0;
+
+  &.show {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+    .label {
+      font-size: @main-font-size;
+      display: flex;
+      flex-basis: 10%;
+    }
+    .filter-price,
+    .filter-floor,
+    .filter-subway-time,
+    .filter-resource,
+    .filter-additional
+    {
+      display: flex;
+      flex-basis: 90%;
+      align-items: center;
+      input {
+        line-height: @main-line-height;
+        padding-left: 6px;
+      }
+
+      .to {
+        border-left-width: 0;
+      }
+
+    }
+}

@@ -1,0 +1,97 @@
+.block-search-filters-switch {
+  position: relative;
+  .block-filter-subway {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    background-color: #ffffff;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    opacity: 0;
+
+    transform: translateY(-100%);
+
+    -webkit-transition: transform 0.4s ease-out 0s, opacity 0.4s ease-out 0s;
+    -moz-transition: transform 0.4s ease-out 0s, opacity 0.4s ease-out 0s;
+    -o-transition: transform 0.4s ease-out 0s, opacity 0.4s ease-out 0s;
+    transition: transform 0.4s ease-out 0s, opacity 0.4s ease-out 0s;
+
+    &.show {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+
+    .subway {
+      height: 550px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .subway__line {
+      &:nth-child(1) {
+        color: #1a85c3;
+      }
+      &:nth-child(2) {
+        color: #a05da6;
+      }
+      &:nth-child(3) {
+        color: #5bba47;
+      }
+      &:nth-child(4) {
+        color: #cf202f;
+      }
+      &:nth-child(5) {
+        color: #fbae1a;
+      }
+
+      polyline {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 5px;
+      }
+    }
+
+    .subway__transfers polyline {
+      fill: none;
+      stroke: #fff;
+    }
+
+    .subway__station {
+      cursor: pointer;
+
+      text {
+        color: #000;
+        font-size: 13px;
+        font-weight: normal;
+        opacity: 0.8;
+      }
+
+      circle {
+        fill: #fff;
+        stroke: currentColor;
+        stroke-width: 2px;
+        r: 5px;
+      }
+
+      &:hover text,
+      &.is-hover text,
+      &.is-selected text {
+        opacity: 1;
+      }
+
+      &.is-selected circle {
+        fill: currentColor;
+      }
+    }
+
+    polyline.is-selected {
+      opacity: 0;
+    }
+  }
+}
+
+
