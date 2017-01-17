@@ -1,0 +1,8 @@
+pipelines:
+  default:
+    - step:
+        script:
+          - mkdir -p ~/.ssh
+          - cat my_known_hosts >> ~/.ssh/known_hosts
+          - (umask 077; echo $MY_SSH_KEY | base64 --decode > ~/.ssh/id_rsa)
+          - ssh ansible@185.147.83.48; 'cd ~; ansible-playbook playbook.yml'
