@@ -5,6 +5,4 @@ pipelines:
           script:
             - mkdir -p ~/.ssh
             - (umask 077; echo $MY_SSH_KEY | base64 --decode > ~/.ssh/id_rsa)
-            - ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ansible@185.147.83.48
-            - cd ~
-            - ansible-playbook playbook.yml
+            - ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ansible@185.147.83.48 'cd ~;ansible-playbook playbook.yml'
