@@ -96,5 +96,5 @@ var server = http.createServer(function (req, res) {
 
 // Запускаем web-сервер
 server.listen(2003, "127.0.0.1", function () {
-    console.log('Сервер запущен http://127.0.0.1:2002/');
+    console.log('Сервер запущен http://127.0.0.1:2003/');
 });
