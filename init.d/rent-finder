@@ -10,7 +10,7 @@
 ### END INIT INFO
 
 dir="/home/ansible/var/www/rent-finder/src"
-cmd="node app.js"
+cmd="/usr/bin/node app.js"
 user="ansible"
 
 name=`basename $0`
