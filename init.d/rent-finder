@@ -10,7 +10,7 @@
 ### END INIT INFO
 
 dir="/home/ansible/var/www/rent-finder/src"
-cmd="/usr/bin/node app.js"
+cmd="/usr/bin/node /home/ansible/var/www/rent-finder/src/app.js"
 user="ansible"
 
 name=`basename $0`
@@ -32,13 +32,9 @@ case "$1" in
         echo "Already started"
     else
         echo "Starting $name"
-        cd "$dir"
-        if [ -z "$user" ]; then
-            sudo $cmd >> "$stdout_log" 2>> "$stderr_log" &
-        else
-            sudo -u "$user" $cmd >> "$stdout_log" 2>> "$stderr_log" &
-        fi
-        echo $! > "$pid_file"
+
+        deamon --user ${user} --pidfile=${pidfile} "$cmd >> $stdout_log 2>> $stderr_log &"
+
         if ! is_running; then
             echo "Unable to start, see $stdout_log and $stderr_log"
             exit 1
