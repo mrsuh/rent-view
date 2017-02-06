@@ -34,6 +34,11 @@ var search = function () {
     var price_from = document.querySelector('.filter-price .from').value;
     var price_to = document.querySelector('.filter-price .to').value;
 
+    var area_from = document.querySelector('.filter-area .from').value;
+    var area_to = document.querySelector('.filter-area .to').value;
+
+    var photo = document.getElementById('filter_photo').checked;
+
     var elem_order = document.querySelectorAll('input[name="order"]');
     var order = null;
     for (var i = 0, length = elem_order.length; i < length; i++) {
@@ -60,8 +65,11 @@ var search = function () {
         '?realty=' + realty +
         (subway ? '&subway=' + subway : '') +
         (price_from ? '&price_from=' + price_from : '') +
+        (area_from ? '&area_from=' + area_from : '') +
+        (area_to ? '&area_to=' + area_to : '') +
         (price_to ? '&price_to=' + price_to : '') +
         (realty_add ? '&realty_add=' + realty_add : '') +
+        (photo ? '&photo=' + photo : '') +
         '&order=' + order +
         (page ? '&page=' + page : '');
 };
@@ -111,6 +119,8 @@ var subway = function (e) {
         elements = [station];
     }
 
+    var names = [];
+
     if (station.getAttribute('class').indexOf("is-selected") > -1) {
         for (var i = 0, length = elements.length; i < length; i++) {
             elements[i].setAttribute('class', 'subway__station');
@@ -120,6 +130,28 @@ var subway = function (e) {
             elements[i].setAttribute('class', 'subway__station is-selected');
         }
     }
+
+    var elem_subway = document.querySelectorAll('.block-filter-subway .subway__station.is-selected');
+    var subway = [];
+    for (var i = 0, length = elem_subway.length; i < length; i++) {
+        names.push(elem_subway[i].querySelector('text').innerHTML);
+    }
+
+    var btn_block_subway = document.querySelector('.filter-subway');
+
+    var name = '';
+    switch(names.length) {
+        case 0:
+            name = 'Метро';
+            break;
+        case 1:
+            name = 'м. ' + names[0];
+            break;
+        default:
+            name = 'м. ' + names[0] + ', ...';
+
+    }
+    btn_block_subway.innerText = name;
 };
 
 document.addEventListener("DOMContentLoaded", function () {

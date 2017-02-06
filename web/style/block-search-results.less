@@ -34,6 +34,10 @@
       padding-top: 15px;
       padding-bottom: 15px;
 
+      &:first-child {
+        border-top: none;
+      }
+
       .column-left {
         vertical-align: top;
         display: inline-block;
@@ -99,10 +103,6 @@
         }
       }
 
-      &:first-child {
-        border-top: none;
-      }
-
       .column-center {
         vertical-align: top;
         display: inline-block;
@@ -116,9 +116,11 @@
           line-height: 18px;
           margin: 0;
         }
+        .subways {
+          display: block;
+          padding-top: 15px;
           .subway {
             display: block;
-            padding-top: 15px;
             .subway-label {
               display: inline-block;
               position: relative;
@@ -140,10 +142,13 @@
               display: block;
               padding-top: 5px;
             }
+          }
         }
+
         .source {
+          position: absolute;
+          bottom: 0;
           display: block;
-          padding-top: 15px;
           img {
             width: 20px;
             height: auto;
@@ -151,12 +156,6 @@
           span {
             font-size: 14px;
           }
-        }
-        .address {
-          display: block;
-          position: absolute;
-          bottom: 0;
-          white-space: nowrap;
         }
       }
       .column-right {
@@ -174,12 +173,8 @@
           font-weight: 700;
           padding-right: 5px;
         }
-        .floor {
-          display: block;
-          color: #999;
-          padding-top: 15px;
-        }
-        .publish-date {
+
+        .date {
           display: block;
           color: #999;
           vertical-align: bottom;
@@ -207,7 +202,7 @@
 @media all and (max-width: 885px) {
   .block-search-results {
     padding-right: 0;
-    .search-results-items{
+    .search-results-items {
       width: 100%;
     }
   }

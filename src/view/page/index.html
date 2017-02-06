@@ -1,0 +1,145 @@
+{{##def.type:type:
+{{? type === 0 }}
+Комната
+{{?? type === 1 }}
+1-комнатная квартира
+{{?? type === 2 }}
+2-комнатная квартира
+{{?? type === 3 }}
+3-комнатная квартира
+{{?? type === 4 }}
+4-комнатная квартира
+{{?}}
+#}}
+
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+
+<div class="block-header">
+    <div class="content">
+        Объявления из соцсетей
+    </div>
+</div>
+
+<div class="block-card-breadcrumbs">
+    <span class="breadcrumbs">
+         <a href="">Снять комнату</a>
+    </span>
+</div>
+
+<div class="block-card-head">
+
+    <div class="row">
+
+        <div class="name">{{#def.type:it.item.type }}{{? null !== it.item.area }}, {{= it.item.area}} м²{{?}}</div>
+        <div class="price">
+            {{? null !== it.item.price }}
+            <span>{{= it.item.price }} &#8381; / мес</span>
+            {{??}}
+            Цена не указана
+            {{?}}
+        </div>
+
+    </div>
+
+    <div class="date-community">
+
+        <div class="community">
+            <a href="{{= it.item.community.link }}" target="_blank" rel="nofollow">{{= it.item.community.name }}</a>
+        </div>
+
+        <span class="date">размещено {{= it.item.timestamp }}</span>
+
+    </div>
+
+</div>
+
+<div class="block-card-photo">
+
+    <div class="block-left">
+        <img id="js_main_photo" src="{{? it.item.photos.length }} {{= it.item.photos[0].high }} {{??}} /img/blue.png {{?}}">
+    </div>
+
+    <div class="block-right">
+        <div class="contacts">
+            {{~ it.item.contacts.phones :phone }}
+            <div class="phone">
+                <span>{{= phone }}</span>
+            </div>
+            {{~}}
+            <div class="profile">
+                <a class="btn" href="{{= it.item.contacts.link }}" target="_blank" rel="nofollow">Написать сообщение</a>
+            </div>
+        </div>
+
+        <div class="subways">
+            {{~ it.item.subways :subway_id }}
+
+            <div class="subway">
+
+                {{? typeof it.subways[subway_id] !== 'undefined' }}
+
+                {{~ it.subways[subway_id].color :color }}
+
+                <span class="subway-label" style="background-color: {{= color }}"></span>
+
+                {{~}}
+
+                <span class="subway-name">{{= it.subways[subway_id].name }}</span>
+
+                {{?}}
+
+            </div>
+
+            {{~}}
+        </div>
+
+    </div>
+
+    {{? it.item.photos.length }}
+
+    <div class="previews">
+
+        {{~ it.item.photos :preview }}
+        <div class="preview">
+            <img data-src="{{= preview.high }}"
+                 src="{{= preview.low }}">
+        </div>
+        {{~}}
+    </div>
+
+    {{?}}
+
+</div>
+
+<div class="block-card-description">
+    <p>{{= it.item.description }}</p>
+</div>
+
+<div class="block-footer"></div>
+
+</body>
+
+<script>
+    var main_photo = document.getElementById('js_main_photo');
+
+    var setPreview = function (e) {
+        var src = e.target.getAttribute('data-src');
+        console.info(e.target);
+        main_photo.setAttribute('src', src);
+    };
+
+    var previews = document.querySelectorAll('.preview');
+
+    for (var i = 0, length = previews.length; i < length; i++) {
+        previews[i].addEventListener('mouseover', setPreview, true);
+    }
+
+</script>
