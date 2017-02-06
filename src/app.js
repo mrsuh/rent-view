@@ -227,6 +227,26 @@ var pagination = function(page, total, range)
 };
 
 
+var timestampToDate = function(unix_timestamp)
+{
+    var date = new Date(unix_timestamp*1000);
+
+    var hours = date.getHours();
+
+    var minutes = "0" + date.getMinutes();
+
+    var seconds = "0" + date.getSeconds();
+
+    var year = date.getFullYear();
+
+    var month = date.getMonth() + 1;
+
+    var day = date.getDate();
+
+    return (day < 10 ? "0" + day : day) + '-' + (month < 10 ? "0" + month : month) + '-' + year + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+};
+
+
 // Создаем web-сервер с обработчиком запросов
 var server = http.createServer(function (req, res) {
     // console.log('Начало обработки запроса');
@@ -249,6 +269,7 @@ var server = http.createServer(function (req, res) {
 
                 findDocument(db, {_id: id}, function (doc) {
 
+                    doc['timestamp'] = timestampToDate(doc['timestamp']);
                     res.end(template_page({
                         item: doc,
                         subways: collection_subways
@@ -344,6 +365,12 @@ var server = http.createServer(function (req, res) {
                 var limit = 10;
                 findDocuments(db, filter, filter_order, skip, limit, function (docs) {
                     findDocumentsWithoutLimit(db, filter, function (unlimit_docs) {
+
+                        for(var i = 0, length = docs.length; i < length; i++) {
+                            var timestamp = docs[i]['timestamp'];
+
+                            docs[i]['timestamp'] = timestampToDate(timestamp);
+                        }
 
                         res.end(template({
                             req: {
