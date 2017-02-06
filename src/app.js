@@ -339,7 +339,7 @@ var server = http.createServer(function (req, res) {
                     filter_order['price'] = 1;
                 }
 
-                var items_on_page = 5;
+                var items_on_page = 10;
                 var skip = items_on_page * (page - 1);
                 var limit = 10;
                 findDocuments(db, filter, filter_order, skip, limit, function (docs) {
