@@ -229,21 +229,113 @@ var pagination = function(page, total, range)
 
 var timestampToDate = function(unix_timestamp)
 {
+    var months = [
+        'января',
+        'февраля',
+        'марта',
+        'апреля',
+        'мая',
+        'июня',
+        'июля',
+        'августа',
+        'сенятбря',
+        'октября',
+        'ноября',
+        'декабря'
+    ];
     var date = new Date(unix_timestamp*1000);
 
     var hours = date.getHours();
 
     var minutes = "0" + date.getMinutes();
 
-    var seconds = "0" + date.getSeconds();
-
     var year = date.getFullYear();
 
-    var month = date.getMonth() + 1;
+    var month = months[date.getMonth()];
 
     var day = date.getDate();
 
-    return (day < 10 ? "0" + day : day) + '-' + (month < 10 ? "0" + month : month) + '-' + year + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+    return day + ' ' + month + ' ' + (year < 2017 ? year : '') + ' ' + hours + ':' + minutes.substr(-2);
+};
+
+var timestampToDatePlural = function(unix_timestamp)
+{
+    var date_now = new Date();
+
+    var date_publish = new Date(unix_timestamp*1000);
+
+    var diff_time = Math.abs(date_now.getTime() - date_publish.getTime());
+    var diff_days = Math.ceil(diff_time / (1000 * 3600 * 24));
+    var diff_hours = Math.ceil(diff_time / (1000 * 3600));
+    var diff_minutes = Math.ceil(diff_time / 1000);
+    var equal_day = date_now.getDate() === date_publish.getDate();
+
+    var phrase = null;
+    switch (true) {
+        case equal_day && diff_hours === 0 && diff_minutes === 0:
+            phrase = 'только что';
+            break;
+        case equal_day && diff_hours === 0:
+            phrase = diff_minutes + ' минут' + plural(diff_minutes, 'у', 'ы', '') + ' назад';
+            break;
+        case equal_day && diff_hours <= 24:
+            phrase = diff_hours + ' час' + plural(diff_hours, '', 'а', 'ов') + ' назад';
+            break;
+        case diff_hours < 48:
+            phrase = 'вчера';
+            break;
+        default:
+
+            var months = [
+                'января',
+                'февраля',
+                'марта',
+                'апреля',
+                'мая',
+                'июня',
+                'июля',
+                'августа',
+                'сенятбря',
+                'октября',
+                'ноября',
+                'декабря'
+            ];
+
+            var hours = date_publish.getHours();
+
+            var minutes = "0" + date_publish.getMinutes();
+
+            var year = date_publish.getFullYear();
+
+            var month = months[date_publish.getMonth()];
+
+            var day = date_publish.getDate();
+
+            phrase = (day < 10 ? "0" + day : day) + ' ' + month + ' ' + (year < 2017 ? year : '') + ' ' + hours + ':' + minutes.substr(-2);
+    }
+
+    return phrase;
+
+};
+
+
+var plural = function(value, end_1, end_2, end_3)
+{
+    if(value % 10 === 1 && value % 100 !== 11) {
+        return end_1;
+    } else if(value % 10 >= 2 && value % 10 <= 4 && (value % 100 < 10 || value % 100 >= 20)) {
+        return end_2;
+    } else {
+        return end_3;
+    }
+};
+
+var number_format = function(number)
+{
+    if(null === number) {
+        return null;
+    }
+    return number.toString().split( /(?=(?:\d{3})+$)/ ).join(' ');
 };
 
 
@@ -270,6 +362,7 @@ var server = http.createServer(function (req, res) {
                 findDocument(db, {_id: id}, function (doc) {
 
                     doc['timestamp'] = timestampToDate(doc['timestamp']);
+                    doc['price'] = number_format(doc['price']);
                     res.end(template_page({
                         item: doc,
                         subways: collection_subways
@@ -293,7 +386,7 @@ var server = http.createServer(function (req, res) {
             var area_to = null !== req_area_to ? parseInt(req_area_to) : '';
 
             var req_realty = getParameter(req.url, 'realty');
-            var realty = null !== req_realty ? req_realty : 'room';
+            var realty = null !== req_realty ? req_realty : 'flat';
 
             var req_order = getParameter(req.url, 'order');
             var order = null !== req_order ? req_order : 'date';
@@ -368,8 +461,10 @@ var server = http.createServer(function (req, res) {
 
                         for(var i = 0, length = docs.length; i < length; i++) {
                             var timestamp = docs[i]['timestamp'];
+                            var price = docs[i]['price'];
 
-                            docs[i]['timestamp'] = timestampToDate(timestamp);
+                            docs[i]['timestamp'] = timestampToDatePlural(timestamp);
+                            docs[i]['price'] = number_format(price);
                         }
 
                         res.end(template({

@@ -6,19 +6,44 @@
     z-index: 20;
     border: 1px solid #e1e1e1;
 
-    h1 {
-        font-size: 20px;
-        padding-right: 15px;
-        display: inline;
-        color: white;
-    }
-
     .content {
         width: 1180px;
         margin-left: auto;
         margin-right: auto;
         font-size: 25px;
-        line-height: 75px;
+        line-height: 70px;
+
+        a {
+            color: #1C1A1B;
+            text-decoration: none;
+            &:visited {
+                color: #1C1A1B;
+            }
+        }
+
+        nav {
+            height: 70px;
+            display: inline-block;
+            float: right;
+            font-size: 0;
+            a {
+                padding-left: 5px;
+                padding-right: 5px;
+                vertical-align: top;
+                font-size: 16px;
+                display: inline-block;
+                height: 100%;
+                color: #1C1A1B;
+                &.active {
+                    cursor: default;
+                    border-bottom: 3px solid rgba(71,162,218, 1);
+                }
+
+                &:hover:not(.active) {
+                    color: red;
+                }
+            }
+        }
     }
 }
 

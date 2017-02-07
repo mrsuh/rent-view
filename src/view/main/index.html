@@ -14,6 +14,8 @@
 3-комнатная квартира
 {{?? type === 4 }}
 4-комнатная квартира
+{{?? type === 5 }}
+Студия
 {{?}}
 #}}
 
@@ -45,7 +47,12 @@
 
 <div class="block-header">
     <div class="content">
-        Объявления из соцсетей
+        <a href="/">Объявления из соцсетей</a>
+        <nav>
+            <a href="/" class="active">Объявления</a>
+            <a href="/" >Интересности</a>
+            <a href="/" >Информация</a>
+        </nav>
     </div>
 </div>
 
@@ -515,7 +522,7 @@
 
                     <div class="subway">
 
-                        {{? typeof it.subways[subway_id] !== 'undefined' }}
+                        {{? typeof it.subways[subway_id] !== 'undefined' && subway_index < 5 }}
 
                         {{~ it.subways[subway_id].color :color:color_index }}
 
@@ -536,7 +543,7 @@
                 <div class="source">
 
                     {{? item.source === 'vk.com' }}
-                    <img src="/img/logo/vk.png">
+                    <img src="/img/logo/vk.svg">
                     <span>vk.com</span>
                     {{?}}
 
