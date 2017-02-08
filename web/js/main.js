@@ -2,12 +2,13 @@
 
 var hoverImg = function (e) {
     e.target.parentElement.removeEventListener('mouseover', hoverImg, true);
-    var imgs = e.target.parentElement.getElementsByTagName('img');
+    var imgs = e.target.parentElement.querySelectorAll('.img');
 
     for (var i = 0; i < imgs.length; i++) {
+        console.info(imgs[i]);
         var img = imgs[i];
         if (img.hasAttribute('data-src')) {
-            img.setAttribute('src', img.getAttribute('data-src'));
+            img.style = "background-image: url('" + img.getAttribute('data-src') + "')";
             img.removeAttribute('data-src');
         }
     }
