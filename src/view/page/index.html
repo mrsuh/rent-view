@@ -71,6 +71,7 @@
 <div class="block-card-photo">
 
     <div class="block-left">
+        <div id="js_main_blur" class="blur" style="background-image: url('{{? it.item.photos.length }} {{= it.item.photos[0].high }} {{??}} /img/blue.png {{?}}')"></div>
         <img id="js_main_photo" src="{{? it.item.photos.length }} {{= it.item.photos[0].high }} {{??}} /img/blue.png {{?}}">
     </div>
 
@@ -115,9 +116,7 @@
     <div class="previews">
 
         {{~ it.item.photos :preview }}
-        <div class="preview">
-            <img data-src="{{= preview.high }}"
-                 src="{{= preview.low }}">
+        <div class="preview" data-src="{{= preview.high }}" style="background-image: url('{{= preview.high }}')">
         </div>
         {{~}}
     </div>
@@ -136,9 +135,11 @@
 
 <script>
     var main_photo = document.getElementById('js_main_photo');
+    var main_blur = document.getElementById('js_main_blur');
 
     var setPreview = function (e) {
         var src = e.target.getAttribute('data-src');
+        main_blur.style = 'background-image: url("' + src + '")';
         console.info(e.target);
         main_photo.setAttribute('src', src);
     };
@@ -146,7 +147,7 @@
     var previews = document.querySelectorAll('.preview');
 
     for (var i = 0, length = previews.length; i < length; i++) {
-        previews[i].addEventListener('mouseover', setPreview, true);
+        previews[i].addEventListener('click', setPreview, true);
     }
 
 </script>
