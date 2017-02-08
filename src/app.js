@@ -31,8 +31,7 @@ function connect(callback) {
             console.info('connect to mongodb');
             if (err) {
                 return callback(err)
-            }
-            ;
+            };
 
             myDb = db;
             callback(null, db);
@@ -66,7 +65,6 @@ var findDocumentsWithoutLimit = function (db, filter, callback) {
     collection.find(filter).toArray(function (err, docs) {
         assert.equal(err, null);
         // console.log("Found the following records");
-        console.log('mongo find');
         collection_docs = docs;
         // console.info(docs);
         //  fs.writeFile('message.txt', JSON.stringify(docs));
@@ -82,7 +80,6 @@ var findDocument = function (db, filter, callback) {
     collection.findOne(filter, function (err, doc) {
         assert.equal(err, null);
         // console.log("Found the following records");
-        console.log(doc);
         callback(doc);
     });
 };
@@ -420,7 +417,7 @@ var server = http.createServer(function (req, res) {
                     photo: photo
                 });
 
-                console.info(filter);
+               // console.info(filter);
 
                 var subway_name = null;
                 var subway_names = [];
