@@ -103,36 +103,81 @@
   }
 
   .previews {
-    margin-top: 5px;
-    padding-top: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 5px;
     border: 1px solid #e1e1e1;
     box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
 
-    .preview {
-      vertical-align: top;
+
+    .slider {
       position: relative;
-      display: inline-block;
       height: 140px;
-      width: 190px;
-      margin-right: 5px;
-      margin-bottom: 5px;
+      width: 100%;
+      overflow: hidden;
 
-      background: 50% no-repeat;
-      background-size: cover;
+      .arrow-btn {
+        z-index: 1;
+        position: absolute;
+        width: 40px;
+        height: 100%;
 
-      &:hover {
-        cursor: pointer;
-        &:after {
-          position: absolute;
-          right: 0;
-          bottom: -5px;
+        &.left,&.right {
+          .arrow {
+            position: absolute;
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            top: 59px;
+            opacity: 0.4;
+          }
+          &:hover {
+            cursor: pointer;
+            .arrow {
+              opacity: 0.8;
+            }
+          }
+        }
+        &.left {
           left: 0;
-          height: 3px;
-          content: '';
-          background-color: rgba(71, 162, 218, 1);
+          .arrow {
+            border-right: 15px solid #ffffff;
+            left: 9px;
+          }
+        }
+        &.right {
+          right: 0;
+          .arrow {
+            border-left: 15px solid #ffffff;
+            right: 9px;
+          }
+        }
+      }
+
+      .slider-inner {
+        z-index: 0;
+        position: absolute;
+        white-space: nowrap;
+        left: 0;
+        transition: left 0.5s ease-out;
+
+        .slide {
+          margin-left: 1px;
+          margin-right: 1px;
+          vertical-align: top;
+          position: relative;
+          display: inline-block;
+          height: 140px;
+          width: 190px;
+
+          background: 50% no-repeat;
+          background-size: cover;
+
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
     }

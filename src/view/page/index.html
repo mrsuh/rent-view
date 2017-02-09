@@ -21,6 +21,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="/style/style.css?v1486539852541">
+    <script src="/js/slider.js?v1486539852541"></script>
 </head>
 <body>
 
@@ -115,10 +116,23 @@
 
     <div class="previews">
 
-        {{~ it.item.photos :preview }}
-        <div class="preview" data-src="{{= preview.high }}" style="background-image: url('{{= preview.high }}')">
+        <div class="slider">
+            {{? it.item.photos.length > 4 }}
+            <div class="arrow-btn left">
+                <div class="arrow"></div>
+            </div>
+            <div class="arrow-btn right">
+                <div class="arrow"></div>
+            </div>
+            {{?}}
+            <div class="slider-inner">
+                {{~ it.item.photos :preview }}
+                <div class="slide preview" data-src="{{= preview.high }}" style="background-image: url('{{= preview.high }}')">
+                </div>
+                {{~}}
+            </div>
         </div>
-        {{~}}
+
     </div>
 
     {{?}}
@@ -148,6 +162,17 @@
 
     for (var i = 0, length = previews.length; i < length; i++) {
         previews[i].addEventListener('click', setPreview, true);
+    }
+
+    var slider = new Slider(
+        document.querySelector('.slider')
+    );
+
+    document.querySelector('.arrow-btn.left').onclick = function(){
+        slider.left();
+    };
+    document.querySelector('.arrow-btn.right').onclick = function(){
+        slider.right();
     }
 
 </script>
