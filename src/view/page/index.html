@@ -72,6 +72,9 @@
 <div class="block-card-photo">
 
     <div class="block-left">
+        <div id="js_full_view" class="full-view">
+            <img src="/img/full-screen.svg">
+        </div>
         <div id="js_main_blur" class="blur" style="background-image: url('{{? it.item.photos.length }} {{= it.item.photos[0].high }} {{??}} /img/blue.png {{?}}')"></div>
         <img id="js_main_photo" src="{{? it.item.photos.length }} {{= it.item.photos[0].high }} {{??}} /img/blue.png {{?}}">
     </div>
@@ -139,6 +142,30 @@
 
 </div>
 
+<div class="block-card-photo-full-screen">
+
+    <div class="photo">
+        <img id="js_main_photo_full" src="{{? it.item.photos.length }} {{= it.item.photos[0].high }} {{??}} /img/blue.png {{?}}">
+    </div>
+
+    <div class="previews">
+        <div class="slider">
+            <div class="arrow-btn left">
+                <div class="arrow"></div>
+            </div>
+            <div class="arrow-btn right">
+                <div class="arrow"></div>
+            </div>
+            <div class="slider-inner">
+                {{~ it.item.photos :preview }}
+                <div class="slide preview-full" data-src="{{= preview.high }}" style="background-image: url('{{= preview.high }}')">
+                </div>
+                {{~}}
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="block-card-description">
     <p>{{= it.item.description }}</p>
 </div>
@@ -149,7 +176,29 @@
 
 <script>
     var main_photo = document.getElementById('js_main_photo');
+    var main_photo_full = document.getElementById('js_main_photo_full');
     var main_blur = document.getElementById('js_main_blur');
+    var block_photo_full = document.querySelector('.block-card-photo-full-screen');
+
+    document.getElementById('js_full_view').onclick = function(){
+        document.body.style.overflow = 'hidden';
+        block_photo_full.style.display = 'block';
+    };
+
+    document.onkeydown = function(evt) {
+        evt = evt || window.event;
+        var isEscape = false;
+        if ("key" in evt) {
+            isEscape = (evt.key == "Escape" || evt.key == "Esc");
+        } else {
+            isEscape = (evt.keyCode == 27);
+        }
+        if (isEscape) {
+            document.body.style.overflow = 'auto';
+            block_photo_full.style.display = 'none';
+        }
+    };
+
 
     var setPreview = function (e) {
         var src = e.target.getAttribute('data-src');
@@ -162,6 +211,17 @@
 
     for (var i = 0, length = previews.length; i < length; i++) {
         previews[i].addEventListener('click', setPreview, true);
+    }
+
+    var setPreviewFull = function (e) {
+        var src = e.target.getAttribute('data-src');
+        main_photo_full.setAttribute('src', src);
+    };
+
+    var previews_full = document.querySelectorAll('.preview-full');
+
+    for (var i = 0, length = previews_full.length; i < length; i++) {
+        previews_full[i].addEventListener('click', setPreviewFull, true);
     }
 
     var slider = new Slider(

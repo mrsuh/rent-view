@@ -18,7 +18,7 @@ Slider.prototype.left = function()
 
     this.offset += module === 0 ? slide_width : module;
 
-    this.slider_inner.style.left = this.offset + 'px';
+    this.slider_inner.style.transform = 'translateX(' + this.offset + 'px)';
 
     return true;
 };
@@ -38,7 +38,7 @@ Slider.prototype.right = function()
     }
 
     this.offset -= module === 0 ? slide_width : slide_width - module;
-    this.slider_inner.style.left = this.offset + 'px';
+    this.slider_inner.style.transform = 'translateX(' + this.offset + 'px)';
 
     return true;
 };
