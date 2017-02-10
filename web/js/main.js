@@ -1,5 +1,3 @@
-"use strict";
-
 var hoverImg = function (e) {
     e.target.parentElement.removeEventListener('mouseover', hoverImg, true);
     var imgs = e.target.parentElement.querySelectorAll('.img');
