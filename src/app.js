@@ -255,6 +255,12 @@ var timestampToDate = function(unix_timestamp)
     return day + ' ' + month + ' ' + (year < 2017 ? year : '') + ' ' + hours + ':' + minutes.substr(-2);
 };
 
+var phone_format = function(number)
+{
+    var str = number.toString();
+    return '+7 ' + str[0] + str[1] + str[2] + ' ' + str[3] + str[4] + str[5] + ' ' + str[6] + str[7] + ' ' + str[8] + str[9];
+};
+
 var timestampToDatePlural = function(unix_timestamp)
 {
     var date_now = new Date();
@@ -315,7 +321,6 @@ var timestampToDatePlural = function(unix_timestamp)
 
 };
 
-
 var plural = function(value, end_1, end_2, end_3)
 {
     if(value % 10 === 1 && value % 100 !== 11) {
@@ -360,6 +365,15 @@ var server = http.createServer(function (req, res) {
 
                     doc['timestamp'] = timestampToDate(doc['timestamp']);
                     doc['price'] = number_format(doc['price']);
+
+                    var phones = doc['contacts']['phones'];
+                    var new_phones = [];
+                    for(var p = 0, plength = phones.length; p < plength; p++) {
+                        new_phones.push(phone_format(phones[p]));
+                    }
+
+                    doc['contacts']['phones'] = new_phones;
+
                     res.end(template_page({
                         item: doc,
                         subways: collection_subways
@@ -416,8 +430,6 @@ var server = http.createServer(function (req, res) {
                     subway: subway,
                     photo: photo
                 });
-
-               // console.info(filter);
 
                 var subway_name = null;
                 var subway_names = [];

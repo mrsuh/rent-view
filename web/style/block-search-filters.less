@@ -13,13 +13,20 @@
     display: inline-block;
   }
 
-  .filter-hold,
+  input[type=checkbox] {
+    cursor: pointer;
+  }
+  label {
+    cursor: pointer;
+  }
+
   .filter-realty,
   .filter-realty-add,
   .filter-subway,
   .filter-area,
   .filter-additional,
   .filter-source,
+  .filter-photo,
   .filter-price {
     margin-right: 10px;
 
@@ -184,30 +191,30 @@
 
 @media all and (max-width: 1280px) {
   .block-search-filters {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+
+@media all and (max-width: 1050px) {
+  .block-search-filters {
     margin-left: auto;
     margin-right: auto;
-    width: 560px;
+    max-width: 590px;
 
     .row {
       display: inline-block;
 
-      .filter-area {
-        .from {
-          width: 123px;
-        }
-        .to {
-          width: 124px;
-        }
-      }
-
-      .filter-price {
-        .from, .to {
-          width: 130px;
-        }
+      .filter-realty {
+        margin-right: 13px;
       }
 
       .filter-subway {
-        margin-right: 0;
+        margin-left: 13px;
       }
 
       &:first-of-type {
@@ -217,7 +224,6 @@
 
     .search-btn {
       position: initial;
-      width: 136px;
       float: none;
     }
   }

@@ -1,0 +1,61 @@
+.block-card-contact {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 865px;
+  height: 40px;
+  font-size: 0;
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  .person{
+    display: inline-block;
+    font-size: 16px;
+    line-height: 40px;
+    margin-right: 20px;
+    a {
+      text-decoration: none;
+      color: black;
+      &:visited {
+        color: black;
+      }
+    }
+  }
+
+  .phone {
+    display: inline-block;
+    font-size: 19px;
+    line-height: 40px;
+    margin-right: 20px;
+  }
+
+  .message {
+    width: 210px;
+    float: right;
+    display: inline-block;
+    .btn{
+      height: 40px;
+      line-height: 40px;
+      display: inline-block;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-size: 16px;
+      font-family: Arial, serif;
+      text-decoration: none;
+      text-align: center;
+      position: relative;
+      padding-left: 26px;
+      padding-right: 26px;
+      color: #ffffff;
+      background-color: rgba(71, 162, 218, 1);
+    }
+  }
+}
+
+@media all and (max-width: 865px) {
+  .block-card-contact  {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}

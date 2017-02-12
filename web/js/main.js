@@ -3,16 +3,29 @@ var hoverImg = function (e) {
     var imgs = e.target.parentElement.querySelectorAll('.img');
 
     for (var i = 0; i < imgs.length; i++) {
-        console.info(imgs[i]);
         var img = imgs[i];
         if (img.hasAttribute('data-src')) {
-            img.style = "background-image: url('" + img.getAttribute('data-src') + "')";
+            img.style.backgroundImage = "url('" + img.getAttribute('data-src') + "')";
             img.removeAttribute('data-src');
         }
     }
 };
 
-var search = function () {
+var search = function (_page) {
+
+    var page = null;
+    if('number' === typeof _page){
+        page = _page;
+    } else {
+        var elem_page = document.querySelectorAll('input[name="page"]');
+        for (var i = 0, length = elem_page.length; i < length; i++) {
+            if (elem_page[i].checked) {
+                page = elem_page[i].value;
+                break;
+            }
+        }
+    }
+
     var elem_realty = document.querySelector('.filter-realty');
     var realty = elem_realty.options[elem_realty.selectedIndex].value;
 
@@ -47,18 +60,7 @@ var search = function () {
         }
     }
 
-    var elem_page = document.querySelectorAll('input[name="page"]');
-    var page = null;
-    for (var i = 0, length = elem_page.length; i < length; i++) {
-        if (elem_page[i].checked) {
-            page = elem_page[i].value;
-            break;
-        }
-    }
-
     var url = window.location;
-
-    console.info(url);
 
     location.href = url.protocol + "//" + url.host +
         '?realty=' + realty +
@@ -153,6 +155,13 @@ var subway = function (e) {
     btn_block_subway.innerText = name;
 };
 
+var searchOnPressEnter = function(event)
+{
+    if (event.keyCode == 13) {
+        search(1);
+    }
+};
+
 document.addEventListener("DOMContentLoaded", function () {
 
     var elem_subway_stations = document.querySelectorAll('.subway__station');
@@ -177,5 +186,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelector('.filter-realty').addEventListener('change', changeRealty);
     document.querySelector('.filter-subway').addEventListener('click', switchSubway);
-    document.querySelector('.search-btn').addEventListener('click', search);
+    document.querySelector('.search-btn').addEventListener('click', function(){
+        search(1);
+    });
+
+    document.querySelector('.filter-area .from').addEventListener('keydown', searchOnPressEnter);
+    document.querySelector('.filter-area .to').addEventListener('keydown', searchOnPressEnter);
+    document.querySelector('.filter-price .from').addEventListener('keydown', searchOnPressEnter);
+    document.querySelector('.filter-price .to').addEventListener('keydown', searchOnPressEnter);
 });

@@ -22,218 +22,184 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="/style/style.css?v1486539852541">
     <script src="/js/slider.js?v1486539852541"></script>
+    <script src="/js/page.js?v1486539852541"></script>
+    <title>SocRent :: Объявления аренды квартир из социальных сетей</title>
 </head>
 <body>
 
-<div class="block-header">
-    <div class="content">
-        <a href="/">Объявления из соцсетей</a>
-        <nav>
-            <a href="/" class="active">Объявления</a>
-            <a href="/" >Интересности</a>
-            <a href="/" >Информация</a>
-        </nav>
-    </div>
-</div>
+<div class="wrapper">
+    <div class="wrapper-content">
 
-<div class="block-card-breadcrumbs">
-    <span class="breadcrumbs">
-         <a href="">Снять комнату</a>
-    </span>
-</div>
-
-<div class="block-card-head">
-
-    <div class="row">
-
-        <div class="name">{{#def.type:it.item.type }}{{? null !== it.item.area }}, {{= it.item.area}} м²{{?}}</div>
-        <div class="price">
-            {{? null !== it.item.price }}
-            <span>{{= it.item.price }} &#8381; / мес</span>
-            {{??}}
-            Цена не указана
-            {{?}}
+        <div class="block-header">
+            <div class="content">
+                <div class="title">
+                    <a href="/">
+                        <span class="soc">Soc</span><span class="rent">Rent</span>
+                    </a>
+                    <span class="text-muted">Объявления аренды квартир из социальных сетей</span>
+                </div>
+                <nav>
+                    <a href="/" class="active">Объявления</a>
+                    <a href="/about">О проекте</a>
+                </nav>
+            </div>
         </div>
 
-    </div>
+        <div class="block-card-head">
 
-    <div class="date-community">
+            <div class="name">{{#def.type:it.item.type }}{{? null !== it.item.area }}, {{= it.item.area}} м²{{?}}</div>
+            <div class="price">
+                {{? null !== it.item.price }}
+                <span>{{= it.item.price }} &#8381; / мес</span>
+                {{??}}
+                Цена не указана
+                {{?}}
+            </div>
 
-        <div class="community">
-            <a href="{{= it.item.community.link }}" target="_blank" rel="nofollow">{{= it.item.community.name }}</a>
         </div>
 
-        <span class="date">размещено {{= it.item.timestamp }}</span>
+        <div class="block-card-subway">
 
-    </div>
+            <div class="subways">
+                {{~ it.item.subways :subway_id }}
 
-</div>
+                <div class="subway">
 
-<div class="block-card-photo">
+                    {{? typeof it.subways[subway_id] !== 'undefined' }}
 
-    <div class="block-left">
-        <div id="js_full_view" class="full-view">
-            <img src="/img/full-screen.svg">
+                    {{~ it.subways[subway_id].color :color }}
+
+                    <span class="subway-label" style="background-color: {{= color }}"></span>
+
+                    {{~}}
+
+                    <span class="subway-name">{{= it.subways[subway_id].name }}</span>
+
+                    {{?}}
+
+                </div>
+
+                {{~}}
+            </div>
+
+            <div class="date">
+                размещено {{= it.item.timestamp }}
+            </div>
+
         </div>
-        <div id="js_main_blur" class="blur" style="background-image: url('{{? it.item.photos.length }} {{= it.item.photos[0].high }} {{??}} /img/blue.png {{?}}')"></div>
-        <img id="js_main_photo" src="{{? it.item.photos.length }} {{= it.item.photos[0].high }} {{??}} /img/blue.png {{?}}">
-    </div>
 
-    <div class="block-right">
-        <div class="contacts">
+        <div class="block-card-contact">
+            <div class="person">
+                <a href="{{= it.item.contacts.link }}" target="_blank" rel="nofollow">{{= it.item.contacts.person }}</a>
+            </div>
+
             {{~ it.item.contacts.phones :phone }}
             <div class="phone">
-                <span>{{= phone }}</span>
+                {{= phone }}
             </div>
             {{~}}
-            <div class="profile">
-                <a class="btn" href="{{= it.item.contacts.link }}" target="_blank" rel="nofollow">Написать сообщение</a>
+
+            <div class="message">
+                <a class="btn" href="{{= it.item.contacts.write }}" target="_blank" rel="nofollow">Написать
+                    сообщение</a>
             </div>
+
         </div>
 
-        <div class="subways">
-            {{~ it.item.subways :subway_id }}
+        {{? it.item.photos.length }}
+        <div class="block-card-photo">
 
-            <div class="subway">
-
-                {{? typeof it.subways[subway_id] !== 'undefined' }}
-
-                {{~ it.subways[subway_id].color :color }}
-
-                <span class="subway-label" style="background-color: {{= color }}"></span>
-
-                {{~}}
-
-                <span class="subway-name">{{= it.subways[subway_id].name }}</span>
-
-                {{?}}
-
-            </div>
-
-            {{~}}
-        </div>
-
-    </div>
-
-    {{? it.item.photos.length }}
-
-    <div class="previews">
-
-        <div class="slider">
-            {{? it.item.photos.length > 4 }}
-            <div class="arrow-btn left">
-                <div class="arrow"></div>
-            </div>
-            <div class="arrow-btn right">
-                <div class="arrow"></div>
-            </div>
-            {{?}}
-            <div class="slider-inner">
-                {{~ it.item.photos :preview }}
-                <div class="slide preview" data-src="{{= preview.high }}" style="background-image: url('{{= preview.high }}')">
+            <div class="block-left">
+                <div id="js_full_view" class="full-view">
+                    <img src="/img/full-screen.svg">
                 </div>
-                {{~}}
+                <div id="js_main_blur" class="blur"
+                     style="background-image: url('{{? it.item.photos.length }} {{= it.item.photos[0].high }} {{??}} /img/blue.png {{?}}')"></div>
+                <img id="js_main_photo"
+                     src="{{? it.item.photos.length }} {{= it.item.photos[0].high }} {{??}} /img/blue.png {{?}}">
             </div>
+
         </div>
+        {{? it.item.photos.length > 1 }}
+        <div class="block-card-preview">
 
-    </div>
+            <div class="previews">
 
-    {{?}}
-
-</div>
-
-<div class="block-card-photo-full-screen">
-
-    <div class="photo">
-        <img id="js_main_photo_full" src="{{? it.item.photos.length }} {{= it.item.photos[0].high }} {{??}} /img/blue.png {{?}}">
-    </div>
-
-    <div class="previews">
-        <div class="slider">
-            <div class="arrow-btn left">
-                <div class="arrow"></div>
-            </div>
-            <div class="arrow-btn right">
-                <div class="arrow"></div>
-            </div>
-            <div class="slider-inner">
-                {{~ it.item.photos :preview }}
-                <div class="slide preview-full" data-src="{{= preview.high }}" style="background-image: url('{{= preview.high }}')">
+                <div class="slider">
+                    {{? it.item.photos.length > 4 }}
+                    <div class="arrow-btn left">
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="arrow-btn right">
+                        <div class="arrow"></div>
+                    </div>
+                    {{?}}
+                    <div class="slider-inner">
+                        {{~ it.item.photos :preview }}
+                        <div class="slide preview" data-src="{{= preview.high }}"
+                             style="background-image: url('{{= preview.high }}')">
+                        </div>
+                        {{~}}
+                    </div>
                 </div>
-                {{~}}
+
             </div>
         </div>
+        {{?}}
+
+        {{?}}
+
+        <div class="block-card-photo-full-screen">
+
+            <div class="btn-close">
+                <img src="/img/close.svg">
+            </div>
+
+            <div class="photo">
+                <img id="js_main_photo_full"
+                     src="{{? it.item.photos.length }} {{= it.item.photos[0].high }} {{??}} /img/blue.png {{?}}">
+            </div>
+
+            <div class="previews">
+                <div class="slider">
+                    <div class="arrow-btn left">
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="arrow-btn right">
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="slider-inner">
+                        {{~ it.item.photos :preview }}
+                        <div class="slide preview-full" data-src="{{= preview.high }}"
+                             style="background-image: url('{{= preview.high }}')">
+                        </div>
+                        {{~}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="block-card-description">
+            <span class="title">Описание от арендодателя</span>
+            <p>{{= it.item.description }}</p>
+        </div>
+
+    </div>
+    <div class="wrapper-footer">
+
+        <div class="block-footer">
+            <div class="content">
+                <div class="text">SocRent - это автоматический сервис, который собирает объявления из популярных
+                    социальных сетей
+                </div>
+                <div class="divider"></div>
+                <div class="text">Предложения на сайте носят информационный характер</div>
+                <div class="text">Мы не несем ответственность за содержание и предложения в текстах объявлений</div>
+                <div class="version">v0.1 beta</div>
+            </div>
+        </div>
+
     </div>
 </div>
-
-<div class="block-card-description">
-    <span class="title">Описание от арендодателя</span>
-    <p>{{= it.item.description }}</p>
-</div>
-
-<div class="block-footer"></div>
 
 </body>
-
-<script>
-    var main_photo = document.getElementById('js_main_photo');
-    var main_photo_full = document.getElementById('js_main_photo_full');
-    var main_blur = document.getElementById('js_main_blur');
-    var block_photo_full = document.querySelector('.block-card-photo-full-screen');
-
-    document.getElementById('js_full_view').onclick = function(){
-        document.body.style.overflow = 'hidden';
-        block_photo_full.style.display = 'block';
-    };
-
-    document.onkeydown = function(evt) {
-        evt = evt || window.event;
-        var isEscape = false;
-        if ("key" in evt) {
-            isEscape = (evt.key == "Escape" || evt.key == "Esc");
-        } else {
-            isEscape = (evt.keyCode == 27);
-        }
-        if (isEscape) {
-            document.body.style.overflow = 'auto';
-            block_photo_full.style.display = 'none';
-        }
-    };
-
-
-    var setPreview = function (e) {
-        var src = e.target.getAttribute('data-src');
-        main_blur.style = 'background-image: url("' + src + '")';
-        console.info(e.target);
-        main_photo.setAttribute('src', src);
-    };
-
-    var previews = document.querySelectorAll('.preview');
-
-    for (var i = 0, length = previews.length; i < length; i++) {
-        previews[i].addEventListener('click', setPreview, true);
-    }
-
-    var setPreviewFull = function (e) {
-        var src = e.target.getAttribute('data-src');
-        main_photo_full.setAttribute('src', src);
-    };
-
-    var previews_full = document.querySelectorAll('.preview-full');
-
-    for (var i = 0, length = previews_full.length; i < length; i++) {
-        previews_full[i].addEventListener('click', setPreviewFull, true);
-    }
-
-    var slider = new Slider(
-        document.querySelector('.slider')
-    );
-
-    document.querySelector('.arrow-btn.left').onclick = function(){
-        slider.left();
-    };
-    document.querySelector('.arrow-btn.right').onclick = function(){
-        slider.right();
-    }
-
-</script>

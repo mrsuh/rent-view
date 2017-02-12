@@ -1,59 +1,35 @@
 .block-card-head {
-  margin-top: 40px;
+  margin-top: 20px;
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  width: 865px;
+  max-width: 865px;
   font-size: 0;
-  //border: 1px solid #e1e1e1;
-  //box-shadow: 0 1px 2px rgba(0,0,0,.1);
   padding-top: 15px;
   padding-bottom: 15px;
 
-  .row {
-    display: block;
-
-    .name {
-      display: inline-block;
-      font-size: 23px;
-      font-weight: 700;
-      line-height: 23px;
-    }
-
-    .price {
-      float: right;
-      width: 200px;
-      display: inline-block;
-      font-size: 23px;
-      span {
-        font-size: 23px;
-        font-weight: 700;
-        display: inline;
-      }
-    }
+  .name {
+    display: inline-block;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 23px;
   }
 
-  .date-community {
-    display: block;
-    margin-top: 15px;
-    color: #999;
+  .price {
+    float: right;
+    width: 210px;
+    display: inline-block;
+    font-size: 23px;
+    span {
+      font-size: 23px;
+      font-weight: 700;
+      display: inline;
+    }
+  }
+}
 
-    .community {
-      font-size: 13px;
-      display: inline-block;
-      a:visited {
-        color: #999;
-      }
-      img {
-        width: 20px;
-        height: auto;
-      }
-    }
-    .date {
-      float: right;
-      font-size: 13px;
-      width: 200px;;
-      display: inline-block;
-    }
+@media all and (max-width: 865px) {
+  .block-card-head {
+    padding-left: 15px;
   }
 }

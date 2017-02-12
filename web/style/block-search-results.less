@@ -5,6 +5,8 @@
   margin-left: auto;
   margin-right: auto;
 
+  height: calc(~"100% - 186px");
+
   .search-results-head {
     padding: 15px 0;
     h1 {
@@ -97,6 +99,22 @@
             height: 100%;
             background: 50% no-repeat;
             background-size: cover;
+
+            &.no-photo {
+              text-align: center;
+              font-weight: 800;
+              opacity: 0.3;
+              font-size: 14px;
+
+              img {
+                height: 60%;
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+                margin-top: 20px;
+              }
+            }
+
           }
 
           span:nth-child(2) {

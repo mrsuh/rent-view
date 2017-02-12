@@ -1,14 +1,11 @@
 .block-card-description {
-  margin-top: 5px;
-  padding: 15px;
+  padding-top: 15px;
   font-size: 15px;
   line-height: 20px;
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  width: 865px;
-  border: 1px solid #e1e1e1;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+  max-width: 865px;
 
   .title{
     font-size: 17px;
@@ -18,5 +15,12 @@
 
   p {
     text-indent: 1.5em;
+  }
+}
+
+@media all and (max-width: 865px) {
+  .block-card-description  {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }

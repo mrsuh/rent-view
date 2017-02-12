@@ -1,8 +1,3 @@
-{{##def.number_format = function(number) {
-    return ('' + number).split( /(?=(?:\d{3})+$)/ ).join('_');
-}
-#}}
-
 {{##def.type:type:
 {{? type === 0 }}
 Комната
@@ -28,7 +23,7 @@
 
     <link rel="stylesheet" href="/style/style.css?v1486539852541">
 
-    <title>Объявление из соцсетей</title>
+    <title>SocRent :: Объявления аренды квартир из социальных сетей</title>
 
     <script src="/js/ajax.js?v1486539852541"></script>
     <script src="/js/url.js?v1486539852541"></script>
@@ -45,34 +40,42 @@
 
 <body>
 
-<div class="block-header">
-    <div class="content">
-        <a href="/">Объявления из соцсетей</a>
-        <nav>
-            <a href="/" class="active">Объявления</a>
-            <a href="/" >Интересности</a>
-            <a href="/" >Информация</a>
-        </nav>
-    </div>
-</div>
+<div class="wrapper">
+    <div class="wrapper-content">
+        <div class="block-header">
+            <div class="content">
+                <div class="title">
+                    <a href="/">
+                        <span class="soc">Soc</span><span class="rent">Rent</span>
+                    </a>
+                    <span class="text-muted">Объявления аренды квартир из социальных сетей</span>
+                </div>
+                <nav>
+                    <a href="/" class="active">Объявления</a>
+                    <a href="/about">О проекте</a>
+                </nav>
+            </div>
+        </div>
 
-<div class="block-search-filters">
+        <div class="block-search-filters">
 
-    <div class="row">
+            <div class="row">
 
-        <select title="Тип недвижимости" class="filter-realty">
-            <option value="flat" {{? it.req.realty === 'flat' }} selected="selected" {{?}}>Квартира</option>
-            <option value="room" {{? it.req.realty === 'room' }} selected="selected" {{?}}>Комната</option>
-        </select>
+                <select title="Тип недвижимости" class="filter-realty">
+                    <option value="flat" {{? it.req.realty===
+                    'flat' }} selected="selected" {{?}}>Квартира</option>
+                    <option value="room" {{? it.req.realty===
+                    'room' }} selected="selected" {{?}}>Комната</option>
+                </select>
 
-        <span class="filter-area" style="{{? it.req.realty === 'flat'}} display:none {{?}}">
-        <input type="text" placeholder="от" class="from" value="{{= it.req.area_from }}">
-        <input type="text" placeholder="до" class="to" value="{{= it.req.area_to }}">
+                <span class="filter-area" style="{{? it.req.realty === 'flat'}} display:none {{?}}">
+        <input title="Площадь комнаты от" type="text" placeholder="от" class="from" value="{{= it.req.area_from }}">
+        <input title="Площадь комнаты до" type="text" placeholder="до" class="to" value="{{= it.req.area_to }}">
         <span class="currency">м²</span>
     </span>
 
-        <span class="filter-realty-add"
-              style="{{? it.req.realty === 'room' }} display:none {{?}}">
+                <span class="filter-realty-add"
+                      style="{{? it.req.realty === 'room' }} display:none {{?}}">
 
             <input id="realty-0" type="checkbox"
                    {{? it.req.realty_add.indexOf('5') !== -1 }} checked {{?}} value="5">
@@ -80,7 +83,7 @@
 
         <input id="realty-1" type="checkbox"
                {{? it.req.realty_add.indexOf('1') !== -1 }} checked {{?}} value="1">
-         <label for="realty-1" title="Однокомнатные квартиры" >1</label>
+         <label for="realty-1" title="Однокомнатные квартиры">1</label>
 
         <input id="realty-2" type="checkbox"
                {{? it.req.realty_add.indexOf('2') !== -1 }} checked {{?}} value="2">
@@ -97,494 +100,545 @@
          <label>Комнат</label>
         </span>
 
-        <button type="button" class="btn filter-subway">{{= it.subway_name }}</button>
+                <button title="Метро" type="button" class="btn filter-subway">{{= it.subway_name }}</button>
 
-    </div>
+            </div>
 
-    <div class="row">
+            <div class="row">
 
         <span class="filter-price">
-          <input type="text" placeholder="от" class="from" value="{{= it.req.price_from }}">
-            <input type="text" placeholder="до" class="to" value="{{= it.req.price_to }}">
+          <input title="Цена от" type="text" placeholder="от" class="from" value="{{= it.req.price_from }}">
+            <input title="Цена до" type="text" placeholder="до" class="to" value="{{= it.req.price_to }}">
             <span class="currency">&#8381;</span>
         </span>
-        <span class="filter-photo">
+                <span class="filter-photo">
 
         <input type="checkbox" id="filter_photo" {{? it.req.photo }} checked {{?}}>
-            <label for="filter_photo">Искать с фото</label>
+            <label title="Искать с фото" for="filter_photo">Искать с фото</label>
         </span>
 
-    </div>
-
-    <button type="button" class="btn search-btn">Найти</button>
-
-</div>
-
-<div class="block-search-filters-switch">
-
-    <div class="block-filter-subway">
-
-        <svg class="subway" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 510">
-            <g class="subway__line">
-                <polyline points="227.5,11.5 227.5,497"/>
-                <g class="subway__station {{? it.req.subway.indexOf('121') !== -1 }}is-selected{{?}}" data-id="121">
-                    <circle cx="227.5" cy="32"/>
-                    <text x="239" y="35">Пр-т Просвещения</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('120') !== -1 }}is-selected{{?}}" data-id="120">
-                    <circle cx="227.5" cy="11.5"/>
-                    <text x="239" y="14.5">Парнас</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('136') !== -1  }}is-selected{{?}}" data-id="136">
-                    <circle cx="227.5" cy="497"/>
-                    <text x="239" y="500">Купчино</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('135') !== -1  }}is-selected{{?}}" data-id="135">
-                    <circle cx="227.5" cy="476.5"/>
-                    <text x="239" y="479.5">Звёздная</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('134') !== -1 }}is-selected{{?}}" data-id="134">
-                    <circle cx="227.5" cy="456.5"/>
-                    <text x="239" y="459.5">Московская</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('133') !== -1 }}is-selected{{?}}" data-id="133">
-                    <circle cx="227.5" cy="436"/>
-                    <text x="239" y="439">Парк Победы</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('132') !== -1 }}is-selected{{?}}" data-id="132">
-                    <circle cx="227.5" cy="416"/>
-                    <text x="239" y="419">Электросила</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('131') !== -1 }}is-selected{{?}}" data-id="131">
-                    <circle cx="227.5" cy="396"/>
-                    <text x="239" y="399">Московские ворота</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('7') !== -1 }}is-selected{{?}}" data-transfer-id="7">
-                    <circle cx="227.5" cy="329" r="5"/>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('130') !== -1 }}is-selected{{?}}" data-id="130">
-                    <circle cx="227.5" cy="376"/>
-                    <text x="239" y="379">Фрунзенская</text>
-                </g>
-                <circle cx="227.5" cy="329"/>
-                <g class="subway__station {{? it.req.subway.indexOf('124') !== -1 }}is-selected{{?}}" data-id="124">
-                    <circle cx="227.5" cy="92"/>
-                    <text x="239" y="95">Пионерская</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('123') !== -1 }}is-selected{{?}}" data-id="123">
-                    <circle cx="227.5" cy="72"/>
-                    <text x="239" y="75">Удельная</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('125') !== -1 }}is-selected{{?}}" data-id="125">
-                    <circle cx="227.5" cy="112"/>
-                    <text x="239" y="115">Чёрная речка</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('122') !== -1 }}is-selected{{?}}" data-id="122">
-                    <circle cx="227.5" cy="52"/>
-                    <text x="239" y="55">Озерки</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('129') !== -1 }}is-selected{{?}}" data-transfer-id="1" data-id="129">
-                    <circle cx="227.5" cy="260"/>
-                    <text x="126" y="266">Сенная площадь</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('128') !== -1 }}is-selected{{?}}" data-transfer-id="3" data-id="128">
-                    <circle cx="227.5" cy="183"/>
-                    <text x="144" y="181">Невский пр-т</text>
-                </g>
-            </g>
-            <g class="subway__line">
-                <polyline points="86.5,11.5 86.5,164 173.75,251.25
-    228,251.25 385.375,408.625 385.375,431"/>
-                <g class="subway__station {{? it.req.subway.indexOf('162') !== -1 }}is-selected{{?}}" data-id="162">
-                    <circle cx="354.5" cy="378"/>
-                    <text x="366" y="380">Обводный канал</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('163') !== -1 }}is-selected{{?}}" data-id="163">
-                    <circle cx="385.5" cy="433"/>
-                    <text x="396" y="436">Волковская</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('160') !== -1 }}is-selected{{?}}" data-transfer-id="1" data-id="160">
-                    <circle cx="221" cy="251"/>
-                    <text x="173" y="241">Садовая</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('159') !== -1 }}is-selected{{?}}" data-id="159">
-                    <circle cx="144" cy="221"/>
-                    <text x="45" y="231">Адмиралтейская</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('154') !== -1 }}is-selected{{?}}" data-id="154">
-                    <circle cx="86.5" cy="11.5"/>
-                    <text x="98" y="14.5">Комендантский пр-т</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('155') !== -1 }}is-selected{{?}}" data-id="155">
-                    <circle cx="86.5" cy="32"/>
-                    <text x="98" y="35">Старая деревня</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('156') !== -1 }}is-selected{{?}}" data-id="156">
-                    <circle cx="86.5" cy="72.5"/>
-                    <text x="98" y="75.5">Крестовский остров</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('157') !== -1 }}is-selected{{?}}" data-id="157">
-                    <circle cx="86.5" cy="111"/>
-                    <text x="98" y="115">Чкаловская</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('158') !== -1 }}is-selected{{?}}" data-id="158">
-                    <circle cx="86.5" cy="132.5"/>
-                    <text x="98" y="135.5">Спортивная</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('161') !== -1 }}is-selected{{?}}" data-transfer-id="4" data-id="161">
-                    <circle cx="307.5" cy="331.5"/>
-                    <text x="325" y="333">Звенигородская</text>
-                </g>
-            </g>
-            <g class="subway__line">
-                <polyline points="22,148 65,191 374,191 476.5,293.5
-    476.5,476"/>
-                <g class="subway__station {{? it.req.subway.indexOf('6') !== -1 }}is-selected{{?}}" data-transfer-id="6">
-                    <circle cx="442.5" cy="259.5"/>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('137') !== -1 }}is-selected{{?}}" data-id="137">
-                    <circle cx="23" cy="149"/>
-                    <text x="4" y="139">Приморская</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('138') !== -1 }}is-selected{{?}}" data-id="138">
-                    <circle cx="64" cy="189.5"/>
-                    <text x="4" y="208">Василеостровская</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('140') !== -1 }}is-selected{{?}}" data-transfer-id="2" data-id="140">
-                    <circle cx="362" cy="191"/>
-                    <text x="299" y="181">Маяковская</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('142') !== -1 }}is-selected{{?}}" data-id="142">
-                    <circle cx="476.5" cy="393"/>
-                    <text x="488" y="396">Елизаровская</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('143') !== -1 }}is-selected{{?}}" data-id="143">
-                    <circle cx="476.5" cy="413"/>
-                    <text x="488" y="416">Ломоносовская</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('144') !== -1 }}is-selected{{?}}" data-id="144">
-                    <circle cx="476.5" cy="434"/>
-                    <text x="488" y="437">Пролетарская</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('145') !== -1 }}is-selected{{?}}" data-id="145">
-                    <circle cx="476.5" cy="454"/>
-                    <text x="488" y="457">Обухово</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('146') !== -1 }}is-selected{{?}}" data-id="146">
-                    <circle cx="476.5" cy="475"/>
-                    <text x="488" y="478">Рыбацкое</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('139') !== -1 }}is-selected{{?}}" data-transfer-id="3" data-id="139">
-                    <circle cx="227.5" cy="194"/>
-                    <text x="236" y="207">Гостиный двор</text>
-                </g>
-            </g>
-            <g class="subway__line">
-                <polyline points="374,11 374,191 315.5,249.5 315.5,341
-    189,341 106,424 106,485"/>
-                <g class="subway__station {{? it.req.subway.indexOf('11') !== -1 }}is-selected{{?}}" data-id="11">
-                    <circle cx="374" cy="11.5"/>
-                    <text x="385" y="14.5">Девяткино</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('12') !== -1 }}is-selected{{?}}" data-id="12">
-                    <circle cx="374" cy="32"/>
-                    <text x="385" y="35">Гражданский пр-т</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('13') !== -1 }}is-selected{{?}}" data-id="13">
-                    <circle cx="374" cy="52"/>
-                    <text x="385" y="55">Академическая</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('15') !== -1 }}is-selected{{?}}" data-id="15">
-                    <circle cx="374" cy="72"/>
-                    <text x="385" y="75">Площадь Мужества</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('16') !== -1 }}is-selected{{?}}" data-id="16">
-                    <circle cx="374" cy="92"/>
-                    <text x="385" y="95">Лесная</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('17') !== -1 }}is-selected{{?}}" data-id="17">
-                    <circle cx="374" cy="112"/>
-                    <text x="385" y="115">Выборгская</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('18') !== -1 }}is-selected{{?}}" data-id="18">
-                    <circle cx="374" cy="133"/>
-                    <text x="385" y="136">Площадь Ленина</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('19') !== -1 }}is-selected{{?}}" data-id="19">
-                    <circle cx="374" cy="164"/>
-                    <text x="385" y="167">Чернышевская</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('110') !== -1 }}is-selected{{?}}" data-transfer-id="2" data-id="110">
-                    <circle cx="374" cy="191"/>
-                    <text x="385" y="194">Площадь Восстания</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('111') !== -1 }}is-selected{{?}}" data-transfer-id="5" data-id="111">
-                    <circle cx="323" cy="241"/>
-                    <text x="336" y="242">Владимирская</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('112') !== -1 }}is-selected{{?}}" data-transfer-id="4" data-id="112">
-                    <circle cx="316" cy="340"/>
-                    <text x="248" y="355">Пушкинская</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('113') !== -1 }}is-selected{{?}}" data-transfer-id="7" data-id="113">
-                    <circle cx="227.5" cy="341"/>
-                    <text x="72" y="332">Технологический институт</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('114') !== -1 }}is-selected{{?}}" data-id="114">
-                    <circle cx="161" cy="368"/>
-                    <text x="83" y="369">Балтийская</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('115') !== -1 }}is-selected{{?}}" data-id="115">
-                    <circle cx="143" cy="386"/>
-                    <text x="79" y="386">Нарвская</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('116') !== -1 }}is-selected{{?}}" data-id="116">
-                    <circle cx="106" cy="424"/>
-                    <text x="3" y="427">Кировский завод</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('117') !== -1 }}is-selected{{?}}" data-id="117">
-                    <circle cx="106" cy="444"/>
-                    <text x="57" y="447">Автово</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('118') !== -1 }}is-selected{{?}}" data-id="118">
-                    <circle cx="106" cy="464"/>
-                    <text x="10" y="467">Ленинский пр-т</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('119') !== -1 }}is-selected{{?}}" data-id="119">
-                    <circle cx="106" cy="484"/>
-                    <text x="11" y="487">Пр-т Ветеранов</text>
-                </g>
-            </g>
-            <g class="subway__line">
-                <polyline points="233,251 489,251 513,275 513,360"/>
-                <g class="subway__station {{? it.req.subway.indexOf('153') !== -1 }}is-selected{{?}}" data-id="153">
-                    <circle cx="513" cy="359"/>
-                    <text x="526" y="362">Ул. Дыбенко</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('152') !== -1 }}is-selected{{?}}" data-id="152">
-                    <circle cx="513" cy="338"/>
-                    <text x="526" y="341">Пр-т Большевиков</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('151') !== -1 }}is-selected{{?}}" data-id="151">
-                    <circle cx="513" cy="318"/>
-                    <text x="526" y="321">Ладожская</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('150') !== -1 }}is-selected{{?}}" data-id="150">
-                    <circle cx="513" cy="298"/>
-                    <text x="526" y="301">Новочеркасская</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('141') !== -1 }}is-selected{{?}}" data-transfer-id="6" data-id="141">
-                    <circle cx="434" cy="251"/>
-                    <text x="436" y="243">Площадь Александра Невского</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('149') !== -1 }}is-selected{{?}}" data-id="149">
-                    <circle cx="379" cy="251"/>
-                    <text x="339" y="266">Лиговский пр-т</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('147') !== -1 }}is-selected{{?}}" data-transfer-id="1" data-id="147">
-                    <circle cx="233" cy="251"/>
-                    <text x="238" y="241">Спасская</text>
-                </g>
-                <g class="subway__station {{? it.req.subway.indexOf('148') !== -1 }}is-selected{{?}}" data-transfer-id="5" data-id="148">
-                    <circle cx="316" cy="251"/>
-                    <text x="249" y="265">Достоевская</text>
-                </g>
-            </g>
-            <g class="subway__transfers">
-                <polyline data-transfer-id="1" stroke-width="3" points="221,251 233,251 228,260 221,251"/>
-                <polyline data-transfer-id="2" stroke-width="4" points="362,191 374,191"/>
-                <polyline data-transfer-id="3" stroke-width="4" points="227.5,184 227.5,194"/>
-                <polyline data-transfer-id="4" stroke-width="4" points="307,331 316,340"/>
-                <polyline data-transfer-id="5" stroke-width="4" points="323,241 316,251"/>
-                <polyline data-transfer-id="6" stroke-width="4" points="434,251 443,260"/>
-                <polyline data-transfer-id="7" stroke-width="4" points="227.5,329 227.5,341"/>
-            </g>
-        </svg>
-
-    </div>
-</div>
-
-<div class="block-search-controls">
-
-    <div class="order">
-
-        <label for="order-date">Сортировка:</label>
-
-        <input id="order-date" type="radio" name="order" {{? it.req.order === 'date' }} checked="checked" {{?}}
-        value="date">
-        <label for="order-date">по дате добавления</label>
-
-        <input id="order-price" type="radio" name="order" {{? it.req.order === 'price' }} checked="checked" {{?}}
-        value="price">
-        <label for="order-price">по цене</label>
-
-    </div>
-
-</div>
-
-<div class="block-search-results">
-
-    <div class="search-results-head">
-        <h1>Снять {{? it.req.realty === 'flat' }}квартиру{{??}}комнату{{?}} в Санкт-Петербурге</h1>
-    </div>
-
-    <div class="result-count">
-        Результатов: {{= it.items_count }}
-    </div>
-
-    <div class="search-results-items">
-
-        {{~ it.items :item }}
-
-        <a href="/page/{{= item._id }}" class="search-results-item" target="_blank">
-
-            <div class="column-left">
-                <div class="hover-img">
-                    {{? item.photos.length === 0 }}
-
-                    <span class="column" style="width: 100%;left: 0%;"></span>
-                    <span class="img" style="background-image: url('/img/blue.png')"></span>
-                    <img src="/img/blue.png" onerror="imgOnError(this)">
-
-                    {{?? item.photos.length === 1 }}
-
-                    <span class="column" style="width: 100%;left: 0%;"></span>
-                    <span class="img" style="background-image: {{? typeof item.photos[0].low !== 'undefined' }} url('{{= item.photos[0].low }}') {{??}} url('/img/blue.png') {{?}}"></span>
-
-                    {{?? item.photos.length === 2 }}
-
-                    <span class="column" style="width: 50%;left: 0%;"></span>
-                    <span class="img" style="background-image: {{? typeof item.photos[0].low !== 'undefined' }} url('{{= item.photos[0].low }}') {{??}} url('/img/blue.png') {{?}}"></span>
-                    <span class="column" style="width: 50%;left: 50%;"></span>
-                    <span class="img" style="background-image: url('/img/pic.gif')" data-src="{{? typeof item.photos[1].low !== 'undefined' }} {{= item.photos[1].low }} {{??}} /img/blue.png {{?}}"></span>
-
-                    {{?? item.photos.length === 3 }}
-
-                    <span class="column" style="width: 33.3%;left: 0%;"></span>
-                    <span class="img" style="background-image: {{? typeof item.photos[0].low !== 'undefined' }} url('{{= item.photos[0].low }}') {{??}} url('/img/blue.png') {{?}}"></span>
-                    <span class="column" style="width: 33.3%;left: 33.3%;"></span>
-                    <span class="img" style="background-image: url('/img/pic.gif')" data-src="{{? typeof item.photos[1].low !== 'undefined' }} {{= item.photos[1].low }} {{??}} /img/blue.png {{?}}"></span>
-                    <span class="column" style="width: 33.3%;left: 66.6%;"></span>
-                    <span class="img" style="background-image: url('/img/pic.gif')" data-src="{{? typeof item.photos[2].low !== 'undefined' }} {{= item.photos[2].low }} {{??}} /img/blue.png {{?}}"></span>
-
-                    {{?? item.photos.length === 4 }}
-
-                    <span class="column" style="width: 25%;left: 0%;"></span>
-                    <span class="img" style="background-image: {{? typeof item.photos[0].low !== 'undefined' }} url('{{= item.photos[0].low }}') {{??}} url('/img/blue.png') {{?}}"></span>
-                    <span class="column" style="width: 25%;left: 25%;"></span>
-                    <span class="img" style="background-image: url('/img/pic.gif')" data-src="{{? typeof item.photos[1].low !== 'undefined' }} {{= item.photos[1].low }} {{??}} /img/blue.png {{?}}"></span>
-                    <span class="column" style="width: 25%;left: 50%;"></span>
-                    <span class="img" style="background-image: url('/img/pic.gif')" data-src="{{? typeof item.photos[2].low !== 'undefined' }} {{= item.photos[2].low }} {{??}} /img/blue.png {{?}}"></span>
-                    <span class="column" style="width: 25%;left: 75%;"></span>
-                    <span class="img" style="background-image: url('/img/pic.gif')" data-src="{{? typeof item.photos[3].low !== 'undefined' }} {{= item.photos[3].low }} {{??}} /img/blue.png {{?}}"></span>
-
-                    {{?? item.photos.length >= 5 }}
-
-                    <span class="column" style="width: 20%;left: 0%;"></span>
-                    <span class="img" style="background-image: {{? typeof item.photos[0].low !== 'undefined' }} url('{{= item.photos[0].low }}') {{??}} url('/img/blue.png') {{?}}"></span>
-                    <span class="column" style="width: 20%;left: 20%;"></span>
-                    <span class="img" style="background-image: url('/img/pic.gif')" data-src="{{? typeof item.photos[1].low !== 'undefined' }} {{= item.photos[1].low }} {{??}} /img/blue.png {{?}}"></span>
-                    <span class="column" style="width: 20%;left: 40%;"></span>
-                    <span class="img" style="background-image: url('/img/pic.gif')" data-src="{{? typeof item.photos[2].low !== 'undefined' }} {{= item.photos[2].low }} {{??}} /img/blue.png {{?}}"></span>
-                    <span class="column" style="width: 20%;left: 60%;"></span>
-                    <span class="img" style="background-image: url('/img/pic.gif')" data-src="{{? typeof item.photos[3].low !== 'undefined' }} {{= item.photos[3].low }} {{??}} /img/blue.png {{?}}"></span>
-                    <span class="column" style="width: 20%;left: 80%;"></span>
-                    <span class="img" style="background-image: url('/img/pic.gif')" data-src="{{? typeof item.photos[4].low !== 'undefined' }} {{= item.photos[4].low }} {{??}} /img/blue.png {{?}}"></span>
-
-                    {{?}}
-
-                </div>
             </div>
 
-            <div class="column-center">
-                <h3 class="head"
-                    title="Комната, 6 м² в Санкт-Петербурге">
-                    {{# def.type:item.type }}{{? null !== item.area }}, {{= item.area}} м²{{?}}
-                </h3>
+            <button title="Найти" type="button" class="btn search-btn">Найти</button>
 
-                <div class="subways">
+        </div>
 
-                    {{~ item.subways :subway_id:subway_index }}
+        <div class="block-search-filters-switch">
 
-                    <div class="subway">
+            <div class="block-filter-subway">
 
-                        {{? typeof it.subways[subway_id] !== 'undefined' && subway_index < 5 }}
+                <svg class="subway" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 510">
+                    <g class="subway__line">
+                        <polyline points="227.5,11.5 227.5,497"/>
+                        <g class="subway__station {{? it.req.subway.indexOf('121') !== -1 }}is-selected{{?}}" data-id="121">
+                            <circle cx="227.5" cy="32"/>
+                            <text x="239" y="35">Пр-т Просвещения</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('120') !== -1 }}is-selected{{?}}" data-id="120">
+                            <circle cx="227.5" cy="11.5"/>
+                            <text x="239" y="14.5">Парнас</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('136') !== -1  }}is-selected{{?}}" data-id="136">
+                            <circle cx="227.5" cy="497"/>
+                            <text x="239" y="500">Купчино</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('135') !== -1  }}is-selected{{?}}" data-id="135">
+                            <circle cx="227.5" cy="476.5"/>
+                            <text x="239" y="479.5">Звёздная</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('134') !== -1 }}is-selected{{?}}" data-id="134">
+                            <circle cx="227.5" cy="456.5"/>
+                            <text x="239" y="459.5">Московская</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('133') !== -1 }}is-selected{{?}}" data-id="133">
+                            <circle cx="227.5" cy="436"/>
+                            <text x="239" y="439">Парк Победы</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('132') !== -1 }}is-selected{{?}}" data-id="132">
+                            <circle cx="227.5" cy="416"/>
+                            <text x="239" y="419">Электросила</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('131') !== -1 }}is-selected{{?}}" data-id="131">
+                            <circle cx="227.5" cy="396"/>
+                            <text x="239" y="399">Московские ворота</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('7') !== -1 }}is-selected{{?}}"
+                           data-transfer-id="7">
+                            <circle cx="227.5" cy="329" r="5"/>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('130') !== -1 }}is-selected{{?}}" data-id="130">
+                            <circle cx="227.5" cy="376"/>
+                            <text x="239" y="379">Фрунзенская</text>
+                        </g>
+                        <circle cx="227.5" cy="329"/>
+                        <g class="subway__station {{? it.req.subway.indexOf('124') !== -1 }}is-selected{{?}}" data-id="124">
+                            <circle cx="227.5" cy="92"/>
+                            <text x="239" y="95">Пионерская</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('123') !== -1 }}is-selected{{?}}" data-id="123">
+                            <circle cx="227.5" cy="72"/>
+                            <text x="239" y="75">Удельная</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('125') !== -1 }}is-selected{{?}}" data-id="125">
+                            <circle cx="227.5" cy="112"/>
+                            <text x="239" y="115">Чёрная речка</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('122') !== -1 }}is-selected{{?}}" data-id="122">
+                            <circle cx="227.5" cy="52"/>
+                            <text x="239" y="55">Озерки</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('129') !== -1 }}is-selected{{?}}"
+                           data-transfer-id="1" data-id="129">
+                            <circle cx="227.5" cy="260"/>
+                            <text x="126" y="266">Сенная площадь</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('128') !== -1 }}is-selected{{?}}"
+                           data-transfer-id="3" data-id="128">
+                            <circle cx="227.5" cy="183"/>
+                            <text x="144" y="181">Невский пр-т</text>
+                        </g>
+                    </g>
+                    <g class="subway__line">
+                        <polyline points="86.5,11.5 86.5,164 173.75,251.25
+    228,251.25 385.375,408.625 385.375,431"/>
+                        <g class="subway__station {{? it.req.subway.indexOf('162') !== -1 }}is-selected{{?}}" data-id="162">
+                            <circle cx="354.5" cy="378"/>
+                            <text x="366" y="380">Обводный канал</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('163') !== -1 }}is-selected{{?}}" data-id="163">
+                            <circle cx="385.5" cy="433"/>
+                            <text x="396" y="436">Волковская</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('160') !== -1 }}is-selected{{?}}"
+                           data-transfer-id="1" data-id="160">
+                            <circle cx="221" cy="251"/>
+                            <text x="173" y="241">Садовая</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('159') !== -1 }}is-selected{{?}}" data-id="159">
+                            <circle cx="144" cy="221"/>
+                            <text x="45" y="231">Адмиралтейская</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('154') !== -1 }}is-selected{{?}}" data-id="154">
+                            <circle cx="86.5" cy="11.5"/>
+                            <text x="98" y="14.5">Комендантский пр-т</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('155') !== -1 }}is-selected{{?}}" data-id="155">
+                            <circle cx="86.5" cy="32"/>
+                            <text x="98" y="35">Старая деревня</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('156') !== -1 }}is-selected{{?}}" data-id="156">
+                            <circle cx="86.5" cy="72.5"/>
+                            <text x="98" y="75.5">Крестовский остров</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('157') !== -1 }}is-selected{{?}}" data-id="157">
+                            <circle cx="86.5" cy="111"/>
+                            <text x="98" y="115">Чкаловская</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('158') !== -1 }}is-selected{{?}}" data-id="158">
+                            <circle cx="86.5" cy="132.5"/>
+                            <text x="98" y="135.5">Спортивная</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('161') !== -1 }}is-selected{{?}}"
+                           data-transfer-id="4" data-id="161">
+                            <circle cx="307.5" cy="331.5"/>
+                            <text x="325" y="333">Звенигородская</text>
+                        </g>
+                    </g>
+                    <g class="subway__line">
+                        <polyline points="22,148 65,191 374,191 476.5,293.5
+    476.5,476"/>
+                        <g class="subway__station {{? it.req.subway.indexOf('6') !== -1 }}is-selected{{?}}"
+                           data-transfer-id="6">
+                            <circle cx="442.5" cy="259.5"/>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('137') !== -1 }}is-selected{{?}}" data-id="137">
+                            <circle cx="23" cy="149"/>
+                            <text x="4" y="139">Приморская</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('138') !== -1 }}is-selected{{?}}" data-id="138">
+                            <circle cx="64" cy="189.5"/>
+                            <text x="4" y="208">Василеостровская</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('140') !== -1 }}is-selected{{?}}"
+                           data-transfer-id="2" data-id="140">
+                            <circle cx="362" cy="191"/>
+                            <text x="299" y="181">Маяковская</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('142') !== -1 }}is-selected{{?}}" data-id="142">
+                            <circle cx="476.5" cy="393"/>
+                            <text x="488" y="396">Елизаровская</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('143') !== -1 }}is-selected{{?}}" data-id="143">
+                            <circle cx="476.5" cy="413"/>
+                            <text x="488" y="416">Ломоносовская</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('144') !== -1 }}is-selected{{?}}" data-id="144">
+                            <circle cx="476.5" cy="434"/>
+                            <text x="488" y="437">Пролетарская</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('145') !== -1 }}is-selected{{?}}" data-id="145">
+                            <circle cx="476.5" cy="454"/>
+                            <text x="488" y="457">Обухово</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('146') !== -1 }}is-selected{{?}}" data-id="146">
+                            <circle cx="476.5" cy="475"/>
+                            <text x="488" y="478">Рыбацкое</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('139') !== -1 }}is-selected{{?}}"
+                           data-transfer-id="3" data-id="139">
+                            <circle cx="227.5" cy="194"/>
+                            <text x="236" y="207">Гостиный двор</text>
+                        </g>
+                    </g>
+                    <g class="subway__line">
+                        <polyline points="374,11 374,191 315.5,249.5 315.5,341
+    189,341 106,424 106,485"/>
+                        <g class="subway__station {{? it.req.subway.indexOf('11') !== -1 }}is-selected{{?}}" data-id="11">
+                            <circle cx="374" cy="11.5"/>
+                            <text x="385" y="14.5">Девяткино</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('12') !== -1 }}is-selected{{?}}" data-id="12">
+                            <circle cx="374" cy="32"/>
+                            <text x="385" y="35">Гражданский пр-т</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('13') !== -1 }}is-selected{{?}}" data-id="13">
+                            <circle cx="374" cy="52"/>
+                            <text x="385" y="55">Академическая</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('15') !== -1 }}is-selected{{?}}" data-id="15">
+                            <circle cx="374" cy="72"/>
+                            <text x="385" y="75">Площадь Мужества</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('16') !== -1 }}is-selected{{?}}" data-id="16">
+                            <circle cx="374" cy="92"/>
+                            <text x="385" y="95">Лесная</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('17') !== -1 }}is-selected{{?}}" data-id="17">
+                            <circle cx="374" cy="112"/>
+                            <text x="385" y="115">Выборгская</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('18') !== -1 }}is-selected{{?}}" data-id="18">
+                            <circle cx="374" cy="133"/>
+                            <text x="385" y="136">Площадь Ленина</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('19') !== -1 }}is-selected{{?}}" data-id="19">
+                            <circle cx="374" cy="164"/>
+                            <text x="385" y="167">Чернышевская</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('110') !== -1 }}is-selected{{?}}"
+                           data-transfer-id="2" data-id="110">
+                            <circle cx="374" cy="191"/>
+                            <text x="385" y="194">Площадь Восстания</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('111') !== -1 }}is-selected{{?}}"
+                           data-transfer-id="5" data-id="111">
+                            <circle cx="323" cy="241"/>
+                            <text x="336" y="242">Владимирская</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('112') !== -1 }}is-selected{{?}}"
+                           data-transfer-id="4" data-id="112">
+                            <circle cx="316" cy="340"/>
+                            <text x="248" y="355">Пушкинская</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('113') !== -1 }}is-selected{{?}}"
+                           data-transfer-id="7" data-id="113">
+                            <circle cx="227.5" cy="341"/>
+                            <text x="72" y="332">Технологический институт</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('114') !== -1 }}is-selected{{?}}" data-id="114">
+                            <circle cx="161" cy="368"/>
+                            <text x="83" y="369">Балтийская</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('115') !== -1 }}is-selected{{?}}" data-id="115">
+                            <circle cx="143" cy="386"/>
+                            <text x="79" y="386">Нарвская</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('116') !== -1 }}is-selected{{?}}" data-id="116">
+                            <circle cx="106" cy="424"/>
+                            <text x="3" y="427">Кировский завод</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('117') !== -1 }}is-selected{{?}}" data-id="117">
+                            <circle cx="106" cy="444"/>
+                            <text x="57" y="447">Автово</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('118') !== -1 }}is-selected{{?}}" data-id="118">
+                            <circle cx="106" cy="464"/>
+                            <text x="10" y="467">Ленинский пр-т</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('119') !== -1 }}is-selected{{?}}" data-id="119">
+                            <circle cx="106" cy="484"/>
+                            <text x="11" y="487">Пр-т Ветеранов</text>
+                        </g>
+                    </g>
+                    <g class="subway__line">
+                        <polyline points="233,251 489,251 513,275 513,360"/>
+                        <g class="subway__station {{? it.req.subway.indexOf('153') !== -1 }}is-selected{{?}}" data-id="153">
+                            <circle cx="513" cy="359"/>
+                            <text x="526" y="362">Ул. Дыбенко</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('152') !== -1 }}is-selected{{?}}" data-id="152">
+                            <circle cx="513" cy="338"/>
+                            <text x="526" y="341">Пр-т Большевиков</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('151') !== -1 }}is-selected{{?}}" data-id="151">
+                            <circle cx="513" cy="318"/>
+                            <text x="526" y="321">Ладожская</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('150') !== -1 }}is-selected{{?}}" data-id="150">
+                            <circle cx="513" cy="298"/>
+                            <text x="526" y="301">Новочеркасская</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('141') !== -1 }}is-selected{{?}}"
+                           data-transfer-id="6" data-id="141">
+                            <circle cx="434" cy="251"/>
+                            <text x="436" y="243">Площадь Александра Невского</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('149') !== -1 }}is-selected{{?}}" data-id="149">
+                            <circle cx="379" cy="251"/>
+                            <text x="339" y="266">Лиговский пр-т</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('147') !== -1 }}is-selected{{?}}"
+                           data-transfer-id="1" data-id="147">
+                            <circle cx="233" cy="251"/>
+                            <text x="238" y="241">Спасская</text>
+                        </g>
+                        <g class="subway__station {{? it.req.subway.indexOf('148') !== -1 }}is-selected{{?}}"
+                           data-transfer-id="5" data-id="148">
+                            <circle cx="316" cy="251"/>
+                            <text x="249" y="265">Достоевская</text>
+                        </g>
+                    </g>
+                    <g class="subway__transfers">
+                        <polyline data-transfer-id="1" stroke-width="3" points="221,251 233,251 228,260 221,251"/>
+                        <polyline data-transfer-id="2" stroke-width="4" points="362,191 374,191"/>
+                        <polyline data-transfer-id="3" stroke-width="4" points="227.5,184 227.5,194"/>
+                        <polyline data-transfer-id="4" stroke-width="4" points="307,331 316,340"/>
+                        <polyline data-transfer-id="5" stroke-width="4" points="323,241 316,251"/>
+                        <polyline data-transfer-id="6" stroke-width="4" points="434,251 443,260"/>
+                        <polyline data-transfer-id="7" stroke-width="4" points="227.5,329 227.5,341"/>
+                    </g>
+                </svg>
 
-                        {{~ it.subways[subway_id].color :color:color_index }}
+            </div>
+        </div>
 
-                        <span class="subway-label" style="background-color: {{= color }}"></span>
+        <div class="block-search-controls">
 
-                        {{~}}
+            <div class="order">
 
-                        <span class="subway-name">{{= it.subways[subway_id].name }}</span>
+                <label for="order-date">Сортировка:</label>
 
-                        {{?}}
+                <input id="order-date" type="radio" name="order" {{? it.req.order=== 'date' }} checked="checked" {{?}}
+                value="date">
+                <label title="Сортировать по дате добавления" for="order-date">по дате добавления</label>
 
+                <input id="order-price" type="radio" name="order" {{? it.req.order=== 'price' }} checked="checked" {{?}}
+                value="price">
+                <label title="Сортировать по цене" for="order-price">по цене</label>
+
+            </div>
+
+        </div>
+
+        <div class="block-search-results">
+
+            <div class="search-results-head">
+                <h1>Снять {{? it.req.realty === 'flat' }}квартиру{{??}}комнату{{?}} в Санкт-Петербурге</h1>
+            </div>
+
+            <div class="result-count">
+                Результатов: {{= it.items_count }}
+            </div>
+
+            <div class="search-results-items">
+
+                {{~ it.items :item }}
+
+                <a href="/page/{{= item._id }}" class="search-results-item">
+
+                    <div class="column-left">
+                        <div class="hover-img">
+                            {{? item.photos.length === 0 }}
+
+                            <span class="column" style="width: 100%;left: 0%;"></span>
+                            <span class="img no-photo">
+                        <img src="/img/photo-camera.svg">
+                        <span>нет фото</span>
+                    </span>
+
+                            {{?? item.photos.length === 1 }}
+
+                            <span class="column" style="width: 100%;left: 0%;"></span>
+                            <span class="img"
+                                  style="background-image: {{? typeof item.photos[0].low !== 'undefined' }} url('{{= item.photos[0].low }}') {{??}} url('/img/blue.png') {{?}}"></span>
+
+                            {{?? item.photos.length === 2 }}
+
+                            <span class="column" style="width: 50%;left: 0%;"></span>
+                            <span class="img"
+                                  style="background-image: {{? typeof item.photos[0].low !== 'undefined' }} url('{{= item.photos[0].low }}') {{??}} url('/img/blue.png') {{?}}"></span>
+                            <span class="column" style="width: 50%;left: 50%;"></span>
+                            <span class="img" style="background-image: url('/img/pic.gif')"
+                                  data-src="{{? typeof item.photos[1].low !== 'undefined' }} {{= item.photos[1].low }} {{??}} /img/blue.png {{?}}"></span>
+
+                            {{?? item.photos.length === 3 }}
+
+                            <span class="column" style="width: 33.3%;left: 0%;"></span>
+                            <span class="img"
+                                  style="background-image: {{? typeof item.photos[0].low !== 'undefined' }} url('{{= item.photos[0].low }}') {{??}} url('/img/blue.png') {{?}}"></span>
+                            <span class="column" style="width: 33.3%;left: 33.3%;"></span>
+                            <span class="img" style="background-image: url('/img/pic.gif')"
+                                  data-src="{{? typeof item.photos[1].low !== 'undefined' }} {{= item.photos[1].low }} {{??}} /img/blue.png {{?}}"></span>
+                            <span class="column" style="width: 33.3%;left: 66.6%;"></span>
+                            <span class="img" style="background-image: url('/img/pic.gif')"
+                                  data-src="{{? typeof item.photos[2].low !== 'undefined' }} {{= item.photos[2].low }} {{??}} /img/blue.png {{?}}"></span>
+
+                            {{?? item.photos.length === 4 }}
+
+                            <span class="column" style="width: 25%;left: 0%;"></span>
+                            <span class="img"
+                                  style="background-image: {{? typeof item.photos[0].low !== 'undefined' }} url('{{= item.photos[0].low }}') {{??}} url('/img/blue.png') {{?}}"></span>
+                            <span class="column" style="width: 25%;left: 25%;"></span>
+                            <span class="img" style="background-image: url('/img/pic.gif')"
+                                  data-src="{{? typeof item.photos[1].low !== 'undefined' }} {{= item.photos[1].low }} {{??}} /img/blue.png {{?}}"></span>
+                            <span class="column" style="width: 25%;left: 50%;"></span>
+                            <span class="img" style="background-image: url('/img/pic.gif')"
+                                  data-src="{{? typeof item.photos[2].low !== 'undefined' }} {{= item.photos[2].low }} {{??}} /img/blue.png {{?}}"></span>
+                            <span class="column" style="width: 25%;left: 75%;"></span>
+                            <span class="img" style="background-image: url('/img/pic.gif')"
+                                  data-src="{{? typeof item.photos[3].low !== 'undefined' }} {{= item.photos[3].low }} {{??}} /img/blue.png {{?}}"></span>
+
+                            {{?? item.photos.length >= 5 }}
+
+                            <span class="column" style="width: 20%;left: 0%;"></span>
+                            <span class="img"
+                                  style="background-image: {{? typeof item.photos[0].low !== 'undefined' }} url('{{= item.photos[0].low }}') {{??}} url('/img/blue.png') {{?}}"></span>
+                            <span class="column" style="width: 20%;left: 20%;"></span>
+                            <span class="img" style="background-image: url('/img/pic.gif')"
+                                  data-src="{{? typeof item.photos[1].low !== 'undefined' }} {{= item.photos[1].low }} {{??}} /img/blue.png {{?}}"></span>
+                            <span class="column" style="width: 20%;left: 40%;"></span>
+                            <span class="img" style="background-image: url('/img/pic.gif')"
+                                  data-src="{{? typeof item.photos[2].low !== 'undefined' }} {{= item.photos[2].low }} {{??}} /img/blue.png {{?}}"></span>
+                            <span class="column" style="width: 20%;left: 60%;"></span>
+                            <span class="img" style="background-image: url('/img/pic.gif')"
+                                  data-src="{{? typeof item.photos[3].low !== 'undefined' }} {{= item.photos[3].low }} {{??}} /img/blue.png {{?}}"></span>
+                            <span class="column" style="width: 20%;left: 80%;"></span>
+                            <span class="img" style="background-image: url('/img/pic.gif')"
+                                  data-src="{{? typeof item.photos[4].low !== 'undefined' }} {{= item.photos[4].low }} {{??}} /img/blue.png {{?}}"></span>
+
+                            {{?}}
+
+                        </div>
                     </div>
 
-                    {{~}}
+                    <div class="column-center">
+                        <h3 class="head"
+                            title="Комната, 6 м² в Санкт-Петербурге">
+                            {{# def.type:item.type }}{{? null !== item.area }}, {{= item.area}} м²{{?}}
+                        </h3>
 
-                </div>
+                        <div class="subways">
 
-                <div class="source">
+                            {{~ item.subways :subway_id:subway_index }}
 
-                    {{? item.source === 'vk.com' }}
-                    <img src="/img/logo/vk.svg">
-                    <span>vk.com</span>
-                    {{?}}
+                            <div class="subway">
 
-                </div>
+                                {{? typeof it.subways[subway_id] !== 'undefined' && subway_index < 5 }}
+
+                                {{~ it.subways[subway_id].color :color:color_index }}
+
+                                <span class="subway-label" style="background-color: {{= color }}"></span>
+
+                                {{~}}
+
+                                <span class="subway-name">{{= it.subways[subway_id].name }}</span>
+
+                                {{?}}
+
+                            </div>
+
+                            {{~}}
+
+                        </div>
+
+                        <div class="source">
+
+                            {{? item.source === 'vk.com' }}
+                            <img src="/img/logo/vk.svg">
+                            <span>vk.com</span>
+                            {{?}}
+
+                        </div>
+                    </div>
+
+                    <div class="column-right">
+                        <div class="price">
+                            {{? null !== item.price }}
+                            {{= item.price }}
+                            <span>&#8381; / мес</span>
+                            {{??}}
+                            Без цены
+                            {{?}}
+                        </div>
+                        <div class="date">
+                            {{= item.timestamp }}
+                        </div>
+                    </div>
+
+                </a>
+
+                {{~}}
             </div>
 
-            <div class="column-right">
-                <div class="price">
-                    {{? null !== item.price }}
-                    {{#def.number_format("\{\{= item.price \}\}") }}
-                    <span>&#8381; / мес</span>
-                    {{??}}
-                    Без цены
-                    {{?}}
-                </div>
-                <div class="date">
-                    {{= item.timestamp }}
-                </div>
-            </div>
+        </div>
 
-        </a>
+        <div class="block-pagination">
 
-        {{~}}
+            {{? it.pagination.length > 1 }}
+
+            {{##def.first_page: {{= it.pagination[0] }} #}}
+            {{##def.last_page: {{= it.pagination[it.pagination.length - 1] }} #}}
+            {{##def.next_page: {{= (parseInt(it.req.page) + 1) }} #}}
+
+            {{? parseInt(it.req.page) !== 1 && parseInt(it.pagination[0]) !== 1 }}
+            <input id="page-first" type="radio" name="page" value="1">
+            <label for="page-first">В начало</label>
+            {{?}}
+
+            {{~ it.pagination :page }}
+            <input id="page-{{= page }}" type="radio" name="page" {{? parseInt(page)=== parseInt(it.req.page) }}
+                   checked="checked" {{?}}
+                   value="{{= page }}">
+            <label for="page-{{= page }}">{{= page }}</label>
+            {{~}}
+
+            {{? it.pagination.length > 1 && it.pagination.length > it.req.page }}
+            <input id="page-next" type="radio" name="page" value="{{# def.next_page }}">
+            <label for="page-next">Следующая</label>
+            {{?}}
+
+            {{?}}
+
+        </div>
+
     </div>
 
+    <div class="wrapper-footer">
+        <div class="block-footer">
+            <div class="content">
+                <div class="text">SocRent - это автоматический сервис, который собирает объявления из популярных социальных
+                    сетей
+                </div>
+                <div class="divider"></div>
+                <div class="text">Предложения на сайте носят информационный характер</div>
+                <div class="text">Мы не несем ответственность за содержание и предложения в текстах объявлений</div>
+                <div class="version">v0.1 beta</div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="block-pagination">
-
-    {{? it.pagination.length > 1 }}
-
-        {{##def.first_page: {{= it.pagination[0] }} #}}
-        {{##def.last_page: {{= it.pagination[it.pagination.length - 1] }} #}}
-        {{##def.next_page: {{= (parseInt(it.req.page) + 1) }} #}}
-
-        {{? parseInt(it.req.page) !== 1 && parseInt(it.pagination[0]) !== 1 }}
-        <input id="page-first" type="radio" name="page" value="1">
-        <label for="page-first">В начало</label>
-        {{?}}
-
-        {{~ it.pagination :page }}
-        <input id="page-{{= page }}" type="radio" name="page" {{? parseInt(page) === parseInt(it.req.page) }} checked="checked" {{?}}
-        value="{{= page }}">
-        <label for="page-{{= page }}">{{= page }}</label>
-        {{~}}
-
-        {{? it.pagination.length > 1 && it.pagination.length > it.req.page }}
-        <input id="page-next" type="radio" name="page" value="{{# def.next_page }}">
-        <label for="page-next">Следующая</label>
-        {{?}}
-
-    {{?}}
 
 
-</div>
 
-<div class="block-footer"></div>
 </body>
