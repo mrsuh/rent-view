@@ -268,17 +268,16 @@ var timestampToDatePlural = function(unix_timestamp)
     var date_publish = new Date(unix_timestamp*1000);
 
     var diff_time = Math.abs(date_now.getTime() - date_publish.getTime());
-    var diff_days = Math.ceil(diff_time / (1000 * 3600 * 24));
     var diff_hours = Math.ceil(diff_time / (1000 * 3600));
     var diff_minutes = Math.ceil(diff_time / 1000);
     var equal_day = date_now.getDate() === date_publish.getDate();
 
     var phrase = null;
     switch (true) {
-        case equal_day && diff_hours === 0 && diff_minutes === 0:
+        case equal_day && diff_hours < 1 && diff_minutes < 1:
             phrase = 'только что';
             break;
-        case equal_day && diff_hours === 0:
+        case equal_day && diff_hours < 1:
             phrase = diff_minutes + ' минут' + plural(diff_minutes, 'у', 'ы', '') + ' назад';
             break;
         case equal_day && diff_hours <= 24:
@@ -474,6 +473,14 @@ var server = http.createServer(function (req, res) {
 
                             docs[i]['timestamp'] = timestampToDatePlural(timestamp);
                             docs[i]['price'] = number_format(price);
+
+                            var phones = docs[i]['contacts']['phones'];
+                            var new_phones = [];
+                            for(var p = 0, plength = phones.length; p < plength; p++) {
+                                new_phones.push(phone_format(phones[p]));
+                            }
+
+                            docs[i]['contacts']['phones'] = new_phones;
                         }
 
                         res.end(template({
