@@ -675,7 +675,37 @@
 
         </div>
 
+        <div class="block-card-photo-full-screen">
+
+            <div class="btn-close">
+                <img src="/img/close.svg">
+            </div>
+
+            <div class="photo">
+                <img
+                     src="/img/pic.gif">
+            </div>
+
+            <div class="previews">
+                <div class="slider">
+                    <div class="arrow-btn left">
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="arrow-btn right">
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="slider-inner">
+                        <!--<div class="slide preview-full" data-src="{{= preview.high }}"-->
+                             <!--style="background-image: url('{{= preview.high }}')">-->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+
+
 
     <div class="wrapper-footer">
         <div class="block-footer">
@@ -695,3 +725,70 @@
 
 
 </body>
+
+<script>
+
+    var full_screen_main = document.querySelector('.block-card-photo-full-screen .photo img');
+    var full_screen_previews = document.querySelector('.block-card-photo-full-screen .previews .slider-inner');
+    var block_photo_full = document.querySelector('.block-card-photo-full-screen');
+
+    var previews = document.querySelectorAll('.row4 .previews .preview');
+
+
+    var closeFullScreen = function()
+    {
+        document.body.style.overflow = 'auto';
+        block_photo_full.style.display = 'none';
+    };
+
+    document.querySelector('.btn-close').onclick = closeFullScreen;
+
+    document.onkeydown = function (evt) {
+        evt = evt || window.event;
+        var isEscape = false;
+        if ('key' in evt) {
+            isEscape = (evt.key == 'Escape' || evt.key == 'Esc');
+        } else {
+            isEscape = (evt.keyCode == 27);
+        }
+        if (isEscape) {
+            closeFullScreen();
+        }
+    };
+
+    var setPreviewFull = function (e) {
+        var src = e.target.getAttribute('data-src');
+        full_screen_main.setAttribute('src', src);
+    };
+
+    for(var i = 0, length = previews.length; i < length; i ++) {
+        previews[i].onclick = function(e) {
+            console.info('click');
+
+            full_screen_main.setAttribute('src', e.target.getAttribute('data-src'));
+
+            var parent_previews = e.target.parentNode.querySelectorAll('.preview');
+
+            while (full_screen_previews.firstChild) {
+                full_screen_previews.removeChild(full_screen_previews.firstChild);
+            }
+
+            var previews_nodes = [];
+            for(var n = 0, nlength = parent_previews.length; n < nlength; n++){
+                var img = document.createElement('div');
+                var src = parent_previews[n].getAttribute('data-src');
+                img.setAttribute('data-src', src);
+                img.style.backgroundImage = 'url(' + src + ')';
+                img.className = 'slide preview-full';
+                img.addEventListener('click', setPreviewFull, true);
+                full_screen_previews.appendChild(img);
+            }
+
+
+
+            document.body.style.overflow = 'hidden';
+            block_photo_full.style.display = 'block';
+        }
+    }
+
+</script>
