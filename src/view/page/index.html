@@ -20,7 +20,18 @@
     <base href="/">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <meta property="og:title" content="SocRent :: Объявления аренды квартир из социальных сетей"/>
+    {{? it.item.photos.length }}
+    <meta property="og:image" content="{{= it.item.photos[0].low }}"/>
+    {{?}}
+    <meta property="og:site_name" content="socrent.ru"/>
+    <meta property="og:description" content="Объявления аренды квартир из социальных сетей"/>
+    <description>{{= it.item.description }}</description>
+
     <link rel="stylesheet" href="/style/style.css?v1486539852541">
+
     <script src="/js/class.js?v1486539852541"></script>
     <script src="/js/slider.js?v1486539852541"></script>
     <script src="/js/preview.js?v1486539852541"></script>
