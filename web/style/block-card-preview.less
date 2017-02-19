@@ -11,7 +11,7 @@
 
     .slider {
       position: relative;
-      height: 110px;
+      height: 115px;
       width: 100%;
       overflow: hidden;
 
@@ -61,7 +61,7 @@
         white-space: nowrap;
         left: 0;
         transform: translateX(0 px);
-        transition: transform 0.5s ease-out;
+        transition: transform 0.3s ease-out;
 
         .slide {
           margin-left: 1px;
@@ -79,6 +79,16 @@
 
           &:hover {
             cursor: pointer;
+          }
+
+          &.active:after {
+            position: absolute;
+            right: 1px;
+            bottom: -5px;
+            left: 1px;
+            height: 3px;
+            content: '';
+            background-color: #47a2da;
           }
         }
       }

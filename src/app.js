@@ -349,11 +349,11 @@ var server = http.createServer(function (req, res) {
     });
 
     switch (true) {
-        case null !== req.url.match(/\/page\/.*/i):
+        case null !== req.url.match(/\/rent\/.*/i):
 
             connect(function (err, db) {
 
-                var reg = req.url.match(/\/page\/(.*)/i);
+                var reg = req.url.match(/\/rent\/.*p\.(.*)/i);
                 var id = reg[1];
 
                 if (err) {
