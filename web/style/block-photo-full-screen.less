@@ -1,4 +1,4 @@
-.block-card-photo-full-screen {
+.block-photo-full-screen {
   position: fixed;
   left: 0;
   right: 0;
@@ -7,9 +7,35 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: rgba(0,0,0,.85);
+  background: rgba(0, 0, 0, .85);
   z-index: 1000;
   display: none;
+
+  .description {
+    height: 37px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 40px;
+    color: white;
+
+    .name {
+      font-weight: 700;
+      display: inline-block;
+      font-size: 18px;
+      line-height: 18px;
+    }
+
+    .area {
+      display: inline-block;
+      font-size: 18px;
+    }
+
+    .price {
+      margin-right: 20px;
+      display: inline-block;
+      font-size: 18px;
+    }
+  }
 
   .btn-close {
     width: 20px;
@@ -32,19 +58,8 @@
 
   .photo {
     position: relative;
-    height: calc(~"100% - 103px");
+    height: calc(~"100% - 140px");
     padding-top: 10px;
-
-    .blur {
-      overflow: hidden;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      filter: blur(5px);
-      opacity: .4;
-    }
 
     img {
       position: relative;
@@ -78,7 +93,7 @@
         width: 40px;
         height: 100%;
 
-        &.left,&.right {
+        &.left, &.right {
           .arrow {
             position: absolute;
             display: inline-block;
@@ -118,7 +133,7 @@
         position: absolute;
         white-space: nowrap;
         left: 0;
-        transform: translateX(0 px);
+        transform: translateX(0px);
         transition: transform 0.3s ease-out;
 
         .slide {

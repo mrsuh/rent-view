@@ -102,59 +102,6 @@ var switchSubway = function () {
         btn_block_subway.addClass('active');
     }
 };
-
-var subway = function (e) {
-    var station = e.target;
-
-    if (station.tagName !== 'G') {
-        station = station.parentNode;
-    }
-
-    var transfer_id = station.getAttribute('data-transfer-id');
-
-    var elements;
-
-    if (transfer_id) {
-        elements = document.querySelectorAll('.subway [data-transfer-id="' + transfer_id + '"]');
-    } else {
-        elements = [station];
-    }
-
-    var names = [];
-
-    if (station.getAttribute('class').indexOf("is-selected") > -1) {
-        for (var i = 0, length = elements.length; i < length; i++) {
-            elements[i].setAttribute('class', 'subway__station');
-        }
-    } else {
-        for (var i = 0, length = elements.length; i < length; i++) {
-            elements[i].setAttribute('class', 'subway__station is-selected');
-        }
-    }
-
-    var elem_subway = document.querySelectorAll('.block-filter-subway .subway__station.is-selected');
-    var subway = [];
-    for (var i = 0, length = elem_subway.length; i < length; i++) {
-        names.push(elem_subway[i].querySelector('text').innerHTML);
-    }
-
-    var btn_block_subway = document.querySelector('.filter-subway');
-
-    var name = '';
-    switch(names.length) {
-        case 0:
-            name = 'Метро';
-            break;
-        case 1:
-            name = 'м. ' + names[0];
-            break;
-        default:
-            name = 'м. ' + names[0] + ', ...';
-
-    }
-    btn_block_subway.innerText = name;
-};
-
 var searchOnPressEnter = function(event)
 {
     if (event.keyCode == 13) {
@@ -164,9 +111,13 @@ var searchOnPressEnter = function(event)
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    var subway = new Subway();
+
     var elem_subway_stations = document.querySelectorAll('.subway__station');
     for (var i = 0, length = elem_subway_stations.length; i < length; i++) {
-        elem_subway_stations[i].addEventListener('click', subway);
+        elem_subway_stations[i].addEventListener('click', function(e){
+            subway.add(e)
+        }.bind(this));
     }
 
     var hover_imgs = document.querySelectorAll('.hover-img');
@@ -186,12 +137,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelector('.filter-realty').addEventListener('change', changeRealty);
     document.querySelector('.filter-subway').addEventListener('click', switchSubway);
-    document.querySelector('.search-btn').addEventListener('click', function(){
-        search(1);
-    });
+    document.querySelector('.search-btn').addEventListener('click', function(){search(1);});
 
     document.querySelector('.filter-area .from').addEventListener('keydown', searchOnPressEnter);
     document.querySelector('.filter-area .to').addEventListener('keydown', searchOnPressEnter);
     document.querySelector('.filter-price .from').addEventListener('keydown', searchOnPressEnter);
     document.querySelector('.filter-price .to').addEventListener('keydown', searchOnPressEnter);
+
+    var sliders = document.querySelectorAll('.slider');
+
+    for(var i = 0, length = sliders.length; i < length; i ++) {
+        new Slider(sliders[i]);
+    }
+
+    var texts = document.querySelectorAll('.row5 p');
+
+    for(var i = 0, length = texts.length; i < length; i ++) {
+        new Collapse(texts[i]);
+    }
+
+    var fullScreen = new FullScreen(document.querySelector('.block-photo-full-screen'));
+
+    var previews = document.querySelectorAll('.row4 .previews .preview');
+
+    for (var i = 0, length = previews.length; i < length; i++) {
+        previews[i].addEventListener('click', function(e){
+            fullScreen.initOnEvent(e)
+        }.bind(this));
+    }
 });

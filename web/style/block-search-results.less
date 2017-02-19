@@ -45,7 +45,9 @@
       &:hover {
         .row1 {
           .name {
-            color: #d00;
+            a {
+              color: #d00;
+            }
           }
         }
       }
@@ -57,6 +59,10 @@
           display: inline-block;
           font-size: 18px;
           line-height: 18px;
+          a {
+            color: black;
+            text-decoration: none;
+          }
         }
 
         .area {
@@ -97,7 +103,6 @@
         }
 
         .date {
-          width: 200px;
           float: right;
           font-size: 13px;
           display: inline-block;
@@ -112,12 +117,34 @@
           display: inline-block;
           font-size: 16px;
           line-height: 26px;
-          margin-right: 5px;
+          margin-right: 10px;
           a {
             text-decoration: none;
-            color: #47a2da;;
+            color: #47a2da;
             &:visited {
-              color: #47a2da;;
+              color: #47a2da;
+            }
+          }
+        }
+
+        .write {
+          vertical-align: bottom;
+          display: inline-block;
+          width: 20px;
+          margin-right: 10px;
+          margin-bottom: 3px;
+
+          a {
+            display: inline-block;
+            margin: 0;
+            text-decoration: none;
+            img {
+              width: 100%;
+              height: auto;
+              margin-bottom: 4px;
+              &:hover {
+                opacity: 0.8;
+              }
             }
           }
         }
@@ -204,7 +231,7 @@
               white-space: nowrap;
               left: 0;
               transform: translateX(0 px);
-              transition: transform 0.5s ease-out;
+              transition: transform 0.3s ease-out;
 
               .slide {
                 margin-left: 2px;
@@ -243,10 +270,38 @@
         font-size: 15px;
 
         p {
-          max-height: 88px;
+          max-height: 85px;
           overflow: hidden;
           cursor: default;
           text-indent: 1.5em;
+          position: relative;
+
+          .next {
+            font-size: 0;
+            display: inline-block;
+            position: absolute;
+            bottom: 0;
+            right: 10px;
+            float: right;
+
+            .opacity {
+              width: 150px;
+              display: inline-block;
+              background-color: white;
+              background: linear-gradient(to left, white, rgba(0,0,0,0));
+              opacity: 0.7;
+              vertical-align: bottom;
+              height: 20px;
+            }
+            .dot {
+              font-size: 15px;
+              display: inline-block;
+              color: #47a2da;
+              cursor: pointer;
+              background: white;
+              vertical-align: bottom;
+            }
+          }
         }
       }
     }

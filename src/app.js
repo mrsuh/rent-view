@@ -9,6 +9,7 @@ var collection_docs;
 var tmp_text;
 var template;
 var template_page;
+var template_about;
 
 var collection_subways;
 
@@ -186,6 +187,10 @@ readFile(__dirname + '/view/page/index.html', function (text) {
     template_page = dot.template(text);
 });
 
+readFile(__dirname + '/view/about/index.html', function (text) {
+    template_about = dot.template(text);
+});
+
 connect(function (err, db) {
     findSubways(db);
 });
@@ -349,11 +354,18 @@ var server = http.createServer(function (req, res) {
     });
 
     switch (true) {
-        case null !== req.url.match(/\/page\/.*/i):
+        case null !== req.url.match(/\/about.*/i):
+
+            console.info('about');
+
+            res.end(template_about());
+
+            break;
+        case null !== req.url.match(/\/rent\/.*/i):
 
             connect(function (err, db) {
 
-                var reg = req.url.match(/\/page\/(.*)/i);
+                var reg = req.url.match(/\/rent\/.*p\.(.*)/i);
                 var id = reg[1];
 
                 if (err) {
