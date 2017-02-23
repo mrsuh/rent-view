@@ -125,11 +125,11 @@
                     'room' }} selected="selected" {{?}}>Комната</option>
                 </select>
 
-                <span class="filter-area" style="{{? it.req.realty === 'flat'}} display:none {{?}}">
+                <span class="filter-area {{? it.req.realty === 'flat'}} hide {{?}}" >
         <input title="Площадь комнаты от" type="text" placeholder="от" class="from" value="{{= it.req.area_from }}">
         <input title="Площадь комнаты до" type="text" placeholder="до" class="to" value="{{= it.req.area_to }}">
         <span class="currency">м²</span>
-    </span>
+                </span>
 
                 <span class="filter-realty-add"
                       style="{{? it.req.realty === 'room' }} display:none {{?}}">
@@ -152,39 +152,35 @@
 
         <input id="realty-4" type="checkbox"
                {{? it.req.realty_add.indexOf('4') !== -1 }} checked {{?}} value="4">
-         <label for="realty-4" title="Многокомнатнтые квартиры">4+</label>
+        <label for="realty-4" title="Многокомнатнтые квартиры">4+</label>
+                    <label>Комнат</label>
 
-         <label>Комнат</label>
-        </span>
-
+            </span>
                 <button title="Метро" type="button" class="btn filter-subway">{{= it.subway_name }}</button>
-
             </div>
 
             <div class="row">
-
-        <span class="filter-price">
-          <input title="Цена от" type="text" placeholder="от" class="from" value="{{= it.req.price_from }}">
-            <input title="Цена до" type="text" placeholder="до" class="to" value="{{= it.req.price_to }}">
-            <span class="currency">&#8381;</span>
-        </span>
+                <span class="filter-price">
+                <input title="Цена от" type="text" placeholder="от" class="from" value="{{= it.req.price_from }}">
+                <input title="Цена до" type="text" placeholder="до" class="to" value="{{= it.req.price_to }}">
+                <span class="currency">&#8381;</span>
+            </span>
                 <span class="filter-photo">
 
-        <input type="checkbox" id="filter_photo" {{? it.req.photo }} checked {{?}}>
+            <input type="checkbox" id="filter_photo" {{? it.req.photo }} checked {{?}}>
             <label title="Искать с фото" for="filter_photo">Искать с фото</label>
-        </span>
+            </span>
+
+                <button title="Найти" type="button" class="btn search-btn">Найти</button>
 
             </div>
-
-            <button title="Найти" type="button" class="btn search-btn">Найти</button>
 
         </div>
 
         <div class="block-search-filters-switch">
-
             <div class="block-filter-subway">
-
                 <div class="block-subway">
+                    <div class="close"></div>
                     <svg class="subway" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 636 502">
                         <g class="subway__line">
                             <polyline points="227.5,11.5 227.5,497"/>
@@ -549,9 +545,10 @@
                         </g>
                     </svg>
                     <div class="stations">
-						<div class="list-name">Станции:</div>
-						<div class="list"></div>
-					</div>
+                        <div class="list-name">Станции:</div>
+                        <div class="list"></div>
+                    </div>
+                    <div class="search"></div>
                 </div>
 
             </div>
@@ -605,7 +602,7 @@
 
                         <div class="price">
                             {{? null !== item.price }}
-                            , {{= item.price }} &#8381; / мес
+                            <span class="comma">, </span>{{= item.price }} &#8381; / мес
                             {{?}}
                         </div>
 
@@ -649,7 +646,8 @@
 
                         {{? item.contacts.link.length }}
                         <div class="write">
-                            <a href="{{= item.contacts.write }}" target="_blank" rel="nofollow" title="Написать сообщение">
+                            <a href="{{= item.contacts.write }}" target="_blank" rel="nofollow"
+                               title="Написать сообщение">
                                 <img src="/img/contact.svg">
                             </a>
                         </div>
@@ -699,7 +697,7 @@
                     <div class="row5">
 
                         <p>{{= item.description }}
-                        <span class="next">
+                            <span class="next">
                             <span class="opacity"></span>
                             <span class="dot">...читать дальше</span>
                         </span>

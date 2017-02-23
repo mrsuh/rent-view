@@ -1,3 +1,5 @@
+@import "common";
+
 .block-search-results {
   position: relative;
 
@@ -316,11 +318,55 @@
   }
 }
 
-@media all and (max-width: 885px) {
+
+@media all and (max-width: 640px) {
   .block-search-results {
-    padding-right: 0;
+      padding-left: 2.5%;
+      padding-right: 2.5%;
+      width: 95%;
     .search-results-items {
-      width: 100%;
+      .search-results-item {
+        .row1 {
+          .price {
+            display: block;
+            .comma {
+              display: none;
+            }
+          }
+          .subway {
+            display: block;
+          }
+          .date {
+            float: none;
+          }
+        }
+        .row4 {
+          .previews {
+            .slider {
+              overflow: auto;
+              .arrow-btn {
+                display: none;
+              }
+            }
+          }
+        }
+        .row5 {
+          p {
+            .next {
+              display: block;
+              right: 0;
+              .opacity{
+                display: none;
+                width: 50px;
+              }
+              .dot {
+                display: block;
+                text-align: right;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

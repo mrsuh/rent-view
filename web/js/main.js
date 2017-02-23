@@ -82,23 +82,28 @@ var changeRealty = function () {
     var filter_realty_add = document.querySelector('.filter-realty-add');
 
     if (realty == 'flat') {
-        filter_area.style.display = 'none';
-        filter_realty_add.style.display = 'initial';
+        filter_area.addClass('hide');
+        filter_realty_add.removeClass('hide');
     } else {
-        filter_realty_add.style.display = 'none';
-        filter_area.style.display = 'initial';
+        filter_realty_add.addClass('hide');
+        filter_area.removeClass('hide');
     }
 };
 
 var switchSubway = function () {
+    var block_switch = document.querySelector('.block-search-filters-switch');
     var block_subway = document.querySelector('.block-filter-subway');
     var btn_block_subway = document.querySelector('.filter-subway');
 
     if (block_subway.hasClass('show')) {
         block_subway.removeClass('show');
+        block_switch.removeClass('show');
         btn_block_subway.removeClass('active');
+        document.body.style.overflow = 'auto';
     } else {
+        document.body.style.overflow = 'hidden';
         block_subway.addClass('show');
+        block_switch.addClass('show');
         btn_block_subway.addClass('active');
     }
 };

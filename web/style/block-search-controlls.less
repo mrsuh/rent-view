@@ -1,3 +1,5 @@
+@import "common";
+
 .block-search-controls {
   position: relative;
   height: 58px;
@@ -64,6 +66,17 @@
       padding-right: 50px;
       margin: 0;
       width: 100%;
+    }
+  }
+}
+
+@media all and (max-width: 640px) {
+  .block-search-controls {
+    .order {
+      padding-left: 2.5%;
+      padding-right: 0;
+      width: 97.5%;
+      height: auto;
     }
   }
 }
