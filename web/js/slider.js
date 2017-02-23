@@ -28,6 +28,14 @@ Slider.prototype.showArrow = function()
   var width_slider = this.slider.offsetWidth;
   var width_inner_slider = this.slider_inner.offsetWidth;
 
+
+  if(width_inner_slider < 440){
+      this.arrow.left.style.display = 'none';
+      this.arrow.right.style.display = 'none';
+
+      return false;
+  }
+
   if(width_inner_slider > width_slider) {
       this.arrow.left.style.display = 'block';
       this.arrow.right.style.display = 'block';
