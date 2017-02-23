@@ -29,7 +29,7 @@ Slider.prototype.showArrow = function()
   var width_inner_slider = this.slider_inner.offsetWidth;
 
 
-  if(width_inner_slider < 440){
+  if(width_slider < 640){
       this.arrow.left.style.display = 'none';
       this.arrow.right.style.display = 'none';
 
