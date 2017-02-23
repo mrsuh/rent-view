@@ -85,8 +85,7 @@
         <span class="currency">м²</span>
                 </span>
 
-                <span class="filter-realty-add"
-                      style="{{? it.req.realty === 'room' }} display:none {{?}}">
+                <span class="filter-realty-add {{? it.req.realty === 'room' }} hide {{?}}">
 
             <input id="realty-0" type="checkbox"
                    {{? it.req.realty_add.indexOf('5') !== -1 }} checked {{?}} value="5">
