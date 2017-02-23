@@ -16,6 +16,7 @@
     "replace-in-file": "^2.2.2"
   },
   "devDependencies": {
+    "grunt-contrib-uglify": "^2.1.0",
     "grunt-string-replace": "^1.3.1"
   }
 }
