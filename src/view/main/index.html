@@ -73,9 +73,9 @@
             <div class="row">
 
                 <select title="Тип недвижимости" class="filter-realty">
-                    <option value="flat" {{? it.req.realty===
+                    <option value="flat" {{? it.req.realty ===
                     'flat' }} selected="selected" {{?}}>Квартира</option>
-                    <option value="room" {{? it.req.realty===
+                    <option value="room" {{? it.req.realty ===
                     'room' }} selected="selected" {{?}}>Комната</option>
                 </select>
 
@@ -593,13 +593,13 @@
                     <div class="row2">
 
                         <div class="person">
-                            <a href="{{= item.contacts.link }}" target="_blank" rel="nofollow">{{= item.contacts.person
+                            <a href="{{= item.contacts.person.link }}" target="_blank" rel="nofollow">{{= item.contacts.person.name
                                 }}</a>
                         </div>
 
-                        {{? item.contacts.link.length }}
+                        {{? item.contacts.person.link.length }}
                         <div class="write">
-                            <a href="{{= item.contacts.write }}" target="_blank" rel="nofollow"
+                            <a href="{{= item.contacts.person.write }}" target="_blank" rel="nofollow"
                                title="Написать сообщение">
                                 <img src="/img/contact.svg">
                             </a>
