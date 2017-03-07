@@ -9,9 +9,8 @@
 # Description:       Enable service provided by daemon.
 ### END INIT INFO
 
-dir="/home/rent-finder/var/www/project/src"
 cmd="/usr/bin/node  /home/rent-finder/var/www/project/src/app.js"
-user="ansible"
+user="rent-finder"
 
 name=`basename $0`
 pid_file="/var/run/$name.pid"
