@@ -7,7 +7,7 @@ module.exports = {
     },
     mongo: {
         host: '127.0.0.1',
-        port: 4001,
+        port: 27017,
         database: 'rent-collector'
     }
 };
