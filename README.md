@@ -1,2 +1,7 @@
-rent-finder
-===========
+# rent-finder
+
+Installation
+---
+```
+sh bin/deploy
+```

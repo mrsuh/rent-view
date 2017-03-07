@@ -30,7 +30,7 @@ input, textarea, keygen, select, button {
   letter-spacing: normal;
   word-spacing: normal;
   text-transform: none;
-  text-indent: 0px;
+  text-indent: 0;
   text-shadow: none;
   display: inline-block;
   text-align: start;
@@ -54,6 +54,31 @@ input {
   -o-background-clip: padding-box;
   background-clip: padding-box;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+}
+.wrapper {
+  position: relative;
+  min-height: 100%;
+
+  .wrapper-content {
+    padding-bottom: 170px;
+  }
+  .wrapper-footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+  }
+}
+
 
 .btn {
   cursor: pointer;

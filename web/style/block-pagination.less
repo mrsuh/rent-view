@@ -1,11 +1,12 @@
-.block-pagination {
+@import "common";
 
+.block-pagination {
   width: 1180px;
   margin-left: auto;
   margin-right: auto;
 
   padding-top: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 40px;
   display: block;
 
   label {
@@ -59,5 +60,16 @@
     padding-left: 50px;
     padding-right: 50px;
     width: 100%;
+  }
+}
+
+@media all and (max-width: 640px) {
+  .block-pagination {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 30px;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
   }
 }

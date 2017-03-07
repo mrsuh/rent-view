@@ -1,0 +1,239 @@
+{{##def.type:type:
+{{? type === 0 }}
+Комната
+{{?? type === 1 }}
+1-комнатная квартира
+{{?? type === 2 }}
+2-комнатная квартира
+{{?? type === 3 }}
+3-комнатная квартира
+{{?? type === 4 }}
+4-комнатная квартира
+{{?? type === 5 }}
+Студия
+{{?}}
+#}}
+
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <meta property="og:title" content="SocRent :: Объявления аренды квартир из социальных сетей"/>
+    {{? it.item.photos.length }}
+    <meta property="og:image" content="{{= it.item.photos[0].low }}"/>
+    {{?}}
+    <meta property="og:site_name" content="socrent.ru"/>
+    <meta property="og:description" content="Объявления аренды квартир из социальных сетей"/>
+    <description>{{= it.item.description }}</description>
+
+    <link rel="stylesheet" href="/style/style.css?v1488882245240">
+
+    <title>SocRent :: Объявления аренды квартир из социальных сетей</title>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="wrapper-content">
+
+        <div class="block-header">
+            <div class="content">
+                <div class="title">
+                    <a href="/">
+                        <span class="soc">Soc</span><span class="rent">Rent</span>
+                    </a>
+                    <span class="text-muted">Объявления аренды квартир из социальных сетей</span>
+                </div>
+                <nav>
+                    <a href="/" class="active">Объявления</a>
+                    <a href="/about">О проекте</a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="block-card-head">
+
+            <div class="name">{{#def.type:it.item.type }}{{? null !== it.item.area }}, {{= it.item.area}} м²{{?}}</div>
+            <div class="price">
+                {{? null !== it.item.price }}
+                <span>{{= it.item.price }} &#8381; / мес</span>
+                {{??}}
+                Цена не указана
+                {{?}}
+            </div>
+
+        </div>
+
+        <div class="block-card-subway">
+
+            <div class="subways">
+                {{~ it.item.subways :subway_id }}
+
+                <div class="subway">
+
+                    {{? typeof it.subways[subway_id] !== 'undefined' }}
+
+                    {{~ it.subways[subway_id].color :color }}
+
+                    <span class="subway-label" style="background-color: {{= color }}"></span>
+
+                    {{~}}
+
+                    <span class="subway-name">{{= it.subways[subway_id].name }}</span>
+
+                    {{?}}
+
+                </div>
+
+                {{~}}
+            </div>
+
+            <div class="date">
+                размещено {{= it.item.timestamp }}
+            </div>
+
+        </div>
+
+        <div class="block-card-contact">
+            <div class="person">
+                <a href="{{= it.item.contacts.link }}" target="_blank" rel="nofollow">{{= it.item.contacts.person }}</a>
+            </div>
+
+            {{~ it.item.contacts.phones :phone }}
+            <div class="phone">
+                {{= phone }}
+            </div>
+            {{~}}
+
+            <div class="message">
+                <a class="btn" href="{{= it.item.contacts.write }}" target="_blank" rel="nofollow">Написать
+                    сообщение</a>
+            </div>
+
+        </div>
+
+        {{? it.item.photos.length }}
+        <div class="block-card-photo">
+
+            <div class="block-left">
+                <div id="js_full_view" class="full-view">
+                    <img src="/img/full-screen.svg">
+                </div>
+                <div id="js_main_blur" class="blur"
+                     style="background-image: url('{{? it.item.photos.length }} {{= it.item.photos[0].high }} {{??}} /img/blue.png {{?}}')"></div>
+                <img id="js_main_photo"
+                     src="{{? it.item.photos.length }} {{= it.item.photos[0].high }} {{??}} /img/blue.png {{?}}">
+            </div>
+
+        </div>
+        {{? it.item.photos.length > 1 }}
+        <div class="block-card-preview">
+
+            <div class="previews">
+
+                <div class="slider">
+                    <div class="arrow-btn left">
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="arrow-btn right">
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="slider-inner">
+                        {{~ it.item.photos :preview:preview_index }}
+                        <div class="slide preview {{? preview_index === 0 }} active {{?}}" data-src="{{= preview.high }}"
+                             style="background-image: url('{{= preview.high }}')">
+                        </div>
+                        {{~}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {{?}}
+
+        {{?}}
+
+        <div class="block-card-photo-full-screen">
+
+            <div class="btn-close">
+                <img src="/img/close.svg">
+            </div>
+
+            <div class="photo">
+                <img id="js_main_photo_full"
+                     src="{{? it.item.photos.length }} {{= it.item.photos[0].high }} {{??}} /img/blue.png {{?}}">
+            </div>
+
+            <div class="previews">
+                <div class="slider">
+                    <div class="arrow-btn left">
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="arrow-btn right">
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="slider-inner"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="block-card-description">
+            <span class="title">Описание от арендодателя</span>
+            <p>{{= it.item.description }}</p>
+        </div>
+
+    </div>
+    <div class="wrapper-footer">
+
+        <div class="block-footer">
+            <div class="content">
+                <div class="text">SocRent - это автоматический сервис, который собирает объявления из популярных
+                    социальных сетей
+                </div>
+                <div class="divider"></div>
+                <div class="text">Предложения на сайте носят информационный характер</div>
+                <div class="text">Мы не несем ответственность за содержание и предложения в текстах объявлений</div>
+                <div class="version">v0.3 beta</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+
+<script defer src="/js/common.min.js?v1488882245240"></script>
+<script defer src="/js/page.min.js?v1488882245240"></script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter42755074 = new Ya.Metrika({
+                    id:42755074,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/42755074" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->

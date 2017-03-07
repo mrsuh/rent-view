@@ -13,22 +13,30 @@
     display: inline-block;
   }
 
-  .filter-hold,
+  input[type=checkbox] {
+    cursor: pointer;
+  }
+
+  label {
+    cursor: pointer;
+  }
+
   .filter-realty,
   .filter-realty-add,
   .filter-subway,
   .filter-area,
   .filter-additional,
   .filter-source,
+  .filter-photo,
   .filter-price {
     margin-right: 10px;
 
     &:hover {
-      border-color: @main-border-color-selected;
+      border-color: rgba(0, 0, 0, .4);
     }
 
     &.active {
-      background-color: @main-color-light;
+      background-color: rgba(71, 162, 218, .7);
     }
 
     transition: background-color 0.4s ease-out 0s;
@@ -40,18 +48,22 @@
 
   .filter-realty-add {
 
+    &.hide {
+      display: none;
+    }
+
     label {
       display: inline-block;
-      line-height: @main-line-height;
-      font-size: @main-font-size;
+      line-height: 26px;
+      font-size: 13px;
       border-radius: 0;
-      border: 1px solid @main-border-color;
+      border: 1px solid rgba(0, 0, 0, .2);
       background-color: #fff;
       padding: 0 13px;
       border-left-width: 0;
 
       &:first-of-type {
-        border: 1px solid @main-border-color;
+        border: 1px solid rgba(0, 0, 0, .2);
         -webkit-border-top-left-radius: 3px;
         -moz-border-radius-topleft: 3px;
         border-top-left-radius: 3px;
@@ -77,7 +89,7 @@
 
       &:hover {
         cursor: pointer;
-        background-color: @main-color-light;
+        background-color: rgba(71, 162, 218, .7);
       }
     }
 
@@ -86,9 +98,52 @@
 
       &:checked {
         & + label {
-          background-color: @main-color-light;
+          background-color: rgba(71, 162, 218, .7);
         }
       }
+    }
+  }
+
+  .filter-area {
+
+    &.hide {
+      display: none;
+    }
+
+    .from, .to {
+      border-radius: 0;
+      margin: 0;
+    }
+    .from {
+      -webkit-border-top-left-radius: 3px;
+      -moz-border-radius-topleft: 3px;
+      border-top-left-radius: 3px;
+      -webkit-border-bottom-left-radius: 3px;
+      -moz-border-radius-bottomleft: 3px;
+      border-bottom-left-radius: 3px;
+      width: 123px;
+    }
+    .to {
+      border-left-width: 0;
+      width: 124px;
+    }
+    .currency {
+      font-size: 13px;
+      padding: 0 13px;
+      position: relative;
+      display: inline-block;
+      text-align: center;
+      cursor: default;
+      border: 1px solid rgba(0, 0, 0, .2);
+      line-height: 26px;
+      border-left-width: 0;
+      -webkit-border-top-right-radius: 3px;
+      -moz-border-radius-topright: 3px;
+      border-top-right-radius: 3px;
+      -webkit-border-bottom-right-radius: 3px;
+      -moz-border-radius-bottomright: 3px;
+      border-bottom-right-radius: 3px;
+      background-color: #f3f3f3;
     }
   }
 
@@ -111,14 +166,14 @@
       border-left-width: 0;
     }
     .currency {
-      font-size: @main-font-size;
+      font-size: 13px;
       padding: 0 13px;
       position: relative;
       display: inline-block;
       text-align: center;
       cursor: default;
-      border: 1px solid @main-border-color;
-      line-height: @main-line-height;
+      border: 1px solid rgba(0, 0, 0, .2);
+      line-height: 26px;
       border-left-width: 0;
       -webkit-border-top-right-radius: 3px;
       -moz-border-radius-topright: 3px;
@@ -130,89 +185,108 @@
     }
   }
 
-  .filter-area {
-    .from, .to {
-      border-radius: 0;
-      margin: 0;
-      width: 100px;
-    }
-    .from {
-      -webkit-border-top-left-radius: 3px;
-      -moz-border-radius-topleft: 3px;
-      border-top-left-radius: 3px;
-      -webkit-border-bottom-left-radius: 3px;
-      -moz-border-radius-bottomleft: 3px;
-      border-bottom-left-radius: 3px;
-    }
-    .to {
-      border-left-width: 0;
-    }
-    .currency {
-      font-size: @main-font-size;
-      padding: 0 13px;
-      position: relative;
-      display: inline-block;
-      text-align: center;
-      cursor: default;
-      border: 1px solid @main-border-color;
-      line-height: @main-line-height;
-      border-left-width: 0;
-      -webkit-border-top-right-radius: 3px;
-      -moz-border-radius-topright: 3px;
-      border-top-right-radius: 3px;
-      -webkit-border-bottom-right-radius: 3px;
-      -moz-border-radius-bottomright: 3px;
-      border-bottom-right-radius: 3px;
-      background-color: #f3f3f3;
-    }
+  .filter-photo {
+    font-size: 13px;
   }
 
   .search-btn {
     width: 120px;
-    float: right;
     text-align: center;
-    background-color: @main-color;
+    background-color: #47A2DA;
     color: #ffffff;
+    border: 1px solid #47a2da;
   }
 }
 
 @media all and (max-width: 1280px) {
   .block-search-filters {
-    margin-left: auto;
-    margin-right: auto;
-    width: 560px;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
 
     .row {
-      display: inline-block;
-
-      .filter-area {
-        .from {
-          width: 123px;
-        }
-        .to {
-          width: 124px;
-        }
-      }
-
-      .filter-price {
-        .from, .to {
-          width: 130px;
-        }
-      }
-
-      .filter-subway {
-        margin-right: 0;
-      }
+      display: block;
 
       &:first-of-type {
         padding-bottom: 10px;
       }
     }
+  }
+}
 
-    .search-btn {
-      position: initial;
-      width: 136px;
-      float: none;
+@media all and (max-width: 640px) {
+  .block-search-filters {
+    .row {
+      &:first-of-type {
+        padding-bottom: 0;
+      }
+
+      .filter-realty,
+      .filter-realty-add,
+      .filter-subway,
+      .filter-area,
+      .filter-additional,
+      .filter-source,
+      .filter-photo,
+      .filter-price,
+      .search-btn {
+        width: 95%;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .filter-photo {
+        text-align: left;
+      }
+
+      .filter-realty-add {
+
+        &.hide {
+          display: none;
+        }
+
+        label {
+          min-width: 16%;
+          padding: 0;
+
+          &:first-of-type {
+            min-width: 18%
+          }
+
+          &:last-of-type {
+            min-width: 18%
+          }
+        }
+      }
+
+      .filter-area {
+
+        &.hide {
+          display: none;
+        }
+
+        .from, .to {
+          width: 41%;
+        }
+        .currency {
+          min-width: 18%;
+        }
+      }
+
+      .filter-price {
+        input {
+          min-width: 41%;
+        }
+        span {
+          min-width: 18%;
+        }
+      }
     }
   }
 }

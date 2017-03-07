@@ -1,0 +1,35 @@
+.block-card-head {
+  margin-top: 20px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 865px;
+  font-size: 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  .name {
+    display: inline-block;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 23px;
+  }
+
+  .price {
+    float: right;
+    width: 210px;
+    display: inline-block;
+    font-size: 23px;
+    span {
+      font-size: 23px;
+      font-weight: 700;
+      display: inline;
+    }
+  }
+}
+
+@media all and (max-width: 865px) {
+  .block-card-head {
+    padding-left: 15px;
+  }
+}

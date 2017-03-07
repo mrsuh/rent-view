@@ -1,0 +1,104 @@
+.block-card-preview {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 865px;
+
+  font-size: 0;
+  margin-top: 5px;
+
+  .previews {
+
+    .slider {
+      position: relative;
+      height: 115px;
+      width: 100%;
+      overflow: hidden;
+
+      .arrow-btn {
+        z-index: 1;
+        position: absolute;
+        width: 40px;
+        height: 100%;
+
+        &.left,&.right {
+          .arrow {
+            position: absolute;
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            top: 41px;
+            opacity: 0.4;
+          }
+          &:hover {
+            cursor: pointer;
+            .arrow {
+              opacity: 0.8;
+            }
+          }
+        }
+        &.left {
+          left: 0;
+          .arrow {
+            border-right: 15px solid #ffffff;
+            left: 9px;
+          }
+        }
+        &.right {
+          right: 0;
+          .arrow {
+            border-left: 15px solid #ffffff;
+            right: 9px;
+          }
+        }
+      }
+
+      .slider-inner {
+        z-index: 0;
+        position: absolute;
+        white-space: nowrap;
+        left: 0;
+        transform: translateX(0 px);
+        transition: transform 0.3s ease-out;
+
+        .slide {
+          margin-left: 1px;
+          margin-right: 1px;
+          vertical-align: top;
+          position: relative;
+          display: inline-block;
+          height: 110px;
+          width: 160px;
+
+          background-position: 50%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-color: #999999;
+
+          &:hover {
+            cursor: pointer;
+          }
+
+          &.active:after {
+            position: absolute;
+            right: 1px;
+            bottom: -5px;
+            left: 1px;
+            height: 3px;
+            content: '';
+            background-color: #47a2da;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 865px) {
+  .block-card-preview  {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
