@@ -29,8 +29,10 @@ case "$1" in
     start)
     if is_running; then
         echo "Already started"
+        echo "Already started" >> "$stdout_log"
     else
         echo "Starting $name"
+        echo "Starting $name" >> "$stdout_log"
 
         if [ -z "$user" ]; then
             nohup sudo $cmd >> "$stdout_log" 2>> "$stderr_log" &
@@ -47,6 +49,7 @@ case "$1" in
     stop)
     if is_running; then
         echo -n "Stopping $name.."
+        echo -n "Stopping $name.."  >> "$stdout_log"
         kill `get_pid`
         for i in {1..10}
         do
@@ -61,21 +64,25 @@ case "$1" in
 
         if is_running; then
             echo "Not stopped; may still be shutting down or shutdown may have failed"
+            echo "Not stopped; may still be shutting down or shutdown may have failed"  >> "$stdout_log"
             exit 1
         else
             echo "Stopped"
+            echo "Stopped"  >> "$stdout_log"
             if [ -f "$pid_file" ]; then
                 rm "$pid_file"
             fi
         fi
     else
         echo "Not running"
+        echo "Not running"  >> "$stdout_log"
     fi
     ;;
     restart)
     $0 stop
     if is_running; then
         echo "Unable to stop, will not attempt to start"
+        echo "Unable to stop, will not attempt to start"  >> "$stdout_log"
         exit 1
     fi
     $0 start
@@ -83,8 +90,10 @@ case "$1" in
     status)
     if is_running; then
         echo "Running"
+        echo "Running"  >> "$stdout_log"
     else
         echo "Stopped"
+        echo "Stopped"  >> "$stdout_log"
         exit 1
     fi
     ;;
