@@ -11,8 +11,6 @@ var template = require(__dirname + '/services/template.js');
 repo.init();
 template.init();
 
-console.info(config);
-
 var formFilter = function (params) {
     var filter = {
         type: 0
@@ -86,8 +84,6 @@ var server = http.createServer(function (req, res) {
     switch (true) {
         case null !== req.url.match(/\/about.*/i):
 
-            console.info('about');
-
             res.end(template.about());
 
             break;
@@ -96,7 +92,7 @@ var server = http.createServer(function (req, res) {
             var reg = req.url.match(/\/rent\/.*p\.(.*)/i);
             var id = reg[1];
 
-            repo.findDocument({_id: id, active: true}, function (doc) {
+            repo.findNote({_id: id, active: true}, function (doc) {
 
                 doc['timestamp'] = format.date(doc['timestamp']);
                 doc['price'] = format.number(doc['price']);
@@ -197,8 +193,8 @@ var server = http.createServer(function (req, res) {
                 limit: 10
             };
 
-            repo.findDocuments(filter, options, function (docs) {
-                repo.findDocumentsWithoutLimit(filter, function (unlimit_docs) {
+            repo.findNotesByOptions(filter, options, function (docs) {
+                repo.findNotes(filter, function (unlimit_docs) {
 
                     for (var i = 0, length = docs.length; i < length; i++) {
                         var timestamp = docs[i]['timestamp'];

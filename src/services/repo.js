@@ -7,7 +7,7 @@ module.exports = {
     db: null,
     subways: {},
 
-    init: function() {
+    init: function () {
         client.connect('mongodb://' + config.mongo.host + ':' + config.mongo.port + '/' + config.mongo.database, function (err, db) {
             console.info('connect to mongodb');
             if (err) {
@@ -17,14 +17,20 @@ module.exports = {
 
             this.db = db;
 
-            this.findSubways(function(subways){
-                this.subways = subways;
+            this.findSubways({}, function (subways) {
+
+                var _subways = {};
+                for (var i = 0, length = subways.length; i < length; i++) {
+                    _subways[subways[i]._id] = subways[i];
+                }
+
+                this.subways = _subways;
             }.bind(this))
 
         }.bind(this));
     },
 
-    findDocuments: function (filter, options, callback) {
+    findNotesByOptions: function (filter, options, callback) {
 
         var collection = this.db.collection('note');
 
@@ -33,7 +39,7 @@ module.exports = {
         }.bind(this));
     },
 
-    findDocumentsWithoutLimit: function (filter, callback) {
+    findNotes: function (filter, callback) {
 
         var collection = this.db.collection('note');
 
@@ -42,27 +48,21 @@ module.exports = {
         }.bind(this));
     },
 
-    findDocument: function (filter, callback) {
+    findSubways: function (filter, callback) {
+
+        var collection = this.db.collection('subway');
+
+        collection.find(filter).toArray(function (err, docs) {
+            callback(docs);
+        }.bind(this));
+    },
+
+    findNote: function (filter, callback) {
 
         var collection = this.db.collection('note');
 
         collection.findOne(filter, function (err, doc) {
             callback(doc);
-        }.bind(this));
-    },
-
-    findSubways: function (callback) {
-
-        var collection = this.db.collection('subway');
-
-        collection.find({}).toArray(function (err, docs) {
-
-            var _subways = {};
-            for (var i = 0, length = docs.length; i < length; i++) {
-                _subways[docs[i]._id] = docs[i];
-            }
-
-            callback(_subways);
         }.bind(this));
     }
 };

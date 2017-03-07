@@ -43,7 +43,7 @@
     <meta property="og:description" content="Объявления аренды квартир из социальных сетей"/>
     <description>Объявления аренды квартир из социальных сетей без посредников от собственников</description>
 
-    <link rel="stylesheet" href="/style/style.css?v1488881600592">
+    <link rel="stylesheet" href="/style/style.css?v1488880232135">
 
     <title>SocRent :: Объявления аренды квартир из социальных сетей</title>
 
@@ -730,7 +730,7 @@
                 <div class="divider"></div>
                 <div class="text">Предложения на сайте носят информационный характер</div>
                 <div class="text">Мы не несем ответственность за содержание и предложения в текстах объявлений</div>
-                <div class="version">v0.3 beta</div>
+                <div class="version">{{version}}</div>
             </div>
         </div>
     </div>
@@ -738,8 +738,8 @@
 
 </body>
 
-<script defer src="/js/common.min.js?v1488881600592"></script>
-<script defer src="/js/main.min.js?v1488881600592"></script>
+<script defer src="/js/common.min.js?v1488880232135"></script>
+<script defer src="/js/main.min.js?v1488880232135"></script>
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">

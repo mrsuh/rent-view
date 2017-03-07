@@ -9,6 +9,15 @@ module.exports = function (grunt) {
                 }
             }
         },
+        copy: {
+            main: {
+                files: [
+                    {src: 'src/view/main/index.html.dist', dest: 'src/view/main/index.html'},
+                    {src: 'src/view/page/index.html.dist', dest: 'src/view/page/index.html'},
+                    {src: 'src/view/about/index.html.dist', dest: 'src/view/about/index.html'}
+                ]
+            }
+        },
         'string-replace': {
             dist: {
                 files: {
@@ -17,10 +26,16 @@ module.exports = function (grunt) {
                     'src/view/about/index.html': 'src/view/about/index.html'
                 },
                 options: {
-                    replacements: [{
+                    replacements: [
+                        {
                         pattern: /\?v\d+/ig,
                         replacement: '?v' + (new Date()).getTime()
-                    }]
+                        },
+                        {
+                            pattern: '{{version}}',
+                            replacement: 'v0.3 beta'
+                        }
+                    ]
                 }
             }
         },
@@ -39,6 +54,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-string-replace');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
-    grunt.registerTask('build', ['less', 'string-replace', 'uglify']);
+    grunt.registerTask('build', ['copy', 'less', 'string-replace', 'uglify']);
 };
