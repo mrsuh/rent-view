@@ -1,6 +1,6 @@
 "use strict";
 
-var config = require(__dirname + '/../config.js');
+var config = require(__dirname + '/../../config/config.js');
 var client = require('mongodb').MongoClient;
 
 module.exports = {

@@ -2,7 +2,7 @@
 
 var http = require('http');
 var repo = require(__dirname + '/services/repo.js');
-var config = require(__dirname + '/config.js');
+var config = require(__dirname + '/../config/config.js');
 var pagination = require(__dirname + '/services/pagination.js');
 var format = require(__dirname + '/services/format.js');
 var url = require(__dirname + '/services/url.js');
