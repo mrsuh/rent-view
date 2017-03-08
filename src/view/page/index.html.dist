@@ -99,7 +99,7 @@
 
         <div class="block-card-contact">
             <div class="person">
-                <a href="{{= it.item.contacts.link }}" target="_blank" rel="nofollow">{{= it.item.contacts.person }}</a>
+                <a href="{{= it.item.contacts.person.link }}" target="_blank" rel="nofollow">{{= it.item.contacts.person.name }}</a>
             </div>
 
             {{~ it.item.contacts.phones :phone }}
@@ -109,7 +109,7 @@
             {{~}}
 
             <div class="message">
-                <a class="btn" href="{{= it.item.contacts.write }}" target="_blank" rel="nofollow">Написать
+                <a class="btn" href="{{= it.item.contacts.person.write }}" target="_blank" rel="nofollow">Написать
                     сообщение</a>
             </div>
 
