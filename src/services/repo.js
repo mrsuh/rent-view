@@ -1,6 +1,6 @@
 "use strict";
 
-var config = require(__dirname + '/../config.js');
+var config = require(__dirname + '/../../config/config.js');
 var client = require('mongodb').MongoClient;
 
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
         client.connect('mongodb://' + config.mongo.host + ':' + config.mongo.port + '/' + config.mongo.database, function (err, db) {
             console.info('connect to mongodb');
             if (err) {
-                console.error('connect to mongodb');
+                console.error('connect to mongodb error');
                 process.exit(1);
             }
 
