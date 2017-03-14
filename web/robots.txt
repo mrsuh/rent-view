@@ -1,0 +1,4 @@
+User-agent: *
+Host: socrent.ru
+Allow:
+sitemap: https://socrent.ru/sitemap.xml
