@@ -14,7 +14,8 @@ module.exports = function (grunt) {
                 files: [
                     {src: 'src/view/main/index.html.dist', dest: 'src/view/main/index.html'},
                     {src: 'src/view/page/index.html.dist', dest: 'src/view/page/index.html'},
-                    {src: 'src/view/about/index.html.dist', dest: 'src/view/about/index.html'}
+                    {src: 'src/view/about/index.html.dist', dest: 'src/view/about/index.html'},
+                    {src: 'src/view/sitemap/index.html.dist', dest: 'src/view/sitemap/index.html'}
                 ]
             }
         },
