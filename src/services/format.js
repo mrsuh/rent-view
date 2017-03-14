@@ -54,6 +54,19 @@ module.exports = {
         return day + ' ' + month + ' ' + (year < 2017 ? year : '') + ' ' + hours + ':' + minutes.substr(-2);
     },
 
+    dateSitemap: function (unix_timestamp) {
+
+        var date = new Date(unix_timestamp * 1000);
+
+        var minutes = "0" + date.getMinutes();
+        var hour = "0" + date.getHours();
+        var month = "0" + (date.getMonth() + 1);
+        var day = "0" + date.getDate();
+
+
+        return date.getFullYear() + '-' + month.substr(-2) + '-' + day.substr(-2) + 'T' + hour.substr(-2) + ':' + minutes.substr(-2) + '+03:00'
+    },
+
     datePlural: function (unix_timestamp) {
         var date_now = new Date();
 

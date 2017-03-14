@@ -87,6 +87,18 @@ var server = http.createServer(function (req, res) {
             res.end(template.about());
 
             break;
+        case null !== req.url.match(/\/sitemap.xml.*/i):
+
+            repo.findNotes({active: true}, function (notes) {
+
+                for (var i = 0, length = notes.length; i < length; i++) {
+                    notes[i]['timestamp'] = format.dateSitemap(notes[i]['timestamp']);
+                }
+
+                res.end(template.sitemap({notes: notes}));
+            });
+
+            break;
         case null !== req.url.match(/\/rent\/.*/i):
 
             var reg = req.url.match(/\/rent\/.*p\.(.*)/i);
