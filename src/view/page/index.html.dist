@@ -2,13 +2,13 @@
 {{? type === 0 }}
 Комната
 {{?? type === 1 }}
-1-комнатная квартира
+1 комнатная квартира
 {{?? type === 2 }}
-2-комнатная квартира
+2 комнатная квартира
 {{?? type === 3 }}
-3-комнатная квартира
+3 комнатная квартира
 {{?? type === 4 }}
-4-комнатная квартира
+4 комнатная квартира
 {{?? type === 5 }}
 Студия
 {{?}}
@@ -22,17 +22,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <link rel="shortcut icon" href="/img/favicon.ico"/>
-    <meta property="og:title" content="SocRent :: Объявления аренды квартир из социальных сетей"/>
+
+    <title>{{#def.type:it.item.type }}{{? null !== it.item.area }}, {{= it.item.area}} м²{{?}} снять без агенств и посредников в Санкт-Петербурге на SocRent &#8212;
+        Объявления на сайте SocRent</title>
+
+    <description>{{#def.type:it.item.type }}{{? null !== it.item.area }}, {{= it.item.area}} м²{{?}} снять без агенств и посредников в Санкт-Петербурге на SocRent</description>
+    <meta name="description"
+          content="{{#def.type:it.item.type }}{{? null !== it.item.area }}, {{= it.item.area}} м²{{?}} снять без агенств и посредников в Санкт-Петербурге на SocRent"/>
+    <meta name="mrc__share_title" content="Объявление на Socrent - {{#def.type:it.item.type }}{{? null !== it.item.area }}, {{= it.item.area}} м²{{?}}"/>
+    <meta name="mrc__share_description"
+          content="Сдается {{#def.type:it.item.type }}{{? null !== it.item.area }}, {{= it.item.area}} м²{{?}}"/>
+
     {{? it.item.photos.length }}
-    <meta property="og:image" content="{{= it.item.photos[0].low }}"/>
+        <link rel="image_src" href="{{= it.item.photos[0].low }}"/>
     {{?}}
-    <meta property="og:site_name" content="socrent.ru"/>
-    <meta property="og:description" content="Объявления аренды квартир из социальных сетей"/>
-    <description>{{= it.item.description }}</description>
+
+    <meta property="og:title" content="{{#def.type:it.item.type }}{{? null !== it.item.area }}, {{= it.item.area}} м²{{?}}"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://www.avito.ru/sterlitamak/kvartiry/1-k_kvartira_25_m_55_et._998018660"/>
+    <meta property="og:site_name" content="SocRent"/>
+    <meta property="og:description"
+          content="Сдается {{#def.type:it.item.type }}{{? null !== it.item.area }}, {{= it.item.area}} м²{{?}}"/>
+
+    {{~ it.item.photos:photo }}
+       <meta property="og:image" content="{{= photo.low }}"/>
+    {{~}}
 
     <link rel="stylesheet" href="/style/style.css?v1488880232135">
-
-    <title>SocRent :: Объявления аренды квартир из социальных сетей</title>
 </head>
 <body>
 
