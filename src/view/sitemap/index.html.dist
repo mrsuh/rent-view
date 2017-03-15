@@ -27,7 +27,7 @@
 
       <lastmod>{{= note.timestamp }}</lastmod>
 
-      <changefreq>never</changefreq>
+      <changefreq>daily</changefreq>
 
       <priority>0.5</priority>
 
