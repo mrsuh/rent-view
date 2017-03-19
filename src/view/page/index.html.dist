@@ -26,9 +26,10 @@
     <title>{{#def.type:it.item.type }}{{? null !== it.item.area }}, {{= it.item.area}} м²{{?}} снять без агенств и посредников в Санкт-Петербурге на SocRent &#8212;
         Объявления на сайте SocRent</title>
 
-    <description>{{#def.type:it.item.type }}{{? null !== it.item.area }}, {{= it.item.area}} м²{{?}} снять без агенств и посредников в Санкт-Петербурге на SocRent</description>
+    <description>{{#def.type:it.item.type }}{{? null !== it.item.area }}, {{= it.item.area}} м²{{?}} снять без агенств и посредников в Санкт-Петербурге на SocRent </description>
     <meta name="description"
           content="{{#def.type:it.item.type }}{{? null !== it.item.area }}, {{= it.item.area}} м²{{?}} снять без агенств и посредников в Санкт-Петербурге на SocRent"/>
+    <meta name="keywords" content="снять,{{#def.type:it.item.type }},без посредников,без агентов,ВКонтакте,Санкт-Петербург" />
     <meta name="mrc__share_title" content="Объявление на Socrent - {{#def.type:it.item.type }}{{? null !== it.item.area }}, {{= it.item.area}} м²{{?}}"/>
     <meta name="mrc__share_description"
           content="Сдается {{#def.type:it.item.type }}{{? null !== it.item.area }}, {{= it.item.area}} м²{{?}}"/>
@@ -61,7 +62,7 @@
                     <a href="/">
                         <span class="soc">Soc</span><span class="rent">Rent</span>
                     </a>
-                    <span class="text-muted">Объявления аренды квартир из социальных сетей</span>
+                    <span class="text-muted">Аренда без посредников</span>
                 </div>
                 <nav>
                     <a href="/" class="active">Объявления</a>
