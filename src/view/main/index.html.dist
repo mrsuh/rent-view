@@ -37,15 +37,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="shortcut icon" href="/img/favicon.ico"/>
-    <meta property="og:title" content="SocRent :: Объявления аренды квартир из социальных сетей"/>
-    <meta property="og:image" content="http://socrent.ru/img/logo.png"/>
-    <meta property="og:site_name" content="socrent.ru"/>
-    <meta property="og:description" content="Объявления аренды квартир из социальных сетей"/>
-    <description>Объявления аренды квартир из социальных сетей без посредников от собственников</description>
+
+    <title>SocRent :: Снять без агенств и посредников в Санкт-Петербурге</title>
+
+    <description>Снять без агенств и посредников в Санкт-Петербурге на SocRent </description>
+    <meta name="description"
+          content="Снять без агенств и посредников в Санкт-Петербурге на SocRent"/>
+    <meta name="keywords" content="снять,квартиру,комнату,без посредников,без агентов,ВКонтакте,Санкт-Петербург" />
+    <meta name="mrc__share_title" content="Объявления аренды на Socrent"/>
+    <meta name="mrc__share_description"
+          content="Объявления аренды на Socrent"/>
+
+    <meta property="og:title" content="Объявления аренды квартир из социальных сетей"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://socrent.ru"/>
+    <meta property="og:site_name" content="SocRent"/>
+    <meta property="og:description"
+          content="Объявления аренды квартир из социальных сетей"/>
+
+    <meta property="og:image" content="https://socrent.ru/img/logo.png"/>
 
     <link rel="stylesheet" href="/style/style.css?v1488880232135">
-
-    <title>SocRent :: Объявления аренды квартир из социальных сетей</title>
 
 </head>
 
@@ -59,7 +71,7 @@
                     <a href="/">
                         <span class="soc">Soc</span><span class="rent">Rent</span>
                     </a>
-                    <span class="text-muted">Объявления аренды квартир из социальных сетей</span>
+                    <span class="text-muted">Аренда без посредников</span>
                 </div>
                 <nav>
                     <a href="/" class="active">Объявления</a>
