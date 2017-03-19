@@ -1,4 +1,4 @@
-# rent-finder
+# rent frontend
 
 Installation
 ---
