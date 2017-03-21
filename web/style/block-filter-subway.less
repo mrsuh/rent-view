@@ -1,3 +1,5 @@
+@import "common";
+
 .block-search-filters-switch {
   position: relative;
   .block-filter-subway {
@@ -165,20 +167,40 @@
 
   .block-search-filters-switch.show {
       display: block;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom:0;
-      z-index: 99;
-      overflow: auto;
 
       .block-filter-subway.show {
         z-index: 99;
         display: block;
-        position: relative;
+        position: fixed;
         overflow: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom:0;
       }
+
+    .search {
+      display: block;
+      position: fixed;
+      width: 95%;
+      margin-left: 2.5%;
+      margin-right: 2.5%;
+      background-color: @main-color;
+      z-index: 100;
+      bottom: 5px;
+      color: white;
+      font-size: 15px;
+      line-height: 30px;
+      white-space: nowrap;
+      border-radius: 3px;
+      -webkit-background-clip: padding-box;
+      -moz-background-clip: padding-box;
+      -o-background-clip: padding-box;
+      background-clip: padding-box;
+      padding-left: 10px;
+      padding-right: 12px;
+      text-align: center;
+    }
   }
 }
 

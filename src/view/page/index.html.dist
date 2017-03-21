@@ -202,7 +202,10 @@
             <p>{{= it.item.description }}</p>
         </div>
 
+        <div id="vk_comments" class="block-card-comments"></div>
+
     </div>
+
     <div class="wrapper-footer">
 
         <div class="block-footer">
@@ -224,6 +227,12 @@
 
 <script defer src="/js/common.min.js?v1488880232135"></script>
 <script defer src="/js/page.min.js?v1488880232135"></script>
+<script type="text/javascript" src="//vk.com/js/api/openapi.js?142"></script>
+
+<script type="text/javascript">
+  VK.init({apiId: 5939156, onlyWidgets: true});
+  VK.Widgets.Comments("vk_comments", {limit: 20, attach: "*"});
+</script>
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">

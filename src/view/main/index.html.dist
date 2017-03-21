@@ -143,6 +143,7 @@
         </div>
 
         <div class="block-search-filters-switch">
+        <div class="search search-subway-btn">найти</div>
             <div class="block-filter-subway">
                 <div class="block-subway">
                     <div class="close"></div>
@@ -513,7 +514,6 @@
                         <div class="list-name">Станции:</div>
                         <div class="list"></div>
                     </div>
-                    <div class="search"></div>
                 </div>
 
             </div>
