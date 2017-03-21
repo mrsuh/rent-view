@@ -549,7 +549,7 @@
 
             <div class="search-results-items">
 
-                {{~ it.items :item }}
+                {{~ it.items :item:item_index }}
 
                 <div class="search-results-item">
 
@@ -646,8 +646,8 @@
 
                                 <div class="slider-inner">
                                     {{~ item.photos :preview }}
-                                    <div class="slide preview" data-src="{{= preview.high }}"
-                                         style="background-image: url('{{= preview.high }}')">
+                                    <div class="slide preview {{? item_index > 4 }} img-lazy-load {{?}}" data-src="{{= preview.high }}"
+                                         {{? item_index <= 4 }}style="background-image: url('{{= preview.high }}')"{{?}}>
                                     </div>
                                     {{~}}
                                 </div>
