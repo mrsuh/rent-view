@@ -14,6 +14,22 @@
 {{?}}
 #}}
 
+{{##def.link:item:
+{{? item.type === 0 }}
+/rent/saint-petersburg/komnaty/room-p.{{= item._id }}
+{{?? item.type === 1 }}
+/rent/saint-petersburg/kvartiry/1-k-kvartira-p.{{= item._id }}
+{{?? item.type === 2 }}
+/rent/saint-petersburg/kvartiry/2-k-kvartira-p.{{= item._id }}
+{{?? item.type === 3 }}
+/rent/saint-petersburg/kvartiry/3-k-kvartira-p.{{= item._id }}
+{{?? item.type === 4 }}
+/rent/saint-petersburg/kvartiry/4-k-kvartira-p.{{= item._id }}
+{{?? item.type === 5 }}
+/rent/saint-petersburg/kvartiry/studia-p.{{= item._id }}
+{{?}}
+#}}
+
 <!DOCTYPE html>
 <html>
 <head lang="ru">
@@ -231,7 +247,7 @@
 
 <script type="text/javascript">
   VK.init({apiId: 5939156, onlyWidgets: true});
-  VK.Widgets.Comments("vk_comments", {limit: 20, attach: "*" }, '{{= it.item._id }}');
+  VK.Widgets.Comments("vk_comments", {limit: 20, attach: "*", pageUrl: '{{#def.link:it.item }}' }, '{{= it.item._id }}');
 </script>
 
 <!-- Yandex.Metrika counter -->
