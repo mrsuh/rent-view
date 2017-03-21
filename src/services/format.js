@@ -73,8 +73,8 @@ module.exports = {
         var date_publish = new Date(unix_timestamp * 1000);
 
         var diff_time = Math.abs(date_now.getTime() - date_publish.getTime());
-        var diff_hours = Math.ceil(diff_time / (1000 * 3600));
-        var diff_minutes = Math.ceil(diff_time / 1000);
+        var diff_hours = Math.floor(diff_time / 3600000);
+        var diff_minutes = Math.floor(diff_time / 60000);
         var equal_day = date_now.getDate() === date_publish.getDate();
 
         var phrase = null;
