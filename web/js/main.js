@@ -143,6 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('.filter-realty').addEventListener('change', changeRealty);
     document.querySelector('.filter-subway').addEventListener('click', switchSubway);
     document.querySelector('.search-btn').addEventListener('click', function(){search(1);});
+    document.querySelector('.search-subway-btn').addEventListener('click', function(){search(1);});
 
     document.querySelector('.filter-area .from').addEventListener('keydown', searchOnPressEnter);
     document.querySelector('.filter-area .to').addEventListener('keydown', searchOnPressEnter);
