@@ -231,7 +231,7 @@
 
 <script type="text/javascript">
   VK.init({apiId: 5939156, onlyWidgets: true});
-  VK.Widgets.Comments("vk_comments", {limit: 20, attach: "*", page_id: '{{= it.item._id }}' });
+  VK.Widgets.Comments("vk_comments", {limit: 20, attach: "*" }, '{{= it.item._id }}');
 </script>
 
 <!-- Yandex.Metrika counter -->
