@@ -80,7 +80,7 @@ module.exports = {
 
         var phrase = null;
         switch (true) {
-            case equal_day && diff_hours < 1 && diff_minutes < 1:
+            case (equal_day || prev_day) && diff_hours < 1 && diff_minutes < 1:
                 phrase = 'только что';
                 break;
             case (equal_day || prev_day) && diff_hours < 1:
