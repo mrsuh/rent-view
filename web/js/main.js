@@ -1,16 +1,3 @@
-var hoverImg = function (e) {
-    e.target.parentElement.removeEventListener('mouseover', hoverImg, true);
-    var imgs = e.target.parentElement.querySelectorAll('.img');
-
-    for (var i = 0; i < imgs.length; i++) {
-        var img = imgs[i];
-        if (img.hasAttribute('data-src')) {
-            img.style.backgroundImage = "url('" + img.getAttribute('data-src') + "')";
-            img.removeAttribute('data-src');
-        }
-    }
-};
-
 var search = function (_page) {
 
     var page = null;
@@ -114,6 +101,28 @@ var searchOnPressEnter = function(event)
     }
 };
 
+function isElementInViewport (el) {
+
+    var rect = el.getBoundingClientRect();
+
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+    );
+}
+
+function lazyLoadImages() {
+    var images = document.querySelectorAll('.img-lazy-load');
+    for(var i = 0, length = images.length; i < length; i++) {
+        var img = images[i];
+        if (isElementInViewport(img)) {
+            img.style.backgroundImage = "url('" + img.getAttribute('data-src') + "')";
+        }
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
 
     var subway = new Subway();
@@ -123,11 +132,6 @@ document.addEventListener("DOMContentLoaded", function () {
         elem_subway_stations[i].addEventListener('click', function(e){
             subway.add(e)
         }.bind(this));
-    }
-
-    var hover_imgs = document.querySelectorAll('.hover-img');
-    for (var i = 0, length = hover_imgs.length; i < length; i++) {
-        hover_imgs[i].addEventListener('mouseover', hoverImg, true)
     }
 
     var elem_page = document.querySelectorAll('input[name="page"]');
@@ -149,6 +153,11 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('.filter-area .to').addEventListener('keydown', searchOnPressEnter);
     document.querySelector('.filter-price .from').addEventListener('keydown', searchOnPressEnter);
     document.querySelector('.filter-price .to').addEventListener('keydown', searchOnPressEnter);
+
+    window.addEventListener('DOMContentLoaded', lazyLoadImages);
+    window.addEventListener('load', lazyLoadImages);
+    window.addEventListener('resize', lazyLoadImages);
+    window.addEventListener('scroll', lazyLoadImages);
 
     var sliders = document.querySelectorAll('.slider');
 
