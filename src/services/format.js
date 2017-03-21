@@ -76,16 +76,17 @@ module.exports = {
         var diff_hours = Math.floor(diff_time / 3600000);
         var diff_minutes = Math.floor(diff_time / 60000);
         var equal_day = date_now.getDate() === date_publish.getDate();
+        var prev_day = date_now.getDate() === (date_publish.getDate() + 1);
 
         var phrase = null;
         switch (true) {
             case equal_day && diff_hours < 1 && diff_minutes < 1:
                 phrase = 'только что';
                 break;
-            case equal_day && diff_hours < 1:
+            case (equal_day || prev_day) && diff_hours < 1:
                 phrase = diff_minutes + ' минут' + plural(diff_minutes, 'у', 'ы', '') + ' назад';
                 break;
-            case equal_day && diff_hours <= 24:
+            case (equal_day || prev_day) && diff_hours <= 24:
                 phrase = diff_hours + ' час' + plural(diff_hours, '', 'а', 'ов') + ' назад';
                 break;
             case diff_hours < 48:
