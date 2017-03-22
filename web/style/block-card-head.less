@@ -1,3 +1,5 @@
+@import "common";
+
 .block-card-head {
   margin-top: 20px;
   position: relative;
@@ -8,28 +10,157 @@
   padding-top: 15px;
   padding-bottom: 15px;
 
-  .name {
-    display: inline-block;
-    font-size: 23px;
-    font-weight: 700;
-    line-height: 23px;
+  .row1 {
+    margin-bottom: 3px;
+    .name {
+      font-weight: 700;
+      display: inline-block;
+      font-size: 18px;
+      line-height: 18px;
+      a {
+        color: black;
+        text-decoration: none;
+      }
+    }
+
+    .area {
+      display: inline-block;
+      font-size: 18px;
+    }
+
+    .price {
+      float: right;
+      display: inline-block;
+      font-size: 18px;
+    }
   }
 
-  .price {
-    float: right;
-    width: 210px;
-    display: inline-block;
-    font-size: 23px;
-    span {
-      font-size: 23px;
-      font-weight: 700;
-      display: inline;
+  .row2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    .subways {
+      vertical-align: bottom;
+      display: inline-block;
+      .subway {
+        padding-right: 5px;
+        display: inline-block;
+        .subway-label {
+          display: inline-block;
+          position: relative;
+          width: 11px;
+          height: 11px;
+          border-radius: 50%;
+          margin-right: 5px;
+          margin-top: 2px;
+          border: 1px solid #ffffff;
+
+          &:nth-child(2) {
+            margin-left: -11px;
+          }
+        }
+        .subway-name {
+          display: inline-block;
+          font-size: 13px;
+        }
+      }
+    }
+
+    .date {
+      vertical-align: bottom;
+      font-size: 13px;
+      display: inline-block;
+      float: right;
+      color: #999;
+    }
+  }
+
+  .row3 {
+    clear: both;
+    margin-bottom: 10px;
+    .person {
+      display: inline-block;
+      font-size: 16px;
+      line-height: 26px;
+      margin-right: 10px;
+      a {
+        text-decoration: none;
+        color: #47a2da;
+        &:visited {
+          color: #47a2da;
+        }
+      }
+    }
+
+    .write {
+      display: inline-block;
+      float: right;
+
+      a {
+        text-decoration: none;
+        text-align: center;
+        background-color: #47A2DA;
+        color: #ffffff;
+        border: 1px solid #47a2da;
+        display: inline-block;
+        cursor: pointer;
+        font-size: @main-font-size;
+        line-height: 26px;
+        white-space: nowrap;
+        border-radius: 3px;
+        -webkit-background-clip: padding-box;
+        -moz-background-clip: padding-box;
+        -o-background-clip: padding-box;
+        background-clip: padding-box;
+        padding-left: 10px;
+        padding-right: 12px;
+      }
+    }
+
+    .phone {
+      display: inline-block;
+      font-size: 18px;
+      line-height: 26px;
+      margin-right: 20px;
     }
   }
 }
 
-@media all and (max-width: 865px) {
+@media all and (max-width: 640px) {
   .block-card-head {
-    padding-left: 15px;
+    margin: 0;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    width: 95%;
+    padding-bottom: 1px;
+    .row1 {
+      padding-bottom: 10px;
+      .price {
+        float: none;
+        display: block;
+      }
+    }
+    .row2 {
+      margin: 0;
+      border-top: 1px solid #e1e1e1;
+      border-bottom: 1px solid #e1e1e1;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      .subways {
+        display: block;
+      }
+      .date {
+        padding-top: 5px;
+        float: none;
+      }
+    }
+    .row3 {
+      padding-top: 10px;
+
+      .write {
+        margin-top: 10px;
+        float: none;
+        display: block;
+      }
+    }
   }
 }
