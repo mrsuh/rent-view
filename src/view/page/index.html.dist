@@ -89,61 +89,71 @@
 
         <div class="block-card-head">
 
-            <div class="name">{{#def.type:it.item.type }}{{? null !== it.item.area }}, {{= it.item.area}} м²{{?}}</div>
-            <div class="price">
-                {{? null !== it.item.price }}
-                <span>{{= it.item.price }} &#8381; / мес</span>
-                {{??}}
-                Цена не указана
-                {{?}}
-            </div>
+            <div class="row1">
 
-        </div>
-
-        <div class="block-card-subway">
-
-            <div class="subways">
-                {{~ it.item.subways :subway_id }}
-
-                <div class="subway">
-
-                    {{? typeof it.subways[subway_id] !== 'undefined' }}
-
-                    {{~ it.subways[subway_id].color :color }}
-
-                    <span class="subway-label" style="background-color: {{= color }}"></span>
-
-                    {{~}}
-
-                    <span class="subway-name">{{= it.subways[subway_id].name }}</span>
-
-                    {{?}}
-
+                <div class="name">
+                    {{#def.type:it.item.type }}
                 </div>
 
+                <div class="area">
+                    {{? null !== it.item.area }}
+                        , {{= it.item.area}} м²
+                    {{?}}
+                </div>
+
+                <div class="price">
+                    {{? null !== it.item.price }}
+                        {{= it.item.price }} &#8381; / мес
+                    {{??}}
+                        Цена не указана
+                    {{?}}
+                </div>
+            </div>
+
+            <div class="row2">
+                <div class="subways">
+                    {{~ it.item.subways :subway_id:subway_index }}
+
+                        <div class="subway">
+                            {{? typeof it.subways[subway_id] !== 'undefined' }}
+
+                                {{~ it.subways[subway_id].color :color }}
+
+                                <span class="subway-label" style="background-color: {{= color }}"></span>
+
+                                {{~}}
+
+                                <span class="subway-name">{{= it.subways[subway_id].name }}</span>
+
+                            {{?}}
+
+                        </div>
+                    {{~}}
+                </div>
+
+                <div class="date">
+                    размещено {{= it.item.timestamp }}
+                </div>
+
+            </div>
+
+            <div class="row3">
+
+                <div class="person">
+                    <a href="{{= it.item.contacts.person.link }}" target="_blank" rel="nofollow">{{= it.item.contacts.person.name }}</a>
+                </div>
+
+                {{~ it.item.contacts.phones :phone }}
+                    <div class="phone">
+                        {{= phone }}
+                    </div>
                 {{~}}
-            </div>
 
-            <div class="date">
-                размещено {{= it.item.timestamp }}
-            </div>
-
-        </div>
-
-        <div class="block-card-contact">
-            <div class="person">
-                <a href="{{= it.item.contacts.person.link }}" target="_blank" rel="nofollow">{{= it.item.contacts.person.name }}</a>
-            </div>
-
-            {{~ it.item.contacts.phones :phone }}
-            <div class="phone">
-                {{= phone }}
-            </div>
-            {{~}}
-
-            <div class="message">
-                <a class="btn" href="{{= it.item.contacts.person.write }}" target="_blank" rel="nofollow">Написать
-                    сообщение</a>
+                {{? it.item.contacts.person.link.length }}
+                    <div class="write">
+                        <a href="{{= it.item.contacts.person.write }}" target="_blank" rel="nofollow" title="Написать сообщение">Написать сообщение</a>
+                    </div>
+                {{?}}
             </div>
 
         </div>
