@@ -71,6 +71,7 @@ var formFilter = function (params) {
     }
 
     filter['active'] = true;
+    filter['expired'] = false;
 
     return filter;
 };
