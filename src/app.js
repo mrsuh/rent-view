@@ -70,9 +70,6 @@ var formFilter = function (params) {
         filter['type'] = {'$ne': 0};
     }
 
-    filter['active'] = true;
-    filter['expired'] = false;
-
     return filter;
 };
 
@@ -105,7 +102,7 @@ var server = http.createServer(function (req, res) {
             var reg = req.url.match(/\/rent\/.*p\.(.*)/i);
             var id = reg[1];
 
-            repo.findNote({_id: id, active: true}, function (doc) {
+            repo.findNote({_id: id}, function (doc) {
 
                 doc['timestamp'] = format.date(doc['timestamp']);
                 doc['price'] = format.number(doc['price']);
