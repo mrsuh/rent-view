@@ -78,6 +78,16 @@ module.exports = {
     statistic: function (req, res) {
         repo.findNotes({}, function (notes) {
 
+
+            var weekday = new Array(7);
+            weekday[0] = "Воскресенье";
+            weekday[1] = "Понедельник";
+            weekday[2] = "Вторник";
+            weekday[3] = "Среда";
+            weekday[4] = "Четверг";
+            weekday[5] = "Пятница";
+            weekday[6] = "Суббота";
+
             var dates = {};
 
             for (var i = 0, length = notes.length; i < length; i++) {
@@ -86,10 +96,11 @@ module.exports = {
 
                 var month = "0" + (date.getMonth() + 1);
                 var day = date.getDate();
+                var week_day = date.getDay();
 
-                var key = day + '.' + month.substr(-2);
+                var key = day + '.' + month.substr(-2) + '<br>' + weekday[week_day];
 
-                if('undefined' === typeof dates[key]) {
+                if ('undefined' === typeof dates[key]) {
                     dates[key] = 0;
                 }
 
@@ -97,7 +108,7 @@ module.exports = {
             }
 
             var data = [];
-            for(var index in dates) {
+            for (var index in dates) {
                 data.push({
                     date: index,
                     count: dates[index]
@@ -108,7 +119,7 @@ module.exports = {
         });
 
     },
-    sitemap: function(req, res) {
+    sitemap: function (req, res) {
         repo.findNotes({}, function (notes) {
 
             for (var i = 0, length = notes.length; i < length; i++) {
@@ -118,7 +129,7 @@ module.exports = {
             return res.end(template.sitemap({notes: notes}));
         });
     },
-    note: function(req, res) {
+    note: function (req, res) {
         var reg = req.url.match(/\/rent\/.*p\.(.*)/i);
         var id = reg[1];
 
@@ -141,7 +152,7 @@ module.exports = {
             }));
         });
     },
-    list: function(req, res) {
+    list: function (req, res) {
         var req_price_from = url.getParameter(req.url, 'price_from');
         var price_from = null !== req_price_from ? parseInt(req_price_from) : '';
 

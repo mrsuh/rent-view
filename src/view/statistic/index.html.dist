@@ -88,7 +88,7 @@ Highcharts.chart('container', {
     },
     xAxis: {
 
-    categories: [ {{~ it.dates :date }}{{= date.date }},{{~}} ]
+    categories: [ {{~ it.dates :date }}'{{= date.date }}',{{~}} ]
 
     },
     yAxis: {
