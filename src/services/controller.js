@@ -78,7 +78,6 @@ module.exports = {
     statistic: function (req, res) {
         repo.findNotes({}, function (notes) {
 
-
             var weekday = new Array(7);
             weekday[0] = "Воскресенье";
             weekday[1] = "Понедельник";
@@ -88,11 +87,15 @@ module.exports = {
             weekday[5] = "Пятница";
             weekday[6] = "Суббота";
 
-            var dates = {};
+            var all = {};
+            var flat = {};
+            var room = {};
 
             for (var i = 0, length = notes.length; i < length; i++) {
 
-                var date = new Date(notes[i]['timestamp'] * 1000);
+                var note = notes[i];
+
+                var date = new Date(note['timestamp'] * 1000);
 
                 var month = "0" + (date.getMonth() + 1);
                 var day = date.getDate();
@@ -100,22 +103,59 @@ module.exports = {
 
                 var key = day + '.' + month.substr(-2) + '<br>' + weekday[week_day];
 
-                if ('undefined' === typeof dates[key]) {
-                    dates[key] = 0;
+                if ('undefined' === typeof all[key]) {
+                    all[key] = 0;
                 }
 
-                dates[key]++;
+                all[key]++;
+
+
+                if(0 === note.type) {
+                    if ('undefined' === typeof room[key]) {
+                        room[key] = 0;
+                    }
+
+                    room[key]++;
+                }
+
+                if(0 !== note.type) {
+                    if ('undefined' === typeof flat[key]) {
+                        flat[key] = 0;
+                    }
+
+                    flat[key]++;
+                }
             }
 
-            var data = [];
-            for (var index in dates) {
-                data.push({
+            var all_count = [];
+            for (var index in all) {
+                all_count.push({
                     date: index,
-                    count: dates[index]
+                    count: all[index]
                 });
             }
 
-            return res.end(template.statistic({dates: data}));
+            var flat_count = [];
+            for (var index in flat) {
+                flat_count.push({
+                    date: index,
+                    count: flat[index]
+                });
+            }
+
+            var room_count = [];
+            for (var index in room) {
+                room_count.push({
+                    date: index,
+                    count: room[index]
+                });
+            }
+
+            return res.end(template.statistic({
+                all: all_count,
+                flat: flat_count,
+                room: room_count
+            }));
         });
 
     },
