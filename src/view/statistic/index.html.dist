@@ -105,7 +105,7 @@ Highcharts.chart('container', {
         }
     },
     series: [{
-        name: 'Tokyo',
+        name: 'Объяления',
         data: [{{~ it.dates :date }}{{= date.count }},{{~}}]
     }]
 });
