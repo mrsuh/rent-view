@@ -52,7 +52,11 @@
 
         <div class="block-statistic">
 
-            <div id="container" style="width:100%; height:400px;"></div>
+            <div id="chart_all" style="width:100%; height:400px;"></div>
+
+            <div id="chart_flat" style="width:100%; height:400px;"></div>
+
+            <div id="chart_room" style="width:100%; height:400px;"></div>
 
         </div>
     </div>
@@ -79,7 +83,7 @@
 <script src="https://code.highcharts.com/highcharts.src.js"></script>
 <script>
 
-Highcharts.chart('container', {
+Highcharts.chart('chart_all', {
     chart: {
         type: 'line'
     },
@@ -88,12 +92,12 @@ Highcharts.chart('container', {
     },
     xAxis: {
 
-    categories: [ {{~ it.dates :date }}{{= date.date }},{{~}} ]
+    categories: [ {{~ it.all :date }}'{{= date.date }}',{{~}} ]
 
     },
     yAxis: {
         title: {
-            text: 'Количество'
+            text: 'Объявления'
         }
     },
     plotOptions: {
@@ -105,8 +109,70 @@ Highcharts.chart('container', {
         }
     },
     series: [{
-        name: 'Объявления',
-        data: [{{~ it.dates :date }}{{= date.count }},{{~}}]
+        name: 'Дата',
+        data: [{{~ it.all :date }}{{= date.count }},{{~}}]
+    }]
+});
+
+Highcharts.chart('chart_flat', {
+    chart: {
+        type: 'line'
+    },
+    title: {
+        text: 'Количество объявлений квартир'
+    },
+    xAxis: {
+
+    categories: [ {{~ it.flat :date }}'{{= date.date }}',{{~}} ]
+
+    },
+    yAxis: {
+        title: {
+            text: 'Объявления'
+        }
+    },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: false
+        }
+    },
+    series: [{
+        name: 'Дата',
+        data: [{{~ it.flat :date }}{{= date.count }},{{~}}]
+    }]
+});
+
+Highcharts.chart('chart_room', {
+    chart: {
+        type: 'line'
+    },
+    title: {
+        text: 'Количество объявлений комнат'
+    },
+    xAxis: {
+
+    categories: [ {{~ it.room :date }}'{{= date.date }}',{{~}} ]
+
+    },
+    yAxis: {
+        title: {
+            text: 'Объявления'
+        }
+    },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: false
+        }
+    },
+    series: [{
+        name: 'Дата',
+        data: [{{~ it.room :date }}{{= date.count }},{{~}}]
     }]
 });
 
