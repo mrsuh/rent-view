@@ -91,6 +91,21 @@ module.exports = {
             var flat = {};
             var room = {};
 
+            function sort(a, b) {
+
+                var a_timestamp = parseInt(a.timestamp);
+                var b_timestamp = parseInt(b.timestamp);
+
+                if (a_timestamp < b_timestamp) {
+                    return -1;
+                }
+                if (a_timestamp > b_timestamp) {
+                    return 1;
+                }
+
+                return 0;
+            }
+
             for (var i = 0, length = notes.length; i < length; i++) {
 
                 var note = notes[i];
@@ -104,26 +119,35 @@ module.exports = {
                 var key = day + '.' + month.substr(-2) + '<br>' + weekday[week_day];
 
                 if ('undefined' === typeof all[key]) {
-                    all[key] = 0;
+                    all[key] = {
+                        timestamp: note['timestamp'],
+                        count: 0
+                    };
                 }
 
-                all[key]++;
+                all[key]['count']++;
 
 
                 if(0 === note.type) {
                     if ('undefined' === typeof room[key]) {
-                        room[key] = 0;
+                        room[key] = {
+                            timestamp: note['timestamp'],
+                            count: 0
+                        };
                     }
 
-                    room[key]++;
+                    room[key]['count']++;
                 }
 
                 if(0 !== note.type) {
                     if ('undefined' === typeof flat[key]) {
-                        flat[key] = 0;
+                        flat[key] = {
+                            timestamp: note['timestamp'],
+                            count: 0
+                        };
                     }
 
-                    flat[key]++;
+                    flat[key]['count']++;
                 }
             }
 
@@ -131,7 +155,8 @@ module.exports = {
             for (var index in all) {
                 all_count.push({
                     date: index,
-                    count: all[index]
+                    count: all[index]['count'],
+                    timestamp: all[index]['timestamp']
                 });
             }
 
@@ -139,7 +164,8 @@ module.exports = {
             for (var index in flat) {
                 flat_count.push({
                     date: index,
-                    count: flat[index]
+                    count: flat[index]['count'],
+                    timestamp: flat[index]['timestamp']
                 });
             }
 
@@ -147,9 +173,15 @@ module.exports = {
             for (var index in room) {
                 room_count.push({
                     date: index,
-                    count: room[index]
+                    count: room[index]['count'],
+                    timestamp: room[index]['timestamp']
                 });
             }
+
+
+            all_count.sort(sort);
+            room_count.sort(sort);
+            flat_count.sort(sort);
 
             return res.end(template.statistic({
                 all: all_count,
