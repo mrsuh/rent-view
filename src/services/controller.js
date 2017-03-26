@@ -76,6 +76,11 @@ module.exports = {
         return res.end(template.about());
     },
     statistic: function (req, res) {
+
+        res.writeHead(200, {
+            'Content-Type': 'text/html; charset=UTF-8'
+        });
+
         repo.findNotes({}, function (notes) {
 
             var weekday = new Array(7);
@@ -192,6 +197,11 @@ module.exports = {
 
     },
     sitemap: function (req, res) {
+
+        res.writeHead(200, {
+            'Content-Type': 'text/html; charset=UTF-8'
+        });
+
         repo.findNotes({}, function (notes) {
 
             for (var i = 0, length = notes.length; i < length; i++) {
@@ -206,6 +216,15 @@ module.exports = {
         var id = reg[1];
 
         repo.findNote({_id: id}, function (doc) {
+
+            if(null === doc) {
+                res.writeHead(302, {'Location': '/'});
+                return res.end();
+            }
+
+            res.writeHead(200, {
+                'Content-Type': 'text/html; charset=UTF-8'
+            });
 
             doc['timestamp'] = format.date(doc['timestamp']);
             doc['price'] = format.number(doc['price']);
@@ -225,6 +244,11 @@ module.exports = {
         });
     },
     list: function (req, res) {
+
+        res.writeHead(200, {
+            'Content-Type': 'text/html; charset=UTF-8'
+        });
+
         var req_price_from = url.getParameter(req.url, 'price_from');
         var price_from = null !== req_price_from ? parseInt(req_price_from) : '';
 
