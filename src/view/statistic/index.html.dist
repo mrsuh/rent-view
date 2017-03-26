@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="/img/favicon.ico"/>
+
+    <title>SocRent :: Снять без агенств и посредников в Санкт-Петербурге</title>
+
+    <description>Снять без агенств и посредников в Санкт-Петербурге на SocRent </description>
+    <meta name="description"
+          content="Снять без агенств и посредников в Санкт-Петербурге на SocRent"/>
+    <meta name="keywords" content="снять,квартиру,комнату,без посредников,без агентов,ВКонтакте,Санкт-Петербург" />
+    <meta name="mrc__share_title" content="Объявления аренды на Socrent"/>
+    <meta name="mrc__share_description"
+          content="Объявления аренды на Socrent"/>
+
+    <meta property="og:title" content="Объявления аренды квартир из социальных сетей"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://socrent.ru"/>
+    <meta property="og:site_name" content="SocRent"/>
+    <meta property="og:description"
+          content="Объявления аренды квартир из социальных сетей"/>
+
+    <meta property="og:image" content="https://socrent.ru/img/logo.png"/>
+
+    <link rel="stylesheet" href="/style/style.css?v1488880232135">
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <div class="wrapper-content">
+
+        <div class="block-header">
+            <div class="content">
+                <div class="title">
+                    <a href="/">
+                        <span class="soc">Soc</span><span class="rent">Rent</span>
+                    </a>
+                    <span class="text-muted">Аренда без посредников</span>
+                </div>
+                <nav>
+                    <a href="/">Объявления</a>
+                    <a href="/about">О проекте</a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="block-statistic">
+
+            <div id="container" style="width:100%; height:400px;"></div>
+
+        </div>
+    </div>
+
+    <div class="wrapper-footer">
+        <div class="block-footer">
+            <div class="content">
+                <div class="text">SocRent - это автоматический сервис, который собирает объявления из популярных
+                    социальных
+                    сетей
+                </div>
+                <div class="divider"></div>
+                <div class="text">Предложения на сайте носят информационный характер</div>
+                <div class="text">Мы не несем ответственность за содержание и предложения в текстах объявлений</div>
+                <div class="version">{{version}}</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+<script src="https://code.highcharts.com/highcharts.src.js"></script>
+<script>
+
+Highcharts.chart('container', {
+    chart: {
+        type: 'line'
+    },
+    title: {
+        text: 'Количество объявлений'
+    },
+    xAxis: {
+
+    categories: [ {{~ it.dates :date }}{{= date.date }},{{~}} ]
+
+    },
+    yAxis: {
+        title: {
+            text: 'Количество'
+        }
+    },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: false
+        }
+    },
+    series: [{
+        name: 'Объявления',
+        data: [{{~ it.dates :date }}{{= date.count }},{{~}}]
+    }]
+});
+
+</script>
+
+</html>

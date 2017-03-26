@@ -19,6 +19,7 @@ module.exports = {
     page: null,
     about: null,
     sitemap: null,
+    statistic: null,
 
     init: function () {
         readFile(__dirname + '/../view/about/index.html', function (text) {
@@ -35,6 +36,10 @@ module.exports = {
 
         readFile(__dirname + '/../view/sitemap/index.html', function (text) {
             this.sitemap = dot.template(text);
+        }.bind(this));
+
+        readFile(__dirname + '/../view/statistic/index.html', function (text) {
+            this.statistic = dot.template(text);
         }.bind(this));
     }
 };
