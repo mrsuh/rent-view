@@ -6,25 +6,21 @@ var config = require(__dirname + '/../config/config.js');
 
 var server = http.createServer(function (req, res) {
 
-    res.writeHead(200, {
-        'Content-Type': 'text/html; charset=UTF-8'
-    });
-
     switch (true) {
         case null !== req.url.match(/\/about.*/i):
-            return controller.about(req, res);
+            controller.about(req, res);
             break;
         case null !== req.url.match(/\/sitemap.xml.*/i):
-            return controller.sitemap(req, res);
+            controller.sitemap(req, res);
             break;
         case null !== req.url.match(/\/rent\/.*/i):
-            return controller.note(req, res);
+            controller.note(req, res);
             break;
         case null !== req.url.match(/\/statistic.*/i):
-            return controller.statistic(req, res);
+            controller.statistic(req, res);
             break;
         default:
-            return controller.list(req, res);
+            controller.list(req, res);
             break;
     }
 });
