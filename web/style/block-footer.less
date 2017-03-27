@@ -16,13 +16,28 @@
     padding-bottom: 15px;
 
      .text{
+       display: inline-block;
+       width: 70%;
       font-size: 13px;
       color: #ffffff;
-
-       &:nth-child(1) {
-         margin-bottom: 20px;
-       }
     }
+
+    .share {
+      display: inline-block;
+      width: 30%;
+      vertical-align: top;
+      text-align: right;
+
+       img {
+         margin-right: 6px;
+         margin-bottom: 6px;
+         width: 30px;
+         height: 30px;
+         &:hover {
+           cursor: pointer;
+         }
+       }
+     }
 
     .version {
       margin-top: 20px;
@@ -32,13 +47,24 @@
   }
 }
 
-@media all and (max-width: 640px) {
+
+@media all and (max-width: 1280px) {
   .block-footer {
     padding-left: 0;
     padding-right: 0;
     padding-bottom: 0;
     height: auto;
+    .content {
+      padding-left: 50px;
+      padding-right: 50px;
+      margin: 0;
+      width: 100%;
+    }
+  }
+}
 
+@media all and (max-width: 640px) {
+  .block-footer {
     .content {
       width: 95%;
       margin-left: 2.5%;
