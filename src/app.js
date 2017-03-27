@@ -19,9 +19,6 @@ var server = http.createServer(function (req, res) {
         case null !== req.url.match(/\/statistic.*/i):
             controller.statistic(req, res);
             break;
-        case null !== req.url.match(/\/vk.*/i):
-            controller.vk(req, res);
-            break;
         default:
             controller.list(req, res);
             break;
