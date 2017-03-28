@@ -1,0 +1,14 @@
+<div class="block-header">
+    <div class="content">
+        <div class="title">
+            <a href="/">
+                <span class="soc">Soc</span><span class="rent">Rent</span>
+            </a>
+            <span class="text-muted">Аренда без посредников</span>
+        </div>
+        <nav>
+            <a href="/" class="active">Объявления</a>
+            <a href="/about">О проекте</a>
+        </nav>
+    </div>
+</div>
