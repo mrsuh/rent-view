@@ -28,13 +28,49 @@
       vertical-align: top;
       text-align: right;
 
-       img {
+       svg {
          margin-right: 6px;
          margin-bottom: 6px;
          width: 30px;
          height: 30px;
+
+         .fill {
+           fill: #ffffff;
+           transition: fill 0.3s;
+         }
+
          &:hover {
            cursor: pointer;
+
+           &.vk {
+             .fill {
+               fill: #4c75a3;
+             }
+           }
+
+           &.fb {
+             .fill {
+               fill: #3b5998;
+             }
+           }
+
+           &.twitter {
+             .fill {
+               fill: #55acee;
+             }
+           }
+
+           &.ok {
+             .fill {
+               fill: #f58220;
+             }
+           }
+
+           &.google {
+             .fill {
+               fill: #dd5044;
+             }
+           }
          }
        }
      }
