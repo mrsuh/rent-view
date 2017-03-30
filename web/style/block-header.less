@@ -15,6 +15,25 @@
         font-size: 25px;
         line-height: 70px;
 
+        #hamburger {
+            display: none;
+        }
+
+        .wrap {
+            display: none;
+            float: right;
+            padding-top: 30px;
+            cursor: pointer;
+            .icon-bar {
+                display: block;
+                background-color: black;
+                border-radius: 2px;
+                height: 3px;
+                margin-bottom: 3px;
+                width: 22px;
+            }
+        }
+
         .title {
             display: inline-block;
 
@@ -46,8 +65,8 @@
             font-size: 0;
             a {
                 text-decoration: none;
-                padding-left: 5px;
-                padding-right: 5px;
+                padding-left: 10px;
+                padding-right: 10px;
                 vertical-align: top;
                 font-size: 14px;
                 display: inline-block;
@@ -80,6 +99,36 @@
 @media all and (max-width: 640px) {
     .block-header {
         .content {
+
+            .wrap {
+                display: block;
+            }
+            nav {
+                display: none;
+
+                a {
+                    padding-left: 2.5%;
+                    display: block;
+                    height: auto;
+                    color: #1C1A1B;
+                    line-height: 46px;
+                    background-color: #d3d3d3;
+                    &.active {
+                        cursor: default;
+                        background-color: #A7A7A7;
+                        border-bottom: none;
+                    }
+                }
+            }
+            #hamburger:checked ~ nav {
+                display: block;
+                position: absolute;
+                left: 0;
+                right: 0;
+                width: 100%;
+                top: 70px;
+            }
+
             padding-left: 2.5%;
             padding-right: 2.5%;
             width: 95%;

@@ -5,6 +5,7 @@ var pagination = require(__dirname + '/pagination.js');
 var format = require(__dirname + '/format.js');
 var url = require(__dirname + '/url.js');
 var template = require(__dirname + '/template.js');
+var statistic = require(__dirname + '/statistic.js');
 
 repo.init();
 template.init();
@@ -73,7 +74,9 @@ var formFilter = function (params) {
 
 module.exports = {
     about: function (req, res) {
-        return res.end(template.about());
+        return res.end(template.about({
+            page: 'about'
+        }));
     },
     statistic: function (req, res) {
 
@@ -83,118 +86,19 @@ module.exports = {
 
         repo.findNotes({}, function (notes) {
 
-            var weekday = new Array(7);
-            weekday[0] = "Воскресенье";
-            weekday[1] = "Понедельник";
-            weekday[2] = "Вторник";
-            weekday[3] = "Среда";
-            weekday[4] = "Четверг";
-            weekday[5] = "Пятница";
-            weekday[6] = "Суббота";
-
-            var all = {};
-            var flat = {};
-            var room = {};
-
-            function sort(a, b) {
-
-                var a_timestamp = parseInt(a.timestamp);
-                var b_timestamp = parseInt(b.timestamp);
-
-                if (a_timestamp < b_timestamp) {
-                    return -1;
-                }
-                if (a_timestamp > b_timestamp) {
-                    return 1;
-                }
-
-                return 0;
-            }
-
-            for (var i = 0, length = notes.length; i < length; i++) {
-
-                var note = notes[i];
-
-                var date = new Date(note['timestamp'] * 1000);
-
-                var month = "0" + (date.getMonth() + 1);
-                var day = date.getDate();
-                var week_day = date.getDay();
-
-                var key = day + '.' + month.substr(-2) + '<br>' + weekday[week_day];
-
-                if ('undefined' === typeof all[key]) {
-                    all[key] = {
-                        timestamp: note['timestamp'],
-                        count: 0
-                    };
-                }
-
-                all[key]['count']++;
-
-
-                if(0 === note.type) {
-                    if ('undefined' === typeof room[key]) {
-                        room[key] = {
-                            timestamp: note['timestamp'],
-                            count: 0
-                        };
-                    }
-
-                    room[key]['count']++;
-                }
-
-                if(0 !== note.type) {
-                    if ('undefined' === typeof flat[key]) {
-                        flat[key] = {
-                            timestamp: note['timestamp'],
-                            count: 0
-                        };
-                    }
-
-                    flat[key]['count']++;
-                }
-            }
-
-            var all_count = [];
-            for (var index in all) {
-                all_count.push({
-                    date: index,
-                    count: all[index]['count'],
-                    timestamp: all[index]['timestamp']
-                });
-            }
-
-            var flat_count = [];
-            for (var index in flat) {
-                flat_count.push({
-                    date: index,
-                    count: flat[index]['count'],
-                    timestamp: flat[index]['timestamp']
-                });
-            }
-
-            var room_count = [];
-            for (var index in room) {
-                room_count.push({
-                    date: index,
-                    count: room[index]['count'],
-                    timestamp: room[index]['timestamp']
-                });
-            }
-
-
-            all_count.sort(sort);
-            room_count.sort(sort);
-            flat_count.sort(sort);
-
             return res.end(template.statistic({
-                all: all_count,
-                flat: flat_count,
-                room: room_count
+                days: statistic.days(notes),
+                hours: statistic.hours(notes),
+                ratio: statistic.ratio(notes),
+                subways: statistic.subways(notes, repo.subways),
+                check_subways: statistic.checkSubways(notes),
+                check_area: statistic.checkArea(notes),
+                check_price: statistic.checkPrice(notes),
+                check_phone: statistic.checkPhone(notes),
+                page: 'statistic'
             }));
-        });
 
+        });
     },
     sitemap: function (req, res) {
 
@@ -217,7 +121,7 @@ module.exports = {
 
         repo.findNote({_id: id}, function (doc) {
 
-            if(null === doc) {
+            if (null === doc) {
                 res.writeHead(302, {'Location': '/'});
                 return res.end();
             }
@@ -239,7 +143,8 @@ module.exports = {
 
             return res.end(template.page({
                 item: doc,
-                subways: repo.subways
+                subways: repo.subways,
+                page: 'advert'
             }));
         });
     },
@@ -364,7 +269,8 @@ module.exports = {
                     items_count: unlimit_docs.length,
                     items: docs,
                     subways: repo.subways,
-                    pagination: pagination.paginate(page, Math.ceil(unlimit_docs.length / items_on_page))
+                    pagination: pagination.paginate(page, Math.ceil(unlimit_docs.length / items_on_page)),
+                    page: 'advert'
                 }));
             });
         });
