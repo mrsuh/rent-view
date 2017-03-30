@@ -22,62 +22,29 @@
 <div class="wrapper">
     <div class="wrapper-content">
 
-        <!-- @import src/view/layout/header.html -->
+        <!-- @import src/view/dist/layout/header.html -->
 
         <div class="block-about">
             <p>SocRent - это автоматический сервис, который собирает объявления из популярных социальных сетей,
                 сортирует их и показывает в удобном формате с возможностью поиска.</p>
             <br>
             <p>Объявления берутся из сообществ, пабликов, групп и стен пользователей.</p>
-                <p>Для сортировки используются машинные алгоритмы,
-                    поэтому иногда объявления могут быть классифицированны неверно.</p>
+            <p>Для сортировки используются машинные алгоритмы,
+                поэтому иногда объявления могут быть классифицированны неверно.</p>
             <br>
             <p>На данном этапе сервис работает только для города Санкт-Петербург.</p>
             <br>
-            <p>По всем вашим предложениям и пожеланиям можно написать в нашу группу <a href="https://vk.com/public140724846">Вконтакте</a></p>
+            <p>По всем вашим предложениям и пожеланиям можно написать в нашу группу <a
+                    href="https://vk.com/public140724846">Вконтакте</a></p>
         </div>
     </div>
 
-    <!-- @import src/view/layout/footer.html -->
+    <!-- @import src/view/dist/layout/footer.html -->
 
 </div>
 
 </body>
 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function (d, w, c) {
-        (w[c] = w[c] || []).push(function () {
-            try {
-                w.yaCounter42755074 = new Ya.Metrika({
-                    id: 42755074,
-                    clickmap: true,
-                    trackLinks: true,
-                    accurateTrackBounce: true,
-                    webvisor: true
-                });
-            } catch (e) {
-            }
-        });
+<!-- @import src/view/dist/layout/metrika.html -->
 
-        var n = d.getElementsByTagName("script")[0],
-            s = d.createElement("script"),
-            f = function () {
-                n.parentNode.insertBefore(s, n);
-            };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = "https://mc.yandex.ru/metrika/watch.js";
-
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else {
-            f();
-        }
-    })(document, window, "yandex_metrika_callbacks");
-</script>
-<noscript>
-    <div><img src="https://mc.yandex.ru/watch/42755074" style="position:absolute; left:-9999px;" alt=""/></div>
-</noscript>
-<!-- /Yandex.Metrika counter -->
 </html>

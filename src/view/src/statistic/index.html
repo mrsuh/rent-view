@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="/img/favicon.ico"/>
+
+    <title>SocRent :: Снять без агенств и посредников в Санкт-Петербурге</title>
+
+    <description>Снять без агенств и посредников в Санкт-Петербурге на SocRent </description>
+    <meta name="description"
+          content="Снять без агенств и посредников в Санкт-Петербурге на SocRent"/>
+    <meta name="keywords" content="снять,квартиру,комнату,без посредников,без агентов,ВКонтакте,Санкт-Петербург" />
+    <meta name="mrc__share_title" content="Объявления аренды на Socrent"/>
+    <meta name="mrc__share_description"
+          content="Объявления аренды на Socrent"/>
+
+    <meta property="og:title" content="Объявления аренды квартир из социальных сетей"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://socrent.ru"/>
+    <meta property="og:site_name" content="SocRent"/>
+    <meta property="og:description"
+          content="Объявления аренды квартир из социальных сетей"/>
+
+    <meta property="og:image" content="https://socrent.ru/img/logo.png"/>
+
+    <link rel="stylesheet" href="/style/style.css?v1488880232135">
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <div class="wrapper-content">
+
+        <!-- @import src/view/dist/layout/header.html -->
+
+        <div class="block-statistic" style="font-size: 0">
+
+            <div id="chart_days" style="width:100%; height:400px;"></div>
+
+            <div id="chart_hours" style="width:100%; height:400px;"></div>
+
+            <div id="chart_subways" style="width:100%; height:450px;"></div>
+
+            <div id="chart_ratio" style="width:33%; height:400px; display: inline-block;"></div>
+
+            <div id="chart_check_subways" style="width:33%; height:400px; display: inline-block;"></div>
+
+            <div id="chart_check_price" style="width:33%; height:400px; display: inline-block;"></div>
+
+            <div id="chart_check_area" style="width:50%; height:400px; display: inline-block;"></div>
+
+            <div id="chart_check_phone" style="width:50%; height:400px; display: inline-block;"></div>
+
+        </div>
+    </div>
+
+    <!-- @import src/view/dist/layout/footer.html -->
+
+</div>
+
+</body>
+
+<script src="https://code.highcharts.com/highcharts.src.js"></script>
+<script>
+
+Highcharts.chart('chart_days', {
+    chart: {
+        type: 'areaspline'
+    },
+    title: {
+        text: 'Количество объявлений'
+    },
+    xAxis: {
+
+    categories: [ {{~ it.days :date }}'{{= date.date }}',{{~}} ]
+
+    },
+    yAxis: {
+        title: {
+            text: 'Объявления'
+        }
+    },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: false
+        }
+    },
+    series: [{
+        name: 'Дни',
+        data: [{{~ it.days :date }}{{= date.count }},{{~}}]
+    }]
+});
+
+Highcharts.chart('chart_hours', {
+    chart: {
+        type: 'areaspline'
+    },
+    title: {
+        text: 'Объявлений в час'
+    },
+    xAxis: {
+
+    categories: [ {{~ it.hours :date }}'{{= date.date }}',{{~}} ]
+
+    },
+    yAxis: {
+        title: {
+            text: 'Объявления, %'
+        }
+    },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: false
+        }
+    },
+    series: [{
+        name: 'Часы',
+        data: [{{~ it.hours :date }}{{= date.count }},{{~}}]
+    }]
+});
+
+Highcharts.chart('chart_ratio', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Соотношение объявлений комнат и квартир'
+    },
+    tooltip: {
+        pointFormat: '{point.percentage:.1f}%'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true
+        }
+    },
+    series: [{
+        name: '',
+        colorByPoint: true,
+        data: [{
+            name: 'Комната',
+            y: {{= it.ratio.room }}
+        }, {
+            name: ' Квартира',
+                y: {{= it.ratio.flat }}
+        }]
+    }]
+});
+
+Highcharts.chart('chart_subways', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Количество объявлений'
+    },
+    xAxis: {
+
+        categories: [ {{~ it.subways :subway }}'{{= subway.name }}',{{~}} ]
+
+},
+yAxis: {
+    title: {
+        text: 'Объявления'
+    }
+},
+plotOptions: {
+    line: {
+        dataLabels: {
+            enabled: true
+        },
+        enableMouseTracking: false
+    }
+},
+series: [{
+    name: 'Станции метро',
+    data: [{{~ it.subways :subway }}{{= subway.count }},{{~}}],
+}]
+});
+
+Highcharts.chart('chart_check_subways', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Станции метро в объявлении'
+    },
+    tooltip: {
+        pointFormat: '{point.percentage:.1f}%'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true
+        }
+    },
+    series: [{
+        name: '',
+        colorByPoint: true,
+        data: [{
+            name: 'Указано',
+            y: {{= it.check_subways.indicate }}
+            },
+            {
+                name: 'Не указано',
+                y: {{= it.check_subways.empty }}
+            }]
+}]
+});
+
+
+Highcharts.chart('chart_check_price', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Цена объявления'
+    },
+    tooltip: {
+        pointFormat: '{point.percentage:.1f}%'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true
+        }
+    },
+    series: [{
+        name: '',
+        colorByPoint: true,
+        data: [{
+            name: 'Указано',
+            y: {{= it.check_price.indicate }}
+},
+{
+    name: 'Не указано',
+        y: {{= it.check_price.empty }}
+}]
+}]
+});
+
+
+Highcharts.chart('chart_check_area', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Площадь квартиры'
+    },
+    tooltip: {
+        pointFormat: '{point.percentage:.1f}%'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true
+        }
+    },
+    series: [{
+        name: '',
+        colorByPoint: true,
+        data: [{
+            name: 'Указано',
+            y: {{= it.check_area.indicate }}
+},
+{
+    name: 'Не указано',
+        y: {{= it.check_area.empty }}
+}]
+}]
+});
+
+Highcharts.chart('chart_check_phone', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Телефон для связи'
+    },
+    tooltip: {
+        pointFormat: '{point.percentage:.1f}%'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true
+        }
+    },
+    series: [{
+        name: '',
+        colorByPoint: true,
+        data: [{
+            name: 'Указано',
+            y: {{= it.check_phone.indicate }}
+},
+{
+    name: 'Не указано',
+        y: {{= it.check_phone.empty }}
+}]
+}]
+});
+</script>
+
+<!-- @import src/view/dist/layout/metrika.html -->
+
+</html>

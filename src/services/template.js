@@ -22,23 +22,23 @@ module.exports = {
     statistic: null,
 
     init: function () {
-        readFile(__dirname + '/../view/about/index.html', function (text) {
+        readFile(__dirname + '/../view/dist/about/index.html', function (text) {
             this.about = dot.template(text);
         }.bind(this));
 
-        readFile(__dirname + '/../view/main/index.html', function (text) {
+        readFile(__dirname + '/../view/dist/main/index.html', function (text) {
             this.list = dot.template(text);
         }.bind(this));
 
-        readFile(__dirname + '/../view/page/index.html', function (text) {
+        readFile(__dirname + '/../view/dist/page/index.html', function (text) {
             this.page = dot.template(text);
         }.bind(this));
 
-        readFile(__dirname + '/../view/sitemap/index.html', function (text) {
+        readFile(__dirname + '/../view/dist/sitemap/index.html', function (text) {
             this.sitemap = dot.template(text);
         }.bind(this));
 
-        readFile(__dirname + '/../view/statistic/index.html', function (text) {
+        readFile(__dirname + '/../view/dist/statistic/index.html', function (text) {
             this.statistic = dot.template(text);
         }.bind(this));
     }

@@ -1,0 +1,23 @@
+<div class="block-header">
+    <div class="content">
+        <div class="title">
+            <a href="/">
+                <span class="soc">Soc</span><span class="rent">Rent</span>
+            </a>
+            <span class="text-muted">Аренда без посредников</span>
+        </div>
+
+        <input type="checkbox" id="hamburger">
+        <label class="wrap" for="hamburger">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </label>
+
+        <nav>
+            <a href="/"  {{? it.page === 'advert' }} class="active" {{?}} >Объявления</a>
+            <a href="/statistic" {{? it.page === 'statistic' }} class="active" {{?}} >Статистика</a>
+            <a href="/about"  {{? it.page === 'about' }} class="active" {{?}} >О проекте</a>
+        </nav>
+    </div>
+</div>
