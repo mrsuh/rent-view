@@ -171,32 +171,6 @@ module.exports = {
         };
     },
 
-    checkType: function (notes) {
-
-        var indicate = 0;
-        var empty = 0;
-        var total = 0;
-        for (var i = 0, length = notes.length; i < length; i++) {
-
-            var note = notes[i];
-
-            if(note.type.length) {
-                indicate++;
-            } else {
-                empty++;
-            }
-
-            total++;
-        }
-
-        var percent = total / 100;
-
-        return {
-            indicate: (percent * indicate).toFixed(2),
-            empty: (percent * empty).toFixed(2)
-        };
-    },
-
     hours: function (notes) {
 
         var hours = {};
@@ -294,7 +268,7 @@ module.exports = {
     subways: function (notes, subways) {
 
         var note_subways = {};
-
+        var total = 0;
         for (var i = 0, length = notes.length; i < length; i++) {
 
             var note = notes[i];
@@ -308,14 +282,16 @@ module.exports = {
                 }
 
                 note_subways[snote]++;
+                total++;
             }
         }
 
         var subways_count = [];
+        var percent = total / 100;
         for (var index in note_subways) {
             subways_count.push({
                 name: subways[index].name,
-                count: note_subways[index],
+                count: (percent * note_subways[index]).toFixed(2),
                 color: subways[index].color
             });
         }
