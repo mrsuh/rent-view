@@ -63,9 +63,6 @@
 
 <body>
 
-<div class="wrapper">
-    <div class="wrapper-content">
-
         <!-- @import src/view/dist/layout/header.html -->
 
         <div class="block-search-filters">
@@ -254,9 +251,7 @@
                         {{~}}
 
                     </div>
-                    <div class="row3">
 
-                    </div>
                     {{? item.photos.length > 0 }}
 
                     <div class="row4">
@@ -275,10 +270,11 @@
                                 <div class="slider-inner">
                                     {{~ item.photos :preview }}
                                     <div class="slide preview {{? item_index > 4 }} img-lazy-load {{?}}" data-src="{{= preview.high }}"
-                                         {{? item_index <= 4 }}style="background-image: url('{{= preview.high }}')"{{?}}>
+                                         {{? item_index <= 4 }}style="background-image: url('{{= preview.high }}')"{{?}} >
                                     </div>
                                     {{~}}
                                 </div>
+
                             </div>
 
                         </div>
@@ -358,11 +354,8 @@
             </div>
         </div>
 
-    </div>
 
     <!-- @import src/view/dist/layout/footer.html -->
-
-</div>
 
 </body>
 

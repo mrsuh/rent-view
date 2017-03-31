@@ -31,36 +31,29 @@
 
 <body>
 
-<div class="wrapper">
-
-    <div class="wrapper-content">
-
         <!-- @import src/view/dist/layout/header.html -->
 
-        <div class="block-statistic" style="font-size: 0">
+        <div class="block-statistic">
 
-            <div id="chart_days" style="width:100%; height:400px;"></div>
+            <div id="chart_days"  class="linear"></div>
 
-            <div id="chart_hours" style="width:100%; height:400px;"></div>
+            <div id="chart_hours"  class="linear"></div>
 
-            <div id="chart_subways" style="width:100%; height:450px;"></div>
+            <div id="chart_subways" class="linear"></div>
 
-            <div id="chart_ratio" style="width:33%; height:400px; display: inline-block;"></div>
+            <div id="chart_ratio" class="circle"></div>
 
-            <div id="chart_check_subways" style="width:33%; height:400px; display: inline-block;"></div>
+            <div id="chart_check_subways" class="circle"></div>
 
-            <div id="chart_check_price" style="width:33%; height:400px; display: inline-block;"></div>
+            <div id="chart_check_price" class="circle"></div>
 
-            <div id="chart_check_area" style="width:50%; height:400px; display: inline-block;"></div>
+            <div id="chart_check_area"  class="circle bottom"></div>
 
-            <div id="chart_check_phone" style="width:50%; height:400px; display: inline-block;"></div>
+            <div id="chart_check_phone" class="circle bottom"></div>
 
         </div>
-    </div>
 
     <!-- @import src/view/dist/layout/footer.html -->
-
-</div>
 
 </body>
 
@@ -105,6 +98,9 @@ Highcharts.chart('chart_hours', {
     title: {
         text: 'Объявлений в час'
     },
+    tooltip: {
+        pointFormat: '{point.y:.1f}%'
+    },
     xAxis: {
 
     categories: [ {{~ it.hours :date }}'{{= date.date }}',{{~}} ]
@@ -137,7 +133,7 @@ Highcharts.chart('chart_ratio', {
         type: 'pie'
     },
     title: {
-        text: 'Соотношение объявлений комнат и квартир'
+        text: 'Комнаты и квартиры'
     },
     tooltip: {
         pointFormat: '{point.percentage:.1f}%'
@@ -170,7 +166,10 @@ Highcharts.chart('chart_subways', {
         type: 'column'
     },
     title: {
-        text: 'Количество объявлений'
+        text: 'Станции метро'
+    },
+    tooltip: {
+        pointFormat: '{point.y:.1f}%'
     },
     xAxis: {
 
@@ -179,7 +178,7 @@ Highcharts.chart('chart_subways', {
 },
 yAxis: {
     title: {
-        text: 'Объявления'
+        text: 'Объявления, %'
     }
 },
 plotOptions: {
