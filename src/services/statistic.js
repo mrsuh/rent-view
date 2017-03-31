@@ -203,13 +203,11 @@ module.exports = {
             }
         }
 
-        var percent = total / 100;
-
         var hours_count = [];
         for (var index in hours) {
             hours_count.push({
                 date: index,
-                count: (percent * hours[index]['count']).toFixed(2),
+                count: (hours[index]['count'] / total * 100).toFixed(2),
                 timestamp: hours[index]['timestamp']
             });
         }
@@ -287,11 +285,10 @@ module.exports = {
         }
 
         var subways_count = [];
-        var percent = total / 100;
         for (var index in note_subways) {
             subways_count.push({
                 name: subways[index].name,
-                count: (percent * note_subways[index]).toFixed(2),
+                count: (note_subways[index] / total * 100).toFixed(2),
                 color: subways[index].color
             });
         }
