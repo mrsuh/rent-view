@@ -1,7 +1,10 @@
 language: node_js
-node_js:
+sudo: false
 install: true
 
+branches:
+  only:
+    - master
 
-before_deploy:
+script:
     - echo test
