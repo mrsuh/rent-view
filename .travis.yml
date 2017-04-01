@@ -1,4 +1,7 @@
+language: node_js
+node_js:
 install: true
+
 
 before_deploy:
     - echo test
