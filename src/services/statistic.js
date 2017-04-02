@@ -18,8 +18,8 @@ function sort(a, b) {
 
 function sortByCount(a, b) {
 
-    var a_count = parseInt(a.count);
-    var b_count = parseInt(b.count);
+    var a_count = parseFloat(a.count);
+    var b_count = parseFloat(b.count);
 
     if (a_count < b_count) {
         return 1;
