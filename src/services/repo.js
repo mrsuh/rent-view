@@ -8,61 +8,62 @@ module.exports = {
     subways: {},
 
     init: function () {
-        client.connect('mongodb://' + config.mongo.host + ':' + config.mongo.port + '/' + config.mongo.database, function (err, db) {
-            console.info('connect to mongodb');
-            if (err) {
-                console.error('connect to mongodb error');
-                process.exit(1);
-            }
-
+        this.connect().then(function(db){
             this.db = db;
 
-            this.findSubways({}, function (subways) {
-
+            this.findSubways().then(function(subways){
                 var _subways = {};
                 for (var i = 0, length = subways.length; i < length; i++) {
                     _subways[subways[i]._id] = subways[i];
                 }
-
                 this.subways = _subways;
-            }.bind(this))
-
+            }.bind(this));
         }.bind(this));
     },
 
-    findNotesByOptions: function (filter, options, callback) {
+    connect: function () {
+        return new Promise(function (resolve, reject) {
+            client.connect('mongodb://' + config.mongo.host + ':' + config.mongo.port + '/' + config.mongo.database, function (err, db) {
+                if (err) {
+                    console.error('connect to mongodb error');
+                    process.exit(1);
+                }
 
-        var collection = this.db.collection('note');
+                resolve(db);
 
-        collection.find(filter).sort(options.order).skip(options.skip).limit(options.limit).toArray(function (err, docs) {
-            callback(docs);
+            }.bind(this));
         }.bind(this));
     },
 
-    findNotes: function (filter, callback) {
-
-        var collection = this.db.collection('note');
-
-        collection.find(filter).toArray(function (err, docs) {
-            callback(docs);
+    findNotesByOptions: function (filter, options) {
+        return new Promise(function (resolve, reject) {
+            this.db.collection('note').find(filter).sort(options.order).skip(options.skip).limit(options.limit).toArray(function (err, docs) {
+                resolve(docs);
+            }.bind(this));
         }.bind(this));
     },
 
-    findSubways: function (filter, callback) {
+    findNotes: function (filter) {
+        return new Promise(function (resolve, reject) {
+            this.db.collection('note').find(filter).toArray(function (err, docs) {
+                resolve(docs);
+            }.bind(this));
+        }.bind(this));
+    },
 
-        var collection = this.db.collection('subway');
-
-        collection.find(filter).toArray(function (err, docs) {
-            callback(docs);
+    findSubways: function (filter) {
+        return new Promise(function (resolve, reject) {
+            this.db.collection('subway').find(filter).toArray(function (err, docs) {
+                resolve(docs);
+            }.bind(this));
         }.bind(this));
     },
 
     findNote: function (filter, callback) {
-
-        var collection = this.db.collection('note');
-
-        collection.findOne(filter, function (err, doc) {
-            callback(doc);
+        return new Promise(function (resolve, reject) {
+            this.db.collection('note').findOne(filter, function (err, doc) {
+                resolve(doc);
+            }.bind(this));
         }.bind(this));
     }
 };

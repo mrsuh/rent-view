@@ -84,21 +84,20 @@ module.exports = {
             'Content-Type': 'text/html; charset=UTF-8'
         });
 
-        repo.findNotes({}, function (notes) {
-
-            return res.end(template.statistic({
-                days: statistic.days(notes),
-                hours: statistic.hours(notes),
-                ratio: statistic.ratio(notes),
-                subways: statistic.subways(notes, repo.subways),
-                check_subways: statistic.checkSubways(notes),
-                check_area: statistic.checkArea(notes),
-                check_price: statistic.checkPrice(notes),
-                check_phone: statistic.checkPhone(notes),
-                page: 'statistic'
-            }));
-
-        });
+        repo.findNotes({})
+            .then(function (notes) {
+                return res.end(template.statistic({
+                    days: statistic.days(notes),
+                    hours: statistic.hours(notes),
+                    ratio: statistic.ratio(notes),
+                    subways: statistic.subways(notes, repo.subways),
+                    check_subways: statistic.checkSubways(notes),
+                    check_area: statistic.checkArea(notes),
+                    check_price: statistic.checkPrice(notes),
+                    check_phone: statistic.checkPhone(notes),
+                    page: 'statistic'
+                }));
+            });
     },
     sitemap: function (req, res) {
 
@@ -106,47 +105,47 @@ module.exports = {
             'Content-Type': 'text/html; charset=UTF-8'
         });
 
-        repo.findNotes({}, function (notes) {
+        repo.findNotes({})
+            .then(function (notes) {
+                for (var i = 0, length = notes.length; i < length; i++) {
+                    notes[i]['timestamp'] = format.dateSitemap(notes[i]['timestamp']);
+                }
 
-            for (var i = 0, length = notes.length; i < length; i++) {
-                notes[i]['timestamp'] = format.dateSitemap(notes[i]['timestamp']);
-            }
-
-            return res.end(template.sitemap({notes: notes}));
-        });
+                return res.end(template.sitemap({notes: notes}));
+            });
     },
     note: function (req, res) {
         var reg = req.url.match(/\/rent\/.*p\.(.*)/i);
         var id = reg[1];
 
-        repo.findNote({_id: id}, function (doc) {
+        repo.findNote({_id: id})
+            .then(function (doc) {
+                if (null === doc) {
+                    res.writeHead(302, {'Location': '/'});
+                    return res.end();
+                }
 
-            if (null === doc) {
-                res.writeHead(302, {'Location': '/'});
-                return res.end();
-            }
+                res.writeHead(200, {
+                    'Content-Type': 'text/html; charset=UTF-8'
+                });
 
-            res.writeHead(200, {
-                'Content-Type': 'text/html; charset=UTF-8'
+                doc['timestamp'] = format.date(doc['timestamp']);
+                doc['price'] = format.number(doc['price']);
+
+                var phones = doc['contacts']['phones'];
+                var new_phones = [];
+                for (var p = 0, plength = phones.length; p < plength; p++) {
+                    new_phones.push(format.phone(phones[p]));
+                }
+
+                doc['contacts']['phones'] = new_phones;
+
+                return res.end(template.page({
+                    item: doc,
+                    subways: repo.subways,
+                    page: 'advert'
+                }));
             });
-
-            doc['timestamp'] = format.date(doc['timestamp']);
-            doc['price'] = format.number(doc['price']);
-
-            var phones = doc['contacts']['phones'];
-            var new_phones = [];
-            for (var p = 0, plength = phones.length; p < plength; p++) {
-                new_phones.push(format.phone(phones[p]));
-            }
-
-            doc['contacts']['phones'] = new_phones;
-
-            return res.end(template.page({
-                item: doc,
-                subways: repo.subways,
-                page: 'advert'
-            }));
-        });
     },
     list: function (req, res) {
 
@@ -233,46 +232,50 @@ module.exports = {
             limit: 10
         };
 
-        repo.findNotesByOptions(filter, options, function (docs) {
-            repo.findNotes(filter, function (unlimit_docs) {
+        var find_by_options = repo.findNotesByOptions(filter, options);
+        var find_all = repo.findNotes(filter);
 
-                for (var i = 0, length = docs.length; i < length; i++) {
-                    var timestamp = docs[i]['timestamp'];
-                    var price = docs[i]['price'];
+        Promise.all([find_by_options, find_all]).then(function (result) {
 
-                    docs[i]['timestamp'] = format.datePlural(timestamp);
-                    docs[i]['price'] = format.number(price);
+            var docs = result[0];
+            var unlimit_docs = result[1];
 
-                    var phones = docs[i]['contacts']['phones'];
-                    var new_phones = [];
-                    for (var p = 0, plength = phones.length; p < plength; p++) {
-                        new_phones.push(format.phone(phones[p]));
-                    }
+            for (var i = 0, length = docs.length; i < length; i++) {
+                var timestamp = docs[i]['timestamp'];
+                var price = docs[i]['price'];
 
-                    docs[i]['contacts']['phones'] = new_phones;
+                docs[i]['timestamp'] = format.datePlural(timestamp);
+                docs[i]['price'] = format.number(price);
+
+                var phones = docs[i]['contacts']['phones'];
+                var new_phones = [];
+                for (var p = 0, plength = phones.length; p < plength; p++) {
+                    new_phones.push(format.phone(phones[p]));
                 }
 
-                return res.end(template.list({
-                    req: {
-                        price_from: price_from,
-                        price_to: price_to,
-                        area_from: area_from,
-                        area_to: area_to,
-                        realty: realty,
-                        order: order,
-                        realty_add: realty_add,
-                        subway: subway,
-                        photo: photo,
-                        page: page
-                    },
-                    subway_name: subway_name,
-                    items_count: unlimit_docs.length,
-                    items: docs,
-                    subways: repo.subways,
-                    pagination: pagination.paginate(page, Math.ceil(unlimit_docs.length / items_on_page)),
-                    page: 'advert'
-                }));
-            });
+                docs[i]['contacts']['phones'] = new_phones;
+            }
+
+            return res.end(template.list({
+                req: {
+                    price_from: price_from,
+                    price_to: price_to,
+                    area_from: area_from,
+                    area_to: area_to,
+                    realty: realty,
+                    order: order,
+                    realty_add: realty_add,
+                    subway: subway,
+                    photo: photo,
+                    page: page
+                },
+                subway_name: subway_name,
+                items_count: unlimit_docs.length,
+                items: docs,
+                subways: repo.subways,
+                pagination: pagination.paginate(page, Math.ceil(unlimit_docs.length / items_on_page)),
+                page: 'advert'
+            }));
         });
     }
 };
