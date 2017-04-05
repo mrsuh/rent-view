@@ -56,7 +56,7 @@
 
     <meta property="og:title" content="{{#def.type:it.item.type }}{{? null !== it.item.area }}, {{= it.item.area}} м²{{?}}"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:url" content="https://www.avito.ru/sterlitamak/kvartiry/1-k_kvartira_25_m_55_et._998018660"/>
+    <meta property="og:url" content="https://socrent.ru{{#def.link:it.item }}"/>
     <meta property="og:site_name" content="SocRent"/>
     <meta property="og:description"
           content="Сдается {{#def.type:it.item.type }}{{? null !== it.item.area }}, {{= it.item.area}} м²{{?}}"/>
@@ -65,7 +65,32 @@
        <meta property="og:image" content="{{= photo.low }}"/>
     {{~}}
 
-    <link rel="stylesheet" href="/style/style.css?v1488880232135">
+    <link rel="stylesheet" href="/style/style.css?v1">
+
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Product",
+  "name": "{{#def.type:it.item.type }}",
+  {{? it.item.photos.length }}"image": " {{= it.item.photos[0].high }}",{{?}}
+  "description": "{{= (it.item.description).replace(/("|\n|:)/g, '') }}"
+
+  {{? null !== it.item.price }}
+  ,"offers": {
+    "@type": "Offer",
+    "priceCurrency": "RUB",
+    "price": "{{= it.item.price.replace(' ', '') }}",
+    "seller": {
+      "@type": "Person",
+      "name": "{{= it.item.contacts.person.name }}"
+    }
+  }
+  {{?}}
+}
+   </script>
+
+
 </head>
 <body>
         <!-- @import src/view/dist/layout/header.html -->
@@ -211,8 +236,6 @@
             <p>{{= it.item.description }}</p>
         </div>
 
-        <div id="vk_comments" class="block-card-comments"></div>
-
     <!-- @import src/view/dist/layout/footer.html -->
 
 </body>
@@ -220,11 +243,6 @@
 <script defer src="/js/common.min.js?v1"></script>
 <script defer src="/js/page.min.js?v1"></script>
 <script type="text/javascript" src="//vk.com/js/api/openapi.js?142"></script>
-
-<script type="text/javascript">
-  VK.init({apiId: 5939156, onlyWidgets: true});
-  VK.Widgets.Comments("vk_comments", {limit: 20, attach: "*", pageUrl: '{{#def.link:it.item }}' }, '{{= it.item._id }}');
-</script>
 
 <!-- @import src/view/dist/layout/metrika.html -->
 
