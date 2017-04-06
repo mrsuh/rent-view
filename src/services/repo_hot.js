@@ -23,7 +23,10 @@ module.exports = {
 
     connect: function () {
         return new Promise(function (resolve, reject) {
-            client.connect('mongodb://' + config.mongo.host + ':' + config.mongo.port + '/' + config.mongo.database, function (err, db) {
+
+            var conf = config.db.hot;
+
+            client.connect('mongodb://' + conf.host + ':' + conf.port + '/' + conf.database, function (err, db) {
                 if (err) {
                     console.error('connect to mongodb error');
                     process.exit(1);

@@ -1,13 +1,15 @@
 "use strict";
 
-var repo = require(__dirname + '/repo.js');
+var repo_hot = require(__dirname + '/repo_hot.js');
+var repo_cold = require(__dirname + '/repo_cold.js');
 var pagination = require(__dirname + '/pagination.js');
 var format = require(__dirname + '/format.js');
 var url = require(__dirname + '/url.js');
 var template = require(__dirname + '/template.js');
 var statistic = require(__dirname + '/statistic.js');
 
-repo.init();
+repo_hot.init();
+repo_cold.init();
 template.init();
 
 var formFilter = function (params) {
@@ -84,13 +86,13 @@ module.exports = {
             'Content-Type': 'text/html; charset=UTF-8'
         });
 
-        repo.findNotes({})
+        repo_hot.findNotes({})
             .then(function (notes) {
                 return res.end(template.statistic({
                     days: statistic.days(notes),
                     hours: statistic.hours(notes),
                     ratio: statistic.ratio(notes),
-                    subways: statistic.subways(notes, repo.subways),
+                    subways: statistic.subways(notes, repo_hot.subways),
                     check_subways: statistic.checkSubways(notes),
                     check_area: statistic.checkArea(notes),
                     check_price: statistic.checkPrice(notes),
@@ -105,7 +107,7 @@ module.exports = {
             'Content-Type': 'text/html; charset=UTF-8'
         });
 
-        repo.findNotes({})
+        repo_hot.findNotes({})
             .then(function (notes) {
                 for (var i = 0, length = notes.length; i < length; i++) {
                     notes[i]['timestamp'] = format.dateSitemap(notes[i]['timestamp']);
@@ -118,33 +120,47 @@ module.exports = {
         var reg = req.url.match(/\/rent\/.*p\.(.*)/i);
         var id = reg[1];
 
-        repo.findNote({_id: id})
-            .then(function (doc) {
-                if (null === doc) {
-                    res.writeHead(302, {'Location': '/'});
-                    return res.end();
+
+        var drow = function (doc, req, res) {
+            res.writeHead(200, {
+                'Content-Type': 'text/html; charset=UTF-8'
+            });
+
+            doc['timestamp'] = format.date(doc['timestamp']);
+            doc['price'] = format.number(doc['price']);
+
+            var phones = doc['contacts']['phones'];
+            var new_phones = [];
+            for (var p = 0, plength = phones.length; p < plength; p++) {
+                new_phones.push(format.phone(phones[p]));
+            }
+
+            doc['contacts']['phones'] = new_phones;
+
+            return res.end(template.page({
+                item: doc,
+                subways: repo_hot.subways,
+                page: 'advert'
+            }));
+        };
+
+        repo_hot.findNote({_id: id})
+            .then(function (doc_hot) {
+                if (null === doc_hot) {
+
+                    repo_cold.findNote({_id: id}).then(function (doc_cold) {
+
+                        if (null === doc_cold) {
+                            res.writeHead(302, {'Location': '/'});
+                            return res.end();
+                        }
+
+                        return drow(doc_cold, req, res);
+                    });
                 }
 
-                res.writeHead(200, {
-                    'Content-Type': 'text/html; charset=UTF-8'
-                });
+                return drow(doc_hot, req, res);
 
-                doc['timestamp'] = format.date(doc['timestamp']);
-                doc['price'] = format.number(doc['price']);
-
-                var phones = doc['contacts']['phones'];
-                var new_phones = [];
-                for (var p = 0, plength = phones.length; p < plength; p++) {
-                    new_phones.push(format.phone(phones[p]));
-                }
-
-                doc['contacts']['phones'] = new_phones;
-
-                return res.end(template.page({
-                    item: doc,
-                    subways: repo.subways,
-                    page: 'advert'
-                }));
             });
     },
     list: function (req, res) {
@@ -199,10 +215,10 @@ module.exports = {
 
         for (var i = 0, length = subway.length; i < length; i++) {
             var subway_id = subway[i];
-            if (typeof repo.subways[subway_id] === 'undefined') {
+            if (typeof repo_hot.subways[subway_id] === 'undefined') {
                 continue;
             }
-            subway_names.push(repo.subways[subway_id].name);
+            subway_names.push(repo_hot.subways[subway_id].name);
         }
 
         switch (subway_names.length) {
@@ -232,8 +248,8 @@ module.exports = {
             limit: 10
         };
 
-        var find_by_options = repo.findNotesByOptions(filter, options);
-        var find_all = repo.findNotes(filter);
+        var find_by_options = repo_hot.findNotesByOptions(filter, options);
+        var find_all = repo_hot.findNotes(filter);
 
         Promise.all([find_by_options, find_all]).then(function (result) {
 
@@ -272,7 +288,7 @@ module.exports = {
                 subway_name: subway_name,
                 items_count: unlimit_docs.length,
                 items: docs,
-                subways: repo.subways,
+                subways: repo_hot.subways,
                 pagination: pagination.paginate(page, Math.ceil(unlimit_docs.length / items_on_page)),
                 page: 'advert'
             }));
