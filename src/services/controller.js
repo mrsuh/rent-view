@@ -7,10 +7,12 @@ var format = require(__dirname + '/format.js');
 var url = require(__dirname + '/url.js');
 var template = require(__dirname + '/template.js');
 var statistic = require(__dirname + '/statistic.js');
+var cache = require(__dirname + '/cache.js');
 
 repo_hot.init();
 repo_cold.init();
 template.init();
+cache.init();
 
 var formFilter = function (params) {
     var filter = {
@@ -76,30 +78,57 @@ var formFilter = function (params) {
 
 module.exports = {
     about: function (req, res) {
-        return res.end(template.about({
+
+        cache.get('about').then(function (data) {
+            if (data) {
+                return res.end(data);
+            }
+        });
+
+        var response = template.about({
             page: 'about'
-        }));
+        });
+
+        cache.set('about', response, 600);
+
+        return res.end(response);
     },
     statistic: function (req, res) {
+
+        cache.get('statistic').then(function (data) {
+            if (data) {
+                return res.end(data);
+            }
+        });
 
         res.writeHead(200, {
             'Content-Type': 'text/html; charset=UTF-8'
         });
 
-        repo_hot.findNotes({})
-            .then(function (notes) {
-                return res.end(template.statistic({
-                    days: statistic.days(notes),
-                    hours: statistic.hours(notes),
-                    ratio: statistic.ratio(notes),
-                    subways: statistic.subways(notes, repo_hot.subways),
-                    check_subways: statistic.checkSubways(notes),
-                    check_area: statistic.checkArea(notes),
-                    check_price: statistic.checkPrice(notes),
-                    check_phone: statistic.checkPhone(notes),
-                    page: 'statistic'
-                }));
+        var all_hot = repo_hot.findNotes({});
+        var all_cold = repo_cold.findNotes({});
+
+        Promise.all([all_hot, all_cold]).then(function (result) {
+            var notes_hot = result[0];
+            var notes = result[0].concat(result[1]);
+
+            var response = template.statistic({
+                days: statistic.days(notes_hot),
+                hours: statistic.hours(notes),
+                ratio: statistic.ratio(notes),
+                subways: statistic.subways(notes, repo_hot.subways),
+                check_subways: statistic.checkSubways(notes),
+                check_area: statistic.checkArea(notes),
+                check_price: statistic.checkPrice(notes),
+                check_phone: statistic.checkPhone(notes),
+                page: 'statistic'
             });
+
+            cache.set('statistic', response, 600);
+
+            return res.end(response);
+
+        });
     },
     sitemap: function (req, res) {
 
@@ -120,6 +149,12 @@ module.exports = {
         var reg = req.url.match(/\/rent\/.*p\.(.*)/i);
         var id = reg[1];
 
+        cache.get('note_' + id).then(function (data) {
+            if (data) {
+                return res.end(data);
+            }
+        });
+
 
         var drow = function (doc, req, res) {
             res.writeHead(200, {
@@ -137,11 +172,15 @@ module.exports = {
 
             doc['contacts']['phones'] = new_phones;
 
-            return res.end(template.page({
+            var response = template.page({
                 item: doc,
                 subways: repo_hot.subways,
                 page: 'advert'
-            }));
+            });
+
+            cache.set('note_'.id, response, 600);
+
+            return res.end(response);
         };
 
         repo_hot.findNote({_id: id})
@@ -168,6 +207,14 @@ module.exports = {
         res.writeHead(200, {
             'Content-Type': 'text/html; charset=UTF-8'
         });
+
+        if ('/' === req.url) {
+            cache.get('list').then(function (data) {
+                if (data) {
+                    return res.end(data);
+                }
+            });
+        }
 
         var req_price_from = url.getParameter(req.url, 'price_from');
         var price_from = null !== req_price_from ? parseInt(req_price_from) : '';
@@ -272,7 +319,8 @@ module.exports = {
                 docs[i]['contacts']['phones'] = new_phones;
             }
 
-            return res.end(template.list({
+
+            var response = template.list({
                 req: {
                     price_from: price_from,
                     price_to: price_to,
@@ -291,7 +339,13 @@ module.exports = {
                 subways: repo_hot.subways,
                 pagination: pagination.paginate(page, Math.ceil(unlimit_docs.length / items_on_page)),
                 page: 'advert'
-            }));
+            });
+
+            if ('/' === req.url) {
+                cache.set('list', response, 60);
+            }
+
+            return res.end(response);
         });
     }
 };
