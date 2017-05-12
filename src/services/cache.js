@@ -7,7 +7,6 @@ module.exports = {
 
     init: function () {
         this.client = redis.createClient();
-
         this.client.on("error", function (err) {
             console.error("Error " + err);
         });

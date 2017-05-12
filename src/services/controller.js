@@ -127,7 +127,6 @@ module.exports = {
             cache.set('statistic', response, 600);
 
             return res.end(response);
-
         });
     },
     sitemap: function (req, res) {
