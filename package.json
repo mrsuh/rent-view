@@ -13,6 +13,7 @@
     "grunt": "^1.0.1",
     "grunt-contrib-less": "^1.4.0",
     "mongodb": "^2.2.21",
+    "redis": "^2.7.1",
     "replace-in-file": "^2.2.2"
   },
   "devDependencies": {
