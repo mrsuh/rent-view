@@ -3,6 +3,11 @@
 var dot = require('dot');
 var fs = require('fs');
 
+/**
+ *
+ * @param file
+ * @param callback
+ */
 var readFile = function (file, callback) {
 
     fs.readFile(file, function (err, data) {

@@ -1,14 +1,17 @@
 "use strict";
 
-var config = require(__dirname + '/../../config/config.js');
 var client = require('mongodb').MongoClient;
 
 module.exports = {
     db: null,
     subways: {},
 
-    init: function () {
-        this.connect().then(function(db){
+    /**
+     *
+     * @param config
+     */
+    init: function (config) {
+        this.connect(config).then(function(db){
             this.db = db;
 
             this.findSubways().then(function(subways){
@@ -21,12 +24,15 @@ module.exports = {
         }.bind(this));
     },
 
-    connect: function () {
+    /**
+     *
+     * @param config
+     * @returns {Promise}
+     */
+    connect: function (config) {
         return new Promise(function (resolve, reject) {
 
-            var conf = config.db.hot;
-
-            client.connect('mongodb://' + conf.host + ':' + conf.port + '/' + conf.database, function (err, db) {
+            client.connect('mongodb://' + config.host + ':' + config.port + '/' + config.database, function (err, db) {
                 if (err) {
                     console.error('connect to mongodb error');
                     process.exit(1);
@@ -38,6 +44,12 @@ module.exports = {
         }.bind(this));
     },
 
+    /**
+     *
+     * @param filter
+     * @param options
+     * @returns {Promise}
+     */
     findNotesByOptions: function (filter, options) {
         return new Promise(function (resolve, reject) {
             this.db.collection('note').find(filter).sort(options.order).skip(options.skip).limit(options.limit).toArray(function (err, docs) {
@@ -46,6 +58,11 @@ module.exports = {
         }.bind(this));
     },
 
+    /**
+     *
+     * @param filter
+     * @returns {Promise}
+     */
     findNotes: function (filter) {
         return new Promise(function (resolve, reject) {
             this.db.collection('note').find(filter).toArray(function (err, docs) {
@@ -54,6 +71,11 @@ module.exports = {
         }.bind(this));
     },
 
+    /**
+     *
+     * @param filter
+     * @returns {Promise}
+     */
     findSubways: function (filter) {
         return new Promise(function (resolve, reject) {
             this.db.collection('subway').find(filter).toArray(function (err, docs) {
@@ -62,7 +84,13 @@ module.exports = {
         }.bind(this));
     },
 
-    findNote: function (filter, callback) {
+    /**
+     *
+     * @param filter
+     * @param callback
+     * @returns {Promise}
+     */
+    findNote: function (filter) {
         return new Promise(function (resolve, reject) {
             this.db.collection('note').findOne(filter, function (err, doc) {
                 resolve(doc);
