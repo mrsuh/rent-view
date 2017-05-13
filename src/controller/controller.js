@@ -16,7 +16,7 @@ template.init();
 /**
  * 
  * @param params
- * @returns {{type: number}}
+ * @returns {}
  */
 var formFilter = function (params) {
     var filter = {
