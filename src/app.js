@@ -1,7 +1,7 @@
 "use strict";
 
 var http = require('http');
-var controller = require(__dirname + '/services/controller.js');
+var controller = require(__dirname + '/controller/controller.js');
 var config = require(__dirname + '/../config/config.js');
 
 var server = http.createServer(function (req, res) {

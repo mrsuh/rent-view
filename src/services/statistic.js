@@ -1,5 +1,11 @@
 "use strict";
 
+/**
+ *
+ * @param a
+ * @param b
+ * @returns {number}
+ */
 function sort(a, b) {
 
     var a_timestamp = parseInt(a.timestamp);
@@ -16,6 +22,12 @@ function sort(a, b) {
     return 0;
 }
 
+/**
+ *
+ * @param a
+ * @param b
+ * @returns {number}
+ */
 function sortByCount(a, b) {
 
     var a_count = parseFloat(a.count);
