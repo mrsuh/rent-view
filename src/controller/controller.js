@@ -16,7 +16,7 @@ template.init();
 /**
  * 
  * @param params
- * @returns {}
+ * @returns {{}}
  */
 var formFilter = function (params) {
     var filter = {
@@ -146,6 +146,11 @@ var sitemapController = function (req, res) {
         });
 };
 
+/**
+ *
+ * @param req
+ * @param res
+ */
 var noteController = function (req, res) {
     var reg = req.url.match(/\/rent\/.*p\.(.*)/i);
     var id = reg[1];
