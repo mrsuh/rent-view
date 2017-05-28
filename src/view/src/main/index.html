@@ -241,19 +241,9 @@
                     <div class="row2">
 
                         <div class="person">
-                            <a href="{{= item.contacts.person.link }}" target="_blank" rel="nofollow">{{= item.contacts.person.name
+                            <a href="{{= item.contacts.person.write }}" target="_blank" rel="nofollow" title="Написать сообщение">{{= item.contacts.person.name
                                 }}</a>
                         </div>
-
-                        {{? item.contacts.person.link.length }}
-                        <div class="write">
-                            <a href="{{= item.contacts.person.write }}" target="_blank" rel="nofollow"
-                               title="Написать сообщение">
-                                <img src="/img/contact.svg">
-                            </a>
-                        </div>
-
-                        {{?}}
 
                         {{~ item.contacts.phones :phone }}
                         <div class="phone">
