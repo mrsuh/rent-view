@@ -42,7 +42,7 @@ module.exports = function (grunt) {
                         },
                         {
                             pattern: '{{version}}',
-                            replacement: 'v1.0.1'
+                            replacement: 'v1.0.2'
                         }
                     ]
                 }
