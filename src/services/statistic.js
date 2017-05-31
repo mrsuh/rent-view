@@ -316,6 +316,11 @@ var subways = function (notes, subways) {
 
     var subways_count = [];
     for (var index in note_subways) {
+
+        if (typeof note_subways[index] === 'undefined') {
+            continue;
+        }
+
         subways_count.push({
             name: subways[index].name,
             count: (note_subways[index] / total * 100).toFixed(2),
