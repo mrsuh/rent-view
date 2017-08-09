@@ -35,6 +35,10 @@ var formFilter = function (params) {
         filter['price']['$lte'] = parseInt(params.price_to)
     }
 
+    if (params.city) {
+        filter['city'] = params.city;
+    }
+
     if (params.area_from || params.area_to) {
         filter['area'] = {};
     }
@@ -92,6 +96,22 @@ var aboutController = function (req, res) {
 
     return res.end(template.about({
         page: 'about'
+    }));
+};
+
+
+/**
+ *
+ * @param req
+ * @param res
+ */
+var notFoundController = function (req, res) {
+    res.writeHead(404, {
+        'Content-Type': 'text/html; charset=UTF-8'
+    });
+
+    return res.end(template.not_found({
+        page: '404'
     }));
 };
 
@@ -163,13 +183,13 @@ var noteController = function (req, res) {
         doc['timestamp'] = format.date(doc['timestamp']);
         doc['price'] = format.number(doc['price']);
 
-        var phones = doc['contacts']['phones'];
+        var phones = doc['contact']['phones'];
         var new_phones = [];
         for (var p = 0, plength = phones.length; p < plength; p++) {
             new_phones.push(format.phone(phones[p]));
         }
 
-        doc['contacts']['phones'] = new_phones;
+        doc['contact']['phones'] = new_phones;
 
         return res.end(template.page({
             item: doc,
@@ -207,6 +227,12 @@ var listController = function (req, res) {
         'Content-Type': 'text/html; charset=UTF-8'
     });
 
+    var regexp = /^\/([^\/]+)\/(kvartira|komnata)(\??).*/i;
+    var match = regexp.exec(req.url);
+
+    var city = match[1] ? match[1] : 'sankt-peterburg';
+    var realty = match[2] ? match[2] : 'kvartira';
+
     var req_price_from = url.getParameter(req.url, 'price_from');
     var price_from = null !== req_price_from ? parseInt(req_price_from) : '';
 
@@ -218,9 +244,6 @@ var listController = function (req, res) {
 
     var req_area_to = url.getParameter(req.url, 'area_to');
     var area_to = null !== req_area_to ? parseInt(req_area_to) : '';
-
-    var req_realty = url.getParameter(req.url, 'realty');
-    var realty = null !== req_realty ? req_realty : 'flat';
 
     var req_order = url.getParameter(req.url, 'order');
     var order = null !== req_order ? req_order : 'date';
@@ -245,7 +268,8 @@ var listController = function (req, res) {
         realty: realty,
         realty_add: realty_add,
         subway: subway,
-        photo: photo
+        photo: photo,
+        city: city
     });
 
     var subway_name = null;
@@ -283,7 +307,7 @@ var listController = function (req, res) {
     var options = {
         order: filter_order,
         skip: items_on_page * (page - 1),
-        limit: 10
+        limit: items_on_page
     };
 
     var find_by_options = db_hot.findNotesByOptions(filter, options);
@@ -301,13 +325,13 @@ var listController = function (req, res) {
             docs[i]['timestamp'] = format.datePlural(timestamp);
             docs[i]['price'] = format.number(price);
 
-            var phones = docs[i]['contacts']['phones'];
+            var phones = docs[i]['contact']['phones'];
             var new_phones = [];
             for (var p = 0, plength = phones.length; p < plength; p++) {
                 new_phones.push(format.phone(phones[p]));
             }
 
-            docs[i]['contacts']['phones'] = new_phones;
+            docs[i]['contact']['phones'] = new_phones;
         }
 
         return res.end(template.list({
@@ -321,7 +345,8 @@ var listController = function (req, res) {
                 realty_add: realty_add,
                 subway: subway,
                 photo: photo,
-                page: page
+                page: page,
+                city: city
             },
             subway_name: subway_name,
             items_count: unlimit_docs.length,
@@ -338,5 +363,6 @@ module.exports = {
     statistic: statisticController,
     sitemap: sitemapController,
     note: noteController,
-    list: listController
+    list: listController,
+    not_found: notFoundController
 };

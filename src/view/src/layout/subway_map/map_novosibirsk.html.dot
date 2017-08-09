@@ -1,0 +1,31 @@
+<div class="novosibirsk">
+<ul>
+    <li data-id="412" data-color="#0B9A58" data-name="Берёзовая роща" class="subway-station"><div class="color" style="background-color: #0B9A58"></div><span>Берёзовая роща</span></li>
+    <li data-id="416" data-color="#0B9A58" data-name="Волочаевская" class="subway-station"><div class="color" style="background-color: #0B9A58"></div><span>Волочаевская</span></li>
+    <li data-id="42" data-color="#D32939" data-name="Гагаринская" class="subway-station"><div class="color" style="background-color: #D32939"></div><span>Гагаринская</span></li>
+    <li data-id="415" data-color="#0B9A58" data-name="Доватора" class="subway-station"><div class="color" style="background-color: #0B9A58"></div><span>Доватора</span></li>
+    <li data-id="41" data-color="#D32939" data-name="Заельцовская" class="subway-station"><div class="color" style="background-color: #D32939"></div><span>Заельцовская</span></li>
+</ul>
+
+<ul>
+    <li data-id="413" data-color="#0B9A58" data-name="Золотая нива" class="subway-station"><div class="color" style="background-color: #0B9A58"></div><span>Золотая нива</span></li>
+    <li data-id="43" data-color="#D32939" data-name="Красный проспект" class="subway-station"><div class="color" style="background-color: #D32939"></div><span>Красный проспект</span></li>
+    <li data-id="411" data-color="#0B9A58" data-name="Маршала Покрышкина" class="subway-station"><div class="color" style="background-color: #0B9A58"></div><span>Маршала Покрышкина</span></li>
+    <li data-id="45" data-color="#D32939" data-name="Октябрьская" class="subway-station"><div class="color" style="background-color: #D32939"></div><span>Октябрьская</span></li>
+    <li data-id="49" data-color="#0B9A58" data-name="Площадь Гарина-Михайловского" class="subway-station"><div class="color" style="background-color: #0B9A58"></div><span>Площадь Гарина-Михайловского</span></li>
+</ul>
+
+<ul>
+    <li data-id="44" data-color="#D32939" data-name="Площадь Ленина" class="subway-station"><div class="color" style="background-color: #D32939"></div><span>Площадь Ленина</span></li>
+    <li data-id="48" data-color="#D32939" data-name="Площадь Маркса" class="subway-station"><div class="color" style="background-color: #D32939"></div><span>Площадь Маркса</span></li>
+    <li data-id="414" data-color="#D32939" data-name="Площадь Станиславского" class="subway-station"><div class="color" style="background-color: #D32939"></div><span>Площадь Станиславского</span></li>
+    <li data-id="46" data-color="#D32939" data-name="Речной вокзал" class="subway-station"><div class="color" style="background-color: #D32939"></div><span>Речной вокзал</span></li>
+    <li data-id="410" data-color="#0B9A58" data-name="Сибирская" class="subway-station"><div class="color" style="background-color: #0B9A58"></div><span>Сибирская</span></li>
+</ul>
+
+<ul>
+    <li data-id="417" data-color="#D32939" data-name="Спортивная" class="subway-station"><div class="color" style="background-color: #D32939"></div><span>Спортивная</span></li>
+    <li data-id="47" data-color="#D32939" data-name="Студенческая" class="subway-station"><div class="color" style="background-color: #D32939"></div><span>Студенческая</span></li>
+</ul>
+
+</div>

@@ -1,0 +1,207 @@
+<div class="moskva">
+<ul>
+    <li data-id="2131" data-color="#FBC81E" data-name="Авиамоторная" class="subway-station"><div class="color" style="background-color: #FBC81E"></div><span>Авиамоторная</span></li>
+    <li data-id="235" data-color="#4DBE52" data-name="Автозаводская" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><span>Автозаводская</span></li>
+    <li data-id="295" data-color="#F07025" data-name="Академическая" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Академическая</span></li>
+    <li data-id="275" data-color="#4DC6F4" data-name="Александровский сад" class="subway-station"><div class="color" style="background-color: #4DC6F4"></div><span>Александровский сад</span></li>
+    <li data-id="287" data-color="#F07025" data-name="Алексеевская" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Алексеевская</span></li>
+    <li data-id="244" data-color="#4DBE52" data-name="Алма-Атинская" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><span>Алма-Атинская</span></li>
+    <li data-id="2136" data-color="#9F9F9F" data-name="Алтуфьево" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Алтуфьево</span></li>
+    <li data-id="2159" data-color="#9F9F9F" data-name="Аннино" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Аннино</span></li>
+    <li data-id="257" data-color="#2C75C4,#4DC6F4" data-name="Арбатская" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><div class="color" style="background-color: #4DC6F4"></div><span>Арбатская</span></li>
+    <li data-id="227" data-color="#4DBE52" data-name="Аэропорт" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><span>Аэропорт</span></li>
+    <li data-id="283" data-color="#F07025" data-name="Бабушкинская" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Бабушкинская</span></li>
+    <li data-id="269" data-color="#4DC6F4" data-name="Багратионовская" class="subway-station"><div class="color" style="background-color: #4DC6F4"></div><span>Багратионовская</span></li>
+    <li data-id="2113" data-color="#89339E" data-name="Баррикадная" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Баррикадная</span></li>
+    <li data-id="260" data-color="#2C75C4" data-name="Бауманская" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Бауманская</span></li>
+    <li data-id="2111" data-color="#89339E" data-name="Беговая" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Беговая</span></li>
+    <li data-id="229" data-color="#4DBE52,#85412E" data-name="Белорусская" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><div class="color" style="background-color: #85412E"></div><span>Белорусская</span></li>
+    <li data-id="299" data-color="#F07025" data-name="Беляево" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Беляево</span></li>
+    <li data-id="2137" data-color="#9F9F9F" data-name="Бибирево" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Бибирево</span></li>
+    <li data-id="211" data-color="#D92B2C" data-name="Библиотека имени Ленина" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Библиотека имени Ленина</span></li>
+    <li data-id="2182" data-color="#B0BFE7" data-name="Битцевский парк" class="subway-station"><div class="color" style="background-color: #B0BFE7"></div><span>Битцевский парк</span></li>
+    <li data-id="2177" data-color="#A8D92D" data-name="Борисово" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Борисово</span></li>
+    <li data-id="2147" data-color="#9F9F9F" data-name="Боровицкая" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Боровицкая</span></li>
+    <li data-id="285" data-color="#F07025" data-name="Ботанический сад" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Ботанический сад</span></li>
+    <li data-id="2175" data-color="#A8D92D" data-name="Братиславская" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Братиславская</span></li>
+    <li data-id="2186" data-color="#B0BFE7" data-name="Бульвар Адмирала Ушакова" class="subway-station"><div class="color" style="background-color: #B0BFE7"></div><span>Бульвар Адмирала Ушакова</span></li>
+    <li data-id="2160" data-color="#9F9F9F" data-name="Бульвар Дмитрия Донского" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Бульвар Дмитрия Донского</span></li>
+    <li data-id="21" data-color="#D92B2C" data-name="Бульвар Рокоссовского" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Бульвар Рокоссовского</span></li>
+    <li data-id="2188" data-color="#B0BFE7" data-name="Бунинская аллея" class="subway-station"><div class="color" style="background-color: #B0BFE7"></div><span>Бунинская аллея</span></li>
+    <li data-id="2162" data-color="#A8D92D" data-name="Бутырская" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Бутырская</span></li>
+    <li data-id="286" data-color="#F07025" data-name="ВДНХ" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>ВДНХ</span></li>
+    <li data-id="2180" data-color="#80D4C9" data-name="Варшавская" class="subway-station"><div class="color" style="background-color: #80D4C9"></div><span>Варшавская</span></li>
+    <li data-id="2139" data-color="#9F9F9F" data-name="Владыкино" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Владыкино</span></li>
+    <li data-id="224" data-color="#4DBE52" data-name="Водный стадион" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><span>Водный стадион</span></li>
+    <li data-id="225" data-color="#4DBE52" data-name="Войковская" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><span>Войковская</span></li>
+    <li data-id="2117" data-color="#89339E" data-name="Волгоградский проспект" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Волгоградский проспект</span></li>
+    <li data-id="2173" data-color="#A8D92D" data-name="Волжская" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Волжская</span></li>
+    <li data-id="247" data-color="#2C75C4" data-name="Волоколамская" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Волоколамская</span></li>
+    <li data-id="216" data-color="#D92B2C" data-name="Воробьёвы горы" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Воробьёвы горы</span></li>
+    <li data-id="274" data-color="#4DC6F4" data-name="Выставочная" class="subway-station"><div class="color" style="background-color: #4DC6F4"></div><span>Выставочная</span></li>
+    <li data-id="2192" data-color="#2C75C4" data-name="Выставочный центр" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Выставочный центр</span></li>
+    <li data-id="2121" data-color="#89339E" data-name="Выхино" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Выхино</span></li>
+    <li data-id="2128" data-color="#FBC81E" data-name="Деловой центр" class="subway-station"><div class="color" style="background-color: #FBC81E"></div><span>Деловой центр</span></li>
+    <li data-id="228" data-color="#4DBE52" data-name="Динамо" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><span>Динамо</span></li>
+    <li data-id="2142" data-color="#9F9F9F" data-name="Дмитровская" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Дмитровская</span></li>
+    <li data-id="277" data-color="#85412E" data-name="Добрынинская" class="subway-station"><div class="color" style="background-color: #85412E"></div><span>Добрынинская</span></li>
+    <li data-id="242" data-color="#4DBE52" data-name="Домодедовская" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><span>Домодедовская</span></li>
+    <li data-id="2164" data-color="#A8D92D" data-name="Достоевская" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Достоевская</span></li>
+    <li data-id="2170" data-color="#A8D92D" data-name="Дубровка" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Дубровка</span></li>
+    <li data-id="2123" data-color="#89339E" data-name="Жулебино" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Жулебино</span></li>
+</ul>
+
+<ul>
+    <li data-id="2179" data-color="#A8D92D" data-name="Зябликово" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Зябликово</span></li>
+    <li data-id="264" data-color="#2C75C4" data-name="Измайловская" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Измайловская</span></li>
+    <li data-id="298" data-color="#F07025" data-name="Калужская" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Калужская</span></li>
+    <li data-id="239" data-color="#4DBE52" data-name="Кантемировская" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><span>Кантемировская</span></li>
+    <li data-id="2181" data-color="#80D4C9" data-name="Каховская" class="subway-station"><div class="color" style="background-color: #80D4C9"></div><span>Каховская</span></li>
+    <li data-id="238" data-color="#4DBE52,#80D4C9" data-name="Каширская" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><div class="color" style="background-color: #80D4C9"></div><span>Каширская</span></li>
+    <li data-id="255" data-color="#2C75C4,#4DC6F4,#85412E" data-name="Киевская" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><div class="color" style="background-color: #4DC6F4"></div><div class="color" style="background-color: #85412E"></div><span>Киевская</span></li>
+    <li data-id="291" data-color="#F07025,#89339E" data-name="Китай-город" class="subway-station"><div class="color" style="background-color: #F07025"></div><div class="color" style="background-color: #89339E"></div><span>Китай-город</span></li>
+    <li data-id="2171" data-color="#A8D92D" data-name="Кожуховская" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Кожуховская</span></li>
+    <li data-id="237" data-color="#4DBE52" data-name="Коломенская" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><span>Коломенская</span></li>
+    <li data-id="26" data-color="#D92B2C,#85412E" data-name="Комсомольская" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><div class="color" style="background-color: #85412E"></div><span>Комсомольская</span></li>
+    <li data-id="2100" data-color="#F07025" data-name="Коньково" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Коньково</span></li>
+    <li data-id="2124" data-color="#89339E" data-name="Котельники" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Котельники</span></li>
+    <li data-id="243" data-color="#4DBE52" data-name="Красногвардейская" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><span>Красногвардейская</span></li>
+    <li data-id="281" data-color="#85412E" data-name="Краснопресненская" class="subway-station"><div class="color" style="background-color: #85412E"></div><span>Краснопресненская</span></li>
+    <li data-id="25" data-color="#D92B2C" data-name="Красносельская" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Красносельская</span></li>
+    <li data-id="27" data-color="#D92B2C" data-name="Красные Ворота" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Красные Ворота</span></li>
+    <li data-id="2169" data-color="#A8D92D" data-name="Крестьянская застава" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Крестьянская застава</span></li>
+    <li data-id="212" data-color="#D92B2C" data-name="Кропоткинская" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Кропоткинская</span></li>
+    <li data-id="250" data-color="#2C75C4" data-name="Крылатское" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Крылатское</span></li>
+    <li data-id="2115" data-color="#89339E" data-name="Кузнецкий Мост" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Кузнецкий Мост</span></li>
+    <li data-id="2119" data-color="#89339E" data-name="Кузьминки" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Кузьминки</span></li>
+    <li data-id="252" data-color="#2C75C4,#4DC6F4" data-name="Кунцевская" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><div class="color" style="background-color: #4DC6F4"></div><span>Кунцевская</span></li>
+    <li data-id="259" data-color="#2C75C4,#85412E" data-name="Курская" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><div class="color" style="background-color: #85412E"></div><span>Курская</span></li>
+    <li data-id="271" data-color="#4DC6F4" data-name="Кутузовская" class="subway-station"><div class="color" style="background-color: #4DC6F4"></div><span>Кутузовская</span></li>
+    <li data-id="294" data-color="#F07025" data-name="Ленинский проспект" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Ленинский проспект</span></li>
+    <li data-id="2122" data-color="#89339E" data-name="Лермонтовский проспект" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Лермонтовский проспект</span></li>
+    <li data-id="2183" data-color="#B0BFE7" data-name="Лесопарковая" class="subway-station"><div class="color" style="background-color: #B0BFE7"></div><span>Лесопарковая</span></li>
+    <li data-id="2126" data-color="#FBC81E" data-name="Ломоносовский проспект" class="subway-station"><div class="color" style="background-color: #FBC81E"></div><span>Ломоносовский проспект</span></li>
+    <li data-id="29" data-color="#D92B2C" data-name="Лубянка" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Лубянка</span></li>
+    <li data-id="2174" data-color="#A8D92D" data-name="Люблино" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Люблино</span></li>
+    <li data-id="2129" data-color="#FBC81E" data-name="Марксистская" class="subway-station"><div class="color" style="background-color: #FBC81E"></div><span>Марксистская</span></li>
+    <li data-id="2163" data-color="#A8D92D" data-name="Марьина роща" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Марьина роща</span></li>
+    <li data-id="2176" data-color="#A8D92D" data-name="Марьино" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Марьино</span></li>
+    <li data-id="230" data-color="#4DBE52" data-name="Маяковская" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><span>Маяковская</span></li>
+    <li data-id="282" data-color="#F07025" data-name="Медведково" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Медведково</span></li>
+    <li data-id="273" data-color="#4DC6F4" data-name="Международная" class="subway-station"><div class="color" style="background-color: #4DC6F4"></div><span>Международная</span></li>
+    <li data-id="2144" data-color="#9F9F9F" data-name="Менделеевская" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Менделеевская</span></li>
+    <li data-id="2127" data-color="#FBC81E" data-name="Минская" class="subway-station"><div class="color" style="background-color: #FBC81E"></div><span>Минская</span></li>
+    <li data-id="246" data-color="#2C75C4" data-name="Митино" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Митино</span></li>
+    <li data-id="251" data-color="#2C75C4" data-name="Молодёжная" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Молодёжная</span></li>
+    <li data-id="248" data-color="#2C75C4" data-name="Мякинино" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Мякинино</span></li>
+    <li data-id="2151" data-color="#9F9F9F" data-name="Нагатинская" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Нагатинская</span></li>
+    <li data-id="2152" data-color="#9F9F9F" data-name="Нагорная" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Нагорная</span></li>
+    <li data-id="2153" data-color="#9F9F9F" data-name="Нахимовский проспект" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Нахимовский проспект</span></li>
+    <li data-id="2134" data-color="#FBC81E" data-name="Новогиреево" class="subway-station"><div class="color" style="background-color: #FBC81E"></div><span>Новогиреево</span></li>
+    <li data-id="2135" data-color="#FBC81E" data-name="Новокосино" class="subway-station"><div class="color" style="background-color: #FBC81E"></div><span>Новокосино</span></li>
+    <li data-id="233" data-color="#4DBE52" data-name="Новокузнецкая" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><span>Новокузнецкая</span></li>
+    <li data-id="280" data-color="#85412E" data-name="Новослободская" class="subway-station"><div class="color" style="background-color: #85412E"></div><span>Новослободская</span></li>
+</ul>
+
+<ul>
+    <li data-id="2103" data-color="#F07025" data-name="Новоясеневская" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Новоясеневская</span></li>
+    <li data-id="297" data-color="#F07025" data-name="Новые Черёмушки" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Новые Черёмушки</span></li>
+    <li data-id="276" data-color="#85412E,#F07025" data-name="Октябрьская" class="subway-station"><div class="color" style="background-color: #85412E"></div><div class="color" style="background-color: #F07025"></div><span>Октябрьская</span></li>
+    <li data-id="2109" data-color="#89339E" data-name="Октябрьское поле" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Октябрьское поле</span></li>
+    <li data-id="241" data-color="#4DBE52" data-name="Орехово" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><span>Орехово</span></li>
+    <li data-id="2138" data-color="#9F9F9F" data-name="Отрадное" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Отрадное</span></li>
+    <li data-id="210" data-color="#D92B2C" data-name="Охотный Ряд" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Охотный Ряд</span></li>
+    <li data-id="234" data-color="#4DBE52,#85412E" data-name="Павелецкая" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><div class="color" style="background-color: #85412E"></div><span>Павелецкая</span></li>
+    <li data-id="254" data-color="#2C75C4,#FBC81E" data-name="Парк Победы" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><div class="color" style="background-color: #FBC81E"></div><span>Парк Победы</span></li>
+    <li data-id="213" data-color="#D92B2C,#85412E" data-name="Парк культуры" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><div class="color" style="background-color: #85412E"></div><span>Парк культуры</span></li>
+    <li data-id="263" data-color="#2C75C4" data-name="Партизанская" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Партизанская</span></li>
+    <li data-id="265" data-color="#2C75C4" data-name="Первомайская" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Первомайская</span></li>
+    <li data-id="2133" data-color="#FBC81E" data-name="Перово" class="subway-station"><div class="color" style="background-color: #FBC81E"></div><span>Перово</span></li>
+    <li data-id="2140" data-color="#9F9F9F,#A8D92D" data-name="Петровско-Разумовская" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><div class="color" style="background-color: #A8D92D"></div><span>Петровско-Разумовская</span></li>
+    <li data-id="2172" data-color="#A8D92D" data-name="Печатники" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Печатники</span></li>
+    <li data-id="267" data-color="#4DC6F4" data-name="Пионерская" class="subway-station"><div class="color" style="background-color: #4DC6F4"></div><span>Пионерская</span></li>
+    <li data-id="2104" data-color="#89339E" data-name="Планерная" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Планерная</span></li>
+    <li data-id="2130" data-color="#FBC81E" data-name="Площадь Ильича" class="subway-station"><div class="color" style="background-color: #FBC81E"></div><span>Площадь Ильича</span></li>
+    <li data-id="258" data-color="#2C75C4" data-name="Площадь Революции" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Площадь Революции</span></li>
+    <li data-id="2110" data-color="#89339E" data-name="Полежаевская" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Полежаевская</span></li>
+    <li data-id="2148" data-color="#9F9F9F" data-name="Полянка" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Полянка</span></li>
+    <li data-id="2157" data-color="#9F9F9F" data-name="Пражская" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Пражская</span></li>
+    <li data-id="23" data-color="#D92B2C" data-name="Преображенская площадь" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Преображенская площадь</span></li>
+    <li data-id="2116" data-color="#89339E" data-name="Пролетарская" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Пролетарская</span></li>
+    <li data-id="218" data-color="#D92B2C" data-name="Проспект Вернадского" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Проспект Вернадского</span></li>
+    <li data-id="279" data-color="#85412E,#F07025" data-name="Проспект Мира" class="subway-station"><div class="color" style="background-color: #85412E"></div><div class="color" style="background-color: #F07025"></div><span>Проспект Мира</span></li>
+    <li data-id="296" data-color="#F07025" data-name="Профсоюзная" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Профсоюзная</span></li>
+    <li data-id="2114" data-color="#89339E" data-name="Пушкинская" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Пушкинская</span></li>
+    <li data-id="245" data-color="#2C75C4" data-name="Пятницкое шоссе" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Пятницкое шоссе</span></li>
+    <li data-id="2125" data-color="#FBC81E" data-name="Раменки" class="subway-station"><div class="color" style="background-color: #FBC81E"></div><span>Раменки</span></li>
+    <li data-id="223" data-color="#4DBE52" data-name="Речной вокзал" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><span>Речной вокзал</span></li>
+    <li data-id="288" data-color="#F07025" data-name="Рижская" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Рижская</span></li>
+    <li data-id="2168" data-color="#A8D92D" data-name="Римская" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Римская</span></li>
+    <li data-id="221" data-color="#D92B2C" data-name="Румянцево" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Румянцево</span></li>
+    <li data-id="2120" data-color="#89339E" data-name="Рязанский проспект" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Рязанский проспект</span></li>
+    <li data-id="2143" data-color="#9F9F9F" data-name="Савёловская" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Савёловская</span></li>
+    <li data-id="222" data-color="#D92B2C" data-name="Саларьево" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Саларьево</span></li>
+    <li data-id="284" data-color="#F07025" data-name="Свиблово" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Свиблово</span></li>
+    <li data-id="2154" data-color="#9F9F9F" data-name="Севастопольская" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Севастопольская</span></li>
+    <li data-id="262" data-color="#2C75C4" data-name="Семёновская" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Семёновская</span></li>
+    <li data-id="2149" data-color="#9F9F9F" data-name="Серпуховская" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Серпуховская</span></li>
+    <li data-id="253" data-color="#2C75C4" data-name="Славянский бульвар" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Славянский бульвар</span></li>
+    <li data-id="256" data-color="#2C75C4,#4DC6F4" data-name="Смоленская" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><div class="color" style="background-color: #4DC6F4"></div><span>Смоленская</span></li>
+    <li data-id="226" data-color="#4DBE52" data-name="Сокол" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><span>Сокол</span></li>
+    <li data-id="24" data-color="#D92B2C" data-name="Сокольники" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Сокольники</span></li>
+    <li data-id="2107" data-color="#89339E" data-name="Спартак" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Спартак</span></li>
+    <li data-id="215" data-color="#D92B2C" data-name="Спортивная" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Спортивная</span></li>
+    <li data-id="2166" data-color="#A8D92D" data-name="Сретенский бульвар" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Сретенский бульвар</span></li>
+    <li data-id="249" data-color="#2C75C4" data-name="Строгино" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Строгино</span></li>
+</ul>
+
+<ul>
+    <li data-id="272" data-color="#4DC6F4" data-name="Студенческая" class="subway-station"><div class="color" style="background-color: #4DC6F4"></div><span>Студенческая</span></li>
+    <li data-id="289" data-color="#F07025" data-name="Сухаревская" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Сухаревская</span></li>
+    <li data-id="2105" data-color="#89339E" data-name="Сходненская" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Сходненская</span></li>
+    <li data-id="278" data-color="#85412E,#89339E" data-name="Таганская" class="subway-station"><div class="color" style="background-color: #85412E"></div><div class="color" style="background-color: #89339E"></div><span>Таганская</span></li>
+    <li data-id="231" data-color="#4DBE52" data-name="Тверская" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><span>Тверская</span></li>
+    <li data-id="232" data-color="#4DBE52" data-name="Театральная" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><span>Театральная</span></li>
+    <li data-id="2118" data-color="#89339E" data-name="Текстильщики" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Текстильщики</span></li>
+    <li data-id="2190" data-color="#2C75C4" data-name="Телецентр" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Телецентр</span></li>
+    <li data-id="236" data-color="#4DBE52" data-name="Технопарк" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><span>Технопарк</span></li>
+    <li data-id="2141" data-color="#9F9F9F,#2C75C4" data-name="Тимирязевская" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><div class="color" style="background-color: #2C75C4"></div><span>Тимирязевская</span></li>
+    <li data-id="292" data-color="#F07025,#FBC81E" data-name="Третьяковская" class="subway-station"><div class="color" style="background-color: #F07025"></div><div class="color" style="background-color: #FBC81E"></div><span>Третьяковская</span></li>
+    <li data-id="220" data-color="#D92B2C" data-name="Тропарёво" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Тропарёво</span></li>
+    <li data-id="2165" data-color="#A8D92D" data-name="Трубная" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Трубная</span></li>
+    <li data-id="2150" data-color="#9F9F9F" data-name="Тульская" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Тульская</span></li>
+    <li data-id="290" data-color="#F07025" data-name="Тургеневская" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Тургеневская</span></li>
+    <li data-id="2106" data-color="#89339E" data-name="Тушинская" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Тушинская</span></li>
+    <li data-id="2101" data-color="#F07025" data-name="Тёплый Стан" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Тёплый Стан</span></li>
+    <li data-id="2112" data-color="#89339E" data-name="Улица 1905 года" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Улица 1905 года</span></li>
+    <li data-id="2191" data-color="#2C75C4" data-name="Улица Академика Королёва" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Улица Академика Королёва</span></li>
+    <li data-id="2158" data-color="#9F9F9F" data-name="Улица Академика Янгеля" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Улица Академика Янгеля</span></li>
+    <li data-id="2187" data-color="#B0BFE7" data-name="Улица Горчакова" class="subway-station"><div class="color" style="background-color: #B0BFE7"></div><span>Улица Горчакова</span></li>
+    <li data-id="2189" data-color="#2C75C4" data-name="Улица Милашенкова" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Улица Милашенкова</span></li>
+    <li data-id="2193" data-color="#2C75C4" data-name="Улица Сергея Эйзенштейна" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Улица Сергея Эйзенштейна</span></li>
+    <li data-id="2185" data-color="#B0BFE7" data-name="Улица Скобелевская" class="subway-station"><div class="color" style="background-color: #B0BFE7"></div><span>Улица Скобелевская</span></li>
+    <li data-id="2184" data-color="#B0BFE7" data-name="Улица Старокачаловская" class="subway-station"><div class="color" style="background-color: #B0BFE7"></div><span>Улица Старокачаловская</span></li>
+    <li data-id="217" data-color="#D92B2C" data-name="Университет" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Университет</span></li>
+    <li data-id="270" data-color="#4DC6F4" data-name="Фили" class="subway-station"><div class="color" style="background-color: #4DC6F4"></div><span>Фили</span></li>
+    <li data-id="268" data-color="#4DC6F4" data-name="Филёвский парк" class="subway-station"><div class="color" style="background-color: #4DC6F4"></div><span>Филёвский парк</span></li>
+    <li data-id="2161" data-color="#A8D92D" data-name="Фонвизинская" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Фонвизинская</span></li>
+    <li data-id="214" data-color="#D92B2C" data-name="Фрунзенская" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Фрунзенская</span></li>
+    <li data-id="240" data-color="#4DBE52" data-name="Царицыно" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><span>Царицыно</span></li>
+    <li data-id="2145" data-color="#9F9F9F" data-name="Цветной бульвар" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Цветной бульвар</span></li>
+    <li data-id="22" data-color="#D92B2C" data-name="Черкизовская" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Черкизовская</span></li>
+    <li data-id="2155" data-color="#9F9F9F" data-name="Чертановская" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Чертановская</span></li>
+    <li data-id="2146" data-color="#9F9F9F" data-name="Чеховская" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Чеховская</span></li>
+    <li data-id="28" data-color="#D92B2C" data-name="Чистые пруды" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Чистые пруды</span></li>
+    <li data-id="2167" data-color="#A8D92D" data-name="Чкаловская" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Чкаловская</span></li>
+    <li data-id="293" data-color="#F07025" data-name="Шаболовская" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Шаболовская</span></li>
+    <li data-id="2178" data-color="#A8D92D" data-name="Шипиловская" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Шипиловская</span></li>
+    <li data-id="2132" data-color="#FBC81E" data-name="Шоссе Энтузиастов" class="subway-station"><div class="color" style="background-color: #FBC81E"></div><span>Шоссе Энтузиастов</span></li>
+    <li data-id="2108" data-color="#89339E" data-name="Щукинская" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Щукинская</span></li>
+    <li data-id="266" data-color="#2C75C4" data-name="Щёлковская" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Щёлковская</span></li>
+    <li data-id="261" data-color="#2C75C4" data-name="Электрозаводская" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Электрозаводская</span></li>
+    <li data-id="219" data-color="#D92B2C" data-name="Юго-Западная" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Юго-Западная</span></li>
+    <li data-id="2156" data-color="#9F9F9F" data-name="Южная" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Южная</span></li>
+    <li data-id="2102" data-color="#F07025" data-name="Ясенево" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Ясенево</span></li>
+</ul>
+
+</div>

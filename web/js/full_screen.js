@@ -8,14 +8,14 @@ var FullScreen = function(elem)
     this.previews = [];
     this.bind_arrow = false;
 
-    document.querySelector('.btn-close').addEventListener('click', function(){this.close()}.bind(this));
+    document.querySelector('.block-photo-full-screen .btn-close').addEventListener('click', function(){this.close()}.bind(this));
     document.addEventListener('keydown', function(e){
         var evt = e || window.event;
         var isEscape = false;
         if ('key' in evt) {
-            isEscape = (evt.key == 'Escape' || evt.key == 'Esc');
+            isEscape = (evt.key === 'Escape' || evt.key === 'Esc');
         } else {
-            isEscape = (evt.keyCode == 27);
+            isEscape = (evt.keyCode === 27);
         }
         if (isEscape) {
             this.close();

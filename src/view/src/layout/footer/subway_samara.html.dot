@@ -1,0 +1,25 @@
+<ul>
+    <li><a href="/samara/{{= it.req.realty }}?subway=51">Алабинская</a></li>
+    <li><a href="/samara/{{= it.req.realty }}?subway=58">Безымянка</a></li>
+</ul>
+
+<ul>
+    <li><a href="/samara/{{= it.req.realty }}?subway=54">Гагаринская</a></li>
+    <li><a href="/samara/{{= it.req.realty }}?subway=59">Кировская</a></li>
+</ul>
+
+<ul>
+    <li><a href="/samara/{{= it.req.realty }}?subway=53">Московская</a></li>
+    <li><a href="/samara/{{= it.req.realty }}?subway=57">Победа</a></li>
+</ul>
+
+<ul>
+    <li><a href="/samara/{{= it.req.realty }}?subway=52">Российская</a></li>
+    <li><a href="/samara/{{= it.req.realty }}?subway=56">Советская</a></li>
+</ul>
+
+<ul>
+    <li><a href="/samara/{{= it.req.realty }}?subway=55">Спортивная</a></li>
+    <li><a href="/samara/{{= it.req.realty }}?subway=510">Юнгородок</a></li>
+</ul>
+

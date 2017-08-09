@@ -1,0 +1,24 @@
+<div class="samara">
+<ul>
+    <li data-id="51" data-color="#D32939" data-name="Алабинская" class="subway-station"><div class="color" style="background-color: #D32939"></div><span>Алабинская</span></li>
+    <li data-id="58" data-color="#D32939" data-name="Безымянка" class="subway-station"><div class="color" style="background-color: #D32939"></div><span>Безымянка</span></li>
+    <li data-id="54" data-color="#D32939" data-name="Гагаринская" class="subway-station"><div class="color" style="background-color: #D32939"></div><span>Гагаринская</span></li>
+</ul>
+
+<ul>
+    <li data-id="59" data-color="#D32939" data-name="Кировская" class="subway-station"><div class="color" style="background-color: #D32939"></div><span>Кировская</span></li>
+    <li data-id="53" data-color="#D32939" data-name="Московская" class="subway-station"><div class="color" style="background-color: #D32939"></div><span>Московская</span></li>
+    <li data-id="57" data-color="#D32939" data-name="Победа" class="subway-station"><div class="color" style="background-color: #D32939"></div><span>Победа</span></li>
+</ul>
+
+<ul>
+    <li data-id="52" data-color="#D32939" data-name="Российская" class="subway-station"><div class="color" style="background-color: #D32939"></div><span>Российская</span></li>
+    <li data-id="56" data-color="#D32939" data-name="Советская" class="subway-station"><div class="color" style="background-color: #D32939"></div><span>Советская</span></li>
+    <li data-id="55" data-color="#D32939" data-name="Спортивная" class="subway-station"><div class="color" style="background-color: #D32939"></div><span>Спортивная</span></li>
+</ul>
+
+<ul>
+    <li data-id="510" data-color="#D32939" data-name="Юнгородок" class="subway-station"><div class="color" style="background-color: #D32939"></div><span>Юнгородок</span></li>
+</ul>
+
+</div>

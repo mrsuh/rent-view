@@ -1,4 +1,4 @@
-var Subway = function () {
+var SubwaySpb = function () {
     this.colors = [];
     this.colors[1] = '#1a85c3';
     this.colors[2] = '#a05da6';
@@ -21,33 +21,32 @@ var Subway = function () {
     this.setStationName();
 };
 
-Subway.prototype.setClassActive = function (elem) {
+SubwaySpb.prototype.setClassActive = function (elem) {
     var elements = [];
 
     var transfer_id = elem.getAttribute('data-transfer-id');
     if (transfer_id) {
-        elements = this.block_subway.querySelectorAll('.subway [data-transfer-id="' + transfer_id + '"]');
+        elements = this.block_subway.querySelectorAll('.subway-station[data-transfer-id="' + transfer_id + '"]');
     } else {
         elements.push(elem);
     }
 
     if (elem.getAttribute('class').indexOf("is-selected") > -1) {
         for (var i = 0, length = elements.length; i < length; i++) {
-            elements[i].setAttribute('class', 'subway__station');
+            elements[i].setAttribute('class', 'subway-station');
         }
     } else {
         for (var i = 0, length = elements.length; i < length; i++) {
-            elements[i].setAttribute('class', 'subway__station is-selected');
+            elements[i].setAttribute('class', 'subway-station is-selected');
         }
     }
 
     return true;
 };
 
-Subway.prototype.setBlockStations = function () {
+SubwaySpb.prototype.setBlockStations = function () {
 
     while (this.block_stations.firstChild) {
-        console.info('remove');
         this.block_stations.removeChild(this.block_stations.firstChild);
     }
 
@@ -68,15 +67,11 @@ Subway.prototype.setBlockStations = function () {
         elem_station.appendChild(elem_label);
         elem_station.appendChild(elem_name);
 
-        elem_name.addEventListener('click', function (e) {
-            this.remove(e);
-        }.bind(this));
-
         this.block_stations.appendChild(elem_station);
     }
 };
 
-Subway.prototype.setStationName = function () {
+SubwaySpb.prototype.setStationName = function () {
 
     var name = '';
     switch (this.active_stations.length) {
@@ -94,14 +89,14 @@ Subway.prototype.setStationName = function () {
     this.btn_subway.innerText = name;
 };
 
-Subway.prototype.getActiveStations = function () {
+SubwaySpb.prototype.getActiveStations = function () {
 
-    var selected_stations = this.block_subway.querySelectorAll('.subway__station.is-selected');
+    var selected_stations = this.block_subway.querySelectorAll('.subway-station.is-selected');
 
     this.active_stations = [];
     for (var i = 0, length = selected_stations.length; i < length; i++) {
 
-        if (selected_stations[i].tagName !== 'g') {
+        if (selected_stations[i].tagName.toUpperCase() !== 'G') {
            continue;
         }
 
@@ -117,16 +112,14 @@ Subway.prototype.getActiveStations = function () {
     }
 };
 
-
-Subway.prototype.add = function (e) {
+SubwaySpb.prototype.addStation = function (e) {
 
     while (this.block_stations.firstChild) {
         this.block_stations.removeChild(this.block_stations.firstChild);
     }
 
     var station = e.target;
-
-    if (station.tagName !== 'G') {
+    if (station.tagName.toUpperCase() !== 'G') {
         station = station.parentNode;
     }
 
@@ -139,7 +132,7 @@ Subway.prototype.add = function (e) {
     this.setStationName();
 };
 
-Subway.prototype.remove = function (e) {
+SubwaySpb.prototype.removeStation = function (e) {
     var station = e.target;
 
     if (station.tagName !== 'G') {
@@ -148,18 +141,18 @@ Subway.prototype.remove = function (e) {
 
     var id = station.getAttribute('data-id');
 
-    var elem = this.block_subway.querySelector('.subway [data-id="' + id + '"]');
+    var elem = this.block_subway.querySelector('.subway-station[data-id="' + id + '"]');
 
     var elements = [];
     var transfer_id = elem.getAttribute('data-transfer-id');
     if (transfer_id) {
-        elements = this.block_subway.querySelectorAll('.subway [data-transfer-id="' + transfer_id + '"]');
+        elements = this.block_subway.querySelectorAll('.subway-station[data-transfer-id="' + transfer_id + '"]');
     } else {
         elements.push(elem);
     }
 
     for(var i = 0, length = elements.length; i < length; i ++ ) {
-        elements[i].setAttribute('class', 'subway__station');
+        elements[i].setAttribute('class', 'subway-station');
     }
 
     this.getActiveStations();
@@ -169,3 +162,24 @@ Subway.prototype.remove = function (e) {
     this.setStationName();
 };
 
+SubwaySpb.prototype.clearStations = function (e) {
+    var selected_stations = this.block_subway.querySelectorAll('.subway-station.is-selected');
+
+    this.active_stations = [];
+    for (var i = 0, length = selected_stations.length; i < length; i++) {
+
+        if (selected_stations[i].tagName !== 'g') {
+            continue;
+        }
+
+        if(null === selected_stations[i].querySelector('text')) {
+            continue;
+        }
+
+        this.active_stations.push({
+            name: selected_stations[i].querySelector('text').innerHTML,
+            id: parseInt(selected_stations[i].getAttribute('data-id')),
+            line: parseInt(selected_stations[i].getAttribute('data-line'))
+        });
+    }
+};

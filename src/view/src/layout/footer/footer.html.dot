@@ -1,88 +1,100 @@
 <div class="block-footer">
     <div class="content">
 
-        <ul class="links">
-            <li><a href="/?realty=flat&realty_add=1&page=1">Однокомнатные квартиры</a></li>
-            <li><a href="/?realty=flat&realty_add=2&page=1">Двухкомнатные квартиры</a></li>
-            <li><a href="/?realty=flat&realty_add=3&page=1">Трехкомнатные квартиры</a></li>
-            <li><a href="/?realty=flat&realty_add=4&page=1">Четырехкомнатные квартиры</a></li>
-            <li><a href="/?realty=flat&realty_add=5&page=1">Студии</a></li>
-            <li><a href="/?realty=room&page=1">Комнаты</a></li>
-        </ul>
+        <div class="row">
 
-        <ul class="links">
-            <li><a href="/?realty=flat&subway=117&page=1">Автово</a></li>
-            <li><a href="/?realty=flat&subway=159&page=1">Адмиралтейская</a></li>
-            <li><a href="/?realty=flat&subway=13&page=1">Академическая</a></li>
-            <li><a href="/?realty=flat&subway=114&page=1">Балтийская</a></li>
-            <li><a href="/?realty=flat&subway=164&page=1">Бухарестская</a></li>
-            <li><a href="/?realty=flat&subway=138&page=1">Василеостровская</a></li>
-            <li><a href="/?realty=flat&subway=111&page=1">Владимирская</a></li>
-            <li><a href="/?realty=flat&subway=163&page=1">Волковская</a></li>
-            <li><a href="/?realty=flat&subway=17&page=1">Выборгская</a></li>
-            <li><a href="/?realty=flat&subway=127&page=1">Горьковская</a></li>
-            <li><a href="/?realty=flat&subway=139&page=1">Гостиный двор</a></li>
-            <li><a href="/?realty=flat&subway=12&page=1">Гражданский проспект</a></li>
-            <li><a href="/?realty=flat&subway=11&page=1">Девяткино</a></li>
-            <li><a href="/?realty=flat&subway=148&page=1">Достоевская</a></li>
-            <li><a href="/?realty=flat&subway=142&page=1">Елизаровская</a></li>
-            <li><a href="/?realty=flat&subway=161&page=1">Звенигородская</a></li>
-        </ul>
-        <ul class="links">
-            <li><a href="/?realty=flat&subway=135&page=1">Звёздная</a></li>
-            <li><a href="/?realty=flat&subway=116&page=1">Кировский завод</a></li>
-            <li><a href="/?realty=flat&subway=154&page=1">Комендантский проспект</a></li>
-            <li><a href="/?realty=flat&subway=156&page=1">Крестовский остров</a></li>
-            <li><a href="/?realty=flat&subway=136&page=1">Купчино</a></li>
-            <li><a href="/?realty=flat&subway=118&page=1">Ленинский проспект</a></li>
-            <li><a href="/?realty=flat&subway=16&page=1">Лесная</a></li>
-            <li><a href="/?realty=flat&subway=151&page=1">Ладожская</a></li>
-            <li><a href="/?realty=flat&subway=149&page=1">Лиговский проспект</a></li>
-            <li><a href="/?realty=flat&subway=143&page=1">Ломоносовская</a></li>
-            <li><a href="/?realty=flat&subway=165&page=1">Международная</a></li>
-            <li><a href="/?realty=flat&subway=140&page=1">Маяковская</a></li>
-            <li><a href="/?realty=flat&subway=134&page=1">Московская</a></li>
-            <li><a href="/?realty=flat&subway=131&page=1">Московские ворота</a></li>
-            <li><a href="/?realty=flat&subway=128&page=1">Невский проспект</a></li>
-            <li><a href="/?realty=flat&subway=115&page=1">Нарвская</a></li>
-        </ul>
-        <ul class="links">
-            <li><a href="/?realty=flat&subway=150&page=1">Новочеркасская</a></li>
-            <li><a href="/?realty=flat&subway=162&page=1">Обводный канал</a></li>
-            <li><a href="/?realty=flat&subway=145&page=1">Обухово</a></li>
-            <li><a href="/?realty=flat&subway=122&page=1">Озерки</a></li>
-            <li><a href="/?realty=flat&subway=126&page=1">Петроградская</a></li>
-            <li><a href="/?realty=flat&subway=133&page=1">Парк Победы</a></li>
-            <li><a href="/?realty=flat&subway=120&page=1">Парнас</a></li>
-            <li><a href="/?realty=flat&subway=124&page=1">Пионерская</a></li>
-            <li><a href="/?realty=flat&subway=141&page=1">Площадь Александра Невского</a></li>
-            <li><a href="/?realty=flat&subway=110&page=1">Площадь Восстания</a></li>
-            <li><a href="/?realty=flat&subway=18&page=1">Площадь Ленина</a></li>
-            <li><a href="/?realty=flat&subway=15&page=1">Площадь Мужества</a></li>
-            <li><a href="/?realty=flat&subway=14&page=1">Политехническая</a></li>
-            <li><a href="/?realty=flat&subway=137&page=1">Приморская</a></li>
-            <li><a href="/?realty=flat&subway=144&page=1">Пролетарская</a></li>
-            <li><a href="/?realty=flat&subway=152&page=1">Проспект Большевиков</a></li>
-        </ul>
-        <ul class="links">
-            <li><a href="/?realty=flat&subway=119&page=1">Проспект Ветеранов</a></li>
-            <li><a href="/?realty=flat&subway=121&page=1">Проспект Просвещения</a></li>
-            <li><a href="/?realty=flat&subway=112&page=1">Пушкинская</a></li>
-            <li><a href="/?realty=flat&subway=129&page=1">Сенная площадь</a></li>
-            <li><a href="/?realty=flat&subway=160&page=1">Садовая</a></li>
-            <li><a href="/?realty=flat&subway=147&page=1">Спасская</a></li>
-            <li><a href="/?realty=flat&subway=158&page=1">Спортивная</a></li>
-            <li><a href="/?realty=flat&subway=155&page=1">Старая Деревня</a></li>
-            <li><a href="/?realty=flat&subway=113&page=1">Технологический институт</a></li>
-            <li><a href="/?realty=flat&subway=123&page=1">Удельная</a></li>
-            <li><a href="/?realty=flat&subway=153&page=1">Улица Дыбенко</a></li>
-            <li><a href="/?realty=flat&subway=130&page=1">Фрунзенская</a></li>
-            <li><a href="/?realty=flat&subway=19&page=1">Чернышевская</a></li>
-            <li><a href="/?realty=flat&subway=157&page=1">Чкаловская</a></li>
-            <li><a href="/?realty=flat&subway=125&page=1">Чёрная речка</a></li>
-            <li><a href="/?realty=flat&subway=132&page=1">Электросила</a></li>
-            <li><a href="/?realty=flat&subway=146&page=1">Рыбацкое</a></li>
-        </ul>
+            <ul class="links">
+                <li><a href="/?realty=flat&realty_add=1&page=1">Однокомнатные квартиры</a></li>
+                <li><a href="/?realty=flat&realty_add=2&page=1">Двухкомнатные квартиры</a></li>
+                <li><a href="/?realty=flat&realty_add=3&page=1">Трехкомнатные квартиры</a></li>
+                <li><a href="/?realty=flat&realty_add=4&page=1">Четырехкомнатные квартиры</a></li>
+                <li><a href="/?realty=flat&realty_add=5&page=1">Студии</a></li>
+                <li><a href="/?realty=room&page=1">Комнаты</a></li>
+            </ul>
+
+            <ul>
+                <li><a href="/sankt-peterburg/{{= it.req.realty }}">Санкт Перетербург</a></li>
+                <li><a href="/moskva/{{= it.req.realty }}">Москва</a></li>
+                <li><a href="/volgograd/{{= it.req.realty }}">Волгоград</a></li>
+                <li><a href="/voronez/{{= it.req.realty }}">Воронеж</a></li>
+                <li><a href="/ekaterinburg/{{= it.req.realty }}">Екатеринбург</a></li>
+                <li><a href="/kazan/{{= it.req.realty }}">Казань</a></li>
+            </ul>
+
+            <ul>
+                <li><a href="/krasnodar/{{= it.req.realty }}">Краснодар</a></li>
+                <li><a href="/krasnoyarsk/{{= it.req.realty }}">Красноярск</a></li>
+                <li><a href="/nizny-novgorod/{{= it.req.realty }}">Нижний Новгород</a></li>
+                <li><a href="/novosibirsk/{{= it.req.realty }}">Новосибирск</a></li>
+                <li><a href="/omsk/{{= it.req.realty }}">Омск</a></li>
+                <li><a href="/perm/{{= it.req.realty }}">Пермь</a></li>
+            </ul>
+
+            <ul>
+                <li><a href="/rostov-na-donu/{{= it.req.realty }}">Ростов-на-Дону</a></li>
+                <li><a href="/samara/{{= it.req.realty }}">Самара</a></li>
+                <li><a href="/saratov/{{= it.req.realty }}">Саратов</a></li>
+                <li><a href="/taganrog/{{= it.req.realty }}">Таганрог</a></li>
+                <li><a href="/tobolsk/{{= it.req.realty }}">Тобольск</a></li>
+                <li><a href="/toliati/{{= it.req.realty }}">Тольятти</a></li>
+            </ul>
+
+            <ul>
+                <li><a href="/tumen/{{= it.req.realty }}">Тюмень</a></li>
+                <li><a href="/ufa/{{= it.req.realty }}">Уфа</a></li>
+                <li><a href="/chelabinsk/{{= it.req.realty }}">Челябинск</a></li>
+            </ul>
+
+        </div>
+
+        <div class="row">
+
+            {{? it.req.city === 'ekaterinburg' }}
+
+            <hr>
+
+            <!-- @import src/view/dist/layout/footer/subway_ekaterinburg.html.dot -->
+
+            {{?? it.req.city === 'kazan' }}
+
+            <hr>
+
+            <!-- @import src/view/dist/layout/footer/subway_kazan.html.dot -->
+
+            {{?? it.req.city === 'moskva' }}
+
+            <hr>
+
+            <!-- @import src/view/dist/layout/footer/subway_moskva.html.dot -->
+
+
+            {{?? it.req.city === 'nizny-novgorod' }}
+
+            <hr>
+
+            <!-- @import src/view/dist/layout/footer/subway_nizny_novgorod.html.dot -->
+
+            {{?? it.req.city === 'novosibirsk' }}
+
+            <hr>
+
+            <!-- @import src/view/dist/layout/footer/subway_novosibirsk.html.dot -->
+
+            {{?? it.req.city === 'samara' }}
+
+            <hr>
+
+            <!-- @import src/view/dist/layout/footer/subway_samara.html.dot -->
+
+            {{?? it.req.city === 'sankt-peterburg' }}
+
+            <hr>
+
+            <!-- @import src/view/dist/layout/footer/subway_sankt_peterburg.html.dot -->
+
+            {{?}}
+
+        <div>
 
         <hr>
 
@@ -126,7 +138,7 @@
         </div>
 
         <div class="pages">
-            <a href="/">Объявления</a>
+            <a href="/{{= it.req.city }}/{{= it.req.realty }}">Объявления</a>
             <a href="/statistic">Статистика</a>
             <a href="/about">О сайте</a>
             <span class="version">{{version}}</span>
