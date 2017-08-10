@@ -156,8 +156,7 @@ subway_map = new SubwayMap();
 subway_list = new SubwayList();
 subway_search = new SubwaySearch();
 
-function addSubwayStation(subway_station)
-{
+function addSubwayStation(subway_station) {
     subway_map.activeStation(subway_station);
     var elem_station = subway_list.addStation(subway_station);
 
@@ -208,6 +207,34 @@ function switchSubwayStation(e) {
     addSubwayStation(subway_station);
 }
 
+function searchHints(e) {
+
+    var stations = subway_search.search(e.target.value);
+
+    subway_search.removeHints();
+
+    for (var i = 0, length = stations.length; i < length && i < 5; i++) {
+        var hint = subway_search.addHint(stations[i]);
+
+        hint.addEventListener('click', function (e) {
+
+            var subway_station = subway_search.getStationById(e.target.getAttribute('data-id'));
+
+            subway_search.removeHints();
+            document.querySelector('.search-input').value = '';
+
+            if (!subway_list.hasStation(subway_station)) {
+                addSubwayStation(subway_station);
+            }
+        });
+
+        hint.addEventListener('mouseover', function (e) {
+            subway_search.activeHint(e.target);
+        });
+    }
+}
+
+
 document.addEventListener("DOMContentLoaded", function () {
 
     var elem_subway_stations = document.querySelectorAll('.subway-station');
@@ -234,24 +261,30 @@ document.addEventListener("DOMContentLoaded", function () {
         elem_order[i].addEventListener('click', search);
     }
 
-    document.querySelector('.search-input').addEventListener('input', function(e){
+    document.querySelector('.search-input').addEventListener('input', searchHints);
 
-        var stations = subway_search.search(e.target.value);
+    document.querySelector('.search-input').addEventListener('keydown', function (event) {
 
-        subway_search.removeHints();
-        for (var i = 0, length = stations.length; i < length && i < 5; i++) {
-            var hint = subway_search.addHint(stations[i]);
+        if (parseInt(event.keyCode) === 40) {
+            subway_search.activeNextHint();
+        }
 
-            hint.addEventListener('click', function(e){
-                var subway_station = subway_search.getStationById(e.target.getAttribute('data-id'));
+        if (parseInt(event.keyCode) === 38) {
+            subway_search.activePrevHint();
+        }
 
-                subway_search.removeHints();
-                document.querySelector('.search-input').value = '';
+        if (parseInt(event.keyCode) === 13) {
+            var hint = subway_search.getActiveHint();
 
-                if (!subway_list.hasStation(subway_station)) {
-                    addSubwayStation(subway_station);
-                }
-            })
+            var subway_station = subway_search.getStationById(hint.getAttribute('data-id'));
+
+            subway_search.removeHints();
+            document.querySelector('.search-input').value = '';
+
+            if (!subway_list.hasStation(subway_station)) {
+                addSubwayStation(subway_station);
+            }
+
         }
     });
 
