@@ -98,7 +98,15 @@ var changeRealty = function () {
     }
 };
 
-var switchSubway = function () {
+var switchSubway = function (e) {
+
+    console.info(111);
+
+    if(e.target.hasClass('disabled')) {
+
+        return false;
+    }
+
     var block_switch = document.querySelector('.block-search-filters-switch');
     var block_subway = document.querySelector('.block-filter-subway');
     var btn_block_subway = document.querySelector('.filter-subway');
@@ -107,9 +115,9 @@ var switchSubway = function () {
         block_subway.removeClass('show');
         block_switch.removeClass('show');
         btn_block_subway.removeClass('active');
-        document.body.style.overflow = 'auto';
+         document.body.style.overflow = 'auto';
     } else {
-        document.body.style.overflow = 'hidden';
+         document.body.style.overflow = 'hidden';
         block_subway.addClass('show');
         block_switch.addClass('show');
         btn_block_subway.addClass('active');
@@ -155,9 +163,12 @@ function lazyLoadImages() {
 subway_map = new SubwayMap();
 subway_list = new SubwayList();
 subway_search = new SubwaySearch();
+subway_list_check = new SubwayListCheck();
 
-function addSubwayStation(subway_station) {
+function activeSubwayStation(subway_station) {
+
     subway_map.activeStation(subway_station);
+    subway_list_check.activeStation(subway_station);
     var elem_station = subway_list.addStation(subway_station);
 
     var btn_remove = elem_station.querySelector('.btn-remove');
@@ -169,7 +180,7 @@ function addSubwayStation(subway_station) {
     }
 
     if (!subway_list.isEmpty()) {
-        document.querySelector('.block-subway .btn-clear').removeClass('hide');
+        document.querySelector('.block-subway .stations-btn-clear').removeClass('hide');
     }
 
     btn_remove.addEventListener('click', function (e) {
@@ -183,28 +194,35 @@ function addSubwayStation(subway_station) {
         subway_list.removeStation(station);
 
         if (subway_list.isEmpty()) {
-            document.querySelector('.block-subway .btn-clear').addClass('hide');
+            document.querySelector('.block-subway .stations-btn-clear').addClass('hide');
         }
 
     }.bind(this));
 }
 
-function switchSubwayStation(e) {
-    var subway_station = subway_map.getStationFromElement(e.target);
+function switchSubwayStation(event) {
+
+    var elem = event.target;
+    if(!elem.hasAttribute('data-id')) {
+        elem = event.target.parentNode;
+    }
+
+    var subway_station = subway_search.getStationById(elem.getAttribute('data-id'));
 
     if (subway_list.hasStation(subway_station)) {
 
         subway_map.inactiveStation(subway_station);
+        subway_list_check.inactiveStation(subway_station);
         subway_list.removeStation(subway_station);
 
         if (subway_list.isEmpty()) {
-            document.querySelector('.block-subway .btn-clear').addClass('hide');
+            document.querySelector('.block-subway .stations-btn-clear').addClass('hide');
         }
 
         return false;
     }
 
-    addSubwayStation(subway_station);
+    activeSubwayStation(subway_station);
 }
 
 function searchHints(e) {
@@ -218,22 +236,32 @@ function searchHints(e) {
 
         hint.addEventListener('click', function (e) {
 
-            var subway_station = subway_search.getStationById(e.target.getAttribute('data-id'));
+            var elem = e.target;
+            if(!e.target.hasClass('hint')) {
+                elem = e.target.parentNode;
+            }
+
+            var subway_station = subway_search.getStationById(elem.getAttribute('data-id'));
 
             subway_search.removeHints();
-            document.querySelector('.search-input').value = '';
+            document.querySelector('.stations-search').value = '';
 
             if (!subway_list.hasStation(subway_station)) {
-                addSubwayStation(subway_station);
+                activeSubwayStation(subway_station);
             }
         });
 
         hint.addEventListener('mouseover', function (e) {
-            subway_search.activeHint(e.target);
+
+            var elem = e.target;
+            if(!e.target.hasClass('hint')) {
+                elem = e.target.parentNode;
+            }
+
+            subway_search.activeHint(elem);
         });
     }
 }
-
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -246,6 +274,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!subway_search.hasStation(station)) {
             subway_search.addStation(station);
+
+            var elem_station_check = subway_list_check.addStation(station);
+
+            elem_station_check.addEventListener('click', switchSubwayStation);
         }
 
         elem_station.addEventListener('click', switchSubwayStation);
@@ -261,9 +293,37 @@ document.addEventListener("DOMContentLoaded", function () {
         elem_order[i].addEventListener('click', search);
     }
 
-    document.querySelector('.search-input').addEventListener('input', searchHints);
+    document.querySelector('.stations-search').addEventListener('input', searchHints);
+    // document.querySelector('.search-input').addEventListener('blur', function(){
+    //      subway_search.clear();
+    // });
 
-    document.querySelector('.search-input').addEventListener('keydown', function (event) {
+    document.querySelector('.stations-btn-show-check-list').addEventListener('click', function(){
+
+        var btn = document.querySelector('.stations-btn-show-check-list');
+
+        var all = !btn.hasClass('all');
+
+        btn.innerText = all ? btn.getAttribute('data-active') : btn.getAttribute('data-all');
+
+        all ? btn.addClass('all') : btn.removeClass('all');
+
+        var elem_subway_stations = document.querySelectorAll('.stations-list-check .station');
+        for (var i = 0, length = elem_subway_stations.length; i < length; i++) {
+
+            var elem_station = elem_subway_stations[i];
+
+            if(all) {
+                elem_station.removeClass('hide')
+            } else {
+                if(!elem_station.hasClass('active')) {
+                    elem_station.addClass('hide');
+                }
+            }
+        }
+    });
+
+    document.querySelector('.stations-search').addEventListener('keydown', function (event) {
 
         if (parseInt(event.keyCode) === 40) {
             subway_search.activeNextHint();
@@ -279,12 +339,11 @@ document.addEventListener("DOMContentLoaded", function () {
             var subway_station = subway_search.getStationById(hint.getAttribute('data-id'));
 
             subway_search.removeHints();
-            document.querySelector('.search-input').value = '';
+            document.querySelector('.stations-search').value = '';
 
             if (!subway_list.hasStation(subway_station)) {
                 addSubwayStation(subway_station);
             }
-
         }
     });
 
@@ -294,17 +353,22 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('.filter-realty').addEventListener('change', changeRealty);
     document.querySelector('.filter-subway').addEventListener('click', switchSubway);
     document.querySelector('.block-subway .btn-close').addEventListener('click', switchSubway);
+    document.querySelector('.block-subway .stations-arrow-close').addEventListener('click', switchSubway);
     document.querySelector('.search-btn').addEventListener('click', function () {
         search({page: 1});
     });
-    document.querySelector('.search-subway-btn').addEventListener('click', function () {
-        search({page: 1});
-    });
 
-    document.querySelector('.block-subway .btn-clear').addEventListener('click', function (e) {
+    document.querySelector('.block-subway .stations-btn-clear').addEventListener('click', function (e) {
         e.target.addClass('hide');
         subway_list.clear();
         subway_map.clear();
+        subway_list_check.inactiveAllStations();
+    });
+
+    document.querySelector('.block-subway .stations-btn-clear-check-list').addEventListener('click', function (e) {
+        subway_list.clear();
+        subway_map.clear();
+        subway_list_check.inactiveAllStations();
     });
 
     document.querySelector('.filter-area .from').addEventListener('keydown', searchOnPressEnter);

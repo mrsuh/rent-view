@@ -86,58 +86,65 @@
                 </select>
 
                 <span class="filter-area {{? it.req.realty === 'kvartira'}} hide {{?}}" >
-        <input title="Площадь комнаты от" type="text" placeholder="от" class="from" value="{{= it.req.area_from }}">
-        <input title="Площадь комнаты до" type="text" placeholder="до" class="to" value="{{= it.req.area_to }}">
-        <span class="currency">м²</span>
+                    <input title="Площадь комнаты от" type="text" placeholder="от" class="from" value="{{= it.req.area_from }}">
+                    <input title="Площадь комнаты до" type="text" placeholder="до" class="to" value="{{= it.req.area_to }}">
+                    <span class="currency">м²</span>
                 </span>
 
                 <span class="filter-realty-add {{? it.req.realty === 'komnata' }} hide {{?}}">
 
-            <input id="realty-0" type="checkbox"
-                   {{? it.req.realty_add.indexOf("5") !== -1 }} checked {{?}} value="5">
-            <label for="realty-0" title="Квартиры студии">Студия</label>
+                <input id="realty-0" type="checkbox"
+                       {{? it.req.realty_add.indexOf("5") !== -1 }} checked {{?}} value="5">
+                <label for="realty-0" title="Квартиры студии">Студия</label>
 
-        <input id="realty-1" type="checkbox"
-               {{? it.req.realty_add.indexOf("1") !== -1 }} checked {{?}} value="1">
-         <label for="realty-1" title="Однокомнатные квартиры">1</label>
+                <input id="realty-1" type="checkbox"
+                       {{? it.req.realty_add.indexOf("1") !== -1 }} checked {{?}} value="1">
+                <label for="realty-1" title="Однокомнатные квартиры">1</label>
 
-        <input id="realty-2" type="checkbox"
-               {{? it.req.realty_add.indexOf("2") !== -1 }} checked {{?}} value="2">
-         <label for="realty-2" title="Двухкомнатные квартиры">2</label>
+                <input id="realty-2" type="checkbox"
+                       {{? it.req.realty_add.indexOf("2") !== -1 }} checked {{?}} value="2">
+                <label for="realty-2" title="Двухкомнатные квартиры">2</label>
 
-        <input id="realty-3" type="checkbox"
-               {{? it.req.realty_add.indexOf("3") !== -1 }} checked {{?}} value="3">
-         <label for="realty-3" title="Трехкомнатные квартиры">3</label>
+                <input id="realty-3" type="checkbox"
+                       {{? it.req.realty_add.indexOf("3") !== -1 }} checked {{?}} value="3">
+                <label for="realty-3" title="Трехкомнатные квартиры">3</label>
 
-        <input id="realty-4" type="checkbox"
-               {{? it.req.realty_add.indexOf("4") !== -1 }} checked {{?}} value="4">
-        <label for="realty-4" title="Многокомнатнтые квартиры">4+</label>
-                    <label>Комнат</label>
+                <input id="realty-4" type="checkbox"
+                       {{? it.req.realty_add.indexOf("4") !== -1 }} checked {{?}} value="4">
+                <label for="realty-4" title="Многокомнатнтые квартиры">4+</label>
+                <label>Комнат</label>
 
-            </span>
-                <button title="Метро" type="button" class="btn filter-subway">{{= it.subway_name }}</button>
-            </div>
+                {{##def.subway_disabled: {{?
+                it.req.city !== 'ekaterinburg' &&
+                it.req.city !== 'kazan' &&
+                it.req.city !== 'moskva' &&
+                it.req.city !== 'nizny-novgorod' &&
+                it.req.city !== 'novosibirsk' &&
+                it.req.city !== 'samara' &&
+                it.req.city !== 'sankt-peterburg' }}disabled{{?}} #}}
 
-            <div class="row">
-                <span class="filter-price">
-                <input title="Цена от" type="text" placeholder="от" class="from" value="{{= it.req.price_from }}">
-                <input title="Цена до" type="text" placeholder="до" class="to" value="{{= it.req.price_to }}">
-                <span class="currency">&#8381;</span>
-            </span>
+                </span>
+                    <button title="Метро" type="button" class="btn filter-subway {{# def.subway_disabled }}">{{= it.subway_name }}</button>
+                </div>
+
+                <div class="row">
+                    <span class="filter-price">
+                    <input title="Цена от" type="text" placeholder="от" class="from" value="{{= it.req.price_from }}">
+                    <input title="Цена до" type="text" placeholder="до" class="to" value="{{= it.req.price_to }}">
+                    <span class="currency">&#8381;</span>
+                </span>
                 <span class="filter-photo">
-
-            <input type="checkbox" id="filter_photo" {{? it.req.photo }} checked {{?}}>
-            <label title="Искать с фото" for="filter_photo">Искать с фото</label>
-            </span>
+                    <input type="checkbox" id="filter_photo" {{? it.req.photo }} checked {{?}}>
+                    <label title="Искать с фото" for="filter_photo">Искать с фото</label>
+                </span>
 
                 <button title="Найти" type="button" class="btn search-btn">Найти</button>
 
             </div>
-
         </div>
 
         <div class="block-search-filters-switch">
-        <div class="search search-subway-btn">найти</div>
+
             <div class="block-filter-subway">
                 <div class="block-subway">
 
@@ -147,42 +154,52 @@
 
                     <div class="map">
 
-                    {{? it.req.city === 'ekaterinburg' }}
+                        {{? it.req.city === 'ekaterinburg' }}
 
-                               <!-- @import src/view/dist/layout/subway_map/map_ekaterinburg.html.dot -->
+                        <!-- @import src/view/dist/layout/subway_map/map_ekaterinburg.html.dot -->
 
-                               {{?? it.req.city === 'kazan' }}
+                        {{?? it.req.city === 'kazan' }}
 
-                               <!-- @import src/view/dist/layout/subway_map/map_kazan.html.dot -->
+                        <!-- @import src/view/dist/layout/subway_map/map_kazan.html.dot -->
 
-                               {{?? it.req.city === 'moskva' }}
+                        {{?? it.req.city === 'moskva' }}
 
-                               <!-- @import src/view/dist/layout/subway_map/map_moskva.html.dot -->
+                        <!-- @import src/view/dist/layout/subway_map/map_moskva.html.dot -->
 
-                               {{?? it.req.city === 'nizny-novgorod' }}
+                        {{?? it.req.city === 'nizny-novgorod' }}
 
-                               <!-- @import src/view/dist/layout/subway_map/map_nizny_novgorod.html.dot -->
+                        <!-- @import src/view/dist/layout/subway_map/map_nizny_novgorod.html.dot -->
 
-                               {{?? it.req.city === 'novosibirsk' }}
+                        {{?? it.req.city === 'novosibirsk' }}
 
-                               <!-- @import src/view/dist/layout/subway_map/map_novosibirsk.html.dot -->
+                        <!-- @import src/view/dist/layout/subway_map/map_novosibirsk.html.dot -->
 
-                               {{?? it.req.city === 'samara' }}
+                        {{?? it.req.city === 'samara' }}
 
-                               <!-- @import src/view/dist/layout/subway_map/map_samara.html.dot -->
+                        <!-- @import src/view/dist/layout/subway_map/map_samara.html.dot -->
 
-                               {{?? it.req.city === 'sankt-peterburg' }}
+                        {{?? it.req.city === 'sankt-peterburg' }}
 
-                               <!-- @import src/view/dist/layout/subway_map/map_sankt_peterburg.html.dot -->
+                        <!-- @import src/view/dist/layout/subway_map/map_sankt_peterburg.html.dot -->
 
-                               {{?}}
+                        {{?}}
+
                     </div>
 
                     <div class="stations">
-                        <input type="text" class="search-input" placeholder="Название станции"></input>
-                        <div class="search-list hide"></div>
-                        <div class="list"></div>
-                        <span class="btn-clear hide">Очистить всё</div>
+                        <div class="stations-header">
+                            <span class="stations-arrow-close"></span>
+                            <input type="text" class="stations-search" placeholder="Название станции"></input>
+                            <div class="stations-control">
+                                <span class="stations-btn-show-check-list all" data-active="Показать активные" data-all="Показать всё">Показать активные</span>
+                                <span class="stations-btn-clear-check-list">Очистить всё</span>
+                            </div>
+                        </div>
+
+                        <div class="stations-hints hide"></div>
+                        <div class="stations-list"></div>
+                        <div class="stations-list-check"></div>
+                        <span class="stations-btn-clear hide">Очистить всё</div>
                     </div>
                 </div>
 
@@ -256,25 +273,16 @@
                     <li><a href="/volgograd/{{= it.req.realty }}" class="city {{= it.req.city === 'volgograd' ? 'active' : '' }}" data-value="volgograd">Волгоград</a></li>
                     <li><a href="/voronez/{{= it.req.realty }}" class="city {{= it.req.city === 'voronez' ? 'active' : '' }}" data-value="voronez">Воронеж</a></li>
                     <li><a href="/ekaterinburg/{{= it.req.realty }}" class="city {{= it.req.city === 'ekaterinburg' ? 'active' : '' }}" data-value="ekaterinburg">Екатеринбург</a></li>
-                </ul>
-
-                <ul>
                     <li><a href="/kazan/{{= it.req.realty }}" class="city {{= it.req.city === 'kazan' ? 'active' : '' }}" data-value="kazan">Казань</a></li>
                     <li><a href="/krasnodar/{{= it.req.realty }}" class="city {{= it.req.city === 'krasnodar' ? 'active' : '' }}" data-value="krasnodar">Краснодар</a></li>
                     <li><a href="/krasnoyarsk/{{= it.req.realty }}" class="city {{= it.req.city === 'krasnoyarsk' ? 'active' : '' }}" data-value="krasnoyarsk">Красноярск</a></li>
                     <li><a href="/nizny-novgorod/{{= it.req.realty }}" class="city {{= it.req.city === 'nizny-novgorod' ? 'active' : '' }}" data-value="nizny-novgorod">Нижний Новгород</a></li>
                     <li><a href="/novosibirsk/{{= it.req.realty }}" class="city {{= it.req.city === 'novosibirsk' ? 'active' : '' }}" data-value="novosibirsk">Новосибирск</a></li>
-                </ul>
-
-                <ul>
                     <li><a href="/omsk/{{= it.req.realty }}" class="city {{= it.req.city === 'omsk' ? 'active' : '' }}" data-value="omsk">Омск</a></li>
                     <li><a href="/perm/{{= it.req.realty }}" class="city {{= it.req.city === 'perm' ? 'active' : '' }}" data-value="perm">Пермь</a></li>
                     <li><a href="/rostov-na-donu/{{= it.req.realty }}" class="city {{= it.req.city === 'rostov-na-donu' ? 'active' : '' }}" data-value="rostov-na-donu">Ростов-на-Дону</a></li>
                     <li><a href="/samara/{{= it.req.realty }}" class="city {{= it.req.city === 'samara' ? 'active' : '' }}" data-value="samara">Самара</a></li>
                     <li><a href="/saratov/{{= it.req.realty }}" class="city {{= it.req.city === 'saratov' ? 'active' : '' }}" data-value="saratov">Саратов</a></li>
-                </ul>
-
-                <ul>
                     <li><a href="/taganrog/{{= it.req.realty }}" class="city {{= it.req.city === 'taganrog' ? 'active' : '' }}" data-value="taganrog">Таганрог</a></li>
                     <li><a href="/tobolsk/{{= it.req.realty }}" class="city {{= it.req.city === 'tobolsk' ? 'active' : '' }}" data-value="tobolsk">Тобольск</a></li>
                     <li><a href="/toliati/{{= it.req.realty }}" class="city {{= it.req.city === 'toliati' ? 'active' : '' }}" data-value="toliati">Тольятти</a></li>
@@ -352,13 +360,13 @@
 
                     <label for="order-date">Сортировка:</label>
 
-                        <input id="order-date" type="radio" name="order" {{? it.req.order=== 'date' }} checked="checked" {{?}}
-                                            value="date">
-                        <label title="Сортировать по дате добавления" for="order-date">по дате добавления</label>
+                    <input id="order-date" type="radio" name="order" {{? it.req.order=== 'date' }} checked="checked" {{?}}
+                                        value="date">
+                    <label title="Сортировать по дате добавления" for="order-date">по дате добавления</label>
 
-                        <input id="order-price" type="radio" name="order" {{? it.req.order=== 'price' }} checked="checked" {{?}}
-                                            value="price">
-                        <label title="Сортировать по цене" for="order-price">по цене</label>
+                    <input id="order-price" type="radio" name="order" {{? it.req.order=== 'price' }} checked="checked" {{?}}
+                                        value="price">
+                    <label title="Сортировать по цене" for="order-price">по цене</label>
 
                 </div>
 

@@ -159,8 +159,8 @@
     <g class="subway__line">
         <polyline points="22,148 65,191 374,191 476.5,293.5
     476.5,476"/>
-        <g class="subway-station {{? it.req.subway.indexOf('6') !== -1 }}active{{?}}"
-           data-transfer-id="1" data-id="141" data-line="3" data-color="#0B9A58" data-name="" data-name="Пл. Александра Невского">
+        <g class="subway-station {{? it.req.subway.indexOf('141') !== -1 }}active{{?}}"
+           data-transfer-id="1" data-id="141" data-line="3" data-color="#0B9A58" data-name="Пл. Александра Невского">
             <circle cx="442.5" cy="259.5" r="5"/>
         </g>
         <g class="subway-station {{? it.req.subway.indexOf('137') !== -1 }}active{{?}}"

@@ -49,9 +49,6 @@
     <li data-id="2164" data-color="#A8D92D" data-name="Достоевская" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Достоевская</span></li>
     <li data-id="2170" data-color="#A8D92D" data-name="Дубровка" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Дубровка</span></li>
     <li data-id="2123" data-color="#89339E" data-name="Жулебино" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Жулебино</span></li>
-</ul>
-
-<ul>
     <li data-id="2179" data-color="#A8D92D" data-name="Зябликово" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Зябликово</span></li>
     <li data-id="264" data-color="#2C75C4" data-name="Измайловская" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Измайловская</span></li>
     <li data-id="298" data-color="#F07025" data-name="Калужская" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Калужская</span></li>
@@ -101,9 +98,6 @@
     <li data-id="2135" data-color="#FBC81E" data-name="Новокосино" class="subway-station"><div class="color" style="background-color: #FBC81E"></div><span>Новокосино</span></li>
     <li data-id="233" data-color="#4DBE52" data-name="Новокузнецкая" class="subway-station"><div class="color" style="background-color: #4DBE52"></div><span>Новокузнецкая</span></li>
     <li data-id="280" data-color="#85412E" data-name="Новослободская" class="subway-station"><div class="color" style="background-color: #85412E"></div><span>Новослободская</span></li>
-</ul>
-
-<ul>
     <li data-id="2103" data-color="#F07025" data-name="Новоясеневская" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Новоясеневская</span></li>
     <li data-id="297" data-color="#F07025" data-name="Новые Черёмушки" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Новые Черёмушки</span></li>
     <li data-id="276" data-color="#85412E,#F07025" data-name="Октябрьская" class="subway-station"><div class="color" style="background-color: #85412E"></div><div class="color" style="background-color: #F07025"></div><span>Октябрьская</span></li>
@@ -153,9 +147,6 @@
     <li data-id="215" data-color="#D92B2C" data-name="Спортивная" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Спортивная</span></li>
     <li data-id="2166" data-color="#A8D92D" data-name="Сретенский бульвар" class="subway-station"><div class="color" style="background-color: #A8D92D"></div><span>Сретенский бульвар</span></li>
     <li data-id="249" data-color="#2C75C4" data-name="Строгино" class="subway-station"><div class="color" style="background-color: #2C75C4"></div><span>Строгино</span></li>
-</ul>
-
-<ul>
     <li data-id="272" data-color="#4DC6F4" data-name="Студенческая" class="subway-station"><div class="color" style="background-color: #4DC6F4"></div><span>Студенческая</span></li>
     <li data-id="289" data-color="#F07025" data-name="Сухаревская" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Сухаревская</span></li>
     <li data-id="2105" data-color="#89339E" data-name="Сходненская" class="subway-station"><div class="color" style="background-color: #89339E"></div><span>Сходненская</span></li>
@@ -202,6 +193,5 @@
     <li data-id="219" data-color="#D92B2C" data-name="Юго-Западная" class="subway-station"><div class="color" style="background-color: #D92B2C"></div><span>Юго-Западная</span></li>
     <li data-id="2156" data-color="#9F9F9F" data-name="Южная" class="subway-station"><div class="color" style="background-color: #9F9F9F"></div><span>Южная</span></li>
     <li data-id="2102" data-color="#F07025" data-name="Ясенево" class="subway-station"><div class="color" style="background-color: #F07025"></div><span>Ясенево</span></li>
-</ul>
-
+<ul>
 </div>

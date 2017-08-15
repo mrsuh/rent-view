@@ -1,6 +1,6 @@
 var SubwayList = function () {
     this.list = [];
-    this.block = document.querySelector('.stations .list');
+    this.block = document.querySelector('.stations .stations-list');
 };
 
 SubwayList.prototype.clear = function () {

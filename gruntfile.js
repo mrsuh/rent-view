@@ -62,6 +62,7 @@ module.exports = function (grunt) {
                         'web/js/slider.js',
                         'web/js/subway/map.js',
                         'web/js/subway/list.js',
+                        'web/js/subway/list_check.js',
                         'web/js/subway/search.js',
                         'web/js/subway/station.js',
                         'web/js/url.js'

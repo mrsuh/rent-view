@@ -1,6 +1,6 @@
 var SubwaySearch = function () {
     this.list = [];
-    this.block = document.querySelector('.block-subway .search-list');
+    this.block = document.querySelector('.block-subway .stations-hints');
     this.index_hint = 0;
     this.hints = [];
 };
@@ -85,11 +85,24 @@ SubwaySearch.prototype.getStationById = function (id) {
 };
 
 SubwaySearch.prototype.addHint = function (station) {
+
     this.block.removeClass('hide');
     var elem_hint = document.createElement('div');
     elem_hint.className = 'hint';
-    elem_hint.innerText = station.name;
     elem_hint.setAttribute('data-id', station.id);
+
+    for (var i = 0, length = station.colors.length; i < length; i++) {
+        var elem_color = document.createElement('div');
+        elem_color.className = 'label';
+        elem_color.style.backgroundColor = station.colors[i];
+        elem_hint.appendChild(elem_color);
+    }
+
+    var elem_label = document.createElement('div');
+    elem_label.className = 'name';
+    elem_label.innerText = station.name;
+
+    elem_hint.appendChild(elem_label);
 
     this.block.appendChild(elem_hint);
 
