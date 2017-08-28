@@ -3,4 +3,5 @@ var SubwayStation = function () {
     this.name = '';
     this.line = null;
     this.colors = [];
+    this.active = false;
 };

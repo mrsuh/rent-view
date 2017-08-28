@@ -4,12 +4,12 @@
         <div class="row">
 
             <ul class="links">
-                <li><a href="/?realty=flat&realty_add=1&page=1">Однокомнатные квартиры</a></li>
-                <li><a href="/?realty=flat&realty_add=2&page=1">Двухкомнатные квартиры</a></li>
-                <li><a href="/?realty=flat&realty_add=3&page=1">Трехкомнатные квартиры</a></li>
-                <li><a href="/?realty=flat&realty_add=4&page=1">Четырехкомнатные квартиры</a></li>
-                <li><a href="/?realty=flat&realty_add=5&page=1">Студии</a></li>
-                <li><a href="/?realty=room&page=1">Комнаты</a></li>
+                <li><a href="/{{= it.req.city }}/kvartira?realty_add=1">Однокомнатные квартиры</a></li>
+                <li><a href="/{{= it.req.city }}/kvartira?realty_add=2">Двухкомнатные квартиры</a></li>
+                <li><a href="/{{= it.req.city }}/kvartira?realty_add=3">Трехкомнатные квартиры</a></li>
+                <li><a href="/{{= it.req.city }}/kvartira?realty_add=4">Четырехкомнатные квартиры</a></li>
+                <li><a href="/{{= it.req.city }}/kvartira?realty_add=5">Студии</a></li>
+                <li><a href="/{{= it.req.city }}/komnata">Комнаты</a></li>
             </ul>
 
             <ul>
@@ -47,48 +47,46 @@
 
         </div>
 
+        <hr>
+
+                        {{?
+                        it.req.city === 'ekaterinburg' ||
+                        it.req.city === 'kazan' ||
+                        it.req.city === 'moskva' ||
+                        it.req.city === 'nizny-novgorod' ||
+                        it.req.city === 'novosibirsk' ||
+                        it.req.city === 'samara' ||
+                        it.req.city === 'sankt-peterburg' }}
+
+
+
         <div class="row">
 
             {{? it.req.city === 'ekaterinburg' }}
-
-            <hr>
 
             <!-- @import src/view/dist/layout/footer/subway_ekaterinburg.html.dot -->
 
             {{?? it.req.city === 'kazan' }}
 
-            <hr>
-
             <!-- @import src/view/dist/layout/footer/subway_kazan.html.dot -->
 
             {{?? it.req.city === 'moskva' }}
 
-            <hr>
-
             <!-- @import src/view/dist/layout/footer/subway_moskva.html.dot -->
 
-
             {{?? it.req.city === 'nizny-novgorod' }}
-
-            <hr>
 
             <!-- @import src/view/dist/layout/footer/subway_nizny_novgorod.html.dot -->
 
             {{?? it.req.city === 'novosibirsk' }}
 
-            <hr>
-
             <!-- @import src/view/dist/layout/footer/subway_novosibirsk.html.dot -->
 
             {{?? it.req.city === 'samara' }}
 
-            <hr>
-
             <!-- @import src/view/dist/layout/footer/subway_samara.html.dot -->
 
             {{?? it.req.city === 'sankt-peterburg' }}
-
-            <hr>
 
             <!-- @import src/view/dist/layout/footer/subway_sankt_peterburg.html.dot -->
 
@@ -97,6 +95,8 @@
         <div>
 
         <hr>
+
+        {{?}}
 
         <div class="text">
             SocRent - это автоматический сервис, который собирает объявления из популярных социальных сетей<br>

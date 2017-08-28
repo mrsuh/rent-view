@@ -34,7 +34,7 @@ module.exports = function (grunt) {
                     ]
                 }
             },
-            footer: {
+            import: {
                 files: {
                     'src/view/dist/': 'src/view/dist/**'
                 },

@@ -100,8 +100,6 @@ var changeRealty = function () {
 
 var switchSubway = function (e) {
 
-    console.info(111);
-
     if(e.target.hasClass('disabled')) {
 
         return false;
@@ -197,7 +195,11 @@ function activeSubwayStation(subway_station) {
             document.querySelector('.block-subway .stations-btn-clear').addClass('hide');
         }
 
+        setStationName();
+
     }.bind(this));
+
+    setStationName();
 }
 
 function switchSubwayStation(event) {
@@ -224,6 +226,19 @@ function switchSubwayStation(event) {
 
     activeSubwayStation(subway_station);
 }
+
+setStationName = function () {
+    var elem = document.querySelector('.filter-subway');
+    var name = '';
+
+    if(subway_list.isEmpty()) {
+        name = 'Метро';
+    } else {
+        name = 'м. ' + subway_list.list[0].name.substr(0,5) + '...';
+    }
+
+    elem.innerText = name;
+};
 
 function searchHints(e) {
 
@@ -278,6 +293,10 @@ document.addEventListener("DOMContentLoaded", function () {
             var elem_station_check = subway_list_check.addStation(station);
 
             elem_station_check.addEventListener('click', switchSubwayStation);
+        }
+
+        if(station.active) {
+            activeSubwayStation(station);
         }
 
         elem_station.addEventListener('click', switchSubwayStation);
@@ -342,7 +361,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector('.stations-search').value = '';
 
             if (!subway_list.hasStation(subway_station)) {
-                addSubwayStation(subway_station);
+                switchSubwayStation(subway_station);
             }
         }
     });
@@ -363,12 +382,14 @@ document.addEventListener("DOMContentLoaded", function () {
         subway_list.clear();
         subway_map.clear();
         subway_list_check.inactiveAllStations();
+        setStationName();
     });
 
     document.querySelector('.block-subway .stations-btn-clear-check-list').addEventListener('click', function (e) {
         subway_list.clear();
         subway_map.clear();
         subway_list_check.inactiveAllStations();
+        setStationName();
     });
 
     document.querySelector('.filter-area .from').addEventListener('keydown', searchOnPressEnter);
@@ -382,13 +403,11 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener('scroll', lazyLoadImages);
 
     var sliders = document.querySelectorAll('.slider');
-
     for (var i = 0, length = sliders.length; i < length; i++) {
         new Slider(sliders[i]);
     }
 
     var texts = document.querySelectorAll('.row5 p');
-
     for (var i = 0, length = texts.length; i < length; i++) {
         new Collapse(texts[i]);
     }
@@ -396,7 +415,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var fullScreen = new FullScreen(document.querySelector('.block-photo-full-screen'));
 
     var previews = document.querySelectorAll('.row4 .previews .preview');
-
     for (var i = 0, length = previews.length; i < length; i++) {
         previews[i].addEventListener('click', function (e) {
             fullScreen.initOnEvent(e)

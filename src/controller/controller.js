@@ -14,7 +14,7 @@ db_hot.init(config.db.hot);
 template.init();
 
 /**
- * 
+ *
  * @param params
  * @returns {{}}
  */
@@ -69,7 +69,7 @@ var formFilter = function (params) {
         };
     }
 
-    if (params.realty && params.realty === 'room') {
+    if (params.realty && 'komnata' === params.realty) {
         filter['type'] = 0;
     } else if (params.realty_add.length) {
         var realty_ids = [];
@@ -85,7 +85,7 @@ var formFilter = function (params) {
 };
 
 /**
- * 
+ *
  * @param req
  * @param res
  */
@@ -95,7 +95,11 @@ var aboutController = function (req, res) {
     });
 
     return res.end(template.about({
-        page: 'about'
+        page: 'about',
+        req: {
+            city: 'sankt-peterburg',
+            realty: 'kvartira'
+        }
     }));
 };
 
@@ -116,7 +120,7 @@ var notFoundController = function (req, res) {
 };
 
 /**
- * 
+ *
  * @param req
  * @param res
  */
@@ -147,7 +151,7 @@ var statisticController = function (req, res) {
 };
 
 /**
- * 
+ *
  * @param req
  * @param res
  */
@@ -218,20 +222,24 @@ var noteController = function (req, res) {
 };
 
 /**
- * 
+ *
  * @param req
  * @param res
  */
 var listController = function (req, res) {
-    res.writeHead(200, {
-        'Content-Type': 'text/html; charset=UTF-8'
-    });
 
     var regexp = /^\/([^\/]+)\/(kvartira|komnata)(\??).*/i;
     var match = regexp.exec(req.url);
 
     var city = match[1] ? match[1] : 'sankt-peterburg';
     var realty = match[2] ? match[2] : 'kvartira';
+
+    res.setHeader('X-City', city);
+    res.setHeader('X-Realty', realty);
+
+    res.writeHead(200, {
+        'Content-Type': 'text/html; charset=UTF-8'
+    });
 
     var req_price_from = url.getParameter(req.url, 'price_from');
     var price_from = null !== req_price_from ? parseInt(req_price_from) : '';
@@ -272,26 +280,16 @@ var listController = function (req, res) {
         city: city
     });
 
-    var subway_name = null;
-    var subway_names = [];
+    var subway_name = 'Метро';
+    if (subway.length) {
+        for (var i = 0, length = subway.length; i < length; i++) {
+            var subway_id = subway[i];
 
-    for (var i = 0, length = subway.length; i < length; i++) {
-        var subway_id = subway[i];
-        if (typeof db_hot.subways[subway_id] === 'undefined') {
-            continue;
+            if (typeof db_hot.subways[subway_id] !== 'undefined') {
+                subway_name = 'м. ' + db_hot.subways[subway_id].name.substr(0, 5) + '...';
+                break;
+            }
         }
-        subway_names.push(db_hot.subways[subway_id].name);
-    }
-
-    switch (subway_names.length) {
-        case 0:
-            subway_name = 'Метро';
-            break;
-        case 1:
-            subway_name = 'м. ' + subway_names[0];
-            break;
-        default:
-            subway_name = 'м. ' + subway_names[0] + ', ...';
     }
 
     var filter_order = {};

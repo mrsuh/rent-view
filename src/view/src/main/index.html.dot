@@ -551,6 +551,6 @@
 <script defer src="/js/common.min.js?v1"></script>
 <script defer src="/js/main.min.js?v1"></script>
 
-<!-- @import src/view/dist/layout/metrika.html -->
+<!-- @import src/view/dist/layout/metrika.html.dot -->
 
 </html>

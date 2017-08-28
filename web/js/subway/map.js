@@ -9,13 +9,12 @@ SubwayMap.prototype.getStationFromElement = function (elem) {
         elem = elem.parentNode;
     }
 
-    var elem_text = elem.querySelector('text');
-
     var station = new SubwayStation();
     station.id = elem.getAttribute('data-id');
     station.name = elem.getAttribute('data-name');
     station.line = elem.getAttribute('data-line');
     station.colors = elem.getAttribute('data-color').split(',');
+    station.active = elem.getAttribute('class').match(/active/);
 
     return station;
 };

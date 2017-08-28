@@ -426,6 +426,6 @@ Highcharts.chart('chart_check_phone', {
 });
 </script>
 
-<!-- @import src/view/dist/layout/metrika.html -->
+<!-- @import src/view/dist/layout/metrika.html.dot -->
 
 </html>
