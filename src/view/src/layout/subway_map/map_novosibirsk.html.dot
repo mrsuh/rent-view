@@ -1,0 +1,21 @@
+<div class="novosibirsk">
+<ul>
+    <li data-id="412" data-color="#0B9A58" data-name="Берёзовая роща" class="subway-station {{? it.req.subway.indexOf('412') !== -1 }}active{{?}}"><div class="color" style="background-color: #0B9A58"></div><span>Берёзовая роща</span></li>
+    <li data-id="416" data-color="#0B9A58" data-name="Волочаевская" class="subway-station {{? it.req.subway.indexOf('416') !== -1 }}active{{?}}"><div class="color" style="background-color: #0B9A58"></div><span>Волочаевская</span></li>
+    <li data-id="42" data-color="#D32939" data-name="Гагаринская" class="subway-station {{? it.req.subway.indexOf('42') !== -1 }}active{{?}}"><div class="color" style="background-color: #D32939"></div><span>Гагаринская</span></li>
+    <li data-id="415" data-color="#0B9A58" data-name="Доватора" class="subway-station {{? it.req.subway.indexOf('415') !== -1 }}active{{?}}"><div class="color" style="background-color: #0B9A58"></div><span>Доватора</span></li>
+    <li data-id="41" data-color="#D32939" data-name="Заельцовская" class="subway-station {{? it.req.subway.indexOf('41') !== -1 }}active{{?}}"><div class="color" style="background-color: #D32939"></div><span>Заельцовская</span></li>
+    <li data-id="413" data-color="#0B9A58" data-name="Золотая нива" class="subway-station {{? it.req.subway.indexOf('413') !== -1 }}active{{?}}"><div class="color" style="background-color: #0B9A58"></div><span>Золотая нива</span></li>
+    <li data-id="43" data-color="#D32939" data-name="Красный проспект" class="subway-station {{? it.req.subway.indexOf('43') !== -1 }}active{{?}}"><div class="color" style="background-color: #D32939"></div><span>Красный проспект</span></li>
+    <li data-id="411" data-color="#0B9A58" data-name="Маршала Покрышкина" class="subway-station {{? it.req.subway.indexOf('411') !== -1 }}active{{?}}"><div class="color" style="background-color: #0B9A58"></div><span>Маршала Покрышкина</span></li>
+    <li data-id="45" data-color="#D32939" data-name="Октябрьская" class="subway-station {{? it.req.subway.indexOf('45') !== -1 }}active{{?}}"><div class="color" style="background-color: #D32939"></div><span>Октябрьская</span></li>
+    <li data-id="49" data-color="#0B9A58" data-name="Площадь Гарина-Михайловского" class="subway-station {{? it.req.subway.indexOf('49') !== -1 }}active{{?}}"><div class="color" style="background-color: #0B9A58"></div><span>Площадь Гарина-Михайловского</span></li>
+    <li data-id="44" data-color="#D32939" data-name="Площадь Ленина" class="subway-station {{? it.req.subway.indexOf('44') !== -1 }}active{{?}}"><div class="color" style="background-color: #D32939"></div><span>Площадь Ленина</span></li>
+    <li data-id="48" data-color="#D32939" data-name="Площадь Маркса" class="subway-station {{? it.req.subway.indexOf('48') !== -1 }}active{{?}}"><div class="color" style="background-color: #D32939"></div><span>Площадь Маркса</span></li>
+    <li data-id="414" data-color="#D32939" data-name="Площадь Станиславского" class="subway-station {{? it.req.subway.indexOf('414') !== -1 }}active{{?}}"><div class="color" style="background-color: #D32939"></div><span>Площадь Станиславского</span></li>
+    <li data-id="46" data-color="#D32939" data-name="Речной вокзал" class="subway-station {{? it.req.subway.indexOf('46') !== -1 }}active{{?}}"><div class="color" style="background-color: #D32939"></div><span>Речной вокзал</span></li>
+    <li data-id="410" data-color="#0B9A58" data-name="Сибирская" class="subway-station {{? it.req.subway.indexOf('410') !== -1 }}active{{?}}"><div class="color" style="background-color: #0B9A58"></div><span>Сибирская</span></li>
+    <li data-id="417" data-color="#D32939" data-name="Спортивная" class="subway-station {{? it.req.subway.indexOf('417') !== -1 }}active{{?}}"><div class="color" style="background-color: #D32939"></div><span>Спортивная</span></li>
+    <li data-id="47" data-color="#D32939" data-name="Студенческая" class="subway-station {{? it.req.subway.indexOf('47') !== -1 }}active{{?}}"><div class="color" style="background-color: #D32939"></div><span>Студенческая</span></li>
+<ul>
+</div>

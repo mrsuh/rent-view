@@ -1,3 +1,4 @@
 /node_modules
 /.idea/*
 /config/config.js
+src/view/dist

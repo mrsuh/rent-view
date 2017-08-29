@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
    new Slider(document.querySelector('.block-card-preview .slider'));
 
    var full_screen = new FullScreen(document.querySelector('.block-card-photo-full-screen'));
-
     document.getElementById('js_full_view').addEventListener('click', function(){
         full_screen.init(document.querySelector('.block-card-preview .active'));
     }.bind(this));

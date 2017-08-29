@@ -19,8 +19,19 @@ var server = http.createServer(function (req, res) {
         case null !== req.url.match(/\/statistic.*/i):
             controller.statistic(req, res);
             break;
-        default:
+        case null !== req.url.match(/^\/([^\/]+)\/(kvartira|komnata)(\??).*/i):
             controller.list(req, res);
+            break;
+        case null !== req.url.match(/(\/|)/i):
+            req.url = '/sankt-peterburg/kvartira';
+            controller.list(req, res);
+            break;
+        case null !== req.url.match(/^\/404$/i):
+            controller.not_found(req, res);
+            break;
+        default:
+            res.writeHead(302, {'Location': '/404'});
+            res.end();
             break;
     }
 });

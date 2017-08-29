@@ -40,7 +40,7 @@
 
 <body>
 
-<!-- @import src/view/dist/layout/header.html -->
+<!-- @import src/view/dist/layout/header/header.html.dot -->
 
 <div class="block-about">
     <h3>Что такое SocRent?</h3>
@@ -142,10 +142,10 @@
     </div>
 
 </div>
-<!-- @import src/view/dist/layout/footer.html -->
+<!-- @import src/view/dist/layout/footer/footer.html.dot -->
 
 </body>
 
-<!-- @import src/view/dist/layout/metrika.html -->
+<!-- @import src/view/dist/layout/metrika.html.dot -->
 
 </html>

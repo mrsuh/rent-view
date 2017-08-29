@@ -1,0 +1,354 @@
+<svg class="sankt-peterburg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 636 502">
+    <g class="subway__line">
+        <polyline points="227.5,11.5 227.5,497"/>
+        <g class="subway-station {{? it.req.subway.indexOf('121') !== -1 }}active{{?}}"
+           data-id="121" data-line="1" data-color="#2280BD" data-name="Пр-т Просвещения">
+            <circle cx="227.5" cy="32" r="5"/>
+            <text x="239" y="35">Пр-т Просвещения</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('120') !== -1 }}active{{?}}"
+           data-id="120" data-line="1" data-color="#2280BD" data-name="Парнас">
+            <circle cx="227.5" cy="11.5" r="5"/>
+            <text x="239" y="14.5">Парнас</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('136') !== -1  }}active{{?}}"
+           data-id="136" data-line="1" data-color="#2280BD" data-name="Купчино">
+            <circle cx="227.5" cy="497" r="5"/>
+            <text x="239" y="500">Купчино</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('135') !== -1  }}active{{?}}"
+           data-id="135" data-line="1" data-color="#2280BD" data-name="Звёздная">
+            <circle cx="227.5" cy="476.5" r="5"/>
+            <text x="239" y="479.5">Звёздная</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('134') !== -1 }}active{{?}}"
+           data-id="134" data-line="1" data-color="#2280BD" data-name="Московская">
+            <circle cx="227.5" cy="456.5" r="5"/>
+            <text x="239" y="459.5">Московская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('133') !== -1 }}active{{?}}"
+           data-id="133" data-line="1" data-color="#2280BD" data-name="Парк Победы">
+            <circle cx="227.5" cy="436" r="5"/>
+            <text x="239" y="439">Парк Победы</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('132') !== -1 }}active{{?}}"
+           data-id="132" data-line="1" data-color="#2280BD" data-name="Электросила">
+            <circle cx="227.5" cy="416" r="5"/>
+            <text x="239" y="419">Электросила</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('131') !== -1 }}active{{?}}"
+           data-id="131" data-line="1" data-color="#2280BD" data-name="Московские ворота">
+            <circle cx="227.5" cy="396" r="5"/>
+            <text x="239" y="399">Московские ворота</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('7') !== -1 }}active{{?}}"
+           data-transfer-id="2" data-id="113" data-line="1" data-color="#2280BD" data-name="Технологический институт">
+            <circle cx="227.5" cy="329" r="5"/>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('130') !== -1 }}active{{?}}"
+           data-id="130" data-line="1" data-color="#2280BD" data-name="Фрунзенская">
+            <circle cx="227.5" cy="376" r="5"/>
+            <text x="239" y="379">Фрунзенская</text>
+        </g>
+
+        <g class="subway-station {{? it.req.subway.indexOf('124') !== -1 }}active{{?}}"
+           data-id="124" data-line="1" data-color="#2280BD" data-name="Пионерская">
+            <circle cx="227.5" cy="92" r="5"/>
+            <text x="239" y="95">Пионерская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('123') !== -1 }}active{{?}}"
+           data-id="123" data-line="1" data-color="#2280BD" data-name="Удельная">
+            <circle cx="227.5" cy="72" r="5"/>
+            <text x="239" y="75">Удельная</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('125') !== -1 }}active{{?}}"
+           data-id="125" data-line="1" data-color="#2280BD" data-name="Чёрная речка">
+            <circle cx="227.5" cy="112" r="5"/>
+            <text x="239" y="115">Чёрная речка</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('126') !== -1 }}active{{?}}"
+           data-id="126" data-line="1" data-color="#2280BD" data-name="Петроградская">
+            <circle cx="227.5" cy="132" r="5"/>
+            <text x="239" y="135">Петроградская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('127') !== -1 }}active{{?}}"
+           data-id="127" data-line="1" data-color="#2280BD" data-name="Горьковская">
+            <circle cx="227.5" cy="152" r="5"/>
+            <text x="239" y="155">Горьковская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('122') !== -1 }}active{{?}}"
+           data-id="122" data-line="1" data-color="#2280BD" data-name="Озерки">
+            <circle cx="227.5" cy="52" r="5"/>
+            <text x="239" y="55">Озерки</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('129') !== -1 }}active{{?}}"
+            data-id="129" data-line="1" data-color="#2280BD,#DB7023,#6C2474" data-name="Сенная площадь">
+            <circle cx="227.5" cy="260" r="5"/>
+            <text x="126" y="266">Сенная площадь</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('128') !== -1 }}active{{?}}"
+            data-id="128" data-line="1" data-color="#2280BD" data-name="Невский пр-т">
+            <circle cx="227.5" cy="183" r="5"/>
+            <text x="144" y="181">Невский пр-т</text>
+        </g>
+    </g>
+    <g class="subway__line">
+        <polyline points="86.5,11.5 86.5,164 173.75,251.25
+    228,251.25 385.375,408.625 385.375,476"/>
+        <g class="subway-station {{? it.req.subway.indexOf('162') !== -1 }}active{{?}}"
+           data-id="162" data-line="2" data-color="#6C2474" data-name="Обводный канал">
+            <circle cx="354.5" cy="378" r="5"/>
+            <text x="366" y="380">Обводный канал</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('163') !== -1 }}active{{?}}"
+           data-id="163" data-line="2" data-color="#6C2474" data-name="Волковская">
+            <circle cx="385.5" cy="433" r="5"/>
+            <text x="396" y="436">Волковская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('164') !== -1 }}active{{?}}"
+           data-id="164" data-line="2" data-color="#6C2474" data-name="Бухарестская">
+            <circle cx="385.5" cy="453" r="5"/>
+            <text x="396" y="456">Бухарестская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('165') !== -1 }}active{{?}}"
+           data-id="165" data-line="2" data-color="#6C2474" data-name="Международная">
+            <circle cx="385.5" cy="473" r="5"/>
+            <text x="396" y="476">Международная</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('160') !== -1 }}active{{?}}"
+            data-id="160" data-line="2" data-color="#6C2474,#DB7023,#2280BD" data-name="Садовая">
+            <circle cx="221" cy="251" r="5"/>
+            <text x="173" y="241">Садовая</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('159') !== -1 }}active{{?}}"
+           data-id="159" data-line="2" data-color="#6C2474" data-name="Адмиралтейская">
+            <circle cx="144" cy="221" r="5"/>
+            <text x="45" y="231">Адмиралтейская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('154') !== -1 }}active{{?}}"
+           data-id="154" data-line="2" data-color="#6C2474" data-name="Комендантский пр-т">
+            <circle cx="86.5" cy="11.5" r="5"/>
+            <text x="98" y="14.5">Комендантский пр-т</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('155') !== -1 }}active{{?}}"
+           data-id="155" data-line="2" data-color="#6C2474" data-name="Старая деревня">
+            <circle cx="86.5" cy="32" r="5"/>
+            <text x="98" y="35">Старая деревня</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('156') !== -1 }}active{{?}}"
+           data-id="156" data-line="2" data-color="#6C2474" data-name="Крестовский остров">
+            <circle cx="86.5" cy="72.5" r="5"/>
+            <text x="98" y="75.5">Крестовский остров</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('157') !== -1 }}active{{?}}"
+           data-id="157" data-line="2" data-color="#6C2474" data-name="Чкаловская">
+            <circle cx="86.5" cy="111" r="5"/>
+            <text x="98" y="115">Чкаловская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('158') !== -1 }}active{{?}}"
+           data-id="158" data-line="2" data-color="#6C2474" data-name="Спортивная">
+            <circle cx="86.5" cy="132.5" r="5"/>
+            <text x="98" y="135.5">Спортивная</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('161') !== -1 }}active{{?}}"
+            data-id="161" data-line="2" data-color="#6C2474" data-name="Звенигородская">
+            <circle cx="307.5" cy="331.5" r="5"/>
+            <text x="325" y="333">Звенигородская</text>
+        </g>
+    </g>
+    <g class="subway__line">
+        <polyline points="22,148 65,191 374,191 476.5,293.5
+    476.5,476"/>
+        <g class="subway-station {{? it.req.subway.indexOf('141') !== -1 }}active{{?}}"
+           data-transfer-id="1" data-id="141" data-line="3" data-color="#0B9A58" data-name="Пл. Александра Невского">
+            <circle cx="442.5" cy="259.5" r="5"/>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('137') !== -1 }}active{{?}}"
+           data-id="137" data-line="3" data-color="#0B9A58" data-name="Приморская">
+            <circle cx="23" cy="149" r="5"/>
+            <text x="4" y="139">Приморская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('138') !== -1 }}active{{?}}"
+           data-id="138" data-line="3" data-color="#0B9A58" data-name="Василеостровская">
+            <circle cx="64" cy="189.5" r="5"/>
+            <text x="4" y="208">Василеостровская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('140') !== -1 }}active{{?}}"
+            data-id="140" data-line="3" data-color="#0B9A58" data-name="Маяковская">
+            <circle cx="362" cy="191" r="5"/>
+            <text x="299" y="181">Маяковская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('142') !== -1 }}active{{?}}"
+           data-id="142" data-line="3" data-color="#0B9A58" data-name="Елизаровская">
+            <circle cx="476.5" cy="393" r="5"/>
+            <text x="488" y="396">Елизаровская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('143') !== -1 }}active{{?}}"
+           data-id="143" data-line="3" data-color="#0B9A58" data-name="Ломоносовская">
+            <circle cx="476.5" cy="413" r="5"/>
+            <text x="488" y="416">Ломоносовская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('144') !== -1 }}active{{?}}"
+           data-id="144" data-line="3" data-color="#0B9A58" data-name="Пролетарская">
+            <circle cx="476.5" cy="434"/>
+            <text x="488" y="437">Пролетарская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('145') !== -1 }}active{{?}}"
+           data-id="145" data-line="3" data-color="#0B9A58" data-name="Обухово">
+            <circle cx="476.5" cy="454" r="5"/>
+            <text x="488" y="457">Обухово</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('146') !== -1 }}active{{?}}"
+           data-id="146" data-line="3" data-color="#0B9A58" data-name="Рыбацкое">
+            <circle cx="476.5" cy="475" r="5"/>
+            <text x="488" y="478">Рыбацкое</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('139') !== -1 }}active{{?}}"
+            data-id="139" data-line="3" data-color="#0B9A58" data-name="Гостиный двор">
+            <circle cx="227.5" cy="194" r="5"/>
+            <text x="236" y="207">Гостиный двор</text>
+        </g>
+    </g>
+    <g class="subway__line">
+        <polyline points="374,11 374,191 315.5,249.5 315.5,341
+    189,341 106,424 106,485"/>
+        <g class="subway-station {{? it.req.subway.indexOf('11') !== -1 }}active{{?}}"
+           data-id="11" data-line="4" data-color="#CF202F" data-name="Девяткино">
+            <circle cx="374" cy="11.5" r="5"/>
+            <text x="385" y="14.5">Девяткино</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('12') !== -1 }}active{{?}}"
+           data-id="12" data-line="4" data-color="#CF202F" data-name="Гражданский пр-т">
+            <circle cx="374" cy="32" r="5"/>
+            <text x="385" y="35">Гражданский пр-т</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('13') !== -1 }}active{{?}}"
+           data-id="13" data-line="4" data-color="#CF202F" data-name="Академическая">
+            <circle cx="374" cy="52" r="5"/>
+            <text x="385" y="55">Академическая</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('14') !== -1 }}active{{?}}"
+           data-id="14" data-line="4" data-color="#CF202F" data-name="Политехническая">
+            <circle cx="374" cy="72" r="5"/>
+            <text x="385" y="75">Политехническая</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('15') !== -1 }}active{{?}}"
+           data-id="15" data-line="4" data-color="#CF202F" data-name="Пл. Мужества">
+            <circle cx="374" cy="92" r="5"/>
+            <text x="385" y="95">Пл. Мужества</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('16') !== -1 }}active{{?}}"
+           data-id="16" data-line="4" data-color="#CF202F" data-name="Лесная">
+            <circle cx="374" cy="112" r="5"/>
+            <text x="385" y="115">Лесная</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('17') !== -1 }}active{{?}}"
+           data-id="17" data-line="4" data-color="#CF202F" data-name="Выборгская">
+            <circle cx="374" cy="132" r="5"/>
+            <text x="385" y="135">Выборгская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('18') !== -1 }}active{{?}}"
+           data-id="18" data-line="4" data-color="#CF202F" data-name="Пл. Ленина">
+            <circle cx="374" cy="152" r="5"/>
+            <text x="385" y="155">Пл. Ленина</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('19') !== -1 }}active{{?}}"
+           data-id="19" data-line="4" data-color="#CF202F" data-name="Чернышевская">
+            <circle cx="374" cy="172" r="5"/>
+            <text x="385" y="175">Чернышевская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('110') !== -1 }}active{{?}}"
+            data-id="110" data-line="4" data-color="#CF202F" data-name="Пл. Восстания">
+            <circle cx="374" cy="191" r="5"/>
+            <text x="385" y="194">Пл. Восстания</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('111') !== -1 }}active{{?}}"
+            data-id="111" data-line="4" data-color="#CF202F" data-name="Владимирская">
+            <circle cx="323" cy="241" r="5"/>
+            <text x="336" y="242">Владимирская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('112') !== -1 }}active{{?}}"
+            data-id="112" data-line="4" data-color="#CF202F" data-name="Пушкинская">
+            <circle cx="316" cy="340" r="5"/>
+            <text x="248" y="355">Пушкинская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('113') !== -1 }}active{{?}}"
+           data-transfer-id="2" data-id="113" data-line="4" data-color="#D32939,#2280BD" data-name="Технологический институт">
+            <circle cx="227.5" cy="341" r="5"/>
+            <text x="72" y="332">Технологический институт</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('114') !== -1 }}active{{?}}"
+           data-id="114" data-line="4" data-color="#CF202F" data-name="Балтийская">
+            <circle cx="161" cy="368" r="5"/>
+            <text x="83" y="369">Балтийская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('115') !== -1 }}active{{?}}"
+           data-id="115" data-line="4" data-color="#CF202F" data-name="Нарвская">
+            <circle cx="143" cy="386" r="5"/>
+            <text x="79" y="386">Нарвская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('116') !== -1 }}active{{?}}"
+           data-id="116" data-line="4" data-color="#CF202F" data-name="Кировский завод">
+            <circle cx="106" cy="424" r="5"/>
+            <text x="-3" y="427">Кировский завод</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('117') !== -1 }}active{{?}}"
+           data-id="117" data-line="4" data-color="#CF202F" data-name="Автово">
+            <circle cx="106" cy="444" r="5"/>
+            <text x="49" y="447">Автово</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('118') !== -1 }}active{{?}}"
+           data-id="118" data-line="4" data-color="#CF202F" data-name="Ленинский пр-т">
+            <circle cx="106" cy="464" r="5"/>
+            <text x="4" y="467">Ленинский пр-т</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('119') !== -1 }}active{{?}}"
+           data-id="119" data-line="4" data-color="#CF202F" data-name="Пр-т Ветеранов">
+            <circle cx="106" cy="484" r="5"/>
+            <text x="4" y="487">Пр-т Ветеранов</text>
+        </g>
+    </g>
+    <g class="subway__line">
+        <polyline points="233,251 489,251 513,275 513,360"/>
+        <g class="subway-station {{? it.req.subway.indexOf('153') !== -1 }}active{{?}}"
+           data-id="153" data-line="5" data-color="#DB7023" data-name="Ул. Дыбенко">
+            <circle cx="513" cy="359" r="5"/>
+            <text x="526" y="362">Ул. Дыбенко</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('152') !== -1 }}active{{?}}"
+           data-id="152" data-line="5" data-color="#DB7023" data-name="Пр-т Большевиков">
+            <circle cx="513" cy="338" r="5"/>
+            <text x="526" y="341">Пр-т Большевиков</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('151') !== -1 }}active{{?}}"
+           data-id="151" data-line="5" data-color="#DB7023" data-name="Ладожская">
+            <circle cx="513" cy="318" r="5"/>
+            <text x="526" y="321">Ладожская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('150') !== -1 }}active{{?}}"
+           data-id="150" data-line="5" data-color="#DB7023" data-name="Новочеркасская">
+            <circle cx="513" cy="298" r="5"/>
+            <text x="526" y="301">Новочеркасская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('141') !== -1 }}active{{?}}"
+           data-transfer-id="1" data-id="141" data-line="5" data-color="#0B9A58,#DB7023" data-name="Пл. Александра Невского">
+            <circle cx="434" cy="251" r="5"/>
+            <text x="436" y="243">Пл. Александра Невского</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('149') !== -1 }}active{{?}}"
+           data-id="149" data-line="5" data-color="#DB7023" data-name="Лиговский пр-т">
+            <circle cx="379" cy="251" r="5"/>
+            <text x="339" y="266">Лиговский пр-т</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('147') !== -1 }}active{{?}}"
+            data-id="147" data-line="5" data-color="#DB7023,#6C2474,#2280BD" data-name="Спасская">
+            <circle cx="233" cy="251" r="5"/>
+            <text x="238" y="241">Спасская</text>
+        </g>
+        <g class="subway-station {{? it.req.subway.indexOf('148') !== -1 }}active{{?}}"
+            data-id="148" data-line="5" data-color="#DB7023" data-name="Достоевская">
+            <circle cx="316" cy="251" r="5"/>
+            <text x="249" y="265">Достоевская</text>
+        </g>
+    </g>
+</svg>

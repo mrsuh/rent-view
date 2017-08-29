@@ -3,20 +3,22 @@
 .block-search-filters-switch {
   position: relative;
   .block-filter-subway {
+    padding-left: 5%;
+    padding-right: 5%;
+
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 14px;
     position: absolute;
     top: 0;
     width: 100%;
-    z-index: 10;
+    z-index: 19;
     background-color: #ffffff;
     border-top: 1px solid rgba(0, 0, 0, 0.2);
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     opacity: 0;
 
     transform: translateY(-100%);
-
     -webkit-transition: transform 0.4s ease-out 0s, opacity 0.4s ease-out 0s;
     -moz-transition: transform 0.4s ease-out 0s, opacity 0.4s ease-out 0s;
     -o-transition: transform 0.4s ease-out 0s, opacity 0.4s ease-out 0s;
@@ -27,44 +29,191 @@
       opacity: 1;
     }
 
-    text-align: center;
-
     .block-subway {
-      display: inline-block;
       font-size: 0;
-      .subway {
-        vertical-align: top;
-        display: inline-block;
-        height: 550px;
-      }
+      width: 100%;
+      max-height: 550px;
 
-      .stations {
-        vertical-align: top;
-        display: inline-block;
-        height: 550px;
-        width: 200px;
-        text-align: left;
-        overflow-x: auto;
+      .btn-close {
+        width: 14px;
+        height: 14px;
+        position: absolute;
+        right: 14px;
+        top: 14px;
+        cursor: pointer;
+        opacity: 0.6;
 
-        .list-name {
-          display: inline-block;
-          font-size: 13px;
-          margin-bottom: 5px;
+        &:hover {
+          cursor: pointer;
+          opacity: 1;
         }
 
-        .list {
-          .station {
-            display: block;
-            font-size: 13px;
-            text-align: left;
-            width: 100%;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .map {
+        vertical-align: top;
+        display: inline-block;
+        float: left;
+        width: 70%;
+        overflow: auto;
+        max-height: 550px;
+        min-height: 200px;
+
+        .sankt-peterburg {
+          height: 550px;
+
+          .subway__line {
+            &:nth-child(1) {
+              color: #1a85c3;
+            }
+            &:nth-child(2) {
+              color: #a05da6;
+            }
+            &:nth-child(3) {
+              color: #5bba47;
+            }
+            &:nth-child(4) {
+              color: #cf202f;
+            }
+            &:nth-child(5) {
+              color: #fbae1a;
+            }
+
+            polyline {
+              fill: none;
+              stroke: currentColor;
+              stroke-width: 5px;
+            }
+          }
+
+          .subway__transfers polyline {
+            fill: none;
+            stroke: #fff;
+          }
+
+          .subway-station {
             cursor: pointer;
 
-            &:hover {
-              .name:after {
+            text {
+              color: #000;
+              font-size: 13px;
+              font-weight: normal;
+              opacity: 0.8;
+            }
+
+            circle {
+              fill: #fff;
+              stroke: currentColor;
+              stroke-width: 2px;
+            }
+
+            &:hover text,
+            &.is-hover text,
+            &.is-selected text {
+              opacity: 1;
+            }
+
+            &.active circle {
+              fill: currentColor;
+            }
+          }
+
+          polyline.active {
+            opacity: 0;
+          }
+        }
+
+        .moskva,
+        .ekaterinburg,
+        .kazan,
+        .nizny-novgorod,
+        .novosibirsk,
+        .samara {
+          ul {
+            vertical-align: top;
+            display: inline-block;
+
+            .subway-station {
+              float:left;
+              display:inline;
+              text-align: left;
+              width: 25%;
+              opacity: 0.5;
+
+              .color {
+                display: inline-block;
+                position: relative;
+                width: 11px;
+                height: 11px;
+                border-radius: 50%;
+                margin-right: 5px;
+                margin-top: 2px;
+                border: 1px solid #ffffff;
+
+                &:nth-child(n+2) {
+                  margin-left: -11px;
+                }
+              }
+
+              span {
+                font-size: 13px;
+                line-height: 24px;
+                color: @main-font-color;;
+              }
+
+              &:hover {
+                cursor: pointer;
+                opacity: 1;
+                span {
+                  background-color: @main-color-light;
+                }
+              }
+
+              &.active {
                 opacity: 1;
               }
             }
+          }
+        }
+      }
+
+      .stations {
+        position: relative;
+        vertical-align: top;
+        display: inline-block;
+        width: 30%;
+        text-align: left;
+        overflow-x: auto;
+        float: right;
+        max-height: 550px;
+        min-height: 200px;
+
+        .stations-search {
+          width: 100%;
+        }
+
+        .stations-hints {
+          border-radius: .1px;
+          box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .4);
+          background: #fff;
+          border: 1px solid rgba(0, 0, 0, 0.06);
+
+          top: 28px;
+          position: absolute;
+          z-index: 10020;
+          left: 0;
+          width: 100%;
+
+          .hint {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            font-size: @main-font-size;
+            padding-left: 5px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 
             .label {
               display: inline-block;
@@ -75,85 +224,120 @@
               margin-right: 5px;
               margin-top: 2px;
               border: 1px solid #ffffff;
+
+              &:nth-child(n+2) {
+                margin-left: -11px;
+              }
+            }
+
+            &.active {
+              cursor: pointer;
+              background-color: @main-color-light;;
             }
 
             .name {
               display: inline-block;
+            }
+          }
 
-              &:after {
-                content: '';
-                opacity: 0;
-                background-image: url('/img/remove.svg');
-                background-size: cover;
-                width: 10px;
-                height: 10px;
-                display: inline-block;
-                margin-left: 10px;
-                cursor: pointer;
+          &.hide {
+            display: none;
+          }
+        }
+
+        .stations-list {
+          margin-top: 10px;
+          .station {
+            margin-top: 5px;
+            display: block;
+            font-size: 13px;
+            text-align: left;
+            width: 100%;
+            cursor: default;
+
+            .label {
+              display: inline-block;
+              position: relative;
+              width: 11px;
+              height: 11px;
+              border-radius: 50%;
+              margin-right: 5px;
+              margin-top: 2px;
+              border: 1px solid #ffffff;
+
+              &:nth-child(n+2) {
+                margin-left: -11px;
+              }
+            }
+
+            .btn-remove {
+              margin-top: 3px;
+              display: inline-block;
+              float: right;
+              background-image: url('/img/remove.svg');
+              background-size: cover;
+              width: 10px;
+              height: 10px;
+              margin-left: 10px;
+              cursor: pointer;
+              opacity: 0.6;
+
+              &:hover {
+                opacity: 1;
+              }
+            }
+
+            .name {
+              display: inline-block;
+            }
+          }
+        }
+
+        .stations-list-check {
+          display: none;
+        }
+
+        .stations-btn-clear {
+          margin-top: 10px;
+          cursor: pointer;
+          color: #777;
+          display: inline-block;
+          float: right;
+          font-size: @main-font-size;
+
+          &:hover {
+            cursor: pointer;
+            color: @main-color-light;
+          }
+
+          &.hide {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1200px) {
+
+  .block-search-filters-switch {
+    .block-filter-subway {
+      .block-subway {
+        .map {
+          .moskva,
+          .ekaterinburg,
+          .kazan,
+          .nizny-novgorod,
+          .novosibirsk,
+          .samara {
+            ul {
+              .subway-station {
+                width: 50%;
               }
             }
           }
         }
-      }
-
-      .subway__line {
-        &:nth-child(1) {
-          color: #1a85c3;
-        }
-        &:nth-child(2) {
-          color: #a05da6;
-        }
-        &:nth-child(3) {
-          color: #5bba47;
-        }
-        &:nth-child(4) {
-          color: #cf202f;
-        }
-        &:nth-child(5) {
-          color: #fbae1a;
-        }
-
-        polyline {
-          fill: none;
-          stroke: currentColor;
-          stroke-width: 5px;
-        }
-      }
-
-      .subway__transfers polyline {
-        fill: none;
-        stroke: #fff;
-      }
-
-      .subway__station {
-        cursor: pointer;
-
-        text {
-          color: #000;
-          font-size: 13px;
-          font-weight: normal;
-          opacity: 0.8;
-        }
-
-        circle {
-          fill: #fff;
-          stroke: currentColor;
-          stroke-width: 2px;
-        }
-
-        &:hover text,
-        &.is-hover text,
-        &.is-selected text {
-          opacity: 1;
-        }
-
-        &.is-selected circle {
-          fill: currentColor;
-        }
-      }
-
-      polyline.is-selected {
-        opacity: 0;
       }
     }
   }
@@ -161,14 +345,17 @@
 
 @media all and (max-width: 900px) {
 
-  .block-search-filters-switch{
+  .block-search-filters-switch {
     display: none;
   }
 
   .block-search-filters-switch.show {
-      display: block;
+    display: block;
 
-      .block-filter-subway.show {
+    .block-filter-subway {
+      padding: 0;
+
+      &.show {
         z-index: 99;
         display: block;
         position: fixed;
@@ -176,30 +363,138 @@
         top: 0;
         left: 0;
         right: 0;
-        bottom:0;
+        bottom: 0;
       }
 
-    .search {
-      display: block;
-      position: fixed;
-      width: 95%;
-      margin-left: 2.5%;
-      margin-right: 2.5%;
-      background-color: @main-color;
-      z-index: 100;
-      bottom: 5px;
-      color: white;
-      font-size: 15px;
-      line-height: 30px;
-      white-space: nowrap;
-      border-radius: 3px;
-      -webkit-background-clip: padding-box;
-      -moz-background-clip: padding-box;
-      -o-background-clip: padding-box;
-      background-clip: padding-box;
-      padding-left: 10px;
-      padding-right: 12px;
-      text-align: center;
+      .block-subway {
+        width: 100%;
+
+        .btn-close {
+          display: none;
+        }
+
+        .map {
+          display: none;
+        }
+
+        .stations {
+          width: 100%;
+          min-height: 300px;
+          overflow-x: hidden;
+
+          .stations-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            padding: 10px 10px 10px 0;
+            background-color: #f0f0f0;
+            text-align: center;
+            z-index: 100;
+            font-size: 0;
+
+            .stations-arrow-close {
+              margin-top: 10px;
+              border: solid #777;
+              border-width: 0 3px 3px 0;
+              display: inline-block;
+              padding: 3px;
+              transform: rotate(135deg);
+              -webkit-transform: rotate(135deg);
+            }
+
+            .stations-search {
+              width: 95%;
+              float: right;
+              display: inline-block;
+            }
+          }
+
+          .stations-hints {
+            position: fixed;
+            top: 70px;
+
+            .hint {
+              padding-top: 10px;
+              padding-bottom: 10px;
+            }
+          }
+
+          .stations-control {
+            width: 100%;
+            height: 20px;
+            .stations-btn-show-check-list,
+            .stations-btn-clear-check-list {
+              display: inline-block;
+              width: 50%;
+              font-size: @main-font-size;
+              line-height: 32px;
+            }
+          }
+
+          .stations-list {
+            display: none;
+          }
+
+          .stations-btn-clear {
+            display: none;
+          }
+
+          .stations-list-check {
+            overflow-x: auto;
+            padding-top: 70px;
+            display: block;
+
+            .station {
+              padding-top: 15px;
+              padding-bottom: 15px;
+              font-size: @main-font-size;
+              padding-left: 5px;
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+              opacity: 0.5;
+
+              .label {
+                display: inline-block;
+                position: relative;
+                width: 11px;
+                height: 11px;
+                border-radius: 50%;
+                margin-right: 5px;
+                margin-top: 2px;
+                border: 1px solid #ffffff;
+
+                &:nth-child(n+2) {
+                  margin-left: -11px;
+                }
+              }
+
+              .name {
+                display: inline-block;
+              }
+
+              &.hide {
+                display: none;
+              }
+
+              &.active {
+                opacity: 1;
+                &:after {
+                  content: '';
+                  display: block;
+                  width: 6px;
+                  height: 12px;
+                  border: solid #777;
+                  border-width: 0 2px 2px 0;
+                  transform: rotate(45deg);
+                  float: right;
+                  margin-right: 5%;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

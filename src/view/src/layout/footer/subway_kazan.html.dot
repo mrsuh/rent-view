@@ -1,0 +1,24 @@
+<ul>
+    <li><a href="/kazan/{{= it.req.realty }}?subway=61">Авиастроительная</a></li>
+    <li><a href="/kazan/{{= it.req.realty }}?subway=69">Аметьево</a></li>
+    <li><a href="/kazan/{{= it.req.realty }}?subway=610">Горки</a></li>
+</ul>
+
+<ul>
+    <li><a href="/kazan/{{= it.req.realty }}?subway=612">Дубравная</a></li>
+    <li><a href="/kazan/{{= it.req.realty }}?subway=64">Козья слобода</a></li>
+    <li><a href="/kazan/{{= it.req.realty }}?subway=65">Кремлёвская</a></li>
+</ul>
+
+<ul>
+    <li><a href="/kazan/{{= it.req.realty }}?subway=66">Площадь Габдуллы Тукая</a></li>
+    <li><a href="/kazan/{{= it.req.realty }}?subway=68">Площадь Ленина</a></li>
+    <li><a href="/kazan/{{= it.req.realty }}?subway=611">Проспект Победы</a></li>
+</ul>
+
+<ul>
+    <li><a href="/kazan/{{= it.req.realty }}?subway=62">Северный вокзал</a></li>
+    <li><a href="/kazan/{{= it.req.realty }}?subway=67">Суконная слобода</a></li>
+    <li><a href="/kazan/{{= it.req.realty }}?subway=63">Яшьлек (Юность)</a></li>
+</ul>
+

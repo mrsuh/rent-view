@@ -1,0 +1,22 @@
+<div class="ekaterinburg">
+<ul>
+    <li data-id="79" data-color="#0B9A58" data-name="Ботаническая" class="subway-station {{? it.req.subway.indexOf('79') !== -1 }}active{{?}}"><div class="color" style="background-color: #0B9A58"></div><span>Ботаническая</span></li>
+    <li data-id="710" data-color="#2280BD" data-name="Верх-Исетская" class="subway-station {{? it.req.subway.indexOf('710') !== -1 }}active{{?}}"><div class="color" style="background-color: #2280BD"></div><span>Верх-Исетская</span></li>
+    <li data-id="715" data-color="#2280BD" data-name="Восточная" class="subway-station {{? it.req.subway.indexOf('715') !== -1 }}active{{?}}"><div class="color" style="background-color: #2280BD"></div><span>Восточная</span></li>
+    <li data-id="717" data-color="#2280BD" data-name="Втузгородок" class="subway-station {{? it.req.subway.indexOf('717') !== -1 }}active{{?}}"><div class="color" style="background-color: #2280BD"></div><span>Втузгородок</span></li>
+    <li data-id="77" data-color="#0B9A58" data-name="Геологическая" class="subway-station {{? it.req.subway.indexOf('77') !== -1 }}active{{?}}"><div class="color" style="background-color: #0B9A58"></div><span>Геологическая</span></li>
+    <li data-id="75" data-color="#0B9A58" data-name="Динамо" class="subway-station {{? it.req.subway.indexOf('75') !== -1 }}active{{?}}"><div class="color" style="background-color: #0B9A58"></div><span>Динамо</span></li>
+    <li data-id="718" data-color="#2280BD" data-name="Каменные Палатки" class="subway-station {{? it.req.subway.indexOf('718') !== -1 }}active{{?}}"><div class="color" style="background-color: #2280BD"></div><span>Каменные Палатки</span></li>
+    <li data-id="73" data-color="#0B9A58" data-name="Машиностроителей" class="subway-station {{? it.req.subway.indexOf('73') !== -1 }}active{{?}}"><div class="color" style="background-color: #0B9A58"></div><span>Машиностроителей</span></li>
+    <li data-id="711" data-color="#2280BD" data-name="Металлургическая" class="subway-station {{? it.req.subway.indexOf('711') !== -1 }}active{{?}}"><div class="color" style="background-color: #2280BD"></div><span>Металлургическая</span></li>
+    <li data-id="76" data-color="#0B9A58,#2280BD" data-name="Площадь 1905 года" class="subway-station {{? it.req.subway.indexOf('76') !== -1 }}active{{?}}"><div class="color" style="background-color: #0B9A58"></div><div class="color" style="background-color: #2280BD"></div><span>Площадь 1905 года</span></li>
+    <li data-id="716" data-color="#2280BD" data-name="Политехническая" class="subway-station {{? it.req.subway.indexOf('716') !== -1 }}active{{?}}"><div class="color" style="background-color: #2280BD"></div><span>Политехническая</span></li>
+    <li data-id="71" data-color="#0B9A58" data-name="Проспект Космонавтов" class="subway-station {{? it.req.subway.indexOf('71') !== -1 }}active{{?}}"><div class="color" style="background-color: #0B9A58"></div><span>Проспект Космонавтов</span></li>
+    <li data-id="712" data-color="#2280BD" data-name="Татищевская" class="subway-station {{? it.req.subway.indexOf('712') !== -1 }}active{{?}}"><div class="color" style="background-color: #2280BD"></div><span>Татищевская</span></li>
+    <li data-id="714" data-color="#2280BD" data-name="Театральная" class="subway-station {{? it.req.subway.indexOf('714') !== -1 }}active{{?}}"><div class="color" style="background-color: #2280BD"></div><span>Театральная</span></li>
+    <li data-id="72" data-color="#0B9A58" data-name="Уралмаш" class="subway-station {{? it.req.subway.indexOf('72') !== -1 }}active{{?}}"><div class="color" style="background-color: #0B9A58"></div><span>Уралмаш</span></li>
+    <li data-id="74" data-color="#0B9A58" data-name="Уральская" class="subway-station {{? it.req.subway.indexOf('74') !== -1 }}active{{?}}"><div class="color" style="background-color: #0B9A58"></div><span>Уральская</span></li>
+    <li data-id="713" data-color="#2280BD" data-name="Уральских Коммунаров" class="subway-station {{? it.req.subway.indexOf('713') !== -1 }}active{{?}}"><div class="color" style="background-color: #2280BD"></div><span>Уральских Коммунаров</span></li>
+    <li data-id="78" data-color="#0B9A58" data-name="Чкаловская" class="subway-station {{? it.req.subway.indexOf('78') !== -1 }}active{{?}}"><div class="color" style="background-color: #0B9A58"></div><span>Чкаловская</span></li>
+<ul>
+</div>

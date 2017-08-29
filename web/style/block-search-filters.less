@@ -1,3 +1,5 @@
+@import "common";
+
 .block-search-filters {
   position: relative;
   padding-top: 15px;
@@ -37,6 +39,15 @@
 
     &.active {
       background-color: rgba(71, 162, 218, .7);
+    }
+
+    &.disabled {
+      cursor: default;
+      background-color: #f3f3f3;
+
+      &:hover {
+        border: 1px solid @main-border-color;
+      }
     }
 
     transition: background-color 0.4s ease-out 0s;
