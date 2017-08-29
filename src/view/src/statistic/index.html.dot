@@ -133,7 +133,7 @@
 
         </div>
 
-    <!-- @import src/view/dist/layout/footer/footer.html.dot -->
+    <!-- @import src/view/dist/layout/footer/footer.html -->
 
 </body>
 
