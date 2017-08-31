@@ -404,7 +404,7 @@
 
                                 {{? typeof it.subways[subway_id] !== 'undefined' }}
 
-                                {{~ it.subways[subway_id].color :color }}
+                                {{~ it.subways[subway_id].colors :color }}
 
                                 <span class="subway-label" style="background-color: {{= color }}"></span>
 
