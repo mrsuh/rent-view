@@ -129,22 +129,51 @@ var statisticController = function (req, res) {
         'Content-Type': 'text/html; charset=UTF-8'
     });
 
-    var all_hot = db_hot.findNotes({});
-    var all_cold = db_cold.findNotes({});
+    var request_notes = db_hot.findNotes({});
+    var request_cities = db_cold.findCities({});
 
-    Promise.all([all_hot, all_cold]).then(function (result) {
-        var notes_hot = result[0];
-        var notes = result[0].concat(result[1]);
+    Promise.all([request_notes, request_cities]).then(function (result) {
+        var notes = result[0];
+        var cities = result[1];
+
+        var days = [];
+        var hours = [];
+        var subways = [];
+
+        for(var i = 0, length = cities.length; i < length; i++) {
+            var city = cities[i];
+
+            var city_name = city.name;
+            var city_short_name = city.short_name;
+
+            days.push({
+                city_full_name: city_name,
+                city_short_name: city_short_name,
+                data: statistic.days(notes, city_short_name)
+            });
+
+            hours.push({
+                city_full_name: city_name,
+                city_short_name: city_short_name,
+                data: statistic.hours(notes, city_short_name)
+            });
+
+            subways.push({
+                city_full_name: city_name,
+                city_short_name: city_short_name,
+                data: statistic.subways(notes, db_hot.subways, city_short_name)
+            });
+        }
 
         return res.end(template.statistic({
-            days: statistic.days(notes_hot),
-            hours: statistic.hours(notes),
-            ratio: statistic.ratio(notes),
-            subways: statistic.subways(notes, db_hot.subways),
-            check_subways: statistic.checkSubways(notes),
-            check_area: statistic.checkArea(notes),
-            check_price: statistic.checkPrice(notes),
-            check_phone: statistic.checkPhone(notes),
+            days: days,
+            hours: hours,
+            subways: subways,
+            cities: cities,
+            req: {
+                city: 'sankt-peterburg',
+                realty: 'kvartira'
+            },
             page: 'statistic'
         }));
     });

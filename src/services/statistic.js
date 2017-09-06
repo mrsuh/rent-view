@@ -2,201 +2,22 @@
 
 /**
  *
- * @param a
- * @param b
- * @returns {number}
- */
-function sort(a, b) {
-
-    var a_timestamp = parseInt(a.timestamp);
-    var b_timestamp = parseInt(b.timestamp);
-
-    if (a_timestamp < b_timestamp) {
-        return -1;
-    }
-
-    if (a_timestamp > b_timestamp) {
-        return 1;
-    }
-
-    return 0;
-}
-
-/**
- *
  * @param notes
- * @returns {{}}
- */
-var ratio = function (notes) {
-
-    var ratio = {};
-
-    for (var i = 0, length = notes.length; i < length; i++) {
-
-        var note = notes[i];
-
-        if (0 === note.type) {
-            if ('undefined' === typeof ratio['room']) {
-                ratio['room'] = 0;
-            }
-
-            ratio['room']++;
-        } else {
-            if ('undefined' === typeof ratio['flat']) {
-                ratio['flat'] = 0;
-            }
-
-            ratio['flat']++;
-        }
-    }
-
-    var ratio_flat = ratio['flat'];
-    var ratio_room = ratio['room'];
-
-    var percent = (ratio_flat + ratio_room) / 100;
-
-    ratio['flat'] = (percent * ratio_flat).toFixed(2);
-    ratio['room'] = (percent * ratio_room).toFixed(2);
-
-    return ratio;
-};
-
-/**
- *
- * @param notes
- * @returns {{indicate: float, empty: float}}
- */
-var checkSubways = function (notes) {
-
-    var subways_full = 0;
-    var subways_empty = 0;
-    var total = 0;
-    for (var i = 0, length = notes.length; i < length; i++) {
-
-        var note = notes[i];
-
-        if(note.subways.length) {
-            subways_full++;
-        } else {
-            subways_empty++;
-        }
-
-        total++;
-    }
-
-    var percent = total / 100;
-
-    return {
-        empty: (percent * subways_empty).toFixed(2),
-        indicate: (percent * subways_full).toFixed(2)
-    };
-};
-
-/**
- *
- * @param notes
- * @returns {{indicate: float, empty: float}}
- */
-var checkPrice = function (notes) {
-
-    var price_indicate = 0;
-    var price_empty = 0;
-    var total = 0;
-    for (var i = 0, length = notes.length; i < length; i++) {
-
-        var note = notes[i];
-
-        if(null !== note.price) {
-            price_indicate++;
-        } else {
-            price_empty++;
-        }
-
-        total++;
-    }
-
-    var percent = total / 100;
-
-    return {
-        indicate: (percent * price_indicate).toFixed(2),
-        empty: (percent * price_empty).toFixed(2)
-    };
-};
-
-/**
- *
- * @param notes
- * @returns {{indicate: float, empty: float}}
- */
-var checkPhone = function (notes) {
-
-    var indicate = 0;
-    var empty = 0;
-    var total = 0;
-    for (var i = 0, length = notes.length; i < length; i++) {
-
-        var note = notes[i];
-
-        if(note.contacts.phones.length) {
-            indicate++;
-        } else {
-            empty++;
-        }
-
-        total++;
-    }
-
-    var percent = total / 100;
-
-    return {
-        indicate: (percent * indicate).toFixed(2),
-        empty: (percent * empty).toFixed(2)
-    };
-};
-
-/**
- *
- * @param notes
- * @returns {{indicate: float, empty: float}}
- */
-var checkArea = function (notes) {
-
-    var area_indicate = 0;
-    var area_empty = 0;
-    var total = 0;
-    for (var i = 0, length = notes.length; i < length; i++) {
-
-        var note = notes[i];
-
-        if(null !== note.area) {
-            area_indicate++;
-        } else {
-            area_empty++;
-        }
-
-        total++;
-    }
-
-    var percent = total / 100;
-
-    return {
-        indicate: (percent * area_indicate).toFixed(2),
-        empty: (percent * area_empty).toFixed(2)
-    };
-};
-
-/**
- *
- * @param notes
+ * @param city
  * @returns {Array}
  */
-var hours = function (notes) {
+var hours = function (notes, city) {
 
     var hours = {};
     var total = 0;
     for (var i = 0, length = notes.length; i < length; i++) {
 
         var note = notes[i];
+
+        if(note['city'] !== city) {
+
+            continue;
+        }
 
         var date = new Date(note['timestamp'] * 1000);
 
@@ -231,7 +52,20 @@ var hours = function (notes) {
         });
     }
 
-    hours_count.sort(sort);
+    hours_count.sort(function(a, b){
+        var a_timestamp = parseInt(a.timestamp);
+        var b_timestamp = parseInt(b.timestamp);
+
+        if (a_timestamp < b_timestamp) {
+            return -1;
+        }
+
+        if (a_timestamp > b_timestamp) {
+            return 1;
+        }
+
+        return 0;
+    });
 
     return hours_count;
 };
@@ -239,9 +73,10 @@ var hours = function (notes) {
 /**
  *
  * @param notes
+ * @param city
  * @returns {Array}
  */
-var days = function (notes) {
+var days = function (notes, city) {
     var days = {};
 
     var weekday = new Array(7);
@@ -256,6 +91,11 @@ var days = function (notes) {
     for (var i = 0, length = notes.length; i < length; i++) {
 
         var note = notes[i];
+
+        if(note['city'] !== city) {
+
+            continue;
+        }
 
         var date = new Date(note['timestamp'] * 1000);
 
@@ -282,7 +122,20 @@ var days = function (notes) {
         });
     }
 
-    days_count.sort(sort);
+    days_count.sort(function(a, b){
+        var a_timestamp = parseInt(a.timestamp);
+        var b_timestamp = parseInt(b.timestamp);
+
+        if (a_timestamp < b_timestamp) {
+            return -1;
+        }
+
+        if (a_timestamp > b_timestamp) {
+            return 1;
+        }
+
+        return 0;
+    });
 
     return days_count;
 };
@@ -291,15 +144,21 @@ var days = function (notes) {
  *
  * @param notes
  * @param subways
+ * @param city
  * @returns {Array}
  */
-var subways = function (notes, subways) {
+var subways = function (notes, subways, city) {
 
     var note_subways = {};
     var total = 0;
     for (var i = 0, length = notes.length; i < length; i++) {
 
         var note = notes[i];
+
+        if(note['city'] !== city) {
+
+            continue;
+        }
 
         for(var s = 0, slength = note.subways.length; s < slength; s++) {
 
@@ -314,53 +173,50 @@ var subways = function (notes, subways) {
         }
     }
 
-    var subways_count = [];
+    var subways_count_tmp = [];
     for (var index in note_subways) {
 
         if (typeof note_subways[index] === 'undefined') {
+
             continue;
         }
 
-        subways_count.push({
+        subways_count_tmp.push({
             name: subways[index].name,
             count: (note_subways[index] / total * 100).toFixed(2),
             color: subways[index].color
         });
     }
+    var subways_count = [];
+    for(var i = 0, length = subways_count_tmp.length; i < length; i++ ){
 
-    subways_count.sort(sortByCount);
+        if(i >= 20) {
+
+            break;
+        }
+
+        subways_count.push(subways_count_tmp[i]);
+    }
+
+    subways_count.sort(function(a, b){
+        var a_count = parseFloat(a.count);
+        var b_count = parseFloat(b.count);
+
+        if (a_count < b_count) {
+            return 1;
+        }
+
+        if (a_count > b_count) {
+            return -1;
+        }
+
+        return 0;
+    });
 
     return subways_count;
 };
 
-/**
- *
- * @param a
- * @param b
- * @returns {number}
- */
-function sortByCount(a, b) {
-
-    var a_count = parseFloat(a.count);
-    var b_count = parseFloat(b.count);
-
-    if (a_count < b_count) {
-        return 1;
-    }
-
-    if (a_count > b_count) {
-        return -1;
-    }
-
-    return 0;
-}
-
 module.exports = {
-    ratio: ratio,
-    checkSubways: checkSubways,
-    checkPrice: checkPrice,
-    checkPhone: checkPhone,
-    checkArea: checkArea,
     hours: hours,
     days: days,
     subways: subways

@@ -4,7 +4,7 @@
 
 ## Installation
 ```
-sh bin/deploy
+sh bin/deploy.sh
 ```
 
 ## Run

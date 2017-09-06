@@ -72,7 +72,7 @@ var search = function (data) {
         (area_to.length ? '&area_to=' + area_to : '') +
         (price_to.length ? '&price_to=' + price_to : '') +
         (realty_add.length ? '&realty_add=' + realty_add : '') +
-        (photo.length ? '&photo=' + photo : '') +
+        (photo ? '&photo=1' : '') +
         (order !== 'date' ? '&order=' + order : '') +
         (parseInt(page) !== 1 && page.length ? '&page=' + page : '');
 
@@ -113,13 +113,30 @@ var switchSubway = function (e) {
         block_subway.removeClass('show');
         block_switch.removeClass('show');
         btn_block_subway.removeClass('active');
-         document.body.style.overflow = 'auto';
+        document.body.style.overflow = 'auto';
     } else {
-         document.body.style.overflow = 'hidden';
+
+        hideCity();
+
+        document.body.style.overflow = 'hidden';
         block_subway.addClass('show');
         block_switch.addClass('show');
         btn_block_subway.addClass('active');
     }
+};
+
+var hideSubway = function () {
+
+    var block_switch = document.querySelector('.block-search-filters-switch');
+    var block_subway = document.querySelector('.block-filter-subway');
+    var btn_block_subway = document.querySelector('.filter-subway');
+
+    block_subway.removeClass('show');
+    block_switch.removeClass('show');
+    btn_block_subway.removeClass('active');
+    document.body.style.overflow = 'auto';
+
+    return true;
 };
 
 var switchCity = function () {
@@ -128,8 +145,18 @@ var switchCity = function () {
     if (block_city.hasClass('show')) {
         block_city.removeClass('show');
     } else {
+
+        hideSubway();
+
         block_city.addClass('show');
     }
+};
+
+var hideCity = function () {
+    var block_city = document.querySelector('.block-city');
+    block_city.removeClass('show');
+
+    return true;
 };
 
 var searchOnPressEnter = function (event) {

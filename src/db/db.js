@@ -87,7 +87,6 @@ module.exports = {
     /**
      *
      * @param filter
-     * @param callback
      * @returns {Promise}
      */
     findNote: function (filter) {
@@ -96,5 +95,18 @@ module.exports = {
                 resolve(doc);
             }.bind(this));
         }.bind(this));
-    }
+    },
+
+    /**
+     *
+     * @param filter
+     * @returns {Promise}
+     */
+    findCities: function (filter) {
+        return new Promise(function (resolve, reject) {
+            this.db.collection('city').find(filter).toArray(function (err, docs) {
+                resolve(docs);
+            }.bind(this));
+        }.bind(this));
+    },
 };
