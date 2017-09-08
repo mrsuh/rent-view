@@ -5,6 +5,7 @@ var client = require('mongodb').MongoClient;
 module.exports = {
     db: null,
     subways: {},
+    cities: {},
 
     /**
      *
@@ -21,6 +22,15 @@ module.exports = {
                 }
                 this.subways = _subways;
             }.bind(this));
+
+            this.findCities().then(function(cities){
+                var _cities = {};
+                for (var i = 0, length = cities.length; i < length; i++) {
+                    _cities[cities[i].short_name] = cities[i];
+                }
+                this.cities = _cities;
+            }.bind(this));
+
         }.bind(this));
     },
 
@@ -108,5 +118,5 @@ module.exports = {
                 resolve(docs);
             }.bind(this));
         }.bind(this));
-    },
+    }
 };

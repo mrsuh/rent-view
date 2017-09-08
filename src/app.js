@@ -16,7 +16,7 @@ var server = http.createServer(function (req, res) {
         case null !== req.url.match(/\/rent\/.*/i):
             controller.note(req, res);
             break;
-        case null !== req.url.match(/\/statistic.*/i):
+        case null !== req.url.match(/^\/([^\/]+)\/statistic.*/i):
             controller.statistic(req, res);
             break;
         case null !== req.url.match(/^\/([^\/]+)\/(kvartira|komnata)(\??).*/i):
