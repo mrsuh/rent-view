@@ -16,7 +16,7 @@
 
         <nav>
             <a href="/{{= it.req.city }}/{{= it.req.realty }}"  {{? it.page === 'advert' }} class="active" {{?}}>Объявления</a>
-            <a href="/statistic" {{? it.page === 'statistic' }} class="active" {{?}} >Статистика</a>
+            <a href="/{{= it.req.city }}/statistic" {{? it.page === 'statistic' }} class="active" {{?}} >Статистика</a>
             <a href="/about"  {{? it.page === 'about' }} class="active" {{?}} >О сайте</a>
         </nav>
     </div>

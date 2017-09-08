@@ -129,49 +129,27 @@ var statisticController = function (req, res) {
         'Content-Type': 'text/html; charset=UTF-8'
     });
 
-    var request_notes = db_hot.findNotes({});
-    var request_cities = db_cold.findCities({});
+    var regexp = /^\/([^\/]+)\/statistic(\??).*/i;
+    var match = regexp.exec(req.url);
 
-    Promise.all([request_notes, request_cities]).then(function (result) {
-        var notes = result[0];
-        var cities = result[1];
+    var city_name = match[1] ? match[1] : 'sankt-peterburg';
 
-        var days = [];
-        var hours = [];
-        var subways = [];
+    var city = db_cold.cities[city_name];
 
-        for(var i = 0, length = cities.length; i < length; i++) {
-            var city = cities[i];
+    if ('undefined' === typeof city) {
 
-            var city_name = city.name;
-            var city_short_name = city.short_name;
+        return res.writeHead(302, {'Location': '/404'});
+    }
 
-            days.push({
-                city_full_name: city_name,
-                city_short_name: city_short_name,
-                data: statistic.days(notes, city_short_name)
-            });
-
-            hours.push({
-                city_full_name: city_name,
-                city_short_name: city_short_name,
-                data: statistic.hours(notes, city_short_name)
-            });
-
-            subways.push({
-                city_full_name: city_name,
-                city_short_name: city_short_name,
-                data: statistic.subways(notes, db_hot.subways, city_short_name)
-            });
-        }
+    db_hot.findNotes({}).then(function (notes) {
 
         return res.end(template.statistic({
-            days: days,
-            hours: hours,
-            subways: subways,
-            cities: cities,
+            days: statistic.days(notes, city_name),
+            hours: statistic.hours(notes, city_name),
+            subways: statistic.subways(notes, db_hot.subways, city_name),
+            city: city,
             req: {
-                city: 'sankt-peterburg',
+                city: city_name,
                 realty: 'kvartira'
             },
             page: 'statistic'
