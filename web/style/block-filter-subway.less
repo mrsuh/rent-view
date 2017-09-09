@@ -100,7 +100,7 @@
 
             text {
               color: #000;
-              font-size: 13px;
+              font-size: @main-font-size;
               font-weight: normal;
               opacity: 0.8;
             }
@@ -160,9 +160,9 @@
               }
 
               span {
-                font-size: 13px;
-                line-height: 24px;
-                color: @main-font-color;;
+                font-size: @main-font-size;
+                line-height: @main-line-height;
+                color: @main-font-color;
               }
 
               &:hover {
@@ -250,7 +250,7 @@
           .station {
             margin-top: 5px;
             display: block;
-            font-size: 13px;
+            font-size: @main-font-size;
             text-align: left;
             width: 100%;
             cursor: default;
@@ -387,7 +387,7 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 70px;
+            height: 90px;
             padding: 10px 10px 10px 0;
             background-color: #f0f0f0;
             text-align: center;
@@ -408,6 +408,7 @@
               width: 95%;
               float: right;
               display: inline-block;
+              line-height: 36px;
             }
           }
 
@@ -429,7 +430,7 @@
               display: inline-block;
               width: 50%;
               font-size: @main-font-size;
-              line-height: 32px;
+              line-height: 42px;
             }
           }
 
@@ -443,7 +444,7 @@
 
           .stations-list-check {
             overflow-x: auto;
-            padding-top: 70px;
+            padding-top: 90px;
             display: block;
 
             .station {
