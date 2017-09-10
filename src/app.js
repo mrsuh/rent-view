@@ -82,7 +82,6 @@ var server = http.createServer(function (req, res) {
             var cookies = parseCookies(req.headers.cookie);
 
             if ('undefined' === typeof cookies['city'] || cookies['city'] !== match[1]) {
-
                 res.setHeader('Set-Cookie', 'city=' + match[1] + '; Max-Age=3600; Path=/');
             }
 
