@@ -94,7 +94,11 @@ var formFilter = function (params) {
 var aboutController = function (req, res, city, realty) {
 
     if ('undefined' === typeof db_cold.cities[city]) {
+        res.writeHead(302, {'Location': '/404'});
+        return res.end();
+    }
 
+    if('undefined' === typeof db_cold.realties[realty]) {
         res.writeHead(302, {'Location': '/404'});
         return res.end();
     }
@@ -138,7 +142,6 @@ var statisticController = function (req, res, city_name) {
     var city = db_cold.cities[city_name];
 
     if ('undefined' === typeof city) {
-
         res.writeHead(302, {'Location': '/404'});
         return res.end();
     }
@@ -195,8 +198,13 @@ var noteController = function (req, res, city, realty, note_id) {
     var drow = function (doc, res) {
 
         if('undefined' === typeof db_cold.cities[city]) {
+            res.writeHead(302, {'Location': '/404'});
+            return res.end();
+        }
 
-            return res.writeHead(302, {'Location': '/404'});
+        if('undefined' === typeof db_cold.realties[realty]) {
+            res.writeHead(302, {'Location': '/404'});
+            return res.end();
         }
 
         doc['timestamp'] = format.date(doc['timestamp']);
@@ -254,9 +262,11 @@ var noteController = function (req, res, city, realty, note_id) {
 var listController = function (req, res, city, realty) {
 
     if('undefined' === typeof db_cold.cities[city]) {
+        res.writeHead(302, {'Location': '/404'});
+        return res.end();
+    }
 
-        console.info(db_cold.cities);
-        console.info(city);
+    if('undefined' === typeof db_cold.realties[realty]) {
         res.writeHead(302, {'Location': '/404'});
         return res.end();
     }

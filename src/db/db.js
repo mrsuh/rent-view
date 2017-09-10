@@ -6,6 +6,7 @@ module.exports = {
     db: null,
     subways: {},
     cities: {},
+    realties: {komnata: 1, kvartira: 1},
 
     /**
      *
