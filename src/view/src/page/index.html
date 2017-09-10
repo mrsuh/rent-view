@@ -83,7 +83,7 @@
     "price": "{{= it.item.price.replace(' ', '') }}",
     "seller": {
       "@type": "Person",
-      "name": "{{= it.item.contacts.person.name }}"
+      "name": "{{= it.item.contact.name }}"
     }
   }
   {{?}}
@@ -148,18 +148,18 @@
             <div class="row3">
 
                 <div class="person">
-                    <a href="{{= it.item.contacts.person.link }}" target="_blank" rel="nofollow">{{= it.item.contacts.person.name }}</a>
+                    <a href="{{= it.item.contact.link }}" target="_blank" rel="nofollow">{{= it.item.contact.name }}</a>
                 </div>
 
-                {{~ it.item.contacts.phones :phone }}
+                {{~ it.item.contact.phones :phone }}
                     <div class="phone">
                         {{= phone }}
                     </div>
                 {{~}}
 
-                {{? it.item.contacts.person.link.length }}
+                {{? it.item.contact.link.length }}
                     <div class="write">
-                        <a href="{{= it.item.contacts.person.write }}" target="_blank" rel="nofollow" title="Написать сообщение">Написать сообщение</a>
+                        <a href="{{= it.item.contact.link }}" target="_blank" rel="nofollow" title="Написать сообщение">Написать сообщение</a>
                     </div>
                 {{?}}
             </div>

@@ -88,8 +88,17 @@ var formFilter = function (params) {
  *
  * @param req
  * @param res
+ * @param city
+ * @param realty
  */
-var aboutController = function (req, res) {
+var aboutController = function (req, res, city, realty) {
+
+    if ('undefined' === typeof db_cold.cities[city]) {
+
+        res.writeHead(302, {'Location': '/404'});
+        return res.end();
+    }
+
     res.writeHead(200, {
         'Content-Type': 'text/html; charset=UTF-8'
     });
@@ -97,12 +106,11 @@ var aboutController = function (req, res) {
     return res.end(template.about({
         page: 'about',
         req: {
-            city: 'sankt-peterburg',
-            realty: 'kvartira'
+            city: city,
+            realty: realty
         }
     }));
 };
-
 
 /**
  *
@@ -123,26 +131,23 @@ var notFoundController = function (req, res) {
  *
  * @param req
  * @param res
+ * @param city_name
  */
-var statisticController = function (req, res) {
-    res.writeHead(200, {
-        'Content-Type': 'text/html; charset=UTF-8'
-    });
-
-    var regexp = /^\/([^\/]+)\/statistic(\??).*/i;
-    var match = regexp.exec(req.url);
-
-    var city_name = match[1] ? match[1] : 'sankt-peterburg';
+var statisticController = function (req, res, city_name) {
 
     var city = db_cold.cities[city_name];
 
     if ('undefined' === typeof city) {
 
-        return res.writeHead(302, {'Location': '/404'});
+        res.writeHead(302, {'Location': '/404'});
+        return res.end();
     }
 
     db_hot.findNotes({}).then(function (notes) {
 
+        res.writeHead(200, {
+            'Content-Type': 'text/html; charset=UTF-8'
+        });
         return res.end(template.statistic({
             days: statistic.days(notes, city_name),
             hours: statistic.hours(notes, city_name),
@@ -163,9 +168,6 @@ var statisticController = function (req, res) {
  * @param res
  */
 var sitemapController = function (req, res) {
-    res.writeHead(200, {
-        'Content-Type': 'text/html; charset=UTF-8'
-    });
 
     db_hot.findNotes({})
         .then(function (notes) {
@@ -173,6 +175,9 @@ var sitemapController = function (req, res) {
                 notes[i]['timestamp'] = format.dateSitemap(notes[i]['timestamp']);
             }
 
+            res.writeHead(200, {
+                'Content-Type': 'text/html; charset=UTF-8'
+            });
             return res.end(template.sitemap({notes: notes}));
         });
 };
@@ -181,15 +186,18 @@ var sitemapController = function (req, res) {
  *
  * @param req
  * @param res
+ * @param city
+ * @param realty
+ * @param note_id
  */
-var noteController = function (req, res) {
-    var reg = req.url.match(/\/rent\/.*p\.(.*)/i);
-    var id = reg[1];
+var noteController = function (req, res, city, realty, note_id) {
 
-    var drow = function (doc, req, res) {
-        res.writeHead(200, {
-            'Content-Type': 'text/html; charset=UTF-8'
-        });
+    var drow = function (doc, res) {
+
+        if('undefined' === typeof db_cold.cities[city]) {
+
+            return res.writeHead(302, {'Location': '/404'});
+        }
 
         doc['timestamp'] = format.date(doc['timestamp']);
         doc['price'] = format.number(doc['price']);
@@ -202,29 +210,37 @@ var noteController = function (req, res) {
 
         doc['contact']['phones'] = new_phones;
 
+        res.writeHead(200, {
+            'Content-Type': 'text/html; charset=UTF-8'
+        });
+
         return res.end(template.page({
             item: doc,
             subways: db_hot.subways,
-            page: 'advert'
+            page: 'advert',
+            req: {
+                city: city,
+                realty: realty
+            }
         }));
     };
 
-    db_hot.findNote({_id: id})
+    db_hot.findNote({_id: note_id})
         .then(function (doc_hot) {
             if (null === doc_hot) {
 
-                db_cold.findNote({_id: id}).then(function (doc_cold) {
+                db_cold.findNote({_id: note_id}).then(function (doc_cold) {
 
                     if (null === doc_cold) {
-                        res.writeHead(302, {'Location': '/'});
+                        res.writeHead(302, {'Location': '/404'});
                         return res.end();
                     }
 
-                    return drow(doc_cold, req, res);
+                    return drow(doc_cold, res);
                 });
             }
 
-            return drow(doc_hot, req, res);
+            return drow(doc_hot, res);
         });
 };
 
@@ -232,21 +248,18 @@ var noteController = function (req, res) {
  *
  * @param req
  * @param res
+ * @param city
+ * @param realty
  */
-var listController = function (req, res) {
+var listController = function (req, res, city, realty) {
 
-    var regexp = /^\/([^\/]+)\/(kvartira|komnata)(\??).*/i;
-    var match = regexp.exec(req.url);
+    if('undefined' === typeof db_cold.cities[city]) {
 
-    var city = match[1] ? match[1] : 'sankt-peterburg';
-    var realty = match[2] ? match[2] : 'kvartira';
-
-    res.setHeader('X-City', city);
-    res.setHeader('X-Realty', realty);
-
-    res.writeHead(200, {
-        'Content-Type': 'text/html; charset=UTF-8'
-    });
+        console.info(db_cold.cities);
+        console.info(city);
+        res.writeHead(302, {'Location': '/404'});
+        return res.end();
+    }
 
     var req_price_from = url.getParameter(req.url, 'price_from');
     var price_from = null !== req_price_from ? parseInt(req_price_from) : '';
@@ -338,6 +351,10 @@ var listController = function (req, res) {
 
             docs[i]['contact']['phones'] = new_phones;
         }
+
+        res.writeHead(200, {
+            'Content-Type': 'text/html; charset=UTF-8'
+        });
 
         return res.end(template.list({
             req: {
