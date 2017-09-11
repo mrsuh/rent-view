@@ -394,6 +394,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelector('.choose-city').addEventListener('click', switchCity);
+    document.querySelector('.current-city').addEventListener('click', switchCity);
     document.querySelector('.block-city .btn-close').addEventListener('click', switchCity);
 
     document.querySelector('.filter-realty').addEventListener('change', changeRealty);
