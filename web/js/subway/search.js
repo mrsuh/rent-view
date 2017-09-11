@@ -204,7 +204,7 @@ SubwaySearch.prototype.search = function (string) {
         }
     }
 
-    var regexp = new RegExp(string, 'ui');
+    var regexp = new RegExp(string, 'i');
     var stations = [];
     for(var i = 0, length = this.list.length; i < length; i++) {
         var station = this.list[i];

@@ -58,7 +58,15 @@ var server = http.createServer(function (req, res) {
             var regexp = routers.note;
             var match = regexp.exec(req.url);
 
-            controller.note(req, res, match[1], match[2], match[4]);
+            var cookies = parseCookies(req.headers.cookie);
+
+            var realty = cookies['realty'];
+            if ('undefined' === typeof realty) {
+                realty = 'kvartira';
+                res.setHeader('Set-Cookie', 'realty=' + realty + '; Max-Age=3600; Path=/');
+            }
+
+            controller.note(req, res, match[1], realty, match[3]);
             break;
         case null !== req.url.match(routers.note_old):
 
