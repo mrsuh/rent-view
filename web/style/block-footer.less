@@ -11,7 +11,7 @@
     padding-top: 25px;
     padding-bottom: 15px;
 
-    ul {
+    .links {
       width: 20%;
       vertical-align: top;
       display: inline-block;
@@ -19,6 +19,31 @@
       li {
         vertical-align: 24px;
         display: block;
+
+        a {
+          font-size: 13px;
+          line-height: 24px;
+          color: #CFCACA;
+          text-decoration: none;
+          transition: color 0.2s linear;
+          &:hover {
+            cursor: pointer;
+            color: #fecb2e;
+          }
+        }
+      }
+    }
+
+    .subways {
+      vertical-align: top;
+      display: inline-block;
+      width: 100%;
+
+      li {
+        float: left;
+        display: inline;
+        text-align: left;
+        width: 20%;
 
         a {
           font-size: 13px;
@@ -109,7 +134,7 @@
 
           &.twitter {
             .fill {
-              fill:#26a6d1;
+              fill: #26a6d1;
             }
           }
         }
