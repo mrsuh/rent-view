@@ -12,7 +12,7 @@
                 <li><a href="/{{= it.req.city }}/komnata">Комнаты</a></li>
             </ul>
 
-            <ul>
+            <ul class="links">
                 <li><a href="/sankt-peterburg/{{= it.req.realty }}">Санкт Перетербург</a></li>
                 <li><a href="/moskva/{{= it.req.realty }}">Москва</a></li>
                 <li><a href="/volgograd/{{= it.req.realty }}">Волгоград</a></li>
@@ -21,7 +21,7 @@
                 <li><a href="/kazan/{{= it.req.realty }}">Казань</a></li>
             </ul>
 
-            <ul>
+            <ul class="links">
                 <li><a href="/krasnodar/{{= it.req.realty }}">Краснодар</a></li>
                 <li><a href="/krasnoyarsk/{{= it.req.realty }}">Красноярск</a></li>
                 <li><a href="/nizny-novgorod/{{= it.req.realty }}">Нижний Новгород</a></li>
@@ -30,7 +30,7 @@
                 <li><a href="/perm/{{= it.req.realty }}">Пермь</a></li>
             </ul>
 
-            <ul>
+            <ul class="links">
                 <li><a href="/rostov-na-donu/{{= it.req.realty }}">Ростов-на-Дону</a></li>
                 <li><a href="/samara/{{= it.req.realty }}">Самара</a></li>
                 <li><a href="/saratov/{{= it.req.realty }}">Саратов</a></li>
@@ -39,7 +39,7 @@
                 <li><a href="/toliati/{{= it.req.realty }}">Тольятти</a></li>
             </ul>
 
-            <ul>
+            <ul class="links">
                 <li><a href="/tumen/{{= it.req.realty }}">Тюмень</a></li>
                 <li><a href="/ufa/{{= it.req.realty }}">Уфа</a></li>
                 <li><a href="/chelabinsk/{{= it.req.realty }}">Челябинск</a></li>
@@ -59,6 +59,8 @@
             it.req.city === 'sankt-peterburg' }}
 
         <div class="row">
+
+            <ul class="subways">
 
             {{? it.req.city === 'ekaterinburg' }}
 
@@ -89,6 +91,8 @@
             <!-- @import src/view/dist/layout/footer/subway_sankt_peterburg.html -->
 
             {{?}}
+
+            </ul>
 
         <div>
 
@@ -137,7 +141,7 @@
 
         <div class="pages">
             <a href="/{{= it.req.city }}/{{= it.req.realty }}">Объявления</a>
-            <a href="/statistic">Статистика</a>
+            <a href="/{{= it.req.city }}/statistic">Статистика</a>
             <a href="/about">О сайте</a>
             <span class="version">{{version}}</span>
         </div>

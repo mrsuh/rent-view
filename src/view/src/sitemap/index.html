@@ -1,19 +1,18 @@
 {{##def.link:item:
 {{? item.type === 0 }}
-/rent/saint-petersburg/komnaty/room-p.{{= item._id }}
+/{{= item.city }}/komnata/{{= item._id }}
 {{?? item.type === 1 }}
-/rent/saint-petersburg/kvartiry/1-k-kvartira-p.{{= item._id }}
+/{{= item.city }}/1-kvartira/{{= item._id }}
 {{?? item.type === 2 }}
-/rent/saint-petersburg/kvartiry/2-k-kvartira-p.{{= item._id }}
+/{{= item.city }}/2-kvartira/{{= item._id }}
 {{?? item.type === 3 }}
-/rent/saint-petersburg/kvartiry/3-k-kvartira-p.{{= item._id }}
+/{{= item.city }}/3-kvartira/{{= item._id }}
 {{?? item.type === 4 }}
-/rent/saint-petersburg/kvartiry/4-k-kvartira-p.{{= item._id }}
+/{{= item.city }}/4-kvartira/{{= item._id }}
 {{?? item.type === 5 }}
-/rent/saint-petersburg/kvartiry/studia-p.{{= item._id }}
+/{{= item.city }}/studia/{{= item._id }}
 {{?}}
 #}}
-
 
 <?xml version="1.0" encoding="UTF-8"?>
 

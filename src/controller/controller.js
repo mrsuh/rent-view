@@ -179,7 +179,7 @@ var sitemapController = function (req, res) {
             }
 
             res.writeHead(200, {
-                'Content-Type': 'text/html; charset=UTF-8'
+                'Content-Type': 'text/xml; charset=UTF-8'
             });
             return res.end(template.sitemap({notes: notes}));
         });
