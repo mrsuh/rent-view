@@ -85,13 +85,7 @@
                     <option value="komnata" {{? it.req.realty === 'komnata' }} selected="selected" {{?}}>Комната</option>
                 </select>
 
-                <span class="filter-area {{? it.req.realty === 'kvartira'}} hide {{?}}" >
-                    <input title="Площадь комнаты от" type="text" placeholder="от" class="from" value="{{= it.req.area_from }}">
-                    <input title="Площадь комнаты до" type="text" placeholder="до" class="to" value="{{= it.req.area_to }}">
-                    <span class="currency">м²</span>
-                </span>
-
-                <span class="filter-realty-add {{? it.req.realty === 'komnata' }} hide {{?}}">
+                <span class="filter-realty-add {{? it.req.realty === 'komnata' }} blocked {{?}}">
 
                 <input id="realty-0" type="checkbox"
                        {{? it.req.realty_add.indexOf("5") !== -1 }} checked {{?}} value="5">
@@ -381,13 +375,7 @@
                     <div class="row1">
 
                         <div class="name">
-                            <a href="{{#def.link:item }}">{{#def.type:item.type }}</a>
-                        </div>
-
-                        <div class="area">
-                            {{? null !== item.area && 0.0 !== parseFloat(item.area) }}
-                            , {{= item.area}} м²
-                            {{?}}
+                            <a href="{{= item.link }}" target="_blank">{{#def.type:item.type }}</a>
                         </div>
 
                         <div class="price">
@@ -430,8 +418,7 @@
                     <div class="row2">
 
                         <div class="person">
-                            <a href="{{= item.contact.link }}" target="_blank" rel="nofollow" title="Написать сообщение">{{= item.contact.name
-                                }}</a>
+                            {{= item.contact.name }}
                         </div>
 
                         {{~ item.contact.phones :phone }}

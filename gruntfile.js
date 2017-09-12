@@ -36,7 +36,13 @@ module.exports = function (grunt) {
             },
             import: {
                 files: {
-                    'src/view/dist/': 'src/view/dist/**'
+                    'src/view/dist/layout/footer/footer.html': 'src/view/dist/layout/footer/footer.html',
+                    'src/view/dist/layout/header/header.html': 'src/view/dist/layout/header/header.html',
+                    'src/view/dist/about/index.html': 'src/view/dist/about/index.html',
+                    'src/view/dist/error/404.html': 'src/view/dist/error/404.html',
+                    'src/view/dist/main/index.html': 'src/view/dist/main/index.html',
+                    'src/view/dist/statistic/index.html': 'src/view/dist/statistic/index.html'
+
                 },
                 options: {
                     replacements: [
@@ -67,8 +73,7 @@ module.exports = function (grunt) {
                         'web/js/subway/station.js',
                         'web/js/url.js'
                     ],
-                    'web/js/main.min.js': ['web/js/main.js'],
-                    'web/js/page.min.js': ['web/js/page.js']
+                    'web/js/main.min.js': ['web/js/main.js']
                 }
             }
         }

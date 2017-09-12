@@ -66,7 +66,7 @@
 
     .search-results-item {
       text-decoration: none;
-      color: black;
+      color: @main-font-color;
       display: block;
       font-size: 0;
       background-color: #ffffff;
@@ -100,14 +100,9 @@
           font-size: 18px;
           line-height: 18px;
           a {
-            color: black;
+            color: @main-color;
             text-decoration: none;
           }
-        }
-        
-        .area {
-          display: inline-block;
-          font-size: 18px;
         }
 
         .price {
@@ -150,7 +145,6 @@
         }
       }
 
-
       .row2 {
         margin-bottom: 10px;
         .person{
@@ -158,35 +152,7 @@
           font-size: 16px;
           line-height: 26px;
           margin-right: 10px;
-          a {
-            text-decoration: none;
-            color: #47a2da;
-            &:visited {
-              color: #47a2da;
-            }
-          }
-        }
-
-        .write {
-          vertical-align: bottom;
-          display: inline-block;
-          width: 20px;
-          margin-right: 10px;
-          margin-bottom: 3px;
-
-          a {
-            display: inline-block;
-            margin: 0;
-            text-decoration: none;
-            img {
-              width: 100%;
-              height: auto;
-              margin-bottom: 4px;
-              &:hover {
-                opacity: 0.8;
-              }
-            }
-          }
+          color: @main-font-color;
         }
 
         .phone {
