@@ -103,16 +103,11 @@ FullScreen.prototype.initOnEvent = function(e)
 {
     var item = e.target.parentNode.parentNode.parentNode.parentNode.parentNode;
     var item_name = item.querySelector('.row1 .name a').innerText;
-    var item_area = item.querySelector('.row1 .area').innerText;
     var item_price = item.querySelector('.row1 .price').innerText;
 
     var elem_name = document.createElement('div');
     elem_name.className = 'name';
     elem_name.innerText = item_name;
-
-    var elem_area = document.createElement('div');
-    elem_area.className = 'area';
-    elem_area.innerText = item_area;
 
     var elem_price = document.createElement('div');
     elem_price.className = 'price';
@@ -123,7 +118,6 @@ FullScreen.prototype.initOnEvent = function(e)
     }
 
     this.block_description.appendChild(elem_name);
-    this.block_description.appendChild(elem_area);
     this.block_description.appendChild(elem_price);
 
     this.init(e.target);

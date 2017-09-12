@@ -49,9 +49,6 @@ var search = function (data) {
     var price_from = document.querySelector('.filter-price .from').value;
     var price_to = document.querySelector('.filter-price .to').value;
 
-    var area_from = document.querySelector('.filter-area .from').value;
-    var area_to = document.querySelector('.filter-area .to').value;
-
     var photo = document.getElementById('filter_photo').checked;
 
     var elem_order = document.querySelectorAll('input[name="order"]');
@@ -68,8 +65,6 @@ var search = function (data) {
     var query =
         (subway.length ? '&subway=' + subway : '') +
         (price_from.length ? '&price_from=' + price_from : '') +
-        (area_from.length ? '&area_from=' + area_from : '') +
-        (area_to.length ? '&area_to=' + area_to : '') +
         (price_to.length ? '&price_to=' + price_to : '') +
         (realty_add.length ? '&realty_add=' + realty_add : '') +
         (photo ? '&photo=1' : '') +
@@ -84,17 +79,15 @@ var search = function (data) {
 };
 
 var changeRealty = function () {
-    var realty = document.querySelector('.filter-realty').value;
+    var elem_realty = document.querySelector('.filter-realty');
+    var realty = elem_realty.options[elem_realty.selectedIndex].value;
 
-    var filter_area = document.querySelector('.filter-area');
     var filter_realty_add = document.querySelector('.filter-realty-add');
 
-    if (realty === 'flat') {
-        filter_area.addClass('hide');
-        filter_realty_add.removeClass('hide');
+    if ('kvartira' === realty) {
+        filter_realty_add.removeClass('blocked');
     } else {
-        filter_realty_add.addClass('hide');
-        filter_area.removeClass('hide');
+        filter_realty_add.addClass('blocked');
     }
 };
 
@@ -420,8 +413,6 @@ document.addEventListener("DOMContentLoaded", function () {
         setStationName();
     });
 
-    document.querySelector('.filter-area .from').addEventListener('keydown', searchOnPressEnter);
-    document.querySelector('.filter-area .to').addEventListener('keydown', searchOnPressEnter);
     document.querySelector('.filter-price .from').addEventListener('keydown', searchOnPressEnter);
     document.querySelector('.filter-price .to').addEventListener('keydown', searchOnPressEnter);
 

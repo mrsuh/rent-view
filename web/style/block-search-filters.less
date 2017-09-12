@@ -26,7 +26,6 @@
   .filter-realty,
   .filter-realty-add,
   .filter-subway,
-  .filter-area,
   .filter-additional,
   .filter-source,
   .filter-photo,
@@ -59,9 +58,26 @@
 
   .filter-realty-add {
 
-    &.hide {
-      display: none;
+    &.blocked {
+
+      label {
+        background-color: #f3f3f3;
+
+        &:hover {
+          cursor: default;
+          background-color: #f3f3f3;
+        }
+      }
+
+      input[type=checkbox] {
+        &:checked {
+          & + label {
+            background-color: #f3f3f3;
+          }
+        }
+      }
     }
+
 
     label {
       display: inline-block;
@@ -112,49 +128,6 @@
           background-color: rgba(71, 162, 218, .7);
         }
       }
-    }
-  }
-
-  .filter-area {
-
-    &.hide {
-      display: none;
-    }
-
-    .from, .to {
-      border-radius: 0;
-      margin: 0;
-    }
-    .from {
-      -webkit-border-top-left-radius: 3px;
-      -moz-border-radius-topleft: 3px;
-      border-top-left-radius: 3px;
-      -webkit-border-bottom-left-radius: 3px;
-      -moz-border-radius-bottomleft: 3px;
-      border-bottom-left-radius: 3px;
-      width: 123px;
-    }
-    .to {
-      border-left-width: 0;
-      width: 124px;
-    }
-    .currency {
-      font-size: 13px;
-      padding: 0 13px;
-      position: relative;
-      display: inline-block;
-      text-align: center;
-      cursor: default;
-      border: 1px solid rgba(0, 0, 0, .2);
-      line-height: 26px;
-      border-left-width: 0;
-      -webkit-border-top-right-radius: 3px;
-      -moz-border-radius-topright: 3px;
-      border-top-right-radius: 3px;
-      -webkit-border-bottom-right-radius: 3px;
-      -moz-border-radius-bottomright: 3px;
-      border-bottom-right-radius: 3px;
-      background-color: #f3f3f3;
     }
   }
 
@@ -242,7 +215,6 @@
       .filter-realty,
       .filter-realty-add,
       .filter-subway,
-      .filter-area,
       .filter-additional,
       .filter-source,
       .filter-photo,
@@ -277,20 +249,6 @@
           &:last-of-type {
             min-width: 18%
           }
-        }
-      }
-
-      .filter-area {
-
-        &.hide {
-          display: none;
-        }
-
-        .from, .to {
-          width: 41%;
-        }
-        .currency {
-          min-width: 18%;
         }
       }
 

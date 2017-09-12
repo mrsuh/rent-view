@@ -1,7 +1,6 @@
 "use strict";
 
-var db_cold = require(__dirname + '/../db/db.js');
-var db_hot = require(__dirname + '/../db/db.js');
+var db = require(__dirname + '/../db/db.js');
 var pagination = require(__dirname + '/../services/pagination.js');
 var format = require(__dirname + '/../services/format.js');
 var url = require(__dirname + '/../services/url.js');
@@ -9,8 +8,7 @@ var template = require(__dirname + '/../services/template.js');
 var statistic = require(__dirname + '/../services/statistic.js');
 var config = require(__dirname + '/../../config/config.js');
 
-db_cold.init(config.db.cold);
-db_hot.init(config.db.hot);
+db.init(config.db);
 template.init();
 
 /**
@@ -93,12 +91,12 @@ var formFilter = function (params) {
  */
 var aboutController = function (req, res, city, realty) {
 
-    if ('undefined' === typeof db_cold.cities[city]) {
+    if ('undefined' === typeof db.cities[city]) {
         res.writeHead(302, {'Location': '/404'});
         return res.end();
     }
 
-    if('undefined' === typeof db_cold.realties[realty]) {
+    if('undefined' === typeof db.realties[realty]) {
         res.writeHead(302, {'Location': '/404'});
         return res.end();
     }
@@ -137,28 +135,28 @@ var notFoundController = function (req, res) {
  * @param res
  * @param city_name
  */
-var statisticController = function (req, res, city_name) {
+var statisticController = function (req, res, city, realty) {
 
-    var city = db_cold.cities[city_name];
+    var city_obj = db.cities[city];
 
-    if ('undefined' === typeof city) {
+    if ('undefined' === typeof city_obj) {
         res.writeHead(302, {'Location': '/404'});
         return res.end();
     }
 
-    db_hot.findNotes({}).then(function (notes) {
+    db.findNotes({}).then(function (notes) {
 
         res.writeHead(200, {
             'Content-Type': 'text/html; charset=UTF-8'
         });
         return res.end(template.statistic({
-            days: statistic.days(notes, city_name),
-            hours: statistic.hours(notes, city_name),
-            subways: statistic.subways(notes, db_hot.subways, city_name),
-            city: city,
+            days: statistic.days(notes, city),
+            hours: statistic.hours(notes, city),
+            subways: statistic.subways(notes, db.subways, city),
+            city: city_obj,
             req: {
-                city: city_name,
-                realty: 'kvartira'
+                city: city,
+                realty: realty
             },
             page: 'statistic'
         }));
@@ -172,7 +170,7 @@ var statisticController = function (req, res, city_name) {
  */
 var sitemapController = function (req, res) {
 
-    db_hot.findNotes({})
+    db.findNotes({})//todo
         .then(function (notes) {
             for (var i = 0, length = notes.length; i < length; i++) {
                 notes[i]['timestamp'] = format.dateSitemap(notes[i]['timestamp']);
@@ -191,82 +189,15 @@ var sitemapController = function (req, res) {
  * @param res
  * @param city
  * @param realty
- * @param note_id
- */
-var noteController = function (req, res, city, realty, note_id) {
-
-    var drow = function (doc, res) {
-
-        if('undefined' === typeof db_cold.cities[city]) {
-            res.writeHead(302, {'Location': '/404'});
-            return res.end();
-        }
-
-        if('undefined' === typeof db_cold.realties[realty]) {
-            res.writeHead(302, {'Location': '/404'});
-            return res.end();
-        }
-
-        doc['timestamp'] = format.date(doc['timestamp']);
-        doc['price'] = format.number(doc['price']);
-
-        var phones = doc['contact']['phones'];
-        var new_phones = [];
-        for (var p = 0, plength = phones.length; p < plength; p++) {
-            new_phones.push(format.phone(phones[p]));
-        }
-
-        doc['contact']['phones'] = new_phones;
-
-        res.writeHead(200, {
-            'Content-Type': 'text/html; charset=UTF-8'
-        });
-
-        return res.end(template.page({
-            item: doc,
-            subways: db_hot.subways,
-            page: 'advert',
-            req: {
-                city: city,
-                realty: realty
-            }
-        }));
-    };
-
-    db_hot.findNote({_id: note_id})
-        .then(function (doc_hot) {
-            if (null === doc_hot) {
-
-                db_cold.findNote({_id: note_id}).then(function (doc_cold) {
-
-                    if (null === doc_cold) {
-                        res.writeHead(302, {'Location': '/404'});
-                        return res.end();
-                    }
-
-                    return drow(doc_cold, res);
-                });
-            }
-
-            return drow(doc_hot, res);
-        });
-};
-
-/**
- *
- * @param req
- * @param res
- * @param city
- * @param realty
  */
 var listController = function (req, res, city, realty) {
 
-    if('undefined' === typeof db_cold.cities[city]) {
+    if('undefined' === typeof db.cities[city]) {
         res.writeHead(302, {'Location': '/404'});
         return res.end();
     }
 
-    if('undefined' === typeof db_cold.realties[realty]) {
+    if('undefined' === typeof db.realties[realty]) {
         res.writeHead(302, {'Location': '/404'});
         return res.end();
     }
@@ -315,8 +246,8 @@ var listController = function (req, res, city, realty) {
         for (var i = 0, length = subway.length; i < length; i++) {
             var subway_id = subway[i];
 
-            if (typeof db_hot.subways[subway_id] !== 'undefined') {
-                subway_name = 'м. ' + db_hot.subways[subway_id].name.substr(0, 5) + '...';
+            if (typeof db.subways[subway_id] !== 'undefined') {
+                subway_name = 'м. ' + db.subways[subway_id].name.substr(0, 5) + '...';
                 break;
             }
         }
@@ -338,8 +269,8 @@ var listController = function (req, res, city, realty) {
         limit: items_on_page
     };
 
-    var find_by_options = db_hot.findNotesByOptions(filter, options);
-    var find_all = db_hot.findNotes(filter);
+    var find_by_options = db.findNotesByOptions(filter, options);
+    var find_all = db.findNotes(filter);
 
     Promise.all([find_by_options, find_all]).then(function (result) {
 
@@ -383,7 +314,7 @@ var listController = function (req, res, city, realty) {
             subway_name: subway_name,
             items_count: unlimit_docs.length,
             items: docs,
-            subways: db_hot.subways,
+            subways: db.subways,
             pagination: pagination.paginate(page, Math.ceil(unlimit_docs.length / items_on_page)),
             page: 'advert'
         }));
@@ -394,7 +325,6 @@ module.exports = {
     about: aboutController,
     statistic: statisticController,
     sitemap: sitemapController,
-    note: noteController,
     list: listController,
     not_found: notFoundController
 };

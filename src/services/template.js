@@ -21,7 +21,6 @@ var readFile = function (file, callback) {
 
 module.exports = {
     list: null,
-    page: null,
     about: null,
     sitemap: null,
     statistic: null,
@@ -34,10 +33,6 @@ module.exports = {
 
         readFile(__dirname + '/../view/dist/main/index.html', function (text) {
             this.list = dot.template(text);
-        }.bind(this));
-
-        readFile(__dirname + '/../view/dist/page/index.html', function (text) {
-            this.page = dot.template(text);
         }.bind(this));
 
         readFile(__dirname + '/../view/dist/sitemap/index.html', function (text) {

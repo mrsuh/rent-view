@@ -6,15 +6,8 @@ module.exports = {
         port: 2000
     },
     db: {
-        hot: {
-            host: '127.0.0.1',
-            port: 27017,
-            database: 'rent-collector'
-        },
-        cold: {
-             host: '127.0.0.1',
-             port: 27017,
-             database: 'rent-collector-cold'
-        }
+        host: '127.0.0.1',
+        port: 27017,
+        database: 'rent-collector'
     }
 };
