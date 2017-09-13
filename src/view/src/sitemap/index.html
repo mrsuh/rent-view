@@ -1,36 +1,24 @@
-{{##def.link:item:
-{{? item.type === 0 }}
-/{{= item.city }}/komnata/{{= item._id }}
-{{?? item.type === 1 }}
-/{{= item.city }}/1-kvartira/{{= item._id }}
-{{?? item.type === 2 }}
-/{{= item.city }}/2-kvartira/{{= item._id }}
-{{?? item.type === 3 }}
-/{{= item.city }}/3-kvartira/{{= item._id }}
-{{?? item.type === 4 }}
-/{{= item.city }}/4-kvartira/{{= item._id }}
-{{?? item.type === 5 }}
-/{{= item.city }}/studia/{{= item._id }}
-{{?}}
-#}}
-
 <?xml version="1.0" encoding="UTF-8"?>
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-    {{~ it.notes :note }}
+    {{~ it.realties :realty }}
+
+   {{~ it.cities :city }}
 
    <url>
 
-      <loc>https://socrent.ru{{#def.link:note }}</loc>
+      <loc>https://socrent.ru/{{= city }}/{{= realty }}</loc>
 
-      <lastmod>{{= note.timestamp }}</lastmod>
+      <lastmod>{{= it.date }}</lastmod>
 
-      <changefreq>daily</changefreq>
+      <changefreq>always</changefreq>
 
-      <priority>0.5</priority>
+      <priority>1</priority>
 
    </url>
+
+   {{~}}
 
    {{~}}
 
