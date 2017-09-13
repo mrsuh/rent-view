@@ -22,6 +22,7 @@ var routers = {
     note: /\/rent\/saint-petersburg\/(komnaty|kvartiry)\/(room|studia|[1234]-k-kvartira)-p\.(.*)(\?.*|$)/i,
     statistic: /^\/([^\/]+)\/statistic(\?.*|$)/i,
     list: /^\/([^\/]+)\/(kvartira|komnata)(\?.*|$)/i,
+    list_city: /^\/([^\/]+)(\?.*|$)/i,
     main: /(\/)(\?.*|$)/i
 };
 
@@ -94,6 +95,24 @@ var server = http.createServer(function (req, res) {
             }
 
             controller.list(req, res, match[1], match[2]);
+            break;
+        case null !== req.url.match(routers.list_city):
+
+            var regexp = routers.list_city;
+            var match = regexp.exec(req.url);
+
+            var cookies = parseCookies(req.headers.cookie);
+
+            if ('undefined' === typeof cookies['city'] || cookies['city'] !== match[1]) {
+                res.setHeader('Set-Cookie', 'city=' + match[1] + '; Max-Age=3600; Path=/');
+            }
+
+            var realty = 'kvartira';
+            if ('undefined' === typeof cookies['realty'] || cookies['realty'] !== realty) {
+                res.setHeader('Set-Cookie', 'realty=' + realty + '; Max-Age=3600; Path=/');
+            }
+
+            controller.list(req, res, match[1], realty);
             break;
         case null !== req.url.match(routers.main):
 

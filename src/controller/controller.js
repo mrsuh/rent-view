@@ -96,7 +96,7 @@ var aboutController = function (req, res, city, realty) {
         return res.end();
     }
 
-    if('undefined' === typeof db.realties[realty]) {
+    if ('undefined' === typeof db.realties[realty]) {
         res.writeHead(302, {'Location': '/404'});
         return res.end();
     }
@@ -170,17 +170,15 @@ var statisticController = function (req, res, city, realty) {
  */
 var sitemapController = function (req, res) {
 
-    db.findNotes({})//todo
-        .then(function (notes) {
-            for (var i = 0, length = notes.length; i < length; i++) {
-                notes[i]['timestamp'] = format.dateSitemap(notes[i]['timestamp']);
-            }
+    res.writeHead(200, {
+        'Content-Type': 'text/xml; charset=UTF-8'
+    });
 
-            res.writeHead(200, {
-                'Content-Type': 'text/xml; charset=UTF-8'
-            });
-            return res.end(template.sitemap({notes: notes}));
-        });
+    return res.end(template.sitemap({
+        cities: Object.keys(db.cities),
+        realties: Object.keys(db.realties),
+        date: format.dateSitemap(Date.now())
+    }));
 };
 
 /**
@@ -192,12 +190,12 @@ var sitemapController = function (req, res) {
  */
 var listController = function (req, res, city, realty) {
 
-    if('undefined' === typeof db.cities[city]) {
+    if ('undefined' === typeof db.cities[city]) {
         res.writeHead(302, {'Location': '/404'});
         return res.end();
     }
 
-    if('undefined' === typeof db.realties[realty]) {
+    if ('undefined' === typeof db.realties[realty]) {
         res.writeHead(302, {'Location': '/404'});
         return res.end();
     }

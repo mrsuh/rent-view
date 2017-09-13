@@ -82,7 +82,7 @@ var date = function (unix_timestamp) {
  */
 var dateSitemap = function (unix_timestamp) {
 
-    var date = new Date(unix_timestamp * 1000);
+    var date = new Date(unix_timestamp);
 
     var minutes = "0" + date.getMinutes();
     var hour = "0" + date.getHours();
