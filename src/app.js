@@ -24,6 +24,7 @@ var routers = {
     list: /^\/([^\/]+)\/(kvartira|komnata)(\?.*|$)/i,
     list_city: /^\/([^\/]+)(\?.*|$)/i,
     main: /(\/)(\?.*|$)/i
+    //socrent.local/rent/saint-petersburg/kvartiry/room-p13123123123
 };
 
 var server = http.createServer(function (req, res) {
@@ -55,13 +56,26 @@ var server = http.createServer(function (req, res) {
             break;
         case null !== req.url.match(routers.note):
 
-            res.writeHead(302, {'Location': '/'});
-            res.end();
+            var regexp = routers.list;
+            var match = regexp.exec(req.url);
+
+            var cookies = parseCookies(req.headers.cookie);
+
+            var realty = cookies['city'];
+            if ('undefined' === typeof cookies['city']) {
+                city = 'sankt-peterburg';
+                res.setHeader('Set-Cookie', 'city=' + city + '; Max-Age=3600; Path=/');
+            }
+
+            var realty = cookies['realty'];
+            if ('undefined' === typeof cookies['realty']) {
+                realty = 'kvartira';
+                res.setHeader('Set-Cookie', 'realty=' + realty + '; Max-Age=3600; Path=/');
+            }
+
+            controller.list(req, res, city, realty);
             break;
         case null !== req.url.match(routers.statistic):
-
-            var regexp = routers.statistic;
-            var match = regexp.exec(req.url);
 
             var cookies = parseCookies(req.headers.cookie);
 
