@@ -56,9 +56,6 @@ var server = http.createServer(function (req, res) {
             break;
         case null !== req.url.match(routers.note):
 
-            var regexp = routers.list;
-            var match = regexp.exec(req.url);
-
             var cookies = parseCookies(req.headers.cookie);
 
             var realty = cookies['city'];
