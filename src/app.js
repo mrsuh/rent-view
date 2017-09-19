@@ -55,13 +55,10 @@ var server = http.createServer(function (req, res) {
             break;
         case null !== req.url.match(routers.note):
 
-            res.writeHead(302, {'Location': '/'});
+            res.writeHead(301, {'Location': '/'});
             res.end();
             break;
         case null !== req.url.match(routers.statistic):
-
-            var regexp = routers.statistic;
-            var match = regexp.exec(req.url);
 
             var cookies = parseCookies(req.headers.cookie);
 
