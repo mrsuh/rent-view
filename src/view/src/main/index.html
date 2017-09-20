@@ -30,6 +30,98 @@
 {{?}}
 #}}
 
+{{##def.city:city:
+{{? city === 'sankt-peterburg' }}
+Санкт Перетербург
+{{?? city === 'moskva' }}
+Москва
+{{?? city === 'volgograd' }}
+Волгоград
+{{?? city === 'voronez' }}
+Воронеж
+{{?? city === 'ekaterinburg' }}
+Екатеринбург
+{{?? city === 'kazan' }}
+Казань
+{{?? city === 'krasnodar' }}
+Краснодар
+{{?? city === 'krasnoyarsk' }}
+Красноярск
+{{?? city === 'nizny-novgorod' }}
+Нижний Новгород
+{{?? city === 'novosibirsk' }}
+Новосибирск
+{{?? city === 'omsk' }}
+Омск
+{{?? city === 'perm' }}
+Пермь
+{{?? city === 'rostov-na-donu' }}
+Ростов-на-Дону
+{{?? city === 'samara' }}
+Самара
+{{?? city === 'saratov' }}
+Саратов
+{{?? city === 'taganrog' }}
+Таганрог
+{{?? city === 'tobolsk' }}
+Тобольск
+{{?? city === 'toliatti' }}
+Тольятти
+{{?? city === 'tumen' }}
+Тюмень
+{{?? city === 'ufa' }}
+Уфа
+{{?? city === 'chelabinsk' }}
+Челябинск
+{{?}}
+#}}
+
+{{##def.city_mod:city:
+{{? city === 'sankt-peterburg' }}
+Санкт Перетербурге
+{{?? city === 'moskva' }}
+Москве
+{{?? city === 'volgograd' }}
+Волгограде
+{{?? city === 'voronez' }}
+Воронеже
+{{?? city === 'ekaterinburg' }}
+Екатеринбурге
+{{?? city === 'kazan' }}
+Казани
+{{?? city === 'krasnodar' }}
+Краснодаре
+{{?? city === 'krasnoyarsk' }}
+Красноярске
+{{?? city === 'nizny-novgorod' }}
+Нижнем Новгороде
+{{?? city === 'novosibirsk' }}
+Новосибирске
+{{?? city === 'omsk' }}
+Омске
+{{?? city === 'perm' }}
+Перми
+{{?? city === 'rostov-na-donu' }}
+Ростове-на-Дону
+{{?? city === 'samara' }}
+Самаре
+{{?? city === 'saratov' }}
+Саратове
+{{?? city === 'taganrog' }}
+Таганроге
+{{?? city === 'tobolsk' }}
+Тобольске
+{{?? city === 'toliatti' }}
+Тольятти
+{{?? city === 'tumen' }}
+Тюмени
+{{?? city === 'ufa' }}
+Уфе
+{{?? city === 'chelabinsk' }}
+Челябинске
+{{?}}
+#}}
+
 <!DOCTYPE html>
 <html>
 <head lang="ru">
@@ -38,12 +130,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="shortcut icon" href="/img/favicon.ico"/>
 
-    <title>SocRent :: Снять без агенств и посредников квартиру комнату</title>
+    <title>SocRent :: Снять без агенств и посредников {{? it.req.realty === 'kvartira' }}квартиру{{??}}комнату{{?}} в {{#def.city_mod:it.req.city }}</title>
 
-    <description>Снять без агенств и посредников квартиру комнату на SocRent</description>
+    <description>Снять без агенств и посредников {{? it.req.realty === 'kvartira' }}квартиру{{??}}комнату{{?}} в {{#def.city_mod:it.req.city }}</description>
     <meta name="description"
           content="Снять без агенств и посредников квартиру комнату на SocRent"/>
-    <meta name="keywords" content="снять,квартиру,комнату,без посредников,без агентов,ВКонтакте" />
+    <meta name="keywords" content="снять,квартиру,комнату,без посредников,без агентов,ВКонтакте,{{#def.city:it.req.city }}" />
     <meta name="mrc__share_title" content="Объявления аренды на SocRent"/>
     <meta name="mrc__share_description"
           content="Объявления аренды на Socrent"/>
@@ -205,49 +297,7 @@
             <div class="filter-city">
                 <span class="current-city">
 
-                {{? it.req.city === 'sankt-peterburg' }}
-                    Санкт Перетербург
-                {{?? it.req.city === 'moskva' }}
-                    Москва
-                {{?? it.req.city === 'volgograd' }}
-                    Волгоград
-                {{?? it.req.city === 'voronez' }}
-                    Воронеж
-                {{?? it.req.city === 'ekaterinburg' }}
-                    Екатеринбург
-                {{?? it.req.city === 'kazan' }}
-                    Казань
-                {{?? it.req.city === 'krasnodar' }}
-                    Краснодар
-                {{?? it.req.city === 'krasnoyarsk' }}
-                    Красноярск
-                {{?? it.req.city === 'nizny-novgorod' }}
-                    Нижний Новгород
-                {{?? it.req.city === 'novosibirsk' }}
-                    Новосибирск
-                {{?? it.req.city === 'omsk' }}
-                    Омск
-                {{?? it.req.city === 'perm' }}
-                    Пермь
-                {{?? it.req.city === 'rostov-na-donu' }}
-                    Ростов-на-Дону
-                {{?? it.req.city === 'samara' }}
-                    Самара
-                {{?? it.req.city === 'saratov' }}
-                    Саратов
-                {{?? it.req.city === 'taganrog' }}
-                    Таганрог
-                {{?? it.req.city === 'tobolsk' }}
-                    Тобольск
-                {{?? it.req.city === 'toliatti' }}
-                    Тольятти
-                {{?? it.req.city === 'tumen' }}
-                    Тюмень
-                {{?? it.req.city === 'ufa' }}
-                    Уфа
-                {{?? it.req.city === 'chelabinsk' }}
-                    Челябинск
-                {{?}}
+                  {{#def.city:it.req.city }}
 
                 </span>
                 <span class="choose-city">Выбрать город</span>
@@ -296,52 +346,7 @@
             <div class="search-results-head">
                 <h1>
 
-                Снять
-                {{? it.req.realty === 'kvartira' }}квартиру{{??}}комнату{{?}}
-                в
-                {{? it.req.city === 'sankt-peterburg' }}
-                    Санкт Перетербурге
-                {{?? it.req.city === 'moskva' }}
-                    Москве
-                {{?? it.req.city === 'volgograd' }}
-                    Волгограде
-                {{?? it.req.city === 'voronez' }}
-                    Воронеже
-                {{?? it.req.city === 'ekaterinburg' }}
-                    Екатеринбурге
-                {{?? it.req.city === 'kazan' }}
-                    Казани
-                {{?? it.req.city === 'krasnodar' }}
-                    Краснодаре
-                {{?? it.req.city === 'krasnoyarsk' }}
-                    Красноярске
-                {{?? it.req.city === 'nizny-novgorod' }}
-                    Нижнем Новгороде
-                {{?? it.req.city === 'novosibirsk' }}
-                    Новосибирске
-                {{?? it.req.city === 'omsk' }}
-                    Омске
-                {{?? it.req.city === 'perm' }}
-                    Перми
-                {{?? it.req.city === 'rostov-na-donu' }}
-                    Ростове-на-Дону
-                {{?? it.req.city === 'samara' }}
-                    Самаре
-                {{?? it.req.city === 'saratov' }}
-                    Саратове
-                {{?? it.req.city === 'taganrog' }}
-                    Таганроге
-                {{?? it.req.city === 'tobolsk' }}
-                    Тобольске
-                {{?? it.req.city === 'toliatti' }}
-                    Тольятти
-                {{?? it.req.city === 'tumen' }}
-                    Тюмени
-                {{?? it.req.city === 'ufa' }}
-                    Уфе
-                {{?? it.req.city === 'chelabinsk' }}
-                    Челябинске
-                {{?}}
+                Снять {{? it.req.realty === 'kvartira' }}квартиру{{??}}комнату{{?}} в {{#def.city_mod:it.req.city }}
 
                 </h1>
             </div>
