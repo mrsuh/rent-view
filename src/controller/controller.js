@@ -313,6 +313,7 @@ var listController = function (req, res, city, realty) {
             items_count: unlimit_docs.length,
             items: docs,
             subways: db.subways,
+            publish_records: db.publish_records,
             pagination: pagination.paginate(page, Math.ceil(unlimit_docs.length / items_on_page)),
             page: 'advert'
         }));

@@ -71,7 +71,8 @@ module.exports = function (grunt) {
                         'web/js/subway/list_check.js',
                         'web/js/subway/search.js',
                         'web/js/subway/station.js',
-                        'web/js/url.js'
+                        'web/js/url.js',
+                        'web/js/banner.js'
                     ],
                     'web/js/main.min.js': ['web/js/main.js']
                 }

@@ -7,6 +7,7 @@ module.exports = {
     subways: {},
     cities: {},
     realties: {komnata: 1, kvartira: 1},
+    publish_records: {},
 
     /**
      *
@@ -30,6 +31,15 @@ module.exports = {
                     _cities[cities[i].short_name] = cities[i];
                 }
                 this.cities = _cities;
+            }.bind(this));
+
+
+            this.findPublishRecords().then(function(records){
+                var _records = {};
+                for (var i = 0, length = records.length; i < length; i++) {
+                    _records[records[i].city] = records[i];
+                }
+                this.publish_records = _records;
             }.bind(this));
 
         }.bind(this));
@@ -116,6 +126,19 @@ module.exports = {
     findCities: function (filter) {
         return new Promise(function (resolve, reject) {
             this.db.collection('city').find(filter).toArray(function (err, docs) {
+                resolve(docs);
+            }.bind(this));
+        }.bind(this));
+    },
+
+    /**
+     *
+     * @param filter
+     * @returns {Promise}
+     */
+    findPublishRecords: function (filter) {
+        return new Promise(function (resolve, reject) {
+            this.db.collection('publish_record').find(filter).toArray(function (err, docs) {
                 resolve(docs);
             }.bind(this));
         }.bind(this));

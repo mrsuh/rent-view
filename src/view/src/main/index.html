@@ -341,6 +341,28 @@
 
         </div>
 
+        <div class="block-banner group" id="banner-group" style="display: none">
+
+            <div class="btn-close">
+                <img src="/img/close_black.svg">
+            </div>
+
+            <div class="content">
+
+                Вступайте в нашу
+
+                {{? 'undefined' !== it.publish_records[it.req.city]}}
+                <a href="{{= it.publish_records[it.req.city].link }}" target="_blank"> группу Вконтакте</a>
+                {{??}}
+                <a href="https://vk.com/socrent_spb" target="_blank"> группу Вконтакте</a>
+                {{?}}
+
+                , чтобы быть в курсе новых объявлений.
+
+            </div>
+
+        </div>
+
         <div class="block-search-results">
 
             <div class="search-results-head">
