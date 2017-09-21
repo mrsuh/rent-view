@@ -319,10 +319,20 @@ var listController = function (req, res, city, realty) {
     });
 };
 
+var hasCity = function(city_name) {
+    return 'undefined' !== typeof db.cities[city_name];
+};
+
+var hasRealty = function(realty_name) {
+    return 'undefined' !== typeof db.realties[realty_name];
+};
+
 module.exports = {
     about: aboutController,
     statistic: statisticController,
     sitemap: sitemapController,
     list: listController,
-    not_found: notFoundController
+    not_found: notFoundController,
+    has_city: hasCity,
+    has_realty: hasRealty
 };

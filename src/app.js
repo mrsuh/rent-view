@@ -22,8 +22,8 @@ var routers = {
     note: /\/rent\/saint-petersburg\/(komnaty|kvartiry)\/(room|studia|[1234]-k-kvartira)-p\.(.*)(\?.*|$)/i,
     statistic: /^\/([^\/]+)\/statistic(\?.*|$)/i,
     list: /^\/([^\/]+)\/(kvartira|komnata)(\?.*|$)/i,
-    list_city: /^\/([^\/]+)(\?.*|$)/i,
-    main: /(\/)(\?.*|$)/i
+    list_city: /^\/([^\/\?]+)(\/|)(\?.*|$)/i,
+    main: /\/(\?.*|$)/i
 };
 
 var server = http.createServer(function (req, res) {
@@ -119,14 +119,13 @@ var server = http.createServer(function (req, res) {
             var cookies = parseCookies(req.headers.cookie);
 
             var city = cookies['city'];
-
-            if ('undefined' === typeof city) {
+            if ('undefined' === typeof city || !controller.has_city(city)) {
                 city = 'sankt-peterburg';
                 res.setHeader('Set-Cookie', 'city=' + city + '; Max-Age=3600; Path=/');
             }
 
             var realty = cookies['realty'];
-            if ('undefined' === typeof realty) {
+            if ('undefined' === typeof realty || !controller.has_realty(realty)) {
                 realty = 'kvartira';
                 res.setHeader('Set-Cookie', 'realty=' + realty + '; Max-Age=3600; Path=/');
             }
