@@ -44,7 +44,7 @@ FullScreen.prototype.setFull = function(e)
 FullScreen.prototype.init = function(element)
 {
     this.previews = [];
-    var main_src = element.getAttribute('data-src');
+    var main_src = element.getAttribute('data-src-high');
     this.img.setAttribute('src', main_src);
 
     while (this.block_previews.firstChild) {
@@ -55,12 +55,13 @@ FullScreen.prototype.init = function(element)
 
     for (var n = 0, nlength = parent_previews.length; n < nlength; n++) {
         var img = document.createElement('div');
-        var src = parent_previews[n].getAttribute('data-src');
+        var src_high = parent_previews[n].getAttribute('data-src-high');
+        var src_low = parent_previews[n].getAttribute('data-src-low');
 
-        img.setAttribute('data-src', src);
-        img.style.backgroundImage = 'url(' + src + ')';
+        img.setAttribute('data-src', src_high);
+        img.style.backgroundImage = 'url(' + src_low + ')';
 
-        if(main_src === src) {
+        if(main_src === src_high) {
             img.className = 'slide preview-full active';
         } else {
             img.className = 'slide preview-full';

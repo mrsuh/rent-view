@@ -29,7 +29,7 @@ module.exports = function (grunt) {
                         },
                         {
                             pattern: '{{version}}',
-                            replacement: 'v2.0.0'
+                            replacement: 'v2.1.0'
                         }
                     ]
                 }
@@ -64,7 +64,6 @@ module.exports = function (grunt) {
                         'web/js/class.js',
                         'web/js/collapse.js',
                         'web/js/full_screen.js',
-                        'web/js/preview.js',
                         'web/js/slider.js',
                         'web/js/subway/map.js',
                         'web/js/subway/list.js',

@@ -473,8 +473,8 @@
 
                                 <div class="slider-inner">
                                     {{~ item.photos :preview }}
-                                    <div class="slide preview {{? item_index > 4 }} img-lazy-load {{?}}" data-src="{{= preview.high }}"
-                                         {{? item_index <= 4 }}style="background-image: url('{{= preview.high }}')"{{?}} >
+                                    <div class="slide preview {{? item_index > 4 }} img-lazy-load {{?}}" data-src-low="{{= preview.low }}" data-src-high="{{= preview.high }}"
+                                         {{? item_index <= 4 }}style="background-image: url('{{= preview.low }}')"{{?}} >
                                     </div>
                                     {{~}}
                                 </div>
