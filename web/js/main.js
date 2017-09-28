@@ -173,7 +173,7 @@ function lazyLoadImages() {
     for (var i = 0, length = images.length; i < length; i++) {
         var img = images[i];
         if (isElementInViewport(img)) {
-            img.style.backgroundImage = "url('" + img.getAttribute('data-src') + "')";
+            img.style.backgroundImage = "url('" + img.getAttribute('data-src-low') + "')";
         }
     }
 }
