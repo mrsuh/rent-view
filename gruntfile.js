@@ -29,7 +29,7 @@ module.exports = function (grunt) {
                         },
                         {
                             pattern: '{{version}}',
-                            replacement: 'v2.1.0'
+                            replacement: 'v3.0.0'
                         }
                     ]
                 }
@@ -39,6 +39,7 @@ module.exports = function (grunt) {
                     'src/view/dist/layout/footer/footer.html': 'src/view/dist/layout/footer/footer.html',
                     'src/view/dist/layout/header/header.html': 'src/view/dist/layout/header/header.html',
                     'src/view/dist/about/index.html': 'src/view/dist/about/index.html',
+                    'src/view/dist/bot/index.html': 'src/view/dist/bot/index.html',
                     'src/view/dist/error/404.html': 'src/view/dist/error/404.html',
                     'src/view/dist/main/index.html': 'src/view/dist/main/index.html',
                     'src/view/dist/statistic/index.html': 'src/view/dist/statistic/index.html'

@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head lang="ru">
-    <base href="/">
-    <meta charset="utf-8">
+    <base href="/"/>
+    <meta charset="utf-8"/>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <link rel="shortcut icon" href="/img/favicon.ico"/>
 
-    <title>SocRent :: О сайте</title>
+    <title>SocrentBot</title>
 
-    <description>О сайте SocRent</description>
-    <meta name="description" content="О сайте SocRent"/>
-    <meta name="keywords" content="socrent" />
-    <meta name="mrc__share_title" content="О сайте SocRent"/>
-    <meta name="mrc__share_description" content="О проекте SocRent"/>
+    <description>SocrentBot</description>
+    <meta name="description" content="SocrentBot - бот для рассылки объявлений"/>
+    <meta name="keywords" content="socrent, bot" />
+    <meta name="mrc__share_title" content="SocrentBot"/>
+    <meta name="mrc__share_description" content="SocrentBot - бот для рассылки объявлений"/>
 
-    <meta property="og:title" content="О сайте SocRent"/>
+    <meta property="og:title" content="SocrentBot"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:url" content="https://socrent.ru/about"/>
+    <meta property="og:url" content="https://socrent.ru/bot"/>
     <meta property="og:site_name" content="SocRent"/>
-    <meta property="og:description" content="О сайте SocRent"/>
+    <meta property="og:description" content="SocrentBot - бот для рассылки объявлений"/>
 
     <meta property="og:image" content="https://socrent.ru/img/logo.png"/>
 
-    <link rel="stylesheet" href="/style/style.css?v1">
+    <link rel="stylesheet" href="/style/style.css?v1"/>
 
     <script type="application/ld+json">
 {
@@ -32,7 +32,7 @@
   "serviceType": "Агрегатор объявлений аренды",
   "logo": "https://socrent.ru/img/logo.png",
   "name": "SocRent",
-  "description": "О проекте SocRent"
+  "description": "SocrentBot - бот для рассылки объявлений"
 }
    </script>
 
@@ -42,63 +42,97 @@
 
 <!-- @import src/view/dist/layout/header/header.html -->
 
-<div class="block-about">
-    <h3>Что такое SocRent?</h3>
-    <p>SocRent - это автоматический сервис, который собирает объявления о сдаче жилья в аренду из cоц. сети Вконтакте, сортирует их, фильтрует агентов и показывает в удобном формате с возможностью поиска</p>
+<div class="block-bot">
 
-    <h3>Откуда берутся объявления?</h3>
-    <p>Объявления берутся из сообществ, пабликов, групп и стен пользователей Вконтакте – и все это собрано в одном месте, чтобы сэкономить Ваше время.</p>
+    <h3>Кто такой SocrentBot?</h3>
+    <br>
+    <p><b>SocrentBot</b> предназначен для рассылки новых объявлений в социальной сети <b>Вконтакте</b> и мессенджере <b>Telegram</b>.</p>
+    <p>Как только на нашем сайте появляется нужное вам объявление <b>SocrentBot</b> высылает вам сообщение с ссылкой на него</p>
 
-    <h3>Как найти квартиру или комнату?</h3>
-    <p>Больше не нужно просматривать кучу групп в поисках своего идеального варианта. Вы сами задаете нужные параметры.</p>
-    <p>Удобная форма поиска позволяет всего в несколько кликов найти подходящее жилье за указанную сумму в любом районе города.</p>
-    <img src="/img/filters.png">
+    <h3>Для того, чтобы подписаться в социальной сети Вконтакте</h3>
+    <br>
+    <p><b>1.</b> Найдите <a href="https://vk.com/SocrentBot">группу</a> нашего бота в поиске групп Вконтакте: <b>SocrentBot</b></p>
+    <p>Или перейдите по ссылке <a href="https://vk.com/SocrentBot">https://vk.com/SocrentBot</a></p>
+    <img src="/img/bot/vk_search.png"/>
+    <p><b>2.</b> Напишите ему какой тип жилья и где вы хотите снять</p>
+    <p>Например:<i>Снять комнату Москва Академическая</i></p>
+    <p><b>3.</b> Как только на сайте появятся объявления о сдаче комнаты в Москве около метро Академическая - вам сразу прийдет сообщение с ссылкой на объявление</p>
+    <img src="/img/bot/vk_rent.png"/>
 
-    <h3>Как часто добавляются объявления?</h3>
-    <p>Сервис сканнирует группы и паблики Вконтакте каждую минуту. Более подробно о статистике добаления объявлений на сайт можно ознакомится в разделе <a href="/statistic">Статистика</a>.</p>
-    <img src="/img/statistic.png">
+    <h3>Для того, чтобы подписаться в мессенджере Telegram</h3>
 
-    <h3>Я увидел объявление от агента, как он попал на сайт?</h3>
-    <p>К сожалению, иногда SocRent не может отфильтровать агента, поскольку на него еще не поступало жалоб. Если вы увидели объявление от агента – напишите нам в <a href="https://vk.com/public140724846" target="_blank">сообщество</a>, и мы обязательно его забаним.</p>
+    <p><b>1.</b> Найдите нашего бота в поиске Telegram: <b>SocrentBot</b></p>
+    <img src="/img/bot/telegram_search.png"/>
+    <p><b>2.</b> Напишите ему какой тип жилья и где вы хотите снять</p>
+    <p>Например:<i>Снять комнату Москва Академическая</i></p>
+    <p><b>3.</b> Как только на сайте появятся объявления о сдаче комнаты в Москве около метро Академическая - вам сразу прийдет сообщение с ссылкой на объявление</p>
+    <img src="/img/bot/telegram_rent.png"/>
 
-    <h3>Я не размещал свое объявление на вашем сайте, вы его своровали!</h3>
-    <p>Все данные и инструменты для поиска объявлений предоставлены Вконтакте. Мы используем только публичные источники.</p>
-
-    <h3>Как подписаться на новые объявления?</h3>
-    <p>Для этого вам необходимо написать <a href="/bot">нашему боту</a> в Вконтакте или Telegram</p>
-
-    <h3>Куда я могу обратиться за помощью?</h3>
-    <p>Для этого у нас есть группы Вконтакте:</p>
+    <br>
+    <h3>Доступные типы жилья:</h3>
     <br>
     <ul>
-        <li><a href="https://vk.com/socrent_spb">Socrent :: Санкт-Петербург</a></li>
-        <li><a href="https://vk.com/socrent_moskva">Socrent :: Москва</a></li>
-        <li><a href="https://vk.com/socrent_voronez">Socrent :: Воронеж</a></li>
-        <li><a href="https://vk.com/socrent_tobolsk">Socrent :: Тобольск</a></li>
-        <li><a href="https://vk.com/socrent_kazan">Socrent :: Казань</a></li>
-        <li><a href="https://vk.com/socrent_novosibirsk">Socrent :: Новосибирск</a></li>
-        <li><a href="https://vk.com/socrent_perm">Socrent :: Пермь</a></li>
-        <li><a href="https://vk.com/socrent_volgograd">Socrent :: Волгоград</a></li>
-        <li><a href="https://vk.com/socrent_krasnodar">Socrent :: Краснодар</a></li>
-        <li><a href="https://vk.com/socrent_ufa">Socrent :: Уфа</a></li>
-        <li><a href="https://vk.com/socrent_krasnoyarsk">Socrent :: Красноярск</a></li>
-        <li><a href="https://vk.com/socrent_rostov_na_donu">Socrent :: Ростов-на-Дону</a></li>
-        <li><a href="https://vk.com/socrent_ekaterinburg">Socrent :: Екатеринбург</a></li>
-        <li><a href="https://vk.com/socrent_tumen">Socrent :: Тюмень</a></li>
-        <li><a href="https://vk.com/socrent_chelabinsk">Socrent :: Челябинск</a></li>
-        <li><a href="https://vk.com/socrent_nizny_novgorod">Socrent :: Нижний Новгород</a></li>
-        <li><a href="https://vk.com/socrent_taganrog">Socrent :: Таганрог</a></li>
-        <li><a href="https://vk.com/socrent_toliati">Socrent :: Тольятти</a></li>
-        <li><a href="https://vk.com/socrent_samara">Socrent :: Самара</a></li>
-        <li><a href="https://vk.com/socrent_omsk">Socrent :: Омск</a></li>
-        <li><a href="https://vk.com/socrent_saratov">Socrent :: Саратов</a></li>
+        <li><b>комната</b></li>
+        <li><b>однушка</b> - 1 комнатная квартира</li>
+        <li><b>двушка</b> - 2 комнатная квартира</li>
+        <li><b>трешка</b> - 3 комнатная квартира</li>
+        <li><b>студия</b> - квартира-студия</li>
+        <li><b>квартира</b> - 1,2,3,4+ комнатная квартира, квартира-студия</li>
     </ul>
 
+    <br>
+    <h3>Примеры:</h3>
+    <br>
+    <i>Снять студию в Санкт-Петербурге около метро Рыбацкое</i>
+    <img src="/img/bot/example_1.png"/>
+    <i>Снять 1,2,3,4+ комнатную квартиру, квартиру-студию в Волгограде</i>
+    <img src="/img/bot/example_2.png"/>
+    <i>Снять 1 комнатная квартиру в Уфе</i>
+    <img src="/img/bot/example_3.png"/>
 
-    <h3>Расскажите о нас</h3>
-    <p>Расскажите о нас своим друзьям и знакомым. Возможно, кто-то из них находится в поиске жилья.</p>
+    <br>
+    <h3>Доступные города:</h3>
+    <br>
+    <ul>
+        <li>Санкт-Петербург</li>
+        <li>Москва</li>
+        <li>Новосибирск</li>
+        <li>Екатеринбург</li>
+        <li>Нижний Новгород</li>
+        <li>Казань</li>
+        <li>Челябинск</li>
+        <li>Омск</li>
+        <li>Самара</li>
+        <li>Ростов-на-Дону</li>
+        <li>Уфа</li>
+        <li>Красноярск</li>
+        <li>Пермь</li>
+        <li>Воронеж</li>
+        <li>Волгоград</li>
+        <li>Краснодар</li>
+        <li>Саратов</li>
+        <li>Тюмень</li>
+        <li>Тольятти</li>
+        <li>Таганрог</li>
+        <li>Тобольск</li>
+    </ul>
+
+    <br>
+    <h3>Дополнительные команды бота:</h3>
+    <br>
+    <ul>
+        <li><b>help</b> - помощь</li>
+        <li><b>city</b> - список доступных городов</li>
+        <li><b>cancel</b> - отменить подписку</li>
+    </ul>
+
+    <img src="/img/bot/example_4.png"/>
+
+    <br>
+    <h3>Расскажите о нашем боте своим друзям!</h3>
+
     <div class="share">
-        <a href="https://vk.com/share.php?url=https://socrent.ru" title="Опубликовать ссылку во ВКонтакте"
+        <a href="https://vk.com/share.php?url=https://socrent.ru/bot" title="Опубликовать ссылку во ВКонтакте"
            onclick="window.open(this.href, 'Опубликовать ссылку во Вконтакте', 'width=800,height=300,toolbar=0,status=0'); return false">
 
             <svg class="vk" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -115,7 +149,7 @@
 
 
         </a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://socrent.ru"
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://socrent.ru/bot"
            title="Опубликовать ссылку в Facebook"
            onclick="window.open(this.href, 'Опубликовать ссылку в Facebook', 'width=640,height=436,toolbar=0,status=0'); return false">
 
@@ -127,7 +161,7 @@
                                                 </svg>
 
         </a>
-        <a href="https://twitter.com/intent/tweet?text=%D0%9E%D0%B1%D1%8A%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F+%D0%B0%D1%80%D0%B5%D0%BD%D0%B4%D1%8B+%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80+%D0%B8%D0%B7+%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85+%D1%81%D0%B5%D1%82%D0%B5%D0%B9+https%3A%2F%2Fsocrent.ru+via+%23socrent"
+        <a href="https://twitter.com/intent/tweet?text=%D0%9E%D0%B1%D1%8A%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F+%D0%B0%D1%80%D0%B5%D0%BD%D0%B4%D1%8B+%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80+%D0%B8%D0%B7+%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85+%D1%81%D0%B5%D1%82%D0%B5%D0%B9+https%3A%2F%2Fsocrent.ru%2Fbot+via+%23socrent"
            title="Опубликовать ссылку в Twitter"
            onclick="window.open(this.href, 'Опубликовать ссылку  в Twitter', 'width=800,height=300,resizable=yes,toolbar=0,status=0'); return false">
 
@@ -141,7 +175,7 @@
 
 
         </a>
-        <a href="https://connect.ok.ru/offer?url=https://socrent.ru"
+        <a href="https://connect.ok.ru/offer?url=https://socrent.ru/bot"
            title="Опубликовать ссылку в Одноклассниках"
            onclick="window.open(this.href, 'Опубликовать ссылку в Одноклассниках', 'width=800,height=300,toolbar=0,status=0'); return false">
 
@@ -156,7 +190,7 @@
 
 
         </a>
-        <a href="https://plus.google.com/share?url=https://socrent.ru" title="Опубликовать ссылку в Google+"
+        <a href="https://plus.google.com/share?url=https://socrent.ru/bot" title="Опубликовать ссылку в Google+"
            onclick="javascript:window.open(this.href,'Опубликовать ссылку в Google+', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
 
             <svg class="google" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
