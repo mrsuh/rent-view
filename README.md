@@ -13,7 +13,6 @@ node src/app.js
 ```
 
 ## Configuration
-
 ```javascript
 
 module.exports = {
