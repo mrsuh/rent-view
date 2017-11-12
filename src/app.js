@@ -56,25 +56,19 @@ var server = http.createServer(function (req, res) {
             break;
         case null !== req.url.match(routers.bot):
 
-            console.info('BOT');
-
             var cookies = parseCookies(req.headers.cookie);
 
             var city = cookies['city'];
             if ('undefined' === typeof city) {
                 city = 'sankt-peterburg';
-                console.info('UNDEF CITY');
                 res.setHeader('Set-Cookie', 'city=' + city + '; Max-Age=3600; Path=/');
             }
 
             var realty = cookies['realty'];
             if ('undefined' === typeof realty) {
-                console.info('UNDEF REAPLTY');
                 realty = 'kvartira';
                 res.setHeader('Set-Cookie', 'realty=' + realty + '; Max-Age=3600; Path=/');
             }
-
-            console.info(city, realty);
 
             controller.bot(req, res, city, realty);
             break;

@@ -2,7 +2,31 @@
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-    {{~ it.realties :realty }}
+   <url>
+
+      <loc>https://socrent.ru/about</loc>
+
+      <lastmod>{{= it.date }}</lastmod>
+
+      <changefreq>weekly</changefreq>
+
+      <priority>1</priority>
+
+   </url>
+
+   <url>
+
+      <loc>https://socrent.ru/bot</loc>
+
+      <lastmod>{{= it.date }}</lastmod>
+
+      <changefreq>weekly</changefreq>
+
+      <priority>1</priority>
+
+   </url>
+
+   {{~ it.realties :realty }}
 
    {{~ it.cities :city }}
 
