@@ -133,7 +133,8 @@ var notFoundController = function (req, res) {
  *
  * @param req
  * @param res
- * @param city_name
+ * @param city
+ * @param realty
  */
 var statisticController = function (req, res, city, realty) {
 
@@ -178,6 +179,38 @@ var sitemapController = function (req, res) {
         cities: Object.keys(db.cities),
         realties: Object.keys(db.realties),
         date: format.dateSitemap(Date.now())
+    }));
+};
+
+/**
+ *
+ * @param req
+ * @param res
+ * @param city
+ * @param realty
+ */
+var botController = function (req, res, city, realty) {
+
+    if ('undefined' === typeof db.cities[city]) {
+        res.writeHead(302, {'Location': '/404'});
+        return res.end();
+    }
+
+    if ('undefined' === typeof db.realties[realty]) {
+        res.writeHead(302, {'Location': '/404'});
+        return res.end();
+    }
+
+    res.writeHead(200, {
+        'Content-Type': 'text/html; charset=UTF-8'
+    });
+
+    return res.end(template.bot({
+        page: 'bot',
+        req: {
+            city: city,
+            realty: realty
+        }
     }));
 };
 
@@ -332,6 +365,7 @@ module.exports = {
     about: aboutController,
     statistic: statisticController,
     sitemap: sitemapController,
+    bot: botController,
     list: listController,
     not_found: notFoundController,
     has_city: hasCity,

@@ -1,6 +1,6 @@
 @import "common";
 
-.block-about {
+.block-bot {
   width: 900px;
   margin-left: auto;
   margin-right: auto;
@@ -19,7 +19,10 @@
   img {
     margin-top: 20px;
     margin-bottom: 20px;
-    width: 100%;
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
   }
 
   .share {
@@ -88,7 +91,7 @@
 }
 
 @media all and (max-width: 1280px) {
-  .block-about {
+  .block-bot {
       padding-left: 50px;
       padding-right: 50px;
       margin: 0;
@@ -97,11 +100,14 @@
 }
 
 @media all and (max-width: 640px) {
-  .block-about  {
+  .block-bot  {
     padding-left: 0;
     padding-right: 0;
     width: 95%;
     margin-left: 2.5%;
     margin-right: 2.5%;
+    img {
+      max-width: 100%;
+    }
   }
 }
