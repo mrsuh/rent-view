@@ -20,22 +20,13 @@ module.exports = {
     //app server
     server: {
         host: '127.0.0.1',
-        port: 2000
+        port: 5000
     },
-    
+    //database
     db: {
-        //hot database
-        hot: {
-            host: '127.0.0.1',
-            port: 27017,
-            database: 'rent-hot'
-        },
-        //cold database
-        cold: {
-             host: '127.0.0.1',
-             port: 27017,
-             database: 'rent-cold'
-        }
+        host: '127.0.0.1',
+        port: 2000,
+        database: 'rent-collector'
     }
 };
 ```
