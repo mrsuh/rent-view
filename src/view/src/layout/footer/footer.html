@@ -142,9 +142,28 @@
         <div class="pages">
             <a href="/{{= it.req.city }}/{{= it.req.realty }}">Объявления</a>
             <a href="/{{= it.req.city }}/statistic">Статистика</a>
+            <a href="/bot"  {{? it.page === 'bot' }} class="active" {{?}} >SocrentBot</a>
             <a href="/about">О сайте</a>
             <span class="version">{{version}}</span>
         </div>
+
+        <script type="text/javascript" src="//vk.com/js/api/openapi.js?150"></script>
+
+        <!-- VK Widget -->
+        <div id="socrentbot">SocrentBot</div>
+        <div id="vk_community_messages"></div>
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function () {
+                var widget = VK.Widgets.CommunityMessages("vk_community_messages", 156549780, {
+                    disableExpandChatSound: "1",
+                    welcomeScreen: 1,
+                    buttonType: 'no_button'
+                });
+
+                document.getElementById('socrentbot').addEventListener('click', widget.expand);
+            });
+
+        </script>
 
         </div>
 </div>

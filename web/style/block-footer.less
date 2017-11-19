@@ -1,6 +1,6 @@
 .block-footer {
   width: 100%;
-  margin-top: 100px;
+  margin-top: 40px;
   height: auto;
   background-color: #353535;
 
@@ -10,6 +10,27 @@
     margin-right: auto;
     padding-top: 25px;
     padding-bottom: 15px;
+
+    #socrentbot {
+      height: 30px;
+      position: fixed;
+      bottom: 0;
+      right: 20px;
+      margin: 0 0 20px;
+      text-align: center;
+      background-color: #47A2DA;
+      color: #ffffff;
+      border: 1px solid #47a2da;
+      border-radius: 3px;
+      line-height: 30px;
+      width: 80px;
+      font-size: 13px;
+      font-weight: 900;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
 
     .links {
       width: 20%;
@@ -181,6 +202,10 @@
         display: none;
       }
       .text {
+        display: none;
+      }
+
+      .pages {
         display: none;
       }
       .source {
