@@ -29,6 +29,8 @@ var routers = {
 
 var server = http.createServer(function (req, res) {
 
+    console.log('URL: ', req.url);
+
     switch (true) {
         case null !== req.url.match(routers.not_found):
             controller.not_found(req, res);
