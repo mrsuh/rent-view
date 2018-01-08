@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/mrsuh/rent-view.svg?branch=master)](https://travis-ci.org/mrsuh/rent-view)
 
+![Screen](/screen.png)
+
 ## Installation
 ```
 sh bin/deploy.sh
