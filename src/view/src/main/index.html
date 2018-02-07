@@ -391,6 +391,14 @@
 
                     <div class="row1">
 
+                        <div class="source">
+                            {{? item.source == 'avito.ru' }}
+                            <img src="/img/logo-avito.svg" class="avito">
+                            {{??}}
+                            <img src="/img/logo-vk.svg" class="vk">
+                            {{?}}
+                        </div>
+
                         <div class="name">
                             <a href="{{= item.link }}" target="_blank">{{#def.type:item.type }}</a>
                         </div>
@@ -429,13 +437,6 @@
 
                         <div class="date">
                             {{= item.timestamp }}
-                        </div>
-
-                    </div>
-                    <div class="row2">
-
-                        <div class="person">
-                            {{= item.contact.name }}
                         </div>
 
                     </div>
