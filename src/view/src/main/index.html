@@ -391,13 +391,15 @@
 
                     <div class="row1">
 
-                        <div class="source">
                             {{? item.source == 'avito.ru' }}
-                            <img src="/img/logo-avito.svg" class="avito">
-                            {{??}}
-                            <img src="/img/logo-vk.svg" class="vk">
-                            {{?}}
+                        <div class="source avito">
+                            <img src="/img/logo-avito.svg">
                         </div>
+                            {{??}}
+                        <div class="source vk">
+                            <img src="/img/logo-vk.svg">
+                        </div>
+                            {{?}}
 
                         <div class="name">
                             <a href="{{= item.link }}" target="_blank">{{#def.type:item.type }}</a>
