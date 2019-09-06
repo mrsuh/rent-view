@@ -11,10 +11,10 @@ module.exports = {
 
     /**
      *
-     * @param config
+     * @param databaseUrl
      */
-    init: function (config) {
-        this.connect(config).then(function(db){
+    init: function (databaseUrl) {
+        this.connect(databaseUrl).then(function(db){
             this.db = db;
 
             this.findSubways().then(function(subways){
@@ -47,15 +47,15 @@ module.exports = {
 
     /**
      *
-     * @param config
+     * @param databaseUrl
      * @returns {Promise}
      */
-    connect: function (config) {
+    connect: function (databaseUrl) {
         return new Promise(function (resolve, reject) {
 
-            client.connect('mongodb://' + config.host + ':' + config.port + '/' + config.database, function (err, db) {
+            client.connect(databaseUrl, function (err, db) {
                 if (err) {
-                    console.error('connect to mongodb error');
+                    console.error('connect to mongodb error', err);
                     process.exit(1);
                 }
 

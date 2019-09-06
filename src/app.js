@@ -158,6 +158,6 @@ var server = http.createServer(function (req, res) {
     }
 });
 
-server.listen(config.server.port, config.server.host, function () {
-    console.log('server run');
+server.listen(config.listenPort, config.listenHost, function () {
+    console.log('server run', {host: config.listenHost, port: config.listenPort, db: config.databaseUrl});
 });
