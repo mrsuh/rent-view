@@ -1,29 +1,21 @@
 # rent view
 
-## Installation
+## Quick start with docker-compose
+```bash
+cd docker
+docker-compose up
 ```
-sh bin/deploy.sh
+
+Open http://127.0.0.1:8000 in your browser
+
+## Installation from source code
+
+## Build
+```
+sh bin/build.sh
 ```
 
 ## Run
 ```
 node src/app.js
-```
-
-## Configuration
-```javascript
-
-module.exports = {
-    //app server
-    server: {
-        host: '127.0.0.1',
-        port: 5000
-    },
-    //database
-    db: {
-        host: '127.0.0.1',
-        port: 2000,
-        database: 'rent-collector'
-    }
-};
 ```

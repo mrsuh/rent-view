@@ -8,7 +8,7 @@ var template = require(__dirname + '/../services/template.js');
 var statistic = require(__dirname + '/../services/statistic.js');
 var config = require(__dirname + '/../../config/config.js');
 
-db.init(config.db);
+db.init(config.databaseUrl);
 template.init();
 
 /**
