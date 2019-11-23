@@ -189,46 +189,16 @@ var sitemapController = function (req, res) {
  * @param city
  * @param realty
  */
-var botController = function (req, res, city, realty) {
-
-    if ('undefined' === typeof db.cities[city]) {
-        res.writeHead(302, {'Location': '/404'});
-        return res.end();
-    }
-
-    if ('undefined' === typeof db.realties[realty]) {
-        res.writeHead(302, {'Location': '/404'});
-        return res.end();
-    }
-
-    res.writeHead(200, {
-        'Content-Type': 'text/html; charset=UTF-8'
-    });
-
-    return res.end(template.bot({
-        page: 'bot',
-        req: {
-            city: city,
-            realty: realty
-        }
-    }));
-};
-
-/**
- *
- * @param req
- * @param res
- * @param city
- * @param realty
- */
 var listController = function (req, res, city, realty) {
 
     if ('undefined' === typeof db.cities[city]) {
+        console.log('Invalid city', {'city': city});
         res.writeHead(302, {'Location': '/404'});
         return res.end();
     }
 
     if ('undefined' === typeof db.realties[realty]) {
+        console.log('Invalid realty', {'realty': realty});
         res.writeHead(302, {'Location': '/404'});
         return res.end();
     }
@@ -303,10 +273,14 @@ var listController = function (req, res, city, realty) {
     var find_by_options = db.findNotesByOptions(filter, options);
     var find_all = db.findNotes(filter);
 
+    console.log('Fining notes...', {'filer': filter, 'options': options});
+
     Promise.all([find_by_options, find_all]).then(function (result) {
 
-        var docs = result[0];
-        var unlimit_docs = result[1];
+        var docs = result[0] || [];
+        var unlimit_docs = result[1] || [];
+
+        console.log('Found notes', {'count': docs.length, 'total': unlimit_docs.length});
 
         for (var i = 0, length = docs.length; i < length; i++) {
             var timestamp = docs[i]['timestamp'];
@@ -346,7 +320,6 @@ var listController = function (req, res, city, realty) {
             items_count: unlimit_docs.length,
             items: docs,
             subways: db.subways,
-            publish_records: db.publish_records,
             pagination: pagination.paginate(page, Math.ceil(unlimit_docs.length / items_on_page)),
             page: 'advert'
         }));
@@ -365,7 +338,6 @@ module.exports = {
     about: aboutController,
     statistic: statisticController,
     sitemap: sitemapController,
-    bot: botController,
     list: listController,
     not_found: notFoundController,
     has_city: hasCity,

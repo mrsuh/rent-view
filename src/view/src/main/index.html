@@ -37,7 +37,7 @@
 Москва
 {{?? city === 'volgograd' }}
 Волгоград
-{{?? city === 'voronez' }}
+{{?? city === 'voronezh' }}
 Воронеж
 {{?? city === 'ekaterinburg' }}
 Екатеринбург
@@ -47,7 +47,7 @@
 Краснодар
 {{?? city === 'krasnoyarsk' }}
 Красноярск
-{{?? city === 'nizny-novgorod' }}
+{{?? city === 'nizhny-novgorod' }}
 Нижний Новгород
 {{?? city === 'novosibirsk' }}
 Новосибирск
@@ -65,13 +65,13 @@
 Таганрог
 {{?? city === 'tobolsk' }}
 Тобольск
-{{?? city === 'toliatti' }}
+{{?? city === 'togliatti' }}
 Тольятти
 {{?? city === 'tumen' }}
 Тюмень
 {{?? city === 'ufa' }}
 Уфа
-{{?? city === 'chelabinsk' }}
+{{?? city === 'chelyabinsk' }}
 Челябинск
 {{?}}
 #}}
@@ -83,7 +83,7 @@
 Москве
 {{?? city === 'volgograd' }}
 Волгограде
-{{?? city === 'voronez' }}
+{{?? city === 'voronezh' }}
 Воронеже
 {{?? city === 'ekaterinburg' }}
 Екатеринбурге
@@ -93,7 +93,7 @@
 Краснодаре
 {{?? city === 'krasnoyarsk' }}
 Красноярске
-{{?? city === 'nizny-novgorod' }}
+{{?? city === 'nizhny-novgorod' }}
 Нижнем Новгороде
 {{?? city === 'novosibirsk' }}
 Новосибирске
@@ -111,13 +111,13 @@
 Таганроге
 {{?? city === 'tobolsk' }}
 Тобольске
-{{?? city === 'toliatti' }}
+{{?? city === 'togliatti' }}
 Тольятти
 {{?? city === 'tumen' }}
 Тюмени
 {{?? city === 'ufa' }}
 Уфе
-{{?? city === 'chelabinsk' }}
+{{?? city === 'chelyabinsk' }}
 Челябинске
 {{?}}
 #}}
@@ -204,7 +204,7 @@
                 it.req.city !== 'ekaterinburg' &&
                 it.req.city !== 'kazan' &&
                 it.req.city !== 'moskva' &&
-                it.req.city !== 'nizny-novgorod' &&
+                it.req.city !== 'nizhny-novgorod' &&
                 it.req.city !== 'novosibirsk' &&
                 it.req.city !== 'samara' &&
                 it.req.city !== 'sankt-peterburg' }}disabled{{?}} #}}
@@ -252,9 +252,9 @@
 
                         <!-- @import src/view/dist/layout/subway_map/map_moskva.html -->
 
-                        {{?? it.req.city === 'nizny-novgorod' }}
+                        {{?? it.req.city === 'nizhny-novgorod' }}
 
-                        <!-- @import src/view/dist/layout/subway_map/map_nizny_novgorod.html -->
+                        <!-- @import src/view/dist/layout/subway_map/map_nizhny_novgorod.html -->
 
                         {{?? it.req.city === 'novosibirsk' }}
 
@@ -311,29 +311,29 @@
 
                 <div class="content">
 
-                <ul>
-                    <li><a href="/sankt-peterburg/{{= it.req.realty }}" class="city {{= it.req.city === 'sankt-peterburg' ? 'active' : '' }}" data-value="sankt-peterburg">Санкт Перетербург</a></li>
-                    <li><a href="/moskva/{{= it.req.realty }}" class="city {{= it.req.city === 'moskva' ? 'active' : '' }}" data-value="moskva">Москва</a></li>
-                    <li><a href="/volgograd/{{= it.req.realty }}" class="city {{= it.req.city === 'volgograd' ? 'active' : '' }}" data-value="volgograd">Волгоград</a></li>
-                    <li><a href="/voronez/{{= it.req.realty }}" class="city {{= it.req.city === 'voronez' ? 'active' : '' }}" data-value="voronez">Воронеж</a></li>
-                    <li><a href="/ekaterinburg/{{= it.req.realty }}" class="city {{= it.req.city === 'ekaterinburg' ? 'active' : '' }}" data-value="ekaterinburg">Екатеринбург</a></li>
-                    <li><a href="/kazan/{{= it.req.realty }}" class="city {{= it.req.city === 'kazan' ? 'active' : '' }}" data-value="kazan">Казань</a></li>
-                    <li><a href="/krasnodar/{{= it.req.realty }}" class="city {{= it.req.city === 'krasnodar' ? 'active' : '' }}" data-value="krasnodar">Краснодар</a></li>
-                    <li><a href="/krasnoyarsk/{{= it.req.realty }}" class="city {{= it.req.city === 'krasnoyarsk' ? 'active' : '' }}" data-value="krasnoyarsk">Красноярск</a></li>
-                    <li><a href="/nizny-novgorod/{{= it.req.realty }}" class="city {{= it.req.city === 'nizny-novgorod' ? 'active' : '' }}" data-value="nizny-novgorod">Нижний Новгород</a></li>
-                    <li><a href="/novosibirsk/{{= it.req.realty }}" class="city {{= it.req.city === 'novosibirsk' ? 'active' : '' }}" data-value="novosibirsk">Новосибирск</a></li>
-                    <li><a href="/omsk/{{= it.req.realty }}" class="city {{= it.req.city === 'omsk' ? 'active' : '' }}" data-value="omsk">Омск</a></li>
-                    <li><a href="/perm/{{= it.req.realty }}" class="city {{= it.req.city === 'perm' ? 'active' : '' }}" data-value="perm">Пермь</a></li>
-                    <li><a href="/rostov-na-donu/{{= it.req.realty }}" class="city {{= it.req.city === 'rostov-na-donu' ? 'active' : '' }}" data-value="rostov-na-donu">Ростов-на-Дону</a></li>
-                    <li><a href="/samara/{{= it.req.realty }}" class="city {{= it.req.city === 'samara' ? 'active' : '' }}" data-value="samara">Самара</a></li>
-                    <li><a href="/saratov/{{= it.req.realty }}" class="city {{= it.req.city === 'saratov' ? 'active' : '' }}" data-value="saratov">Саратов</a></li>
-                    <li><a href="/taganrog/{{= it.req.realty }}" class="city {{= it.req.city === 'taganrog' ? 'active' : '' }}" data-value="taganrog">Таганрог</a></li>
-                    <li><a href="/tobolsk/{{= it.req.realty }}" class="city {{= it.req.city === 'tobolsk' ? 'active' : '' }}" data-value="tobolsk">Тобольск</a></li>
-                    <li><a href="/toliatti/{{= it.req.realty }}" class="city {{= it.req.city === 'toliatti' ? 'active' : '' }}" data-value="toliatti">Тольятти</a></li>
-                    <li><a href="/tumen/{{= it.req.realty }}" class="city {{= it.req.city === 'tumen' ? 'active' : '' }}" data-value="tumen">Тюмень</a></li>
-                    <li><a href="/ufa/{{= it.req.realty }}" class="city {{= it.req.city === 'ufa' ? 'active' : '' }}" data-value="ufa">Уфа</a></li>
-                    <li><a href="/chelabinsk/{{= it.req.realty }}" class="city {{= it.req.city === 'chelabinsk' ? 'active' : '' }}" data-value="chelabinsk">Челябинск</a></li>
-                </ul>
+                    <ul>
+                        <li><a href="/sankt-peterburg/{{= it.req.realty }}" class="city {{= it.req.city === 'sankt-peterburg' ? 'active' : '' }}" data-value="sankt-peterburg">Санкт-Петербург</a></li>
+                        <li><a href="/moskva/{{= it.req.realty }}" class="city {{= it.req.city === 'moskva' ? 'active' : '' }}" data-value="moskva">Москва</a></li>
+                        <li><a href="/volgograd/{{= it.req.realty }}" class="city {{= it.req.city === 'volgograd' ? 'active' : '' }}" data-value="volgograd">Волгоград</a></li>
+                        <li><a href="/voronezh/{{= it.req.realty }}" class="city {{= it.req.city === 'voronezh' ? 'active' : '' }}" data-value="voronezh">Воронеж</a></li>
+                        <li><a href="/ekaterinburg/{{= it.req.realty }}" class="city {{= it.req.city === 'ekaterinburg' ? 'active' : '' }}" data-value="ekaterinburg">Екатеринбург</a></li>
+                        <li><a href="/kazan/{{= it.req.realty }}" class="city {{= it.req.city === 'kazan' ? 'active' : '' }}" data-value="kazan">Казань</a></li>
+                        <li><a href="/krasnodar/{{= it.req.realty }}" class="city {{= it.req.city === 'krasnodar' ? 'active' : '' }}" data-value="krasnodar">Краснодар</a></li>
+                        <li><a href="/krasnoyarsk/{{= it.req.realty }}" class="city {{= it.req.city === 'krasnoyarsk' ? 'active' : '' }}" data-value="krasnoyarsk">Красноярск</a></li>
+                        <li><a href="/nizhny-novgorod/{{= it.req.realty }}" class="city {{= it.req.city === 'nizhny-novgorod' ? 'active' : '' }}" data-value="nizhny-novgorod">Нижний Новгород</a></li>
+                        <li><a href="/novosibirsk/{{= it.req.realty }}" class="city {{= it.req.city === 'novosibirsk' ? 'active' : '' }}" data-value="novosibirsk">Новосибирск</a></li>
+                        <li><a href="/omsk/{{= it.req.realty }}" class="city {{= it.req.city === 'omsk' ? 'active' : '' }}" data-value="omsk">Омск</a></li>
+                        <li><a href="/perm/{{= it.req.realty }}" class="city {{= it.req.city === 'perm' ? 'active' : '' }}" data-value="perm">Пермь</a></li>
+                        <li><a href="/rostov-na-donu/{{= it.req.realty }}" class="city {{= it.req.city === 'rostov-na-donu' ? 'active' : '' }}" data-value="rostov-na-donu">Ростов-на-Дону</a></li>
+                        <li><a href="/samara/{{= it.req.realty }}" class="city {{= it.req.city === 'samara' ? 'active' : '' }}" data-value="samara">Самара</a></li>
+                        <li><a href="/saratov/{{= it.req.realty }}" class="city {{= it.req.city === 'saratov' ? 'active' : '' }}" data-value="saratov">Саратов</a></li>
+                        <li><a href="/taganrog/{{= it.req.realty }}" class="city {{= it.req.city === 'taganrog' ? 'active' : '' }}" data-value="taganrog">Таганрог</a></li>
+                        <li><a href="/tobolsk/{{= it.req.realty }}" class="city {{= it.req.city === 'tobolsk' ? 'active' : '' }}" data-value="tobolsk">Тобольск</a></li>
+                        <li><a href="/togliatti/{{= it.req.realty }}" class="city {{= it.req.city === 'togliatti' ? 'active' : '' }}" data-value="togliatti">Тольятти</a></li>
+                        <li><a href="/tumen/{{= it.req.realty }}" class="city {{= it.req.city === 'tumen' ? 'active' : '' }}" data-value="tumen">Тюмень</a></li>
+                        <li><a href="/ufa/{{= it.req.realty }}" class="city {{= it.req.city === 'ufa' ? 'active' : '' }}" data-value="ufa">Уфа</a></li>
+                        <li><a href="/chelyabinsk/{{= it.req.realty }}" class="city {{= it.req.city === 'chelyabinsk' ? 'active' : '' }}" data-value="chelyabinsk">Челябинск</a></li>
+                    </ul>
 
                 </div>
 
@@ -379,16 +379,6 @@
 
                     <div class="row1">
 
-                            {{? item.source == 'avito.ru' }}
-                        <div class="source avito">
-                            <img src="/img/logo-avito.svg">
-                        </div>
-                            {{??}}
-                        <div class="source vk">
-                            <img src="/img/logo-vk.svg">
-                        </div>
-                            {{?}}
-
                         <div class="name">
                             <a href="{{= item.link }}" target="_blank">{{#def.type:item.type }}</a>
                         </div>
@@ -423,7 +413,6 @@
 
                             {{~}}
                         </div>
-
 
                         <div class="date">
                             {{= item.timestamp }}
