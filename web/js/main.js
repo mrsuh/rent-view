@@ -439,16 +439,4 @@ document.addEventListener("DOMContentLoaded", function () {
             fullScreen.initOnEvent(e)
         }.bind(this));
     }
-
-    var banner_block = document.getElementById('banner-group');
-    var banner_btn_close = document.querySelector('#banner-group .btn-close');
-
-    var banner = new Banner(banner_block);
-
-    banner.show();
-
-    banner_btn_close.addEventListener('click', function(){
-        banner.close().bind(this);
-    });
-
 });

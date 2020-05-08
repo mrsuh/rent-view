@@ -7,39 +7,31 @@ module.exports = {
     subways: {},
     cities: {},
     realties: {komnata: 1, kvartira: 1},
-    publish_records: {},
 
     /**
      *
      * @param databaseUrl
      */
     init: function (databaseUrl) {
-        this.connect(databaseUrl).then(function(db){
+        this.connect(databaseUrl).then(function (db) {
             this.db = db;
 
-            this.findSubways().then(function(subways){
+            this.findSubways().then(function (subways) {
                 var _subways = {};
                 for (var i = 0, length = subways.length; i < length; i++) {
                     _subways[subways[i]._id] = subways[i];
                 }
                 this.subways = _subways;
+                console.log('Initialized subways', {'subways': Object.keys(_subways).length});
             }.bind(this));
 
-            this.findCities().then(function(cities){
+            this.findCities().then(function (cities) {
                 var _cities = {};
                 for (var i = 0, length = cities.length; i < length; i++) {
                     _cities[cities[i].short_name] = cities[i];
                 }
                 this.cities = _cities;
-            }.bind(this));
-
-
-            this.findPublishRecords().then(function(records){
-                var _records = {};
-                for (var i = 0, length = records.length; i < length; i++) {
-                    _records[records[i].city] = records[i];
-                }
-                this.publish_records = _records;
+                console.log('Initialized cities', {'cities': Object.keys(_cities).length});
             }.bind(this));
 
         }.bind(this));

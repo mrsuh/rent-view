@@ -23,7 +23,6 @@ module.exports = {
     list: null,
     about: null,
     sitemap: null,
-    bot: null,
     statistic: null,
     not_found: null,
 
@@ -38,10 +37,6 @@ module.exports = {
 
         readFile(__dirname + '/../view/dist/sitemap/index.html', function (text) {
             this.sitemap = dot.template(text);
-        }.bind(this));
-
-        readFile(__dirname + '/../view/dist/bot/index.html', function (text) {
-            this.bot = dot.template(text);
         }.bind(this));
 
         readFile(__dirname + '/../view/dist/statistic/index.html', function (text) {
