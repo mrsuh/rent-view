@@ -1,3 +1,5 @@
+var packageJson = require('./package.json');
+
 module.exports = function (grunt) {
 
     grunt.initConfig({
@@ -29,7 +31,7 @@ module.exports = function (grunt) {
                         },
                         {
                             pattern: '{{version}}',
-                            replacement: 'v4.1.0'
+                            replacement: 'v' + packageJson.version
                         }
                     ]
                 }
